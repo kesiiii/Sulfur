@@ -5,6 +5,7 @@
 
 inline UObject* (*GetFirstPlayerController)(UObject* World);
 inline UObject* (*SpawnActor)(UObject* World, UObject* Class, FVector* Position, FRotator* Rotation, const FActorSpawnParameters& SpawnParameters);
+void* (*ProcessEvent)(void*, void*, void*);
 
 static UObject* GetWorld()
 {

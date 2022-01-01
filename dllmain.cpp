@@ -2,6 +2,8 @@
 #include "Struct.h"
 #include "Util.h"
 #include <iostream>
+#include "UE4.h"
+#include "Hooks.h"
 
 DWORD WINAPI MainThread(LPVOID)
 {
@@ -46,6 +48,10 @@ DWORD WINAPI MainThread(LPVOID)
     UObject::GObjects = decltype(UObject::GObjects)(pGObjects);
     FNameToString = decltype(FNameToString)(pFNameToString);
     FreeInternal = decltype(FreeInternal)(pFreeInternal);
+    SpawnActor = decltype(SpawnActor)(pSpawnActor);
+    GetFirstPlayerController = decltype(GetFirstPlayerController)(pGetFirstPlayerController);
+
+    Globals::LocalPlayerController = GetFirstPlayerController(GetWorld());
 
     return 0;
 }

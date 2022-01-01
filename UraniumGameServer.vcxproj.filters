@@ -17,6 +17,12 @@
     <ClInclude Include="Hooks.h">
       <Filter>Unreal</Filter>
     </ClInclude>
+    <ClInclude Include="Globals.h">
+      <Filter>Unreal</Filter>
+    </ClInclude>
+    <ClInclude Include="Functions.h">
+      <Filter>Unreal</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Unreal">
