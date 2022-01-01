@@ -21,7 +21,7 @@ namespace Hooks
 			if (pFunction->GetName().find("PlayButton") != std::string::npos)
 			{
 				printf("pressed play!\n");
-				Funcs::SwitchLevel(Globals::LocalPlayerController, L"Athena_Terrain");
+				Funcs::SwitchLevel(Globals::LocalPlayerController, L"Athena_Terrain?Game=Athena");
 				bIsReady = true;
 			}
 
@@ -32,23 +32,42 @@ namespace Hooks
 					Globals::GameState = UObject::FindObject("Athena_GameState_C Athena_Terrain.Athena_Terrain.PersistentLevel.Athena_GameState_C");
 					Globals::GameMode = UObject::FindObject("Athena_GameMode_C Athena_Terrain.Athena_Terrain.PersistentLevel.Athena_GameMode_C");
 
+					std::cout << "Controller: " << Globals::LocalPlayerController->GetFullName() << std::endl;
+					std::cout << "GameMode: " << Globals::GameMode->GetFullName() << std::endl;
+					std::cout << "GameState: " << Globals::GameState->GetFullName() << std::endl;
+
 					auto SpawnPos = FVector(0, 0, 5000);
 					auto SpawnRot = FRotator();
-					auto SpawnParms = FActorSpawnParameters();
-					Globals::LocalPawn = SpawnActor(GetWorld(), UObject::FindObject("BlueprintGeneratedClass PlayerPawn_Athena.PlayerPawn_Athena_C"), &SpawnPos, &SpawnRot, SpawnParms);
+					Globals::LocalPawn = SpawnActor(GetWorld(), UObject::FindObject("BlueprintGeneratedClass PlayerPawn_Athena.PlayerPawn_Athena_C"), &SpawnPos, &SpawnRot, FActorSpawnParameters());
+
+					std::cout << "Pawn: " << Globals::LocalPawn->GetFullName() << std::endl;
 
 					Funcs::Possess(Globals::LocalPlayerController, Globals::LocalPawn);
 
-					Globals::LocalPlayerState = *reinterpret_cast<UObject**>(reinterpret_cast<uintptr_t>(Globals::LocalPlayerController) + __int64(UObject::FindObject("ObjectProperty Engine.Controller.PlayerState")));
+					std::cout << "Possessed!\n";
+
+					/*auto PlayerStateOffset = UObject::FindObject("ObjectProperty Engine.Controller.PlayerState");
+					Globals::LocalPlayerState = *reinterpret_cast<UObject**>(reinterpret_cast<uintptr_t>(Globals::LocalPlayerController) + __int64(PlayerStateOffset));
+
+					std::cout << "PlayerState: " << Globals::LocalPlayerState->GetFullName() << std::endl;
 
 					auto HeadPart = UObject::FindObject("CustomCharacterPart F_Med_Head1.F_Med_Head1");
 					auto BodyPart = UObject::FindObject("CustomCharacterPart F_Med_Soldier_01.F_Med_Soldier_01");
 					Funcs::ServerChoosePart(Globals::LocalPawn, EFortCustomPartType::Head, HeadPart);
 					Funcs::ServerChoosePart(Globals::LocalPawn, EFortCustomPartType::Body, BodyPart);
-					Funcs::OnRep_CharacterParts(Globals::LocalPlayerState);
+					Funcs::OnRep_CharacterParts(Globals::LocalPlayerState);*/
 
-					Funcs::ServerReadyToStartMatch(Globals::LocalPlayerController);
+					/*auto GamePhaseOffset = UObject::FindOffset("EnumProperty FortniteGame.FortGameStateAthena.GamePhase");
+					EAthenaGamePhase* CurrentGamePhase = reinterpret_cast<EAthenaGamePhase*>(__int64(Globals::GameState) + __int64(GamePhaseOffset));
+					*CurrentGamePhase = EAthenaGamePhase::Aircraft;
+					Funcs::OnRep_GamePhase(Globals::GameState, EAthenaGamePhase::Aircraft);*/
+
 					Funcs::StartMatch(Globals::GameMode);
+					Funcs::ServerReadyToStartMatch(Globals::LocalPlayerController);
+
+					bIsInGame = true;
+					bIsReady = false;
+					bHasSpawned = true;
 				}
 			}
 		}
