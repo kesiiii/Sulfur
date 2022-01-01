@@ -20,7 +20,8 @@ namespace Hooks
 		if (pObject && pFunction) {
 			if (pFunction->GetName().find("PlayButton") != std::string::npos)
 			{
-				
+				printf("pressed play!\n");
+				Funcs::SwitchLevel(Globals::LocalPlayerController, L"Athena_Terrain");
 				bIsReady = true;
 			}
 

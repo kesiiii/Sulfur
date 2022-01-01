@@ -55,6 +55,8 @@ DWORD WINAPI MainThread(LPVOID)
 
     Hooks::Init();
 
+    printf("Setup!\n");
+
     return 0;
 }
 
