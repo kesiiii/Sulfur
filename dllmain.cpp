@@ -53,6 +53,8 @@ DWORD WINAPI MainThread(LPVOID)
 
     Globals::LocalPlayerController = GetFirstPlayerController(GetWorld());
 
+    Hooks::Init();
+
     return 0;
 }
 

@@ -45,4 +45,9 @@ namespace Funcs
 
 		ProcessEvent(Pawn, fn, &params);
 	}
+
+	static void OnRep_CharacterParts(UObject* PlayerState)
+	{
+		ProcessEvent(PlayerState, UObject::FindObject("Function FortniteGame.FortPlayerState.OnRep_CharacterParts"), nullptr);
+	}
 }

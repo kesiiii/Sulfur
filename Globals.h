@@ -10,4 +10,5 @@ namespace Globals
 	UObject* LocalPawn;
 	UObject* GameMode;
 	UObject* GameState;
+	UObject* LocalPlayerState;
 }
