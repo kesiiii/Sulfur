@@ -46,7 +46,7 @@ namespace Hooks
 
 					std::cout << "Possessed!\n";
 
-					/*auto PlayerStateOffset = UObject::FindObject("ObjectProperty Engine.Controller.PlayerState");
+					auto PlayerStateOffset = UObject::FindObject("ObjectProperty Engine.Controller.PlayerState");
 					Globals::LocalPlayerState = *reinterpret_cast<UObject**>(reinterpret_cast<uintptr_t>(Globals::LocalPlayerController) + __int64(PlayerStateOffset));
 
 					std::cout << "PlayerState: " << Globals::LocalPlayerState->GetFullName() << std::endl;
@@ -55,14 +55,13 @@ namespace Hooks
 					auto BodyPart = UObject::FindObject("CustomCharacterPart F_Med_Soldier_01.F_Med_Soldier_01");
 					Funcs::ServerChoosePart(Globals::LocalPawn, EFortCustomPartType::Head, HeadPart);
 					Funcs::ServerChoosePart(Globals::LocalPawn, EFortCustomPartType::Body, BodyPart);
-					Funcs::OnRep_CharacterParts(Globals::LocalPlayerState);*/
+					Funcs::OnRep_CharacterParts(Globals::LocalPlayerState);
 
 					auto GamePhaseOffset = UObject::FindOffset("EnumProperty FortniteGame.FortGameStateAthena.GamePhase");
 					EAthenaGamePhase* CurrentGamePhase = reinterpret_cast<EAthenaGamePhase*>(__int64(Globals::GameState) + __int64(GamePhaseOffset));
 					*CurrentGamePhase = EAthenaGamePhase::Aircraft;
 					Funcs::OnRep_GamePhase(Globals::GameState, EAthenaGamePhase::None);
 
-					//Funcs::StartMatch(Globals::GameMode);
 					Funcs::ServerReadyToStartMatch(Globals::LocalPlayerController);
 
 					bIsInGame = true;
