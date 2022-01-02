@@ -94,3 +94,9 @@ enum class ENetRole : uint8_t
     ROLE_Authority = 3,
     ROLE_MAX = 4
 };
+
+enum EBeaconState
+{
+    AllowRequests,
+    DenyRequests
+};

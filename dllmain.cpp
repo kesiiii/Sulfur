@@ -3,6 +3,7 @@
 #include "Util.h"
 #include <iostream>
 #include "UE4.h"
+#include "Beacons.h"
 #include "Hooks.h"
 
 DWORD WINAPI MainThread(LPVOID)
@@ -53,6 +54,7 @@ DWORD WINAPI MainThread(LPVOID)
 
     Globals::LocalPlayerController = GetFirstPlayerController(GetWorld());
 
+    Beacons::Init();
     Hooks::Init();
 
     printf("Setup!\n");

@@ -470,7 +470,8 @@ public:
 	float BeaconConnectionInitialTimeout;
 	float BeaconConnectionTimeout;
 	UNetDriver* NetDriver;
-	unsigned char UnknownData01[0x10];
+	EBeaconState BeaconState;
+	unsigned char UnknownData01[12];
 };
 
 //Class OnlineSubsystemUtils.OnlineBeaconHostObject

@@ -3,11 +3,8 @@
 #include "Struct.h"
 #include "Enums.h"
 #include "UE4.h"
-#include "minhook/MinHook.h"
 #include "Globals.h"
 #include "Functions.h"
-
-#pragma comment(lib, "minhook/MinHook.lib")
 
 namespace Hooks
 {
@@ -18,6 +15,19 @@ namespace Hooks
 	void* ProcessEventDetour(UObject* pObject, UObject* pFunction, void* pParams)
 	{
 		if (pObject && pFunction) {
+			if (pFunction->GetName().find("Tick") != std::string::npos && pObject == Globals::LocalPlayerController)
+			{
+				if (GetKeyState(VK_F5) & 0x1)
+				{
+					auto SpawnPos = FVector(0, 0, 15000);
+					auto SpawnRot = FRotator();
+					auto Beacon = static_cast<AOnlineBeaconHost*>(SpawnActor(GetWorld(), UObject::FindObject("Class OnlineSubsystemUtils.OnlineBeaconHost"), &SpawnPos, &SpawnRot, FActorSpawnParameters()));
+					Beacon->ListenPort = 7777;
+					std::cout << "BeaconRes: " << Beacons::InitHost(Beacon) << std::endl;
+					Beacon->BeaconState = EBeaconState::AllowRequests;
+				}
+			}
+
 			if (pFunction->GetName().find("PlayButton") != std::string::npos)
 			{
 				printf("pressed play!\n");
@@ -46,7 +56,7 @@ namespace Hooks
 
 					std::cout << "Possessed!\n";
 
-					auto PlayerStateOffset = UObject::FindObject("ObjectProperty Engine.Controller.PlayerState");
+					auto PlayerStateOffset = UObject::FindOffset("ObjectProperty Engine.Controller.PlayerState");
 					Globals::LocalPlayerState = *reinterpret_cast<UObject**>(reinterpret_cast<uintptr_t>(Globals::LocalPlayerController) + __int64(PlayerStateOffset));
 
 					std::cout << "PlayerState: " << Globals::LocalPlayerState->GetFullName() << std::endl;
