@@ -57,12 +57,12 @@ namespace Hooks
 					Funcs::ServerChoosePart(Globals::LocalPawn, EFortCustomPartType::Body, BodyPart);
 					Funcs::OnRep_CharacterParts(Globals::LocalPlayerState);*/
 
-					/*auto GamePhaseOffset = UObject::FindOffset("EnumProperty FortniteGame.FortGameStateAthena.GamePhase");
+					auto GamePhaseOffset = UObject::FindOffset("EnumProperty FortniteGame.FortGameStateAthena.GamePhase");
 					EAthenaGamePhase* CurrentGamePhase = reinterpret_cast<EAthenaGamePhase*>(__int64(Globals::GameState) + __int64(GamePhaseOffset));
 					*CurrentGamePhase = EAthenaGamePhase::Aircraft;
-					Funcs::OnRep_GamePhase(Globals::GameState, EAthenaGamePhase::Aircraft);*/
+					Funcs::OnRep_GamePhase(Globals::GameState, EAthenaGamePhase::None);
 
-					Funcs::StartMatch(Globals::GameMode);
+					//Funcs::StartMatch(Globals::GameMode);
 					Funcs::ServerReadyToStartMatch(Globals::LocalPlayerController);
 
 					bIsInGame = true;

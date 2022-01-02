@@ -53,7 +53,7 @@ namespace Funcs
 
 	static void OnRep_GamePhase(UObject* InGameState, EAthenaGamePhase OldGamePhase)
 	{
-		static UObject* OnRep_GamePhase = UObject::FindObject("Function /Script/FortniteGame.FortGameStateAthena.OnRep_GamePhase");
+		static UObject* OnRep_GamePhase = UObject::FindObject("Function FortniteGame.FortGameStateAthena.OnRep_GamePhase");
 
 		ProcessEvent(InGameState, OnRep_GamePhase, &OldGamePhase);
 	}
