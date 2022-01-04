@@ -91,10 +91,12 @@
     <ClCompile Include="dllmain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Beacons.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="Functions.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Hooks.h" />
+    <ClInclude Include="NetHooks.h" />
     <ClInclude Include="Struct.h" />
     <ClInclude Include="UE4.h" />
     <ClInclude Include="Util.h" />

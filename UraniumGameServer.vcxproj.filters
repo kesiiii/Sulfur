@@ -23,6 +23,12 @@
     <ClInclude Include="Functions.h">
       <Filter>Unreal</Filter>
     </ClInclude>
+    <ClInclude Include="NetHooks.h">
+      <Filter>Unreal</Filter>
+    </ClInclude>
+    <ClInclude Include="Beacons.h">
+      <Filter>Unreal</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Unreal">
