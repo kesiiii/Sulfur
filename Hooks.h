@@ -136,6 +136,8 @@ namespace Hooks
 
 				PC->CheatManager->DestroyAll(AFortHLODSMActor::StaticClass());
 
+				auto FortHero = UObject::FindObject<UFortHero>("FortHero Transient.FortHero_");
+
 				auto SpawnTransform = FTransform();
 				SpawnTransform.Scale3D = FVector(1, 1, 1);
 				SpawnTransform.Rotation = FQuat();
@@ -147,6 +149,30 @@ namespace Hooks
 				auto SpawningActor = GPS->STATIC_BeginSpawningActorFromClass(FortEngine->GameViewport->World, APlayerPawn_Athena_C::StaticClass(), SpawnTransform, false, nullptr);
 				auto Pawn = reinterpret_cast<APlayerPawn_Athena_C*>(GPS->STATIC_FinishSpawningActor(SpawningActor, SpawnTransform));
 				Pawn->bCanBeDamaged = false;
+
+				for (int i = 0; i < FortHero->CharacterParts.Num(); i++)
+				{
+					auto CharacterPart = FortHero->CharacterParts[i];
+
+					if (CharacterPart->AdditionalData->IsA(UCustomCharacterHeadData::StaticClass())) {
+						Pawn->ServerChoosePart(EFortCustomPartType::Head, CharacterPart);
+					}
+
+					if (CharacterPart->AdditionalData->IsA(UCustomCharacterBodyPartData::StaticClass())) {
+						Pawn->ServerChoosePart(EFortCustomPartType::Body, CharacterPart);
+					}
+
+					if (CharacterPart->AdditionalData->IsA(UCustomCharacterHatData::StaticClass())) {
+						Pawn->ServerChoosePart(EFortCustomPartType::Hat, CharacterPart);
+					}
+
+					if (CharacterPart->AdditionalData->IsA(UCustomCharacterBackpackData::StaticClass())) {
+						Pawn->ServerChoosePart(EFortCustomPartType::Backpack, CharacterPart);
+					}
+				}
+				
+				auto PawnPlayerState = reinterpret_cast<AFortPlayerStateAthena*>(Pawn->PlayerState);
+				PawnPlayerState->OnRep_CharacterParts();
 
 				auto PlayerState = reinterpret_cast<AFortPlayerStateAthena*>(PC->PlayerState);
 				PlayerState->TeamIndex = EFortTeam::HumanPvP_Team1;
