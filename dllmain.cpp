@@ -1,63 +1,36 @@
 #include <Windows.h>
-#include "Struct.h"
 #include "Util.h"
-#include <iostream>
-#include "UE4.h"
-#include "Beacons.h"
 #include "Hooks.h"
+#include "SDK.hpp"
 
 DWORD WINAPI MainThread(LPVOID)
 {
-    Util::SetupConsole();
+    Util::InitConsole();
 
-    auto pGObjects = Util::FindPattern("48 8B 05 ? ? ? ? 48 8B 0C C8 48 8D 04 D1 EB 03 48 8B ? 81 48 08 ? ? ? 40 49", true, 3);
-    auto pFNameToString = Util::FindPattern("48 89 5C 24 ? 57 48 83 EC 30 83 79 04 00 48 8B DA 48 8B F9");
-    auto pFreeInternal = Util::FindPattern("48 85 C9 74 2E 53 48 83 EC 20 48 8B D9");
-    auto pGetFirstPlayerController = Util::FindPattern("83 B9 ? ? ? ? ? 7E ? 48 8B 89 ? ? ? ? E9");
-    auto pSpawnActor = Util::FindPattern("40 53 56 57 48 83 EC 70 48 8B 05 ? ? ? ? 48 33 C4 48 89 44 24 ? 0F 28 1D ? ? ? ? 0F 57 D2 48 8B B4 24 ? ? ? ? 0F 28 CB");
+    printf("LogUGS: Setting Up!\n");
 
-    if (!pGObjects)
-    {
-        MessageBoxA(NULL, "Failed to find GObjects address", "UraniumMP", MB_ICONERROR);
-        return 0;
-    }
+    auto BaseAddr = Util::BaseAddress();
+    auto GObjectsAddress = BaseAddr + 0x44E5CE0;
+    auto FNameToStringAddress = BaseAddr + 0xC79B10;
+    auto FreeMemoryAddress = BaseAddr + 0xBBCEB0;
 
-    if (!pFNameToString)
-    {
-        MessageBoxA(NULL, "Failed to find FNameToString address", "UraniumMP", MB_ICONERROR);
-        return 0;
-    }
+    SDK::UObject::GObjects = decltype(SDK::UObject::GObjects)(GObjectsAddress);
+    SDK::FNameToString = decltype(SDK::FNameToString)(FNameToStringAddress);
+    SDK::FreeInternal = decltype(SDK::FreeInternal)(FreeMemoryAddress);
 
-    if (!pFreeInternal)
-    {
-        MessageBoxA(NULL, "Failed to find FreeInternal address", "UraniumMP", MB_ICONERROR);
-        return 0;
-    }
+    auto FortEngine = SDK::UObject::FindObject<UFortEngine>("FortEngine_");
+    Hooks::World = FortEngine->GameViewport->World;
+    auto GPS = reinterpret_cast<UGameplayStatics*>(UGameplayStatics::StaticClass());
 
-    if (!pGetFirstPlayerController)
-    {
-        MessageBoxA(NULL, "Failed to find GetFirstPlayerController address", "UraniumMP", MB_ICONERROR);
-        return 0;
-    }
+    auto NewConsole = GPS->STATIC_SpawnObject(UFortConsole::StaticClass(), FortEngine->GameViewport);
+    FortEngine->GameViewport->ViewportConsole = (UFortConsole*)(NewConsole);
 
-    if (!pSpawnActor)
-    {
-        MessageBoxA(NULL, "Failed to find SpawnActor address", "UraniumMP", MB_ICONERROR);
-        return 0;
-    }
+    auto NewCheatManager = GPS->STATIC_SpawnObject(UCheatManager::StaticClass(), FortEngine->GameInstance->LocalPlayers[0]->PlayerController);
+    FortEngine->GameInstance->LocalPlayers[0]->PlayerController->CheatManager = (UCheatManager*)(NewCheatManager);
 
-    UObject::GObjects = decltype(UObject::GObjects)(pGObjects);
-    FNameToString = decltype(FNameToString)(pFNameToString);
-    FreeInternal = decltype(FreeInternal)(pFreeInternal);
-    SpawnActor = decltype(SpawnActor)(pSpawnActor);
-    GetFirstPlayerController = decltype(GetFirstPlayerController)(pGetFirstPlayerController);
-
-    Globals::LocalPlayerController = GetFirstPlayerController(GetWorld());
-
-    Beacons::Init();
     Hooks::Init();
 
-    printf("Setup!\n");
+    printf("LogUGS: Hooks Setup!\n");
 
     return 0;
 }
