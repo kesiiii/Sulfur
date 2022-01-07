@@ -50,7 +50,8 @@ namespace Hooks
 
 	void __fastcall AOnlineBeaconHost_NotifyControlMessageHook(AOnlineBeaconHost* BeaconHost, UNetConnection* NetConnection, uint8_t a3, void* a4)
 	{
-		printf("LogUGS: AOnlineBeaconHost::NotifyControlMessage Called!\n");
+		printf("LogUGS: AOnlineBeaconHost::NotifyControlMessage Called! (%s)\n", std::to_string(a3).c_str());
+		printf("LogUGS: Channel count (%s)\n", std::to_string(NetConnection->OpenChannels.Num()).c_str());
 		return UWorld_NotifyControlMessage(World, NetConnection, a3, a4);
 	}
 
@@ -60,6 +61,7 @@ namespace Hooks
 		return WelcomePlayer(World, NetConnection);
 	}
 
+	// https://github.com/EpicGames/UnrealEngine/blob/4.19/Engine/Source/Runtime/Engine/Private/LevelActor.cpp#L705
 	APlayerController* SpawnPlayActorHook(UWorld* a1, UPlayer* a2, ENetRole a3, FURL a4, void* a5, FString& Src, uint8_t a7)
 	{
 		printf("LogUGS: SpawnPlayActor Called!\n");
@@ -104,12 +106,14 @@ namespace Hooks
 		NewAthenaPlayerState->CurrentShield = 69;
 		NewAthenaPlayerState->TeamIndex = EFortTeam::HumanPvP_Team1;
 		NewAthenaPlayerState->SquadId = MyAthenaPlayerState->SquadId;
-		NewAthenaPlayerState->OnRep_PlayerTeam();
 		NewAthenaPlayerState->OnRep_SquadId();
+		NewAthenaPlayerState->OnRep_PlayerTeam();
 
 		auto FortEngine = UObject::FindObject<UFortEngine>("FortEngine_");
 		auto PC = FortEngine->GameInstance->LocalPlayers[0]->PlayerController;
 		NewPlayerController->ServerReadyToStartMatch();
+
+		// AFortGameModeAthena->AlivePlayers == TArray of PlayerControllers that are alive
 
 		return NewPlayerController;
 	}
@@ -149,11 +153,6 @@ namespace Hooks
 				auto SpawningActor = GPS->STATIC_BeginSpawningActorFromClass(FortEngine->GameViewport->World, APlayerPawn_Athena_C::StaticClass(), SpawnTransform, false, nullptr);
 				auto Pawn = reinterpret_cast<APlayerPawn_Athena_C*>(GPS->STATIC_FinishSpawningActor(SpawningActor, SpawnTransform));
 				Pawn->bCanBeDamaged = false;
-
-				auto PlayerState = reinterpret_cast<AFortPlayerStateAthena*>(PC->PlayerState);
-				PlayerState->TeamIndex = EFortTeam::HumanPvP_Team1;
-				PlayerState->OnRep_PlayerTeam();
-				PlayerState->OnRep_SquadId();
 
 				PC->Possess(Pawn);
 
@@ -209,6 +208,16 @@ namespace Hooks
 				BeaconHost->BeaconState = EBeaconState::AllowRequests;
 
 				printf("LogUGS: Beacons Setup!\n");
+			}
+
+			if (GetAsyncKeyState(VK_F3) && 0x01)
+			{
+				auto FortEngine = UObject::FindObject<UFortEngine>("FortEngine_");
+				auto PC = reinterpret_cast<AFortPlayerControllerAthena*>(FortEngine->GameInstance->LocalPlayers[0]->PlayerController);
+				auto PlayerState = reinterpret_cast<AFortPlayerStateAthena*>(PC->PlayerState);
+				PlayerState->TeamIndex = EFortTeam::HumanPvP_Team2;
+				PlayerState->OnRep_PlayerTeam();
+				PlayerState->OnRep_SquadId();
 			}
 		}
 
