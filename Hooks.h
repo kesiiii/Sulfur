@@ -43,7 +43,7 @@ namespace Hooks
 		return Actor;
 	}
 
-	bool (*InitHost)(AOnlineBeaconHost*);
+	bool(*InitHost)(AOnlineBeaconHost*);
 	void(*UWorld_NotifyControlMessage)(UWorld* World, UNetConnection* NetConnection, uint8_t a3, void* a4);
 	__int64(*WelcomePlayer)(UWorld* This, UNetConnection* NetConnection);
 	APlayerController* (*SpawnPlayActor)(UWorld* a1, UPlayer* a2, ENetRole a3, FURL a4, void* a5, FString& Src, uint8_t a7);
@@ -109,8 +109,6 @@ namespace Hooks
 
 		auto FortEngine = UObject::FindObject<UFortEngine>("FortEngine_");
 		auto PC = FortEngine->GameInstance->LocalPlayers[0]->PlayerController;
-		static_cast<AGameMode*>(FortEngine->GameViewport->World->AuthorityGameMode)->StartMatch();
-		static_cast<AFortPlayerControllerAthena*>(PC)->ServerReadyToStartMatch();
 		NewPlayerController->ServerReadyToStartMatch();
 
 		return NewPlayerController;
@@ -132,7 +130,7 @@ namespace Hooks
 			if (GetAsyncKeyState(VK_F1) & 0x01)
 			{
 				auto FortEngine = UObject::FindObject<UFortEngine>("FortEngine_");
-				auto PC = FortEngine->GameInstance->LocalPlayers[0]->PlayerController;
+				auto PC = reinterpret_cast<AFortPlayerControllerAthena*>(FortEngine->GameInstance->LocalPlayers[0]->PlayerController);
 				auto GPS = reinterpret_cast<UGameplayStatics*>(UGameplayStatics::StaticClass());
 				auto FortCheatManager = reinterpret_cast<UFortCheatManager*>(PC->CheatManager);
 
@@ -158,6 +156,9 @@ namespace Hooks
 				PlayerState->OnRep_SquadId();
 
 				PC->Possess(Pawn);
+
+				static_cast<AGameMode*>(FortEngine->GameViewport->World->AuthorityGameMode)->StartMatch();
+				static_cast<AFortPlayerControllerAthena*>(PC)->ServerReadyToStartMatch();
 
 				bIsInGame = true;
 				bIsReady = false;
@@ -203,14 +204,11 @@ namespace Hooks
 
 				BeaconHost->ListenPort = 7777;
 				auto result = InitHost(BeaconHost);
-				std::cout << "ReplicationFrame: " << *(uint32_t*)(BeaconHost->NetDriver + 0x2C8) << std::endl;
-				auto repFrame = *(uint32_t*)(BeaconHost->NetDriver + 0x2C8);
-				repFrame++;
-				std::cout << "ReplicationFrame: " << *(uint32_t*)(BeaconHost->NetDriver + 0x2C8) << std::endl;
-
 				std::cout << "InitHost Result: " << result << std::endl;
 
 				BeaconHost->BeaconState = EBeaconState::AllowRequests;
+
+				printf("LogUGS: Beacons Setup!\n");
 			}
 		}
 
