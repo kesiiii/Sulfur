@@ -6960,8 +6960,6 @@ public:
 	struct FName                                       NetDriverName;                                            // 0x00F0(0x0008) (ZeroConstructor, Config, IsPlainOldData)
 	unsigned char                                      UnknownData05[0x48];                                      // 0x00F8(0x0048) MISSED OFFSET
 	float                                              Time;                                                     // 0x0140(0x0004) (ZeroConstructor, IsPlainOldData)
-	char pad[0x17B];
-	uint32_t RepFrame;
 	unsigned char                                      UnknownData06[0x159];                                     // 0x0144(0x0364) MISSED OFFSET
 
 	static UClass* StaticClass()

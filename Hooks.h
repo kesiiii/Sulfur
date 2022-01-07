@@ -100,6 +100,8 @@ namespace Hooks
 
 		auto MyAthenaPlayerState = reinterpret_cast<AFortPlayerStateAthena*>(UObject::FindObject<UFortEngine>("FortEngine_")->GameInstance->LocalPlayers[0]->PlayerController->PlayerState);
 
+		NewAthenaPlayerState->MaxShield = 100;
+		NewAthenaPlayerState->CurrentShield = 69;
 		NewAthenaPlayerState->TeamIndex = EFortTeam::HumanPvP_Team1;
 		NewAthenaPlayerState->SquadId = MyAthenaPlayerState->SquadId;
 		NewAthenaPlayerState->OnRep_PlayerTeam();
@@ -149,30 +151,6 @@ namespace Hooks
 				auto SpawningActor = GPS->STATIC_BeginSpawningActorFromClass(FortEngine->GameViewport->World, APlayerPawn_Athena_C::StaticClass(), SpawnTransform, false, nullptr);
 				auto Pawn = reinterpret_cast<APlayerPawn_Athena_C*>(GPS->STATIC_FinishSpawningActor(SpawningActor, SpawnTransform));
 				Pawn->bCanBeDamaged = false;
-
-				for (int i = 0; i < FortHero->CharacterParts.Num(); i++)
-				{
-					auto CharacterPart = FortHero->CharacterParts[i];
-
-					if (CharacterPart->AdditionalData->IsA(UCustomCharacterHeadData::StaticClass())) {
-						Pawn->ServerChoosePart(EFortCustomPartType::Head, CharacterPart);
-					}
-
-					if (CharacterPart->AdditionalData->IsA(UCustomCharacterBodyPartData::StaticClass())) {
-						Pawn->ServerChoosePart(EFortCustomPartType::Body, CharacterPart);
-					}
-
-					if (CharacterPart->AdditionalData->IsA(UCustomCharacterHatData::StaticClass())) {
-						Pawn->ServerChoosePart(EFortCustomPartType::Hat, CharacterPart);
-					}
-
-					if (CharacterPart->AdditionalData->IsA(UCustomCharacterBackpackData::StaticClass())) {
-						Pawn->ServerChoosePart(EFortCustomPartType::Backpack, CharacterPart);
-					}
-				}
-				
-				auto PawnPlayerState = reinterpret_cast<AFortPlayerStateAthena*>(Pawn->PlayerState);
-				PawnPlayerState->OnRep_CharacterParts();
 
 				auto PlayerState = reinterpret_cast<AFortPlayerStateAthena*>(PC->PlayerState);
 				PlayerState->TeamIndex = EFortTeam::HumanPvP_Team1;
@@ -225,9 +203,10 @@ namespace Hooks
 
 				BeaconHost->ListenPort = 7777;
 				auto result = InitHost(BeaconHost);
-				std::cout << "ReplicationFrame: " << BeaconHost->NetDriver->RepFrame << std::endl;
-				BeaconHost->NetDriver->RepFrame++;
-				std::cout << "ReplicationFrame: " << BeaconHost->NetDriver->RepFrame << std::endl;
+				std::cout << "ReplicationFrame: " << *(uint32_t*)(BeaconHost->NetDriver + 0x2C8) << std::endl;
+				auto repFrame = *(uint32_t*)(BeaconHost->NetDriver + 0x2C8);
+				repFrame++;
+				std::cout << "ReplicationFrame: " << *(uint32_t*)(BeaconHost->NetDriver + 0x2C8) << std::endl;
 
 				std::cout << "InitHost Result: " << result << std::endl;
 
