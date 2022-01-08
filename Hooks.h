@@ -113,7 +113,7 @@ namespace Hooks
 		auto PC = FortEngine->GameInstance->LocalPlayers[0]->PlayerController;
 		NewPlayerController->ServerReadyToStartMatch();
 
-		// AFortGameModeAthena->AlivePlayers == TArray of PlayerControllers that are alive
+		// AFortGameModeAthena->AlivePlayers == TArray of PlayerControllers that are alive / not replicated yet!
 
 		return NewPlayerController;
 	}
