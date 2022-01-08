@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -15,7 +15,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // WidgetBlueprintGeneratedClass ItemManagementDetailsModeBox.ItemManagementDetailsModeBox_C
-// 0x0020 (0x0420 - 0x0400)
+// 0x0028 (0x0428 - 0x0400)
 class UItemManagementDetailsModeBox_C : public UFortItemDetailsModeActivatablePanel
 {
 public:
@@ -23,6 +23,7 @@ public:
 	class UHorizontalTabList_C*                        DetailPanelTabList;                                       // 0x0408(0x0008) (BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, RepNotify, Interp, NonTransactional, EditorOnly, NoDestructor, AutoWeak, ContainsInstancedReference, AssetRegistrySearchable, SimpleDisplay, AdvancedDisplay, Protected, BlueprintCallable, BlueprintAuthorityOnly, TextExportTransient, NonPIEDuplicateTransient, ExposeOnSpawn, PersistentInstance, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic, NativeAccessSpecifierProtected, NativeAccessSpecifierPrivate)
 	class USizeBox*                                    ItemSelected;                                             // 0x0410(0x0008) (BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, RepNotify, Interp, NonTransactional, EditorOnly, NoDestructor, AutoWeak, ContainsInstancedReference, AssetRegistrySearchable, SimpleDisplay, AdvancedDisplay, Protected, BlueprintCallable, BlueprintAuthorityOnly, TextExportTransient, NonPIEDuplicateTransient, ExposeOnSpawn, PersistentInstance, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic, NativeAccessSpecifierProtected, NativeAccessSpecifierPrivate)
 	class UVerticalBox*                                NoSelectionDetailsBox;                                    // 0x0418(0x0008) (BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, RepNotify, Interp, NonTransactional, EditorOnly, NoDestructor, AutoWeak, ContainsInstancedReference, AssetRegistrySearchable, SimpleDisplay, AdvancedDisplay, Protected, BlueprintCallable, BlueprintAuthorityOnly, TextExportTransient, NonPIEDuplicateTransient, ExposeOnSpawn, PersistentInstance, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic, NativeAccessSpecifierProtected, NativeAccessSpecifierPrivate)
+	struct FDateTime                                   LastDesiredReadOnlyModeWIFE;                              // 0x0420(0x0008) (Edit, BlueprintVisible, DisableEditOnInstance)
 
 	static UClass* StaticClass()
 	{
@@ -31,6 +32,12 @@ public:
 	}
 
 
+	void GetStatsTabVisibility(ESlateVisibility* StatsTabVisbility);
+	void HandleOpenCustomFilter(bool* Passthrough);
+	void RegisterOpenCustomFilter();
+	void RefreshDestroyAction();
+	void UpdateReadOnlyWIFE();
+	void PreferReadOnlyWIFE(bool* ReadOnly);
 	void HandleMore(bool* Pass_Through);
 	void RegisterMore();
 	void HandleDestroy(bool* Passthrough);
@@ -38,11 +45,11 @@ public:
 	void RefreshSwitchPanelAction();
 	void HandleSwitchPanel(bool* Passthrough);
 	void UnbindEvents();
-	void RefreshTransferAction();
+	void RefreshTransferActions();
 	void HandleTransfer(bool* Passthrough);
 	void RegisterTransferActions();
 	void RegisterInspectUpgrade();
-	void HandleQuickbarContentsChanged(EFortQuickBars QuickbarIndex);
+	void HandleQuickbarContentsChanged(EFortQuickBars QuickbarIndex, TArray<int>* ChangedSlots);
 	void RegisterLeaveInventory();
 	void RefreshMulchAction();
 	void HandleCraftAndSlot(bool* Passthrough);
@@ -53,7 +60,7 @@ public:
 	void RegisterInventoryInspect();
 	void SetTabStyling(class UObject* Object);
 	void SetItemVisualization();
-	void UpdateConsumeItemButtonState();
+	void RefreshConsumeAction();
 	void SetupDetailPanels();
 	void HandleEquip(bool* Passthrough);
 	void RegisterEquip();
@@ -79,6 +86,7 @@ public:
 	void HandleInspect(bool* Passthrough);
 	void HandleBack(bool* Passthrough);
 	void DialogResult_475B18A9452A639A04116D83A8B1CC22(EFortDialogResult Result, const struct FName& ResultName);
+	void DialogResult_4190138B4388B0E2F8396BBD395808D5(EFortDialogResult Result, const struct FName& ResultName);
 	void BndEvt__DetailPanelWidgetSwitcher_K2Node_ComponentBoundEvent_16_OnActiveWidgetChanged__DelegateSignature(class UWidget* ActiveWidget, int ActiveWidgetIndex);
 	void HandleDifferentItemToDetailSetBP();
 	void OnActivated();
@@ -91,6 +99,7 @@ public:
 	void Construct();
 	void OnInputModeChanged(bool* bUsingGamepad);
 	void OnDestroyItem(class UFortItem* Item);
+	void HandleCraftItemFailed(EFortCraftFailCause FailureCause);
 	void ExecuteUbergraph_ItemManagementDetailsModeBox(int EntryPoint);
 };
 

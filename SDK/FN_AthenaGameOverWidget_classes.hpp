@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -15,7 +15,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // WidgetBlueprintGeneratedClass AthenaGameOverWidget.AthenaGameOverWidget_C
-// 0x00F9 (0x04E9 - 0x03F0)
+// 0x0131 (0x0521 - 0x03F0)
 class UAthenaGameOverWidget_C : public UFortActivatablePanel
 {
 public:
@@ -45,6 +45,11 @@ public:
 	unsigned char                                      UnknownData00[0x7];                                       // 0x04C9(0x0007) MISSED OFFSET
 	struct FText                                       KillersName;                                              // 0x04D0(0x0018) (Edit, BlueprintVisible, DisableEditOnInstance)
 	bool                                               DeadAndSpectating;                                        // 0x04E8(0x0001) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	unsigned char                                      UnknownData01[0x7];                                       // 0x04E9(0x0007) MISSED OFFSET
+	struct FDataTableRowHandle                         Input_ToggleMap;                                          // 0x04F0(0x0010) (Edit, BlueprintVisible, DisableEditOnInstance)
+	struct FDataTableRowHandle                         Input_Matchmake;                                          // 0x0500(0x0010) (Edit, BlueprintVisible, DisableEditOnInstance)
+	struct FDataTableRowHandle                         Input_CancelMatchmaking;                                  // 0x0510(0x0010) (Edit, BlueprintVisible, DisableEditOnInstance)
+	bool                                               MatchmakingComplete;                                      // 0x0520(0x0001) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
 
 	static UClass* StaticClass()
 	{
@@ -53,6 +58,10 @@ public:
 	}
 
 
+	void Handle_CancelMatchmaking(bool* Passthrough);
+	void Handle_Matchmake(bool* Passthrough);
+	void Handle_ToggleMap(bool* Passthrough);
+	void InGameMatchmakingComplete(bool Success);
 	void SetViewModel(class UAthenaPlayerViewModel* ViewModel);
 	bool CanFollowNextOrPreviousTeammate();
 	void SetKillersName(struct FFortPlayerDeathReport* FortPlayerDeathReport);

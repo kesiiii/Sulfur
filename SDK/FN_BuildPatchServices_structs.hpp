@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -10,20 +10,6 @@
 
 namespace SDK
 {
-//---------------------------------------------------------------------------
-//Enums
-//---------------------------------------------------------------------------
-
-// Enum BuildPatchServices.EManifestFileHeader
-enum class EManifestFileHeader : uint8_t
-{
-	STORED_RAW                     = 0,
-	STORED_COMPRESSED              = 1,
-	STORED_MAX                     = 2
-};
-
-
-
 //---------------------------------------------------------------------------
 //Script Structs
 //---------------------------------------------------------------------------
@@ -45,7 +31,7 @@ struct FChunkPartData
 };
 
 // ScriptStruct BuildPatchServices.FileManifestData
-// 0x0070
+// 0x0068
 struct FFileManifestData
 {
 	struct FString                                     Filename;                                                 // 0x0000(0x0010) (ZeroConstructor)
@@ -58,7 +44,7 @@ struct FFileManifestData
 	struct FString                                     SymlinkTarget;                                            // 0x0050(0x0010) (ZeroConstructor)
 	bool                                               bIsReadOnly;                                              // 0x0060(0x0001) (ZeroConstructor, IsPlainOldData)
 	bool                                               bIsCompressed;                                            // 0x0061(0x0001) (ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData02[0xE];                                       // 0x0062(0x000E) MISSED OFFSET
+	unsigned char                                      UnknownData02[0x6];                                       // 0x0062(0x0006) MISSED OFFSET
 };
 
 // ScriptStruct BuildPatchServices.ChunkInfoData

@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,6 +13,13 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function LobbyPlayerPadTop.LobbyPlayerPadTop_C.OnAthenaMemberLocationStateChanged
+struct ULobbyPlayerPadTop_C_OnAthenaMemberLocationStateChanged_Params
+{
+	struct FUniqueNetIdRepl                            Member_Id;                                                // (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+	EFortPartyMemberLocation                           Location;                                                 // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
 
 // Function LobbyPlayerPadTop.LobbyPlayerPadTop_C.UpdateMicIcon
 struct ULobbyPlayerPadTop_C_UpdateMicIcon_Params
@@ -38,10 +45,12 @@ struct ULobbyPlayerPadTop_C_HandlePlayerTalkingChanged_Params
 	bool                                               IsTalking;                                                // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
-// Function LobbyPlayerPadTop.LobbyPlayerPadTop_C.RefreshReadyState
-struct ULobbyPlayerPadTop_C_RefreshReadyState_Params
+// Function LobbyPlayerPadTop.LobbyPlayerPadTop_C.RefreshAthenaReadyState
+struct ULobbyPlayerPadTop_C_RefreshAthenaReadyState_Params
 {
 	bool                                               Ready;                                                    // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	EFortPartyMemberLocation                           Location;                                                 // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	bool                                               LocationValid;                                            // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function LobbyPlayerPadTop.LobbyPlayerPadTop_C.OnAthenaReadyStateChanged

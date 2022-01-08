@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,6 +13,16 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function RewardsIcon.RewardsIcon_C.PopulateFromGiftBoxData
+struct URewardsIcon_C_PopulateFromGiftBoxData_Params
+{
+};
+
+// Function RewardsIcon.RewardsIcon_C.PopulateFromDifficultyIncreaseRewards
+struct URewardsIcon_C_PopulateFromDifficultyIncreaseRewards_Params
+{
+};
 
 // Function RewardsIcon.RewardsIcon_C.PopulateFromMissionAlertRewards
 struct URewardsIcon_C_PopulateFromMissionAlertRewards_Params
@@ -170,19 +180,19 @@ struct URewardsIcon_C_OnImageClicked__DelegateSignature_Params
 // Function RewardsIcon.RewardsIcon_C.OnMaterializeAnimationFinished__DelegateSignature
 struct URewardsIcon_C_OnMaterializeAnimationFinished__DelegateSignature_Params
 {
-	class URewardsIcon_C*                              Icon;                                                     // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class URewardsIcon_C*                              Icon;                                                     // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 };
 
 // Function RewardsIcon.RewardsIcon_C.OnDisperseAnimationFinished__DelegateSignature
 struct URewardsIcon_C_OnDisperseAnimationFinished__DelegateSignature_Params
 {
-	class URewardsIcon_C*                              Icon;                                                     // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class URewardsIcon_C*                              Icon;                                                     // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 };
 
 // Function RewardsIcon.RewardsIcon_C.OnSlideAnimationFinished__DelegateSignature
 struct URewardsIcon_C_OnSlideAnimationFinished__DelegateSignature_Params
 {
-	class URewardsIcon_C*                              Icon;                                                     // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class URewardsIcon_C*                              Icon;                                                     // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 };
 
 }

@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -52,11 +52,12 @@ void UItemTransformSlotScreen_C::NavigateToFirstItem()
 // Function ItemTransformSlotScreen.ItemTransformSlotScreen_C.Get Transform Data
 // (Public, HasOutParms, BlueprintCallable, BlueprintEvent)
 // Parameters:
+// class UFortItem*               SelectedKey                    (Parm, OutParm, ZeroConstructor, IsPlainOldData)
 // TArray<class UFortItem*>       SacrificeItems                 (Parm, OutParm, ZeroConstructor)
 // int                            CurrentSacrificePoints         (Parm, OutParm, ZeroConstructor, IsPlainOldData)
 // int                            CurrentTier                    (Parm, OutParm, ZeroConstructor, IsPlainOldData)
 
-void UItemTransformSlotScreen_C::Get_Transform_Data(TArray<class UFortItem*>* SacrificeItems, int* CurrentSacrificePoints, int* CurrentTier)
+void UItemTransformSlotScreen_C::Get_Transform_Data(class UFortItem** SelectedKey, TArray<class UFortItem*>* SacrificeItems, int* CurrentSacrificePoints, int* CurrentTier)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ItemTransformSlotScreen.ItemTransformSlotScreen_C.Get Transform Data");
 
@@ -68,6 +69,8 @@ void UItemTransformSlotScreen_C::Get_Transform_Data(TArray<class UFortItem*>* Sa
 
 	fn->FunctionFlags = flags;
 
+	if (SelectedKey != nullptr)
+		*SelectedKey = params.SelectedKey;
 	if (SacrificeItems != nullptr)
 		*SacrificeItems = params.SacrificeItems;
 	if (CurrentSacrificePoints != nullptr)
@@ -244,7 +247,7 @@ void UItemTransformSlotScreen_C::BndEvt__ItemTransformResultInfo_K2Node_Componen
 // Function ItemTransformSlotScreen.ItemTransformSlotScreen_C.HandleSlotButton_Clicked
 // (BlueprintCallable, BlueprintEvent)
 // Parameters:
-// class UCommonButton*           AssociatedButton               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UCommonButton*           AssociatedButton               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 // int                            ButtonIndex                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 
 void UItemTransformSlotScreen_C::HandleSlotButton_Clicked(class UCommonButton* AssociatedButton, int ButtonIndex)
@@ -266,7 +269,7 @@ void UItemTransformSlotScreen_C::HandleSlotButton_Clicked(class UCommonButton* A
 // Function ItemTransformSlotScreen.ItemTransformSlotScreen_C.HandleSlotButton_DoubleClicked
 // (BlueprintCallable, BlueprintEvent)
 // Parameters:
-// class UCommonButton*           AssociatedButton               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UCommonButton*           AssociatedButton               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 // int                            ButtonIndex                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 
 void UItemTransformSlotScreen_C::HandleSlotButton_DoubleClicked(class UCommonButton* AssociatedButton, int ButtonIndex)

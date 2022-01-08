@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -14,6 +14,11 @@ namespace SDK
 //Parameters
 //---------------------------------------------------------------------------
 
+// Function PartyDisplayManagerBP.PartyDisplayManagerBP_C.PostSetupPrefabVisuals
+struct APartyDisplayManagerBP_C_PostSetupPrefabVisuals_Params
+{
+};
+
 // Function PartyDisplayManagerBP.PartyDisplayManagerBP_C.ResetTeslaHackParticles
 struct APartyDisplayManagerBP_C_ResetTeslaHackParticles_Params
 {
@@ -22,12 +27,13 @@ struct APartyDisplayManagerBP_C_ResetTeslaHackParticles_Params
 // Function PartyDisplayManagerBP.PartyDisplayManagerBP_C.SetupPrefabVisuals
 struct APartyDisplayManagerBP_C_SetupPrefabVisuals_Params
 {
+	bool                                               Success;                                                  // (Parm, OutParm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function PartyDisplayManagerBP.PartyDisplayManagerBP_C.GetMeshForCurrentDisplayedItem
 struct APartyDisplayManagerBP_C_GetMeshForCurrentDisplayedItem_Params
 {
-	class UMeshComponent*                              OutDisplayedMesh;                                         // (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+	class UMeshComponent*                              OutDisplayedMesh;                                         // (Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData)
 };
 
 // Function PartyDisplayManagerBP.PartyDisplayManagerBP_C.GetItemDefinitionToShow
@@ -157,6 +163,17 @@ struct APartyDisplayManagerBP_C_HandleLoadingAssetsForItemCompleted_Params
 struct APartyDisplayManagerBP_C_ReceiveTick_Params
 {
 	float*                                             DeltaSeconds;                                             // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function PartyDisplayManagerBP.PartyDisplayManagerBP_C.Set Character Parts Visibility
+struct APartyDisplayManagerBP_C_Set_Character_Parts_Visibility_Params
+{
+	bool                                               NewVisible;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function PartyDisplayManagerBP.PartyDisplayManagerBP_C.Character Customization Finished
+struct APartyDisplayManagerBP_C_Character_Customization_Finished_Params
+{
 };
 
 // Function PartyDisplayManagerBP.PartyDisplayManagerBP_C.ExecuteUbergraph_PartyDisplayManagerBP

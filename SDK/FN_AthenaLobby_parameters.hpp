@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,6 +13,33 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function AthenaLobby.AthenaLobby_C.OnKeyUp
+struct UAthenaLobby_C_OnKeyUp_Params
+{
+	struct FGeometry*                                  MyGeometry;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData)
+	struct FKeyEvent*                                  InKeyEvent;                                               // (BlueprintVisible, BlueprintReadOnly, Parm)
+	struct FEventReply                                 ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function AthenaLobby.AthenaLobby_C.OnKeyDown
+struct UAthenaLobby_C_OnKeyDown_Params
+{
+	struct FGeometry*                                  MyGeometry;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData)
+	struct FKeyEvent*                                  InKeyEvent;                                               // (BlueprintVisible, BlueprintReadOnly, Parm)
+	struct FEventReply                                 ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function AthenaLobby.AthenaLobby_C.OnPartyFinderClosed
+struct UAthenaLobby_C_OnPartyFinderClosed_Params
+{
+	class UCommonActivatablePanel*                     ActivatablePanel;                                         // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
+};
+
+// Function AthenaLobby.AthenaLobby_C.StartAthenaLobbyMusic
+struct UAthenaLobby_C_StartAthenaLobbyMusic_Params
+{
+};
 
 // Function AthenaLobby.AthenaLobby_C.OnInputCustomMatchmaking
 struct UAthenaLobby_C_OnInputCustomMatchmaking_Params
@@ -84,11 +111,6 @@ struct UAthenaLobby_C_HoverPreviousPlayer_Params
 {
 };
 
-// Function AthenaLobby.AthenaLobby_C.StartMusic
-struct UAthenaLobby_C_StartMusic_Params
-{
-};
-
 // Function AthenaLobby.AthenaLobby_C.ShouldAddPlay
 struct UAthenaLobby_C_ShouldAddPlay_Params
 {
@@ -138,7 +160,7 @@ struct UAthenaLobby_C_RefreshLaunch_Params
 struct UAthenaLobby_C_OnMouseButtonDown_Params
 {
 	struct FGeometry*                                  MyGeometry;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData)
-	struct FPointerEvent                               MouseEvent;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+	struct FPointerEvent*                              MouseEvent;                                               // (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
 	struct FEventReply                                 ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -168,6 +190,7 @@ struct UAthenaLobby_C_OnInputAbandon_Params
 // Function AthenaLobby.AthenaLobby_C.InitializeContextEvents
 struct UAthenaLobby_C_InitializeContextEvents_Params
 {
+	bool                                               Register;                                                 // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function AthenaLobby.AthenaLobby_C.Focus
@@ -216,13 +239,6 @@ struct UAthenaLobby_C_Initialize_Params
 {
 };
 
-// Function AthenaLobby.AthenaLobby_C.DialogResult_156754AE468EF93DCA2009A412591BA7
-struct UAthenaLobby_C_DialogResult_156754AE468EF93DCA2009A412591BA7_Params
-{
-	EFortDialogResult                                  Result;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-	struct FName                                       ResultName;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-};
-
 // Function AthenaLobby.AthenaLobby_C.OnFailure_DA5E62624D068772EA890193344BA4AE
 struct UAthenaLobby_C_OnFailure_DA5E62624D068772EA890193344BA4AE_Params
 {
@@ -233,22 +249,11 @@ struct UAthenaLobby_C_OnSuccess_DA5E62624D068772EA890193344BA4AE_Params
 {
 };
 
-// Function AthenaLobby.AthenaLobby_C.BndEvt__SwitcherDetails_K2Node_ComponentBoundEvent_0_OnActiveWidgetChanged__DelegateSignature
-struct UAthenaLobby_C_BndEvt__SwitcherDetails_K2Node_ComponentBoundEvent_0_OnActiveWidgetChanged__DelegateSignature_Params
+// Function AthenaLobby.AthenaLobby_C.DialogResult_156754AE468EF93DCA2009A412591BA7
+struct UAthenaLobby_C_DialogResult_156754AE468EF93DCA2009A412591BA7_Params
 {
-	class UWidget*                                     ActiveWidget;                                             // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-	int                                                ActiveWidgetIndex;                                        // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-};
-
-// Function AthenaLobby.AthenaLobby_C.OnEndCursorOverPlayer
-struct UAthenaLobby_C_OnEndCursorOverPlayer_Params
-{
-	int*                                               PlayerIndex;                                              // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-};
-
-// Function AthenaLobby.AthenaLobby_C.Event Abandon
-struct UAthenaLobby_C_Event_Abandon_Params
-{
+	EFortDialogResult                                  Result;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	struct FName                                       ResultName;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function AthenaLobby.AthenaLobby_C.OnNavigationLeft
@@ -264,7 +269,13 @@ struct UAthenaLobby_C_OnNavigationRight_Params
 // Function AthenaLobby.AthenaLobby_C.BndEvt__ButtonTMPTEST_K2Node_ComponentBoundEvent_198_CommonButtonClicked__DelegateSignature
 struct UAthenaLobby_C_BndEvt__ButtonTMPTEST_K2Node_ComponentBoundEvent_198_CommonButtonClicked__DelegateSignature_Params
 {
-	class UCommonButton*                               Button;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class UCommonButton*                               Button;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
+};
+
+// Function AthenaLobby.AthenaLobby_C.OnEndCursorOverPlayer
+struct UAthenaLobby_C_OnEndCursorOverPlayer_Params
+{
+	int*                                               PlayerIndex;                                              // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function AthenaLobby.AthenaLobby_C.OnPlayerClicked
@@ -284,26 +295,17 @@ struct UAthenaLobby_C_BndEvt__PlayerPanel_K2Node_ComponentBoundEvent_308_OnClose
 {
 };
 
-// Function AthenaLobby.AthenaLobby_C.Construct
-struct UAthenaLobby_C_Construct_Params
-{
-};
-
-// Function AthenaLobby.AthenaLobby_C.OnActivated
-struct UAthenaLobby_C_OnActivated_Params
-{
-};
-
 // Function AthenaLobby.AthenaLobby_C.BndEvt__ShadowPlayHighlights_K2Node_ComponentBoundEvent_116_CommonButtonClicked__DelegateSignature
 struct UAthenaLobby_C_BndEvt__ShadowPlayHighlights_K2Node_ComponentBoundEvent_116_CommonButtonClicked__DelegateSignature_Params
 {
-	class UCommonButton*                               Button;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class UCommonButton*                               Button;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 };
 
-// Function AthenaLobby.AthenaLobby_C.OnUpdateSocialImportButtonText
-struct UAthenaLobby_C_OnUpdateSocialImportButtonText_Params
+// Function AthenaLobby.AthenaLobby_C.BndEvt__SwitcherDetails_K2Node_ComponentBoundEvent_0_OnActiveWidgetChanged__DelegateSignature
+struct UAthenaLobby_C_BndEvt__SwitcherDetails_K2Node_ComponentBoundEvent_0_OnActiveWidgetChanged__DelegateSignature_Params
 {
-	struct FText*                                      NewText;                                                  // (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+	class UWidget*                                     ActiveWidget;                                             // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
+	int                                                ActiveWidgetIndex;                                        // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function AthenaLobby.AthenaLobby_C.ShowAthenaStoreToast
@@ -314,7 +316,69 @@ struct UAthenaLobby_C_ShowAthenaStoreToast_Params
 // Function AthenaLobby.AthenaLobby_C.NewsPanelClosed
 struct UAthenaLobby_C_NewsPanelClosed_Params
 {
-	class UCommonActivatablePanel*                     Panel;                                                    // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class UCommonActivatablePanel*                     Panel;                                                    // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
+};
+
+// Function AthenaLobby.AthenaLobby_C.HeadlessReminderClosed
+struct UAthenaLobby_C_HeadlessReminderClosed_Params
+{
+	class UCommonActivatablePanel*                     NewParam;                                                 // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
+};
+
+// Function AthenaLobby.AthenaLobby_C.ShouldShowHeadlessReminder
+struct UAthenaLobby_C_ShouldShowHeadlessReminder_Params
+{
+	bool*                                              bShouldShow;                                              // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function AthenaLobby.AthenaLobby_C.BndEvt__Button_0_K2Node_ComponentBoundEvent_26_OnButtonPressedEvent__DelegateSignature
+struct UAthenaLobby_C_BndEvt__Button_0_K2Node_ComponentBoundEvent_26_OnButtonPressedEvent__DelegateSignature_Params
+{
+};
+
+// Function AthenaLobby.AthenaLobby_C.Event Abandon
+struct UAthenaLobby_C_Event_Abandon_Params
+{
+};
+
+// Function AthenaLobby.AthenaLobby_C.Construct
+struct UAthenaLobby_C_Construct_Params
+{
+};
+
+// Function AthenaLobby.AthenaLobby_C.OnNavigationUp
+struct UAthenaLobby_C_OnNavigationUp_Params
+{
+};
+
+// Function AthenaLobby.AthenaLobby_C.OnActivated
+struct UAthenaLobby_C_OnActivated_Params
+{
+};
+
+// Function AthenaLobby.AthenaLobby_C.Gifting Complete
+struct UAthenaLobby_C_Gifting_Complete_Params
+{
+};
+
+// Function AthenaLobby.AthenaLobby_C.Check For Gifts
+struct UAthenaLobby_C_Check_For_Gifts_Params
+{
+};
+
+// Function AthenaLobby.AthenaLobby_C.Destruct
+struct UAthenaLobby_C_Destruct_Params
+{
+};
+
+// Function AthenaLobby.AthenaLobby_C.ShowDailyNews
+struct UAthenaLobby_C_ShowDailyNews_Params
+{
+};
+
+// Function AthenaLobby.AthenaLobby_C.AcceptPartySuggestion
+struct UAthenaLobby_C_AcceptPartySuggestion_Params
+{
 };
 
 // Function AthenaLobby.AthenaLobby_C.ExecuteUbergraph_AthenaLobby

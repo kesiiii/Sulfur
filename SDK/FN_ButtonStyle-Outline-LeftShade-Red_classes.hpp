@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -15,7 +15,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass ButtonStyle-Outline-LeftShade-Red.ButtonStyle-Outline-LeftShade-Red_C
-// 0x0000 (0x0470 - 0x0470)
+// 0x0000 (0x04F0 - 0x04F0)
 class UButtonStyle_Outline_LeftShade_Red_C : public UCommonButtonStyle
 {
 public:

@@ -43,6 +43,8 @@ namespace Hooks
 		return Actor;
 	}
 
+	__int64(*PreLogin)(AGameModeBase* This, FString* a2, FString* a3, __int64 a4, FString* a5);
+	void* (*PauseBeaconRequest)(AOnlineBeacon* Beacon, bool);
 	bool(*InitHost)(AOnlineBeaconHost*);
 	void(*UWorld_NotifyControlMessage)(UWorld* World, UNetConnection* NetConnection, uint8_t a3, void* a4);
 	__int64(*WelcomePlayer)(UWorld* This, UNetConnection* NetConnection);
@@ -53,6 +55,12 @@ namespace Hooks
 		printf("LogUGS: AOnlineBeaconHost::NotifyControlMessage Called! (%s)\n", std::to_string(a3).c_str());
 		printf("LogUGS: Channel count (%s)\n", std::to_string(NetConnection->OpenChannels.Num()).c_str());
 		return UWorld_NotifyControlMessage(World, NetConnection, a3, a4);
+	}
+
+	__int64 __fastcall PreLoginHook(AGameModeBase* This, FString* a2, FString* a3, __int64 a4, FString* a5)
+	{
+		printf("Called PreLogin!\n");
+		return PreLogin(This, a2, a3, a4, a5);
 	}
 
 	__int64 __fastcall WelcomePlayerHook(UWorld* world, UNetConnection* NetConnection)
@@ -170,13 +178,16 @@ namespace Hooks
 
 				auto BaseAddr = (uintptr_t)(GetModuleHandle(NULL));
 
-				InitHost = decltype(InitHost)(BaseAddr + 0x27B4820);
-				UWorld_NotifyControlMessage = decltype(UWorld_NotifyControlMessage)(BaseAddr + 0x1DA15C0);
-				WelcomePlayer = decltype(WelcomePlayer)(BaseAddr + 0x1DACC50);
+				InitHost = decltype(InitHost)(BaseAddr + 0x340670);
+				PauseBeaconRequest = decltype(PauseBeaconRequest)(BaseAddr + 0xD6DFA0);
+				UWorld_NotifyControlMessage = decltype(UWorld_NotifyControlMessage)(BaseAddr + 0x254BB00);
+				WelcomePlayer = decltype(WelcomePlayer)(BaseAddr + 0x2557260);
+				PreLogin = decltype(PreLogin)(BaseAddr + 0x217F4C0);
 
-				auto AOnlineBeaconHost_NotifyControlMessageAddr = BaseAddr + 0x27B7620;
-				auto WelcomePlayerAddr = BaseAddr + 0x1DACC50;
-				auto SpawnPlayActorAddr = BaseAddr + 0x1A9E7B0;
+				auto AOnlineBeaconHost_NotifyControlMessageAddr = BaseAddr + 0x343AE0;
+				auto WelcomePlayerAddr = BaseAddr + 0x2557260;
+				auto SpawnPlayActorAddr = BaseAddr + 0x22372C0;
+				auto PreLoginAddr = BaseAddr + 0x217F4C0;
 
 				SpawnPlayActor = decltype(SpawnPlayActor)(SpawnPlayActorAddr);
 
@@ -186,6 +197,8 @@ namespace Hooks
 				MH_EnableHook((void*)(WelcomePlayerAddr));
 				MH_CreateHook((void*)(SpawnPlayActorAddr), SpawnPlayActorHook, (void**)(&SpawnPlayActor));
 				MH_EnableHook((void*)(SpawnPlayActorAddr));
+				MH_CreateHook((void*)(PreLoginAddr), PreLoginHook, (void**)(&PreLogin));
+				MH_EnableHook((void*)(PreLoginAddr));
 
 				auto FortEngine = UObject::FindObject<UFortEngine>("FortEngine_");
 				World = FortEngine->GameViewport->World;
@@ -203,9 +216,10 @@ namespace Hooks
 
 				BeaconHost->ListenPort = 7777;
 				auto result = InitHost(BeaconHost);
+				PauseBeaconRequest(BeaconHost, false);
 				std::cout << "InitHost Result: " << result << std::endl;
 
-				BeaconHost->BeaconState = EBeaconState::AllowRequests;
+				//BeaconHost->BeaconState = EBeaconState::AllowRequests;
 
 				printf("LogUGS: Beacons Setup!\n");
 			}

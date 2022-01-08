@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -34,11 +34,11 @@ public:
 
 
 // Class GeometryCache.GeometryCacheActor
-// 0x0008 (0x0370 - 0x0368)
+// 0x0008 (0x0320 - 0x0318)
 class AGeometryCacheActor : public AActor
 {
 public:
-	class UGeometryCacheComponent*                     GeometryCacheComponent;                                   // 0x0368(0x0008) (Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, EditConst, InstancedReference, IsPlainOldData)
+	class UGeometryCacheComponent*                     GeometryCacheComponent;                                   // 0x0318(0x0008) (Edit, BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, EditConst, InstancedReference, IsPlainOldData)
 
 	static UClass* StaticClass()
 	{
@@ -52,18 +52,18 @@ public:
 
 
 // Class GeometryCache.GeometryCacheComponent
-// 0x0070 (0x0720 - 0x06B0)
+// 0x0070 (0x06F0 - 0x0680)
 class UGeometryCacheComponent : public UMeshComponent
 {
 public:
-	bool                                               bRunning;                                                 // 0x06B0(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
-	bool                                               bLooping;                                                 // 0x06B1(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x06B2(0x0002) MISSED OFFSET
-	float                                              StartTimeOffset;                                          // 0x06B4(0x0004) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
-	float                                              PlaybackSpeed;                                            // 0x06B8(0x0004) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
-	int                                                NumTracks;                                                // 0x06BC(0x0004) (Edit, ZeroConstructor, EditConst, IsPlainOldData)
-	float                                              ElapsedTime;                                              // 0x06C0(0x0004) (Edit, ZeroConstructor, EditConst, IsPlainOldData)
-	unsigned char                                      UnknownData01[0x5C];                                      // 0x06C4(0x005C) MISSED OFFSET
+	bool                                               bRunning;                                                 // 0x0680(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	bool                                               bLooping;                                                 // 0x0681(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x2];                                       // 0x0682(0x0002) MISSED OFFSET
+	float                                              StartTimeOffset;                                          // 0x0684(0x0004) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	float                                              PlaybackSpeed;                                            // 0x0688(0x0004) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	int                                                NumTracks;                                                // 0x068C(0x0004) (Edit, ZeroConstructor, EditConst, IsPlainOldData)
+	float                                              ElapsedTime;                                              // 0x0690(0x0004) (Edit, ZeroConstructor, EditConst, IsPlainOldData)
+	unsigned char                                      UnknownData01[0x5C];                                      // 0x0694(0x005C) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

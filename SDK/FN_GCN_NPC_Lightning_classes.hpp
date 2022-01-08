@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -15,7 +15,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass GCN_NPC_Lightning.GCN_NPC_Lightning_C
-// 0x0000 (0x0490 - 0x0490)
+// 0x0000 (0x0440 - 0x0440)
 class AGCN_NPC_Lightning_C : public AFortGameplayCueNotify_Looping
 {
 public:

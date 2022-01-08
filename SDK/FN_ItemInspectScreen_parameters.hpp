@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,6 +13,11 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function ItemInspectScreen.ItemInspectScreen_C.RefreshItemViewHandlerStates
+struct UItemInspectScreen_C_RefreshItemViewHandlerStates_Params
+{
+};
 
 // Function ItemInspectScreen.ItemInspectScreen_C.Setup Evolution Selection for Comparisons
 struct UItemInspectScreen_C_Setup_Evolution_Selection_for_Comparisons_Params
@@ -235,11 +240,6 @@ struct UItemInspectScreen_C_BndEvt__ItemInspectUpgradeConfirmation_K2Node_Compon
 {
 };
 
-// Function ItemInspectScreen.ItemInspectScreen_C.BndEvt__ItemInspectUpgradeConfirmation_K2Node_ComponentBoundEvent_0_OnUpgradeConfirm__DelegateSignature
-struct UItemInspectScreen_C_BndEvt__ItemInspectUpgradeConfirmation_K2Node_ComponentBoundEvent_0_OnUpgradeConfirm__DelegateSignature_Params
-{
-};
-
 // Function ItemInspectScreen.ItemInspectScreen_C.BndEvt__ItemInspectEvolutionConfirmation_K2Node_ComponentBoundEvent_2_OnEvolutionOptionSelected__DelegateSignature
 struct UItemInspectScreen_C_BndEvt__ItemInspectEvolutionConfirmation_K2Node_ComponentBoundEvent_2_OnEvolutionOptionSelected__DelegateSignature_Params
 {
@@ -283,7 +283,7 @@ struct UItemInspectScreen_C_OnDeactivated_Params
 struct UItemInspectScreen_C_BndEvt__DetailPanelTabList_PC_K2Node_ComponentBoundEvent_385_OnTabButtonCreated__DelegateSignature_Params
 {
 	struct FName                                       TabId;                                                    // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-	class UCommonButton*                               TabButton;                                                // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class UCommonButton*                               TabButton;                                                // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 };
 
 // Function ItemInspectScreen.ItemInspectScreen_C.OnInputModeChanged
@@ -297,8 +297,8 @@ struct UItemInspectScreen_C_BndEvt__ItemInspectEvolveRarityConfirmation_K2Node_C
 {
 };
 
-// Function ItemInspectScreen.ItemInspectScreen_C.Construct
-struct UItemInspectScreen_C_Construct_Params
+// Function ItemInspectScreen.ItemInspectScreen_C.BndEvt__ItemInspectUpgradeConfirmation_K2Node_ComponentBoundEvent_0_OnUpgradeConfirm__DelegateSignature
+struct UItemInspectScreen_C_BndEvt__ItemInspectUpgradeConfirmation_K2Node_ComponentBoundEvent_0_OnUpgradeConfirm__DelegateSignature_Params
 {
 };
 
@@ -307,6 +307,11 @@ struct UItemInspectScreen_C_BndEvt__ItemInspectEvolveRarityConfirmation_K2Node_C
 {
 	class UFortItem*                                   Item;                                                     // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 	int                                                RecipeIndex;                                              // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function ItemInspectScreen.ItemInspectScreen_C.Construct
+struct UItemInspectScreen_C_Construct_Params
+{
 };
 
 // Function ItemInspectScreen.ItemInspectScreen_C.ExecuteUbergraph_ItemInspectScreen

@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -15,7 +15,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass S_Water_Shallow_1x5.S_Water_Shallow_1x5_C
-// 0x0000 (0x042B - 0x042B)
+// 0x0000 (0x03DB - 0x03DB)
 class AS_Water_Shallow_1x5_C : public A_WaterMeshBlueprintMaster_C
 {
 public:

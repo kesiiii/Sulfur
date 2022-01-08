@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -15,7 +15,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass Athena_PlayerCameraModeSkydiveDive.Athena_PlayerCameraModeSkydiveDive_C
-// 0x0000 (0x0110 - 0x0110)
+// 0x0000 (0x0118 - 0x0118)
 class UAthena_PlayerCameraModeSkydiveDive_C : public UAthena_PlayerCameraModeBase_C
 {
 public:

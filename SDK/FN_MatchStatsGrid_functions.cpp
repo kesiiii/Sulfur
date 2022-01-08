@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -37,7 +37,7 @@ void UMatchStatsGrid_C::SetStats(struct FAthenaMatchStats* AthenaMatchStats)
 // Function MatchStatsGrid.MatchStatsGrid_C.SetStat (Integer)
 // (Protected, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// class UCommonNumericTextBlock* Target                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UCommonNumericTextBlock* Target                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 // int                            Value                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 
 void UMatchStatsGrid_C::SetStat__Integer_(class UCommonNumericTextBlock* Target, int Value)
@@ -59,7 +59,7 @@ void UMatchStatsGrid_C::SetStat__Integer_(class UCommonNumericTextBlock* Target,
 // Function MatchStatsGrid.MatchStatsGrid_C.SetStat (Float)
 // (Protected, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// class UCommonNumericTextBlock* Target                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UCommonNumericTextBlock* Target                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 // float                          Value                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 
 void UMatchStatsGrid_C::SetStat__Float_(class UCommonNumericTextBlock* Target, float Value)

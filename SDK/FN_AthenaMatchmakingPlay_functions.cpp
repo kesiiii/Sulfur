@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,28 +11,6 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
-
-// Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.CheckForLTMBangs
-// (Public, HasOutParms, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                           BangAvail                      (Parm, OutParm, ZeroConstructor, IsPlainOldData)
-
-void UAthenaMatchmakingPlay_C::CheckForLTMBangs(bool* BangAvail)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.CheckForLTMBangs");
-
-	UAthenaMatchmakingPlay_C_CheckForLTMBangs_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (BangAvail != nullptr)
-		*BangAvail = params.BangAvail;
-}
-
 
 // Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.OpenPlayOptions
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
@@ -108,17 +86,17 @@ void UAthenaMatchmakingPlay_C::SetAutoFillOptions()
 }
 
 
-// Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.SetPlayButtonState
-// (Event, Protected, BlueprintEvent)
+// Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.BndEvt__BP_CancelButton_K2Node_ComponentBoundEvent_19_CommonButtonClicked__DelegateSignature
+// (BlueprintEvent)
 // Parameters:
-// bool*                          bCanMatchmake                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 
-void UAthenaMatchmakingPlay_C::SetPlayButtonState(bool* bCanMatchmake)
+void UAthenaMatchmakingPlay_C::BndEvt__BP_CancelButton_K2Node_ComponentBoundEvent_19_CommonButtonClicked__DelegateSignature(class UCommonButton* Button)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.SetPlayButtonState");
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.BndEvt__BP_CancelButton_K2Node_ComponentBoundEvent_19_CommonButtonClicked__DelegateSignature");
 
-	UAthenaMatchmakingPlay_C_SetPlayButtonState_Params params;
-	params.bCanMatchmake = bCanMatchmake;
+	UAthenaMatchmakingPlay_C_BndEvt__BP_CancelButton_K2Node_ComponentBoundEvent_19_CommonButtonClicked__DelegateSignature_Params params;
+	params.Button = Button;
 
 	auto flags = fn->FunctionFlags;
 
@@ -136,26 +114,6 @@ void UAthenaMatchmakingPlay_C::Construct()
 	static auto fn = UObject::FindObject<UFunction>("Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.Construct");
 
 	UAthenaMatchmakingPlay_C_Construct_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.SetCancelButtonState
-// (Event, Protected, BlueprintEvent)
-// Parameters:
-// bool*                          bIsMatchmaking                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-
-void UAthenaMatchmakingPlay_C::SetCancelButtonState(bool* bIsMatchmaking)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.SetCancelButtonState");
-
-	UAthenaMatchmakingPlay_C_SetCancelButtonState_Params params;
-	params.bIsMatchmaking = bIsMatchmaking;
 
 	auto flags = fn->FunctionFlags;
 
@@ -208,7 +166,7 @@ void UAthenaMatchmakingPlay_C::BndEvt__TeamFillRotator_K2Node_ComponentBoundEven
 // Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.BndEvt__FillSquadButton_K2Node_ComponentBoundEvent_33_CommonButtonClicked__DelegateSignature
 // (BlueprintEvent)
 // Parameters:
-// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 
 void UAthenaMatchmakingPlay_C::BndEvt__FillSquadButton_K2Node_ComponentBoundEvent_33_CommonButtonClicked__DelegateSignature(class UCommonButton* Button)
 {
@@ -233,43 +191,6 @@ void UAthenaMatchmakingPlay_C::NewModeSelected_Display()
 	static auto fn = UObject::FindObject<UFunction>("Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.NewModeSelected_Display");
 
 	UAthenaMatchmakingPlay_C_NewModeSelected_Display_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.BndEvt__BP_CancelButton_K2Node_ComponentBoundEvent_19_CommonButtonClicked__DelegateSignature
-// (BlueprintEvent)
-// Parameters:
-// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-
-void UAthenaMatchmakingPlay_C::BndEvt__BP_CancelButton_K2Node_ComponentBoundEvent_19_CommonButtonClicked__DelegateSignature(class UCommonButton* Button)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.BndEvt__BP_CancelButton_K2Node_ComponentBoundEvent_19_CommonButtonClicked__DelegateSignature");
-
-	UAthenaMatchmakingPlay_C_BndEvt__BP_CancelButton_K2Node_ComponentBoundEvent_19_CommonButtonClicked__DelegateSignature_Params params;
-	params.Button = Button;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.RefreshBang
-// (Event, Protected, BlueprintCallable, BlueprintEvent)
-
-void UAthenaMatchmakingPlay_C::RefreshBang()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.RefreshBang");
-
-	UAthenaMatchmakingPlay_C_RefreshBang_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -319,7 +240,7 @@ void UAthenaMatchmakingPlay_C::OnPlayButtonUpdated(bool* bShowPlayButton)
 // Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.BndEvt__TouchButtonChangeGameMode_K2Node_ComponentBoundEvent_95_CommonButtonClicked__DelegateSignature
 // (BlueprintEvent)
 // Parameters:
-// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 
 void UAthenaMatchmakingPlay_C::BndEvt__TouchButtonChangeGameMode_K2Node_ComponentBoundEvent_95_CommonButtonClicked__DelegateSignature(class UCommonButton* Button)
 {
@@ -339,7 +260,7 @@ void UAthenaMatchmakingPlay_C::BndEvt__TouchButtonChangeGameMode_K2Node_Componen
 // Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.BndEvt__BP_PlayButton_K2Node_ComponentBoundEvent_1_CommonButtonClicked__DelegateSignature
 // (BlueprintEvent)
 // Parameters:
-// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 
 void UAthenaMatchmakingPlay_C::BndEvt__BP_PlayButton_K2Node_ComponentBoundEvent_1_CommonButtonClicked__DelegateSignature(class UCommonButton* Button)
 {
@@ -347,6 +268,46 @@ void UAthenaMatchmakingPlay_C::BndEvt__BP_PlayButton_K2Node_ComponentBoundEvent_
 
 	UAthenaMatchmakingPlay_C_BndEvt__BP_PlayButton_K2Node_ComponentBoundEvent_1_CommonButtonClicked__DelegateSignature_Params params;
 	params.Button = Button;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.OnSetPlayButtonText
+// (Event, Protected, HasOutParms, BlueprintEvent)
+// Parameters:
+// struct FText*                  PlayButtonText                 (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+
+void UAthenaMatchmakingPlay_C::OnSetPlayButtonText(struct FText* PlayButtonText)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.OnSetPlayButtonText");
+
+	UAthenaMatchmakingPlay_C_OnSetPlayButtonText_Params params;
+	params.PlayButtonText = PlayButtonText;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.OnSetCancelButtonText
+// (Event, Protected, HasOutParms, BlueprintEvent)
+// Parameters:
+// struct FText*                  CancelButtonText               (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+
+void UAthenaMatchmakingPlay_C::OnSetCancelButtonText(struct FText* CancelButtonText)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.OnSetCancelButtonText");
+
+	UAthenaMatchmakingPlay_C_OnSetCancelButtonText_Params params;
+	params.CancelButtonText = CancelButtonText;
 
 	auto flags = fn->FunctionFlags;
 

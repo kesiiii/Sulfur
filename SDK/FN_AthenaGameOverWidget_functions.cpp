@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,92 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function AthenaGameOverWidget.AthenaGameOverWidget_C.Handle_CancelMatchmaking
+// (Public, HasOutParms, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                           Passthrough                    (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+
+void UAthenaGameOverWidget_C::Handle_CancelMatchmaking(bool* Passthrough)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaGameOverWidget.AthenaGameOverWidget_C.Handle_CancelMatchmaking");
+
+	UAthenaGameOverWidget_C_Handle_CancelMatchmaking_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Passthrough != nullptr)
+		*Passthrough = params.Passthrough;
+}
+
+
+// Function AthenaGameOverWidget.AthenaGameOverWidget_C.Handle_Matchmake
+// (Public, HasOutParms, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                           Passthrough                    (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+
+void UAthenaGameOverWidget_C::Handle_Matchmake(bool* Passthrough)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaGameOverWidget.AthenaGameOverWidget_C.Handle_Matchmake");
+
+	UAthenaGameOverWidget_C_Handle_Matchmake_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Passthrough != nullptr)
+		*Passthrough = params.Passthrough;
+}
+
+
+// Function AthenaGameOverWidget.AthenaGameOverWidget_C.Handle_ToggleMap
+// (Public, HasOutParms, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                           Passthrough                    (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+
+void UAthenaGameOverWidget_C::Handle_ToggleMap(bool* Passthrough)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaGameOverWidget.AthenaGameOverWidget_C.Handle_ToggleMap");
+
+	UAthenaGameOverWidget_C_Handle_ToggleMap_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Passthrough != nullptr)
+		*Passthrough = params.Passthrough;
+}
+
+
+// Function AthenaGameOverWidget.AthenaGameOverWidget_C.InGameMatchmakingComplete
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                           Success                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void UAthenaGameOverWidget_C::InGameMatchmakingComplete(bool Success)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaGameOverWidget.AthenaGameOverWidget_C.InGameMatchmakingComplete");
+
+	UAthenaGameOverWidget_C_InGameMatchmakingComplete_Params params;
+	params.Success = Success;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
 
 // Function AthenaGameOverWidget.AthenaGameOverWidget_C.SetViewModel
 // (Public, BlueprintCallable, BlueprintEvent)
@@ -403,7 +489,7 @@ void UAthenaGameOverWidget_C::On_Kill_Feed_Updated()
 // Function AthenaGameOverWidget.AthenaGameOverWidget_C.BndEvt__OpenShadowPlayHighlights_K2Node_ComponentBoundEvent_188_CommonButtonClicked__DelegateSignature
 // (BlueprintEvent)
 // Parameters:
-// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 
 void UAthenaGameOverWidget_C::BndEvt__OpenShadowPlayHighlights_K2Node_ComponentBoundEvent_188_CommonButtonClicked__DelegateSignature(class UCommonButton* Button)
 {

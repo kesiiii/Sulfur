@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -27,7 +27,7 @@ public:
 	struct FScriptMulticastDelegate                    OnRequestAbandon;                                         // 0x03F8(0x0010) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable)
 	struct FScriptMulticastDelegate                    OnRequestRejoinRetry;                                     // 0x0408(0x0010) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable)
 	TArray<struct FDataTableRowHandle>                 Buttons;                                                  // 0x0418(0x0010) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance)
-	struct FMargin                                     ButtonPadding;                                            // 0x0428(0x0010) (Edit, BlueprintVisible, DisableEditOnInstance)
+	struct FMargin                                     ButtonPadding;                                            // 0x0428(0x0010) (Edit, BlueprintVisible, DisableEditOnInstance, IsPlainOldData)
 	bool                                               InitialScreen;                                            // 0x0438(0x0001) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
 
 	static UClass* StaticClass()

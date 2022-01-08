@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,23 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function PartyDisplayManagerBP.PartyDisplayManagerBP_C.PostSetupPrefabVisuals
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void APartyDisplayManagerBP_C::PostSetupPrefabVisuals()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PartyDisplayManagerBP.PartyDisplayManagerBP_C.PostSetupPrefabVisuals");
+
+	APartyDisplayManagerBP_C_PostSetupPrefabVisuals_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
 
 // Function PartyDisplayManagerBP.PartyDisplayManagerBP_C.ResetTeslaHackParticles
 // (Public, BlueprintCallable, BlueprintEvent)
@@ -30,9 +47,11 @@ void APartyDisplayManagerBP_C::ResetTeslaHackParticles()
 
 
 // Function PartyDisplayManagerBP.PartyDisplayManagerBP_C.SetupPrefabVisuals
-// (Private, HasDefaults, BlueprintCallable, BlueprintEvent)
+// (Private, HasOutParms, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                           Success                        (Parm, OutParm, ZeroConstructor, IsPlainOldData)
 
-void APartyDisplayManagerBP_C::SetupPrefabVisuals()
+void APartyDisplayManagerBP_C::SetupPrefabVisuals(bool* Success)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function PartyDisplayManagerBP.PartyDisplayManagerBP_C.SetupPrefabVisuals");
 
@@ -43,13 +62,16 @@ void APartyDisplayManagerBP_C::SetupPrefabVisuals()
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+
+	if (Success != nullptr)
+		*Success = params.Success;
 }
 
 
 // Function PartyDisplayManagerBP.PartyDisplayManagerBP_C.GetMeshForCurrentDisplayedItem
 // (Event, Public, HasOutParms, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// class UMeshComponent*          OutDisplayedMesh               (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+// class UMeshComponent*          OutDisplayedMesh               (Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData)
 
 void APartyDisplayManagerBP_C::GetMeshForCurrentDisplayedItem(class UMeshComponent** OutDisplayedMesh)
 {
@@ -493,6 +515,43 @@ void APartyDisplayManagerBP_C::ReceiveTick(float* DeltaSeconds)
 
 	APartyDisplayManagerBP_C_ReceiveTick_Params params;
 	params.DeltaSeconds = DeltaSeconds;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PartyDisplayManagerBP.PartyDisplayManagerBP_C.Set Character Parts Visibility
+// (BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                           NewVisible                     (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void APartyDisplayManagerBP_C::Set_Character_Parts_Visibility(bool NewVisible)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PartyDisplayManagerBP.PartyDisplayManagerBP_C.Set Character Parts Visibility");
+
+	APartyDisplayManagerBP_C_Set_Character_Parts_Visibility_Params params;
+	params.NewVisible = NewVisible;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PartyDisplayManagerBP.PartyDisplayManagerBP_C.Character Customization Finished
+// (BlueprintCallable, BlueprintEvent)
+
+void APartyDisplayManagerBP_C::Character_Customization_Finished()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PartyDisplayManagerBP.PartyDisplayManagerBP_C.Character Customization Finished");
+
+	APartyDisplayManagerBP_C_Character_Customization_Finished_Params params;
 
 	auto flags = fn->FunctionFlags;
 

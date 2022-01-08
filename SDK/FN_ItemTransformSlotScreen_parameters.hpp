@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -28,6 +28,7 @@ struct UItemTransformSlotScreen_C_NavigateToFirstItem_Params
 // Function ItemTransformSlotScreen.ItemTransformSlotScreen_C.Get Transform Data
 struct UItemTransformSlotScreen_C_Get_Transform_Data_Params
 {
+	class UFortItem*                                   SelectedKey;                                              // (Parm, OutParm, ZeroConstructor, IsPlainOldData)
 	TArray<class UFortItem*>                           SacrificeItems;                                           // (Parm, OutParm, ZeroConstructor)
 	int                                                CurrentSacrificePoints;                                   // (Parm, OutParm, ZeroConstructor, IsPlainOldData)
 	int                                                CurrentTier;                                              // (Parm, OutParm, ZeroConstructor, IsPlainOldData)
@@ -85,14 +86,14 @@ struct UItemTransformSlotScreen_C_BndEvt__ItemTransformResultInfo_K2Node_Compone
 // Function ItemTransformSlotScreen.ItemTransformSlotScreen_C.HandleSlotButton_Clicked
 struct UItemTransformSlotScreen_C_HandleSlotButton_Clicked_Params
 {
-	class UCommonButton*                               AssociatedButton;                                         // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class UCommonButton*                               AssociatedButton;                                         // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 	int                                                ButtonIndex;                                              // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function ItemTransformSlotScreen.ItemTransformSlotScreen_C.HandleSlotButton_DoubleClicked
 struct UItemTransformSlotScreen_C_HandleSlotButton_DoubleClicked_Params
 {
-	class UCommonButton*                               AssociatedButton;                                         // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class UCommonButton*                               AssociatedButton;                                         // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 	int                                                ButtonIndex;                                              // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 

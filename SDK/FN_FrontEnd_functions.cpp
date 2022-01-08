@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,43 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function Frontend.FrontEnd_C.UpdateVaultCameraZoom
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// EFrontEndCamera                InCameraType                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void AFrontEnd_C::UpdateVaultCameraZoom(EFrontEndCamera InCameraType)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Frontend.FrontEnd_C.UpdateVaultCameraZoom");
+
+	AFrontEnd_C_UpdateVaultCameraZoom_Params params;
+	params.InCameraType = InCameraType;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Frontend.FrontEnd_C.ProcessTouchInput
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void AFrontEnd_C::ProcessTouchInput()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Frontend.FrontEnd_C.ProcessTouchInput");
+
+	AFrontEnd_C_ProcessTouchInput_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
 
 // Function Frontend.FrontEnd_C.InpActEvt_LeftMouseButton_K2Node_InputKeyEvent_3_4
 // (BlueprintEvent)
@@ -42,46 +79,6 @@ void AFrontEnd_C::InpActEvt_LeftMouseButton_K2Node_InputKeyEvent_2_3(const struc
 	static auto fn = UObject::FindObject<UFunction>("Function Frontend.FrontEnd_C.InpActEvt_LeftMouseButton_K2Node_InputKeyEvent_2_3");
 
 	AFrontEnd_C_InpActEvt_LeftMouseButton_K2Node_InputKeyEvent_2_3_Params params;
-	params.Key = Key;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Frontend.FrontEnd_C.InpActEvt_RightMouseButton_K2Node_InputKeyEvent_1_2
-// (BlueprintEvent)
-// Parameters:
-// struct FKey                    Key                            (BlueprintVisible, BlueprintReadOnly, Parm)
-
-void AFrontEnd_C::InpActEvt_RightMouseButton_K2Node_InputKeyEvent_1_2(const struct FKey& Key)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Frontend.FrontEnd_C.InpActEvt_RightMouseButton_K2Node_InputKeyEvent_1_2");
-
-	AFrontEnd_C_InpActEvt_RightMouseButton_K2Node_InputKeyEvent_1_2_Params params;
-	params.Key = Key;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Frontend.FrontEnd_C.InpActEvt_RightMouseButton_K2Node_InputKeyEvent_0_1
-// (BlueprintEvent)
-// Parameters:
-// struct FKey                    Key                            (BlueprintVisible, BlueprintReadOnly, Parm)
-
-void AFrontEnd_C::InpActEvt_RightMouseButton_K2Node_InputKeyEvent_0_1(const struct FKey& Key)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Frontend.FrontEnd_C.InpActEvt_RightMouseButton_K2Node_InputKeyEvent_0_1");
-
-	AFrontEnd_C_InpActEvt_RightMouseButton_K2Node_InputKeyEvent_0_1_Params params;
 	params.Key = Key;
 
 	auto flags = fn->FunctionFlags;
@@ -158,17 +155,37 @@ void AFrontEnd_C::InpTchEvt_Pressed(TEnumAsByte<ETouchIndex> FingerIndex, const 
 }
 
 
-// Function Frontend.FrontEnd_C.ReceiveTick
-// (Event, Public, BlueprintEvent)
+// Function Frontend.FrontEnd_C.InpActEvt_RightMouseButton_K2Node_InputKeyEvent_1_2
+// (BlueprintEvent)
 // Parameters:
-// float*                         DeltaSeconds                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// struct FKey                    Key                            (BlueprintVisible, BlueprintReadOnly, Parm)
 
-void AFrontEnd_C::ReceiveTick(float* DeltaSeconds)
+void AFrontEnd_C::InpActEvt_RightMouseButton_K2Node_InputKeyEvent_1_2(const struct FKey& Key)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function Frontend.FrontEnd_C.ReceiveTick");
+	static auto fn = UObject::FindObject<UFunction>("Function Frontend.FrontEnd_C.InpActEvt_RightMouseButton_K2Node_InputKeyEvent_1_2");
 
-	AFrontEnd_C_ReceiveTick_Params params;
-	params.DeltaSeconds = DeltaSeconds;
+	AFrontEnd_C_InpActEvt_RightMouseButton_K2Node_InputKeyEvent_1_2_Params params;
+	params.Key = Key;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Frontend.FrontEnd_C.InpActEvt_RightMouseButton_K2Node_InputKeyEvent_0_1
+// (BlueprintEvent)
+// Parameters:
+// struct FKey                    Key                            (BlueprintVisible, BlueprintReadOnly, Parm)
+
+void AFrontEnd_C::InpActEvt_RightMouseButton_K2Node_InputKeyEvent_0_1(const struct FKey& Key)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Frontend.FrontEnd_C.InpActEvt_RightMouseButton_K2Node_InputKeyEvent_0_1");
+
+	AFrontEnd_C_InpActEvt_RightMouseButton_K2Node_InputKeyEvent_0_1_Params params;
+	params.Key = Key;
 
 	auto flags = fn->FunctionFlags;
 
@@ -223,6 +240,26 @@ void AFrontEnd_C::StoreInitialRotation()
 	static auto fn = UObject::FindObject<UFunction>("Function Frontend.FrontEnd_C.StoreInitialRotation");
 
 	AFrontEnd_C_StoreInitialRotation_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Frontend.FrontEnd_C.ReceiveTick
+// (Event, Public, BlueprintEvent)
+// Parameters:
+// float*                         DeltaSeconds                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void AFrontEnd_C::ReceiveTick(float* DeltaSeconds)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Frontend.FrontEnd_C.ReceiveTick");
+
+	AFrontEnd_C_ReceiveTick_Params params;
+	params.DeltaSeconds = DeltaSeconds;
 
 	auto flags = fn->FunctionFlags;
 

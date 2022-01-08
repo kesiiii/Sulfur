@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,104 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function AthenaSeasonTab.AthenaSeasonTab_C.UpdateLevelPageWidgetSwitcherTranslation
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void UAthenaSeasonTab_C::UpdateLevelPageWidgetSwitcherTranslation()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaSeasonTab.AthenaSeasonTab_C.UpdateLevelPageWidgetSwitcherTranslation");
+
+	UAthenaSeasonTab_C_UpdateLevelPageWidgetSwitcherTranslation_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AthenaSeasonTab.AthenaSeasonTab_C.OnUpdateInputType
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// ECommonInputType               NewInputType                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void UAthenaSeasonTab_C::OnUpdateInputType(ECommonInputType NewInputType)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaSeasonTab.AthenaSeasonTab_C.OnUpdateInputType");
+
+	UAthenaSeasonTab_C_OnUpdateInputType_Params params;
+	params.NewInputType = NewInputType;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AthenaSeasonTab.AthenaSeasonTab_C.OpenPurchaseScreen
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UAthenaSeasonTab_C::OpenPurchaseScreen()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaSeasonTab.AthenaSeasonTab_C.OpenPurchaseScreen");
+
+	UAthenaSeasonTab_C_OpenPurchaseScreen_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AthenaSeasonTab.AthenaSeasonTab_C.Handle_GiftBattlePass
+// (Public, HasOutParms, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                           Passthrough                    (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+
+void UAthenaSeasonTab_C::Handle_GiftBattlePass(bool* Passthrough)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaSeasonTab.AthenaSeasonTab_C.Handle_GiftBattlePass");
+
+	UAthenaSeasonTab_C_Handle_GiftBattlePass_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Passthrough != nullptr)
+		*Passthrough = params.Passthrough;
+}
+
+
+// Function AthenaSeasonTab.AthenaSeasonTab_C.Handle_ShowFAQ
+// (Public, HasOutParms, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                           Passthrough                    (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+
+void UAthenaSeasonTab_C::Handle_ShowFAQ(bool* Passthrough)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaSeasonTab.AthenaSeasonTab_C.Handle_ShowFAQ");
+
+	UAthenaSeasonTab_C_Handle_ShowFAQ_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Passthrough != nullptr)
+		*Passthrough = params.Passthrough;
+}
+
 
 // Function AthenaSeasonTab.AthenaSeasonTab_C.SetupViewedItemName
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
@@ -274,7 +372,7 @@ void UAthenaSeasonTab_C::OnSeasonPassChanged()
 // Function AthenaSeasonTab.AthenaSeasonTab_C.BndEvt__PurchaseSeasonBtn_K2Node_ComponentBoundEvent_61_CommonButtonClicked__DelegateSignature
 // (BlueprintEvent)
 // Parameters:
-// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 
 void UAthenaSeasonTab_C::BndEvt__PurchaseSeasonBtn_K2Node_ComponentBoundEvent_61_CommonButtonClicked__DelegateSignature(class UCommonButton* Button)
 {
@@ -311,7 +409,7 @@ void UAthenaSeasonTab_C::OnLevelsGenerated()
 // Function AthenaSeasonTab.AthenaSeasonTab_C.BndEvt__IconTextButton_0_K2Node_ComponentBoundEvent_45_CommonButtonClicked__DelegateSignature
 // (BlueprintEvent)
 // Parameters:
-// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 
 void UAthenaSeasonTab_C::BndEvt__IconTextButton_0_K2Node_ComponentBoundEvent_45_CommonButtonClicked__DelegateSignature(class UCommonButton* Button)
 {
@@ -331,7 +429,7 @@ void UAthenaSeasonTab_C::BndEvt__IconTextButton_0_K2Node_ComponentBoundEvent_45_
 // Function AthenaSeasonTab.AthenaSeasonTab_C.BndEvt__PageRightBtn_K2Node_ComponentBoundEvent_84_CommonButtonClicked__DelegateSignature
 // (BlueprintEvent)
 // Parameters:
-// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 
 void UAthenaSeasonTab_C::BndEvt__PageRightBtn_K2Node_ComponentBoundEvent_84_CommonButtonClicked__DelegateSignature(class UCommonButton* Button)
 {
@@ -385,7 +483,7 @@ void UAthenaSeasonTab_C::HandlePageRight()
 // Function AthenaSeasonTab.AthenaSeasonTab_C.BndEvt__LevelPageWidgetSwitcher_K2Node_ComponentBoundEvent_1_OnActiveWidgetChanged__DelegateSignature
 // (BlueprintEvent)
 // Parameters:
-// class UWidget*                 ActiveWidget                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UWidget*                 ActiveWidget                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 // int                            ActiveWidgetIndex              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 
 void UAthenaSeasonTab_C::BndEvt__LevelPageWidgetSwitcher_K2Node_ComponentBoundEvent_1_OnActiveWidgetChanged__DelegateSignature(class UWidget* ActiveWidget, int ActiveWidgetIndex)
@@ -407,7 +505,7 @@ void UAthenaSeasonTab_C::BndEvt__LevelPageWidgetSwitcher_K2Node_ComponentBoundEv
 // Function AthenaSeasonTab.AthenaSeasonTab_C.BndEvt__PurchaseLevelBtn_K2Node_ComponentBoundEvent_40_CommonButtonClicked__DelegateSignature
 // (BlueprintEvent)
 // Parameters:
-// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 
 void UAthenaSeasonTab_C::BndEvt__PurchaseLevelBtn_K2Node_ComponentBoundEvent_40_CommonButtonClicked__DelegateSignature(class UCommonButton* Button)
 {
@@ -486,6 +584,120 @@ void UAthenaSeasonTab_C::UpdateStoreHasStarsNotification(bool* bShowNotification
 
 	UAthenaSeasonTab_C_UpdateStoreHasStarsNotification_Params params;
 	params.bShowNotification = bShowNotification;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AthenaSeasonTab.AthenaSeasonTab_C.SetupInput
+// (BlueprintCallable, BlueprintEvent)
+
+void UAthenaSeasonTab_C::SetupInput()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaSeasonTab.AthenaSeasonTab_C.SetupInput");
+
+	UAthenaSeasonTab_C_SetupInput_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AthenaSeasonTab.AthenaSeasonTab_C.OnFAQStateChanged
+// (BlueprintCallable, BlueprintEvent)
+// Parameters:
+// EFortUIFeature                 ChangedFeature                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// EFortUIFeatureState            NewState                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// EFortUIFeatureStateReason      StateReason                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void UAthenaSeasonTab_C::OnFAQStateChanged(EFortUIFeature ChangedFeature, EFortUIFeatureState NewState, EFortUIFeatureStateReason StateReason)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaSeasonTab.AthenaSeasonTab_C.OnFAQStateChanged");
+
+	UAthenaSeasonTab_C_OnFAQStateChanged_Params params;
+	params.ChangedFeature = ChangedFeature;
+	params.NewState = NewState;
+	params.StateReason = StateReason;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AthenaSeasonTab.AthenaSeasonTab_C.Tick
+// (BlueprintCosmetic, Event, Public, BlueprintEvent)
+// Parameters:
+// struct FGeometry*              MyGeometry                     (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData)
+// float*                         InDeltaTime                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void UAthenaSeasonTab_C::Tick(struct FGeometry* MyGeometry, float* InDeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaSeasonTab.AthenaSeasonTab_C.Tick");
+
+	UAthenaSeasonTab_C_Tick_Params params;
+	params.MyGeometry = MyGeometry;
+	params.InDeltaTime = InDeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AthenaSeasonTab.AthenaSeasonTab_C.BndEvt__SwipePanel_K2Node_ComponentBoundEvent_103_OnFortSwipeEvent__DelegateSignature
+// (BlueprintEvent)
+
+void UAthenaSeasonTab_C::BndEvt__SwipePanel_K2Node_ComponentBoundEvent_103_OnFortSwipeEvent__DelegateSignature()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaSeasonTab.AthenaSeasonTab_C.BndEvt__SwipePanel_K2Node_ComponentBoundEvent_103_OnFortSwipeEvent__DelegateSignature");
+
+	UAthenaSeasonTab_C_BndEvt__SwipePanel_K2Node_ComponentBoundEvent_103_OnFortSwipeEvent__DelegateSignature_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AthenaSeasonTab.AthenaSeasonTab_C.BndEvt__SwipePanel_K2Node_ComponentBoundEvent_118_OnFortSwipeEvent__DelegateSignature
+// (BlueprintEvent)
+
+void UAthenaSeasonTab_C::BndEvt__SwipePanel_K2Node_ComponentBoundEvent_118_OnFortSwipeEvent__DelegateSignature()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaSeasonTab.AthenaSeasonTab_C.BndEvt__SwipePanel_K2Node_ComponentBoundEvent_118_OnFortSwipeEvent__DelegateSignature");
+
+	UAthenaSeasonTab_C_BndEvt__SwipePanel_K2Node_ComponentBoundEvent_118_OnFortSwipeEvent__DelegateSignature_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AthenaSeasonTab.AthenaSeasonTab_C.OnNoCurrentSeason
+// (Event, Protected, BlueprintEvent)
+
+void UAthenaSeasonTab_C::OnNoCurrentSeason()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaSeasonTab.AthenaSeasonTab_C.OnNoCurrentSeason");
+
+	UAthenaSeasonTab_C_OnNoCurrentSeason_Params params;
 
 	auto flags = fn->FunctionFlags;
 

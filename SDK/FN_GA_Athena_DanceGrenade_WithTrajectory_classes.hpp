@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -15,7 +15,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass GA_Athena_DanceGrenade_WithTrajectory.GA_Athena_DanceGrenade_WithTrajectory_C
-// 0x0000 (0x0D0C - 0x0D0C)
+// 0x0000 (0x0D54 - 0x0D54)
 class UGA_Athena_DanceGrenade_WithTrajectory_C : public UGA_Athena_Grenade_WithTrajectory_C
 {
 public:

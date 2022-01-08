@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,12 +13,6 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
-
-// Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.CheckForLTMBangs
-struct UAthenaMatchmakingPlay_C_CheckForLTMBangs_Params
-{
-	bool                                               BangAvail;                                                // (Parm, OutParm, ZeroConstructor, IsPlainOldData)
-};
 
 // Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.OpenPlayOptions
 struct UAthenaMatchmakingPlay_C_OpenPlayOptions_Params
@@ -42,21 +36,15 @@ struct UAthenaMatchmakingPlay_C_SetAutoFillOptions_Params
 {
 };
 
-// Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.SetPlayButtonState
-struct UAthenaMatchmakingPlay_C_SetPlayButtonState_Params
+// Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.BndEvt__BP_CancelButton_K2Node_ComponentBoundEvent_19_CommonButtonClicked__DelegateSignature
+struct UAthenaMatchmakingPlay_C_BndEvt__BP_CancelButton_K2Node_ComponentBoundEvent_19_CommonButtonClicked__DelegateSignature_Params
 {
-	bool*                                              bCanMatchmake;                                            // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class UCommonButton*                               Button;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 };
 
 // Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.Construct
 struct UAthenaMatchmakingPlay_C_Construct_Params
 {
-};
-
-// Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.SetCancelButtonState
-struct UAthenaMatchmakingPlay_C_SetCancelButtonState_Params
-{
-	bool*                                              bIsMatchmaking;                                           // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.BndEvt__PlaylistRotator_K2Node_ComponentBoundEvent_83_OnRotated__DelegateSignature
@@ -74,22 +62,11 @@ struct UAthenaMatchmakingPlay_C_BndEvt__TeamFillRotator_K2Node_ComponentBoundEve
 // Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.BndEvt__FillSquadButton_K2Node_ComponentBoundEvent_33_CommonButtonClicked__DelegateSignature
 struct UAthenaMatchmakingPlay_C_BndEvt__FillSquadButton_K2Node_ComponentBoundEvent_33_CommonButtonClicked__DelegateSignature_Params
 {
-	class UCommonButton*                               Button;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class UCommonButton*                               Button;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 };
 
 // Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.NewModeSelected_Display
 struct UAthenaMatchmakingPlay_C_NewModeSelected_Display_Params
-{
-};
-
-// Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.BndEvt__BP_CancelButton_K2Node_ComponentBoundEvent_19_CommonButtonClicked__DelegateSignature
-struct UAthenaMatchmakingPlay_C_BndEvt__BP_CancelButton_K2Node_ComponentBoundEvent_19_CommonButtonClicked__DelegateSignature_Params
-{
-	class UCommonButton*                               Button;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-};
-
-// Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.RefreshBang
-struct UAthenaMatchmakingPlay_C_RefreshBang_Params
 {
 };
 
@@ -107,13 +84,25 @@ struct UAthenaMatchmakingPlay_C_OnPlayButtonUpdated_Params
 // Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.BndEvt__TouchButtonChangeGameMode_K2Node_ComponentBoundEvent_95_CommonButtonClicked__DelegateSignature
 struct UAthenaMatchmakingPlay_C_BndEvt__TouchButtonChangeGameMode_K2Node_ComponentBoundEvent_95_CommonButtonClicked__DelegateSignature_Params
 {
-	class UCommonButton*                               Button;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class UCommonButton*                               Button;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 };
 
 // Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.BndEvt__BP_PlayButton_K2Node_ComponentBoundEvent_1_CommonButtonClicked__DelegateSignature
 struct UAthenaMatchmakingPlay_C_BndEvt__BP_PlayButton_K2Node_ComponentBoundEvent_1_CommonButtonClicked__DelegateSignature_Params
 {
-	class UCommonButton*                               Button;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class UCommonButton*                               Button;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
+};
+
+// Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.OnSetPlayButtonText
+struct UAthenaMatchmakingPlay_C_OnSetPlayButtonText_Params
+{
+	struct FText*                                      PlayButtonText;                                           // (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+};
+
+// Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.OnSetCancelButtonText
+struct UAthenaMatchmakingPlay_C_OnSetCancelButtonText_Params
+{
+	struct FText*                                      CancelButtonText;                                         // (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
 };
 
 // Function AthenaMatchmakingPlay.AthenaMatchmakingPlay_C.ExecuteUbergraph_AthenaMatchmakingPlay

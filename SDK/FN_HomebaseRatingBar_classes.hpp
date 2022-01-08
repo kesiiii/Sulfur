@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -15,7 +15,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // WidgetBlueprintGeneratedClass HomebaseRatingBar.HomebaseRatingBar_C
-// 0x0000 (0x0368 - 0x0368)
+// 0x0000 (0x0370 - 0x0370)
 class UHomebaseRatingBar_C : public UFortMaterialProgressBar
 {
 public:

@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -15,7 +15,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass GAB_Melee_ImpactCombo_Athena.GAB_Melee_ImpactCombo_Athena_C
-// 0x0000 (0x0AD4 - 0x0AD4)
+// 0x0000 (0x0B14 - 0x0B14)
 class UGAB_Melee_ImpactCombo_Athena_C : public UGAB_Melee_GenericCombo_C
 {
 public:

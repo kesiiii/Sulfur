@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,26 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function EliminatedOverlay.EliminatedOverlay_C.ViewTargetKillsChanged
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// int                            Kills                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void UEliminatedOverlay_C::ViewTargetKillsChanged(int Kills)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function EliminatedOverlay.EliminatedOverlay_C.ViewTargetKillsChanged");
+
+	UEliminatedOverlay_C_ViewTargetKillsChanged_Params params;
+	params.Kills = Kills;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
 
 // Function EliminatedOverlay.EliminatedOverlay_C.StreamingLoadingChanged
 // (Public, BlueprintCallable, BlueprintEvent)

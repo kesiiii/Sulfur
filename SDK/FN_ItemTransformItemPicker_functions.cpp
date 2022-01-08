@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -162,7 +162,7 @@ void UItemTransformItemPicker_C::HandleItemCommitted(class UFortItem* Item)
 
 
 // Function ItemTransformItemPicker.ItemTransformItemPicker_C.RemoveInvalidItems
-// (Public, HasOutParms, HasDefaults, BlueprintCallable, BlueprintEvent)
+// (Public, HasOutParms, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // TArray<class UFortAccountItem*> UnrefinedItems                 (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ZeroConstructor, ReferenceParm)
 // TArray<class UFortItem*>       CurrentSacrificeItems          (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ZeroConstructor, ReferenceParm)

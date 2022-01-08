@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -12,14 +12,14 @@ namespace SDK
 //Functions
 //---------------------------------------------------------------------------
 
-// Function AthenaPickupManager.AthenaPickupManager_C.UpdateKeybinds
+// Function AthenaPickupManager.AthenaPickupManager_C.RefreshBackground
 // (Public, BlueprintCallable, BlueprintEvent)
 
-void UAthenaPickupManager_C::UpdateKeybinds()
+void UAthenaPickupManager_C::RefreshBackground()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaPickupManager.AthenaPickupManager_C.UpdateKeybinds");
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaPickupManager.AthenaPickupManager_C.RefreshBackground");
 
-	UAthenaPickupManager_C_UpdateKeybinds_Params params;
+	UAthenaPickupManager_C_RefreshBackground_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -136,17 +136,17 @@ void UAthenaPickupManager_C::HandleBuildingMaterialChanged()
 }
 
 
-// Function AthenaPickupManager.AthenaPickupManager_C.HandleItemPickup
+// Function AthenaPickupManager.AthenaPickupManager_C.HandleItemPickUp
 // (BlueprintCallable, BlueprintEvent)
 // Parameters:
 // class UFortWorldItem*          NewItem                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 // int                            Count                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 
-void UAthenaPickupManager_C::HandleItemPickup(class UFortWorldItem* NewItem, int Count)
+void UAthenaPickupManager_C::HandleItemPickUp(class UFortWorldItem* NewItem, int Count)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaPickupManager.AthenaPickupManager_C.HandleItemPickup");
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaPickupManager.AthenaPickupManager_C.HandleItemPickUp");
 
-	UAthenaPickupManager_C_HandleItemPickup_Params params;
+	UAthenaPickupManager_C_HandleItemPickUp_Params params;
 	params.NewItem = NewItem;
 	params.Count = Count;
 

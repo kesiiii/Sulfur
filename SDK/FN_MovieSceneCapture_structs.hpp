@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -22,7 +22,8 @@ enum class EHDRCaptureGamut : uint8_t
 	HCGM_Rec2020                   = 2,
 	HCGM_ACES                      = 3,
 	HCGM_ACEScg                    = 4,
-	HCGM_MAX                       = 5
+	HCGM_Linear                    = 5,
+	HCGM_MAX                       = 6
 };
 
 

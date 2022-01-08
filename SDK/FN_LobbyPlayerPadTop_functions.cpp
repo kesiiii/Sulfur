@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,30 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function LobbyPlayerPadTop.LobbyPlayerPadTop_C.OnAthenaMemberLocationStateChanged
+// (Public, HasOutParms, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// struct FUniqueNetIdRepl        Member_Id                      (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+// EFortPartyMemberLocation       Location                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void ULobbyPlayerPadTop_C::OnAthenaMemberLocationStateChanged(EFortPartyMemberLocation Location, struct FUniqueNetIdRepl* Member_Id)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function LobbyPlayerPadTop.LobbyPlayerPadTop_C.OnAthenaMemberLocationStateChanged");
+
+	ULobbyPlayerPadTop_C_OnAthenaMemberLocationStateChanged_Params params;
+	params.Location = Location;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Member_Id != nullptr)
+		*Member_Id = params.Member_Id;
+}
+
 
 // Function LobbyPlayerPadTop.LobbyPlayerPadTop_C.UpdateMicIcon
 // (Public, BlueprintCallable, BlueprintEvent)
@@ -90,17 +114,21 @@ void ULobbyPlayerPadTop_C::HandlePlayerTalkingChanged(const struct FUniqueNetIdR
 }
 
 
-// Function LobbyPlayerPadTop.LobbyPlayerPadTop_C.RefreshReadyState
+// Function LobbyPlayerPadTop.LobbyPlayerPadTop_C.RefreshAthenaReadyState
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // bool                           Ready                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// EFortPartyMemberLocation       Location                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// bool                           LocationValid                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 
-void ULobbyPlayerPadTop_C::RefreshReadyState(bool Ready)
+void ULobbyPlayerPadTop_C::RefreshAthenaReadyState(bool Ready, EFortPartyMemberLocation Location, bool LocationValid)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function LobbyPlayerPadTop.LobbyPlayerPadTop_C.RefreshReadyState");
+	static auto fn = UObject::FindObject<UFunction>("Function LobbyPlayerPadTop.LobbyPlayerPadTop_C.RefreshAthenaReadyState");
 
-	ULobbyPlayerPadTop_C_RefreshReadyState_Params params;
+	ULobbyPlayerPadTop_C_RefreshAthenaReadyState_Params params;
 	params.Ready = Ready;
+	params.Location = Location;
+	params.LocationValid = LocationValid;
 
 	auto flags = fn->FunctionFlags;
 

@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -14,6 +14,17 @@ namespace SDK
 //Parameters
 //---------------------------------------------------------------------------
 
+// Function Frontend.FrontEnd_C.UpdateVaultCameraZoom
+struct AFrontEnd_C_UpdateVaultCameraZoom_Params
+{
+	EFrontEndCamera                                    InCameraType;                                             // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function Frontend.FrontEnd_C.ProcessTouchInput
+struct AFrontEnd_C_ProcessTouchInput_Params
+{
+};
+
 // Function Frontend.FrontEnd_C.InpActEvt_LeftMouseButton_K2Node_InputKeyEvent_3_4
 struct AFrontEnd_C_InpActEvt_LeftMouseButton_K2Node_InputKeyEvent_3_4_Params
 {
@@ -22,18 +33,6 @@ struct AFrontEnd_C_InpActEvt_LeftMouseButton_K2Node_InputKeyEvent_3_4_Params
 
 // Function Frontend.FrontEnd_C.InpActEvt_LeftMouseButton_K2Node_InputKeyEvent_2_3
 struct AFrontEnd_C_InpActEvt_LeftMouseButton_K2Node_InputKeyEvent_2_3_Params
-{
-	struct FKey                                        Key;                                                      // (BlueprintVisible, BlueprintReadOnly, Parm)
-};
-
-// Function Frontend.FrontEnd_C.InpActEvt_RightMouseButton_K2Node_InputKeyEvent_1_2
-struct AFrontEnd_C_InpActEvt_RightMouseButton_K2Node_InputKeyEvent_1_2_Params
-{
-	struct FKey                                        Key;                                                      // (BlueprintVisible, BlueprintReadOnly, Parm)
-};
-
-// Function Frontend.FrontEnd_C.InpActEvt_RightMouseButton_K2Node_InputKeyEvent_0_1
-struct AFrontEnd_C_InpActEvt_RightMouseButton_K2Node_InputKeyEvent_0_1_Params
 {
 	struct FKey                                        Key;                                                      // (BlueprintVisible, BlueprintReadOnly, Parm)
 };
@@ -59,10 +58,16 @@ struct AFrontEnd_C_InpTchEvt_Pressed_Params
 	struct FVector                                     Location;                                                 // (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData)
 };
 
-// Function Frontend.FrontEnd_C.ReceiveTick
-struct AFrontEnd_C_ReceiveTick_Params
+// Function Frontend.FrontEnd_C.InpActEvt_RightMouseButton_K2Node_InputKeyEvent_1_2
+struct AFrontEnd_C_InpActEvt_RightMouseButton_K2Node_InputKeyEvent_1_2_Params
 {
-	float*                                             DeltaSeconds;                                             // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	struct FKey                                        Key;                                                      // (BlueprintVisible, BlueprintReadOnly, Parm)
+};
+
+// Function Frontend.FrontEnd_C.InpActEvt_RightMouseButton_K2Node_InputKeyEvent_0_1
+struct AFrontEnd_C_InpActEvt_RightMouseButton_K2Node_InputKeyEvent_0_1_Params
+{
+	struct FKey                                        Key;                                                      // (BlueprintVisible, BlueprintReadOnly, Parm)
 };
 
 // Function Frontend.FrontEnd_C.InpAxisKeyEvt_Gamepad_RightX_K2Node_InputAxisKeyEvent_4_5
@@ -79,6 +84,12 @@ struct AFrontEnd_C_ResetRotation_Params
 // Function Frontend.FrontEnd_C.StoreInitialRotation
 struct AFrontEnd_C_StoreInitialRotation_Params
 {
+};
+
+// Function Frontend.FrontEnd_C.ReceiveTick
+struct AFrontEnd_C_ReceiveTick_Params
+{
+	float*                                             DeltaSeconds;                                             // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function Frontend.FrontEnd_C.OnMatchStarted

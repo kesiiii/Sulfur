@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -83,6 +83,7 @@ struct UAthenaQuickbarSecondary_C_OnQuickBarSlotFocusChanged_Bind_Params
 struct UAthenaQuickbarSecondary_C_OnQuickbarContentsChanged_Params
 {
 	EFortQuickBars*                                    QuickbarIndex;                                            // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	TArray<int>*                                       ChangedSlots;                                             // (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ZeroConstructor, ReferenceParm)
 };
 
 // Function AthenaQuickbarSecondary.AthenaQuickbarSecondary_C.Construct

@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,139 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function B_Pickups.B_Pickups_C.SetVisibleMobileInteractIcon
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                           Visible                        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void AB_Pickups_C::SetVisibleMobileInteractIcon(bool Visible)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function B_Pickups.B_Pickups_C.SetVisibleMobileInteractIcon");
+
+	AB_Pickups_C_SetVisibleMobileInteractIcon_Params params;
+	params.Visible = Visible;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function B_Pickups.B_Pickups_C.SetInitialBGRaysParams
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UMaterialInstanceDynamic* Mid                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void AB_Pickups_C::SetInitialBGRaysParams(class UMaterialInstanceDynamic* Mid)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function B_Pickups.B_Pickups_C.SetInitialBGRaysParams");
+
+	AB_Pickups_C_SetInitialBGRaysParams_Params params;
+	params.Mid = Mid;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function B_Pickups.B_Pickups_C.SetActiveBackgroundParticleSystem
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                           Active                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// bool                           Reset                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void AB_Pickups_C::SetActiveBackgroundParticleSystem(bool Active, bool Reset)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function B_Pickups.B_Pickups_C.SetActiveBackgroundParticleSystem");
+
+	AB_Pickups_C_SetActiveBackgroundParticleSystem_Params params;
+	params.Active = Active;
+	params.Reset = Reset;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function B_Pickups.B_Pickups_C.SetInitialHologramParams
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UMaterialInstanceDynamic* Mid                            (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void AB_Pickups_C::SetInitialHologramParams(class UMaterialInstanceDynamic* Mid)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function B_Pickups.B_Pickups_C.SetInitialHologramParams");
+
+	AB_Pickups_C_SetInitialHologramParams_Params params;
+	params.Mid = Mid;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function B_Pickups.B_Pickups_C.Unique Material MIDs
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void AB_Pickups_C::Unique_Material_MIDs()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function B_Pickups.B_Pickups_C.Unique Material MIDs");
+
+	AB_Pickups_C_Unique_Material_MIDs_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function B_Pickups.B_Pickups_C.SetupStretchMIDs
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void AB_Pickups_C::SetupStretchMIDs()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function B_Pickups.B_Pickups_C.SetupStretchMIDs");
+
+	AB_Pickups_C_SetupStretchMIDs_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function B_Pickups.B_Pickups_C.SetupBaseMIDs
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void AB_Pickups_C::SetupBaseMIDs()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function B_Pickups.B_Pickups_C.SetupBaseMIDs");
+
+	AB_Pickups_C_SetupBaseMIDs_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
 
 // Function B_Pickups.B_Pickups_C.SetHiddenBackgroundVisualComponents
 // (Public, BlueprintCallable, BlueprintEvent)
@@ -100,23 +233,6 @@ void AB_Pickups_C::ScaleHologramTimingsForPvP()
 }
 
 
-// Function B_Pickups.B_Pickups_C.CreateHologramMIDs
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void AB_Pickups_C::CreateHologramMIDs()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function B_Pickups.B_Pickups_C.CreateHologramMIDs");
-
-	AB_Pickups_C_CreateHologramMIDs_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function B_Pickups.B_Pickups_C.SetHologramPickedUpParams
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -188,6 +304,120 @@ void AB_Pickups_C::UserConstructionScript()
 }
 
 
+// Function B_Pickups.B_Pickups_C.MobileSelectedTL__FinishedFunc
+// (BlueprintEvent)
+
+void AB_Pickups_C::MobileSelectedTL__FinishedFunc()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function B_Pickups.B_Pickups_C.MobileSelectedTL__FinishedFunc");
+
+	AB_Pickups_C_MobileSelectedTL__FinishedFunc_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function B_Pickups.B_Pickups_C.MobileSelectedTL__UpdateFunc
+// (BlueprintEvent)
+
+void AB_Pickups_C::MobileSelectedTL__UpdateFunc()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function B_Pickups.B_Pickups_C.MobileSelectedTL__UpdateFunc");
+
+	AB_Pickups_C_MobileSelectedTL__UpdateFunc_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function B_Pickups.B_Pickups_C.OnLoaded_545E96BB48C612EC956D439BF0008DCB
+// (BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UObject*                 Loaded                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void AB_Pickups_C::OnLoaded_545E96BB48C612EC956D439BF0008DCB(class UObject* Loaded)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function B_Pickups.B_Pickups_C.OnLoaded_545E96BB48C612EC956D439BF0008DCB");
+
+	AB_Pickups_C_OnLoaded_545E96BB48C612EC956D439BF0008DCB_Params params;
+	params.Loaded = Loaded;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function B_Pickups.B_Pickups_C.OnLoaded_8EE257FB4892F606952F3B9974CE26D4
+// (BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UObject*                 Loaded                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void AB_Pickups_C::OnLoaded_8EE257FB4892F606952F3B9974CE26D4(class UObject* Loaded)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function B_Pickups.B_Pickups_C.OnLoaded_8EE257FB4892F606952F3B9974CE26D4");
+
+	AB_Pickups_C_OnLoaded_8EE257FB4892F606952F3B9974CE26D4_Params params;
+	params.Loaded = Loaded;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function B_Pickups.B_Pickups_C.OnLoaded_E6CB94744AD5E69A7AE15B925703AA9F
+// (BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UObject*                 Loaded                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void AB_Pickups_C::OnLoaded_E6CB94744AD5E69A7AE15B925703AA9F(class UObject* Loaded)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function B_Pickups.B_Pickups_C.OnLoaded_E6CB94744AD5E69A7AE15B925703AA9F");
+
+	AB_Pickups_C_OnLoaded_E6CB94744AD5E69A7AE15B925703AA9F_Params params;
+	params.Loaded = Loaded;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function B_Pickups.B_Pickups_C.OnAboutToEnterBackpack
+// (Event, Public, BlueprintEvent)
+// Parameters:
+// class AFortPawn**              PickupTarget                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void AB_Pickups_C::OnAboutToEnterBackpack(class AFortPawn** PickupTarget)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function B_Pickups.B_Pickups_C.OnAboutToEnterBackpack");
+
+	AB_Pickups_C_OnAboutToEnterBackpack_Params params;
+	params.PickupTarget = PickupTarget;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function B_Pickups.B_Pickups_C.ReceiveTick
 // (Event, Public, BlueprintEvent)
 // Parameters:
@@ -225,17 +455,14 @@ void AB_Pickups_C::OnTossed()
 }
 
 
-// Function B_Pickups.B_Pickups_C.OnAboutToEnterBackpack
+// Function B_Pickups.B_Pickups_C.OnPickedUp
 // (Event, Public, BlueprintEvent)
-// Parameters:
-// class AFortPawn**              PickupTarget                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 
-void AB_Pickups_C::OnAboutToEnterBackpack(class AFortPawn** PickupTarget)
+void AB_Pickups_C::OnPickedUp()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function B_Pickups.B_Pickups_C.OnAboutToEnterBackpack");
+	static auto fn = UObject::FindObject<UFunction>("Function B_Pickups.B_Pickups_C.OnPickedUp");
 
-	AB_Pickups_C_OnAboutToEnterBackpack_Params params;
-	params.PickupTarget = PickupTarget;
+	AB_Pickups_C_OnPickedUp_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -262,40 +489,6 @@ void AB_Pickups_C::ReceiveDestroyed()
 }
 
 
-// Function B_Pickups.B_Pickups_C.InitializeMaterial
-// (BlueprintCallable, BlueprintEvent)
-
-void AB_Pickups_C::InitializeMaterial()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function B_Pickups.B_Pickups_C.InitializeMaterial");
-
-	AB_Pickups_C_InitializeMaterial_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function B_Pickups.B_Pickups_C.OnPickedUp
-// (Event, Public, BlueprintEvent)
-
-void AB_Pickups_C::OnPickedUp()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function B_Pickups.B_Pickups_C.OnPickedUp");
-
-	AB_Pickups_C_OnPickedUp_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function B_Pickups.B_Pickups_C.ReceiveBeginPlay
 // (Event, Protected, BlueprintEvent)
 
@@ -304,6 +497,40 @@ void AB_Pickups_C::ReceiveBeginPlay()
 	static auto fn = UObject::FindObject<UFunction>("Function B_Pickups.B_Pickups_C.ReceiveBeginPlay");
 
 	AB_Pickups_C_ReceiveBeginPlay_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function B_Pickups.B_Pickups_C.EnableBacchusHighlight
+// (Event, Public, BlueprintEvent)
+
+void AB_Pickups_C::EnableBacchusHighlight()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function B_Pickups.B_Pickups_C.EnableBacchusHighlight");
+
+	AB_Pickups_C_EnableBacchusHighlight_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function B_Pickups.B_Pickups_C.DisableBacchusHighlight
+// (Event, Public, BlueprintEvent)
+
+void AB_Pickups_C::DisableBacchusHighlight()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function B_Pickups.B_Pickups_C.DisableBacchusHighlight");
+
+	AB_Pickups_C_DisableBacchusHighlight_Params params;
 
 	auto flags = fn->FunctionFlags;
 

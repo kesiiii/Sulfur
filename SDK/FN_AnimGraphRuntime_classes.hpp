@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -15,7 +15,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // Class AnimGraphRuntime.AnimCustomInstance
-// 0x0000 (0x03D0 - 0x03D0)
+// 0x0000 (0x0380 - 0x0380)
 class UAnimCustomInstance : public UAnimInstance
 {
 public:
@@ -62,7 +62,7 @@ public:
 
 
 // Class AnimGraphRuntime.AnimSequencerInstance
-// 0x0000 (0x03D0 - 0x03D0)
+// 0x0000 (0x0380 - 0x0380)
 class UAnimSequencerInstance : public UAnimCustomInstance
 {
 public:

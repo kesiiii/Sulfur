@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -15,7 +15,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass GA_Trap_WallSpikesMetal.GA_Trap_WallSpikesMetal_C
-// 0x0000 (0x0AE0 - 0x0AE0)
+// 0x0000 (0x0B20 - 0x0B20)
 class UGA_Trap_WallSpikesMetal_C : public UGA_TrapGeneric_C
 {
 public:

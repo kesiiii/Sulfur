@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (3.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -15,22 +15,22 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // WidgetBlueprintGeneratedClass QuestUpdatesLog.QuestUpdatesLog_C
-// 0x008C (0x02C4 - 0x0238)
+// 0x008C (0x02CC - 0x0240)
 class UQuestUpdatesLog_C : public UFortHUDElementWidget
 {
 public:
-	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x0238(0x0008) (Transient, DuplicateTransient)
-	class UVerticalBox*                                QuestUpdatesBox;                                          // 0x0240(0x0008) (BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, RepNotify, Interp, NonTransactional, EditorOnly, NoDestructor, AutoWeak, ContainsInstancedReference, AssetRegistrySearchable, SimpleDisplay, AdvancedDisplay, Protected, BlueprintCallable, BlueprintAuthorityOnly, TextExportTransient, NonPIEDuplicateTransient, ExposeOnSpawn, PersistentInstance, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic, NativeAccessSpecifierProtected, NativeAccessSpecifierPrivate)
-	TArray<class UFortQuestItem*>                      PinnedQuests;                                             // 0x0248(0x0010) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance)
-	class UFortQuestItem*                              RequiredQuest;                                            // 0x0258(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
-	struct FText                                       PinnedQuestSingularText;                                  // 0x0260(0x0018) (Edit, BlueprintVisible, DisableEditOnInstance)
-	struct FText                                       PinnedQuestsPluralText;                                   // 0x0278(0x0018) (Edit, BlueprintVisible, DisableEditOnInstance)
-	TArray<struct FDynamicQuestUpdateInfo>             QueuedDynamicQuestStatusUpdates;                          // 0x0290(0x0010) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance)
-	int                                                MaxDisplayedQuestUpdates;                                 // 0x02A0(0x0004) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x02A4(0x0004) MISSED OFFSET
-	TArray<class UWidget*>                             QuestUpdateWidgets;                                       // 0x02A8(0x0010) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance)
-	struct FTimerHandle                                TryDisplayNextUpdateTimerHandle;                          // 0x02B8(0x0008) (Edit, BlueprintVisible, DisableEditOnInstance)
-	int                                                MaxDisplayedQuestObjectives;                              // 0x02C0(0x0004) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x0240(0x0008) (Transient, DuplicateTransient)
+	class UVerticalBox*                                QuestUpdatesBox;                                          // 0x0248(0x0008) (BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, RepNotify, Interp, NonTransactional, EditorOnly, NoDestructor, AutoWeak, ContainsInstancedReference, AssetRegistrySearchable, SimpleDisplay, AdvancedDisplay, Protected, BlueprintCallable, BlueprintAuthorityOnly, TextExportTransient, NonPIEDuplicateTransient, ExposeOnSpawn, PersistentInstance, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic, NativeAccessSpecifierProtected, NativeAccessSpecifierPrivate)
+	TArray<class UFortQuestItem*>                      PinnedQuests;                                             // 0x0250(0x0010) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance)
+	class UFortQuestItem*                              RequiredQuest;                                            // 0x0260(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	struct FText                                       PinnedQuestSingularText;                                  // 0x0268(0x0018) (Edit, BlueprintVisible, DisableEditOnInstance)
+	struct FText                                       PinnedQuestsPluralText;                                   // 0x0280(0x0018) (Edit, BlueprintVisible, DisableEditOnInstance)
+	TArray<struct FDynamicQuestUpdateInfo>             QueuedDynamicQuestStatusUpdates;                          // 0x0298(0x0010) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance)
+	int                                                MaxDisplayedQuestUpdates;                                 // 0x02A8(0x0004) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x02AC(0x0004) MISSED OFFSET
+	TArray<class UWidget*>                             QuestUpdateWidgets;                                       // 0x02B0(0x0010) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance)
+	struct FTimerHandle                                TryDisplayNextUpdateTimerHandle;                          // 0x02C0(0x0008) (Edit, BlueprintVisible, DisableEditOnInstance)
+	int                                                MaxDisplayedQuestObjectives;                              // 0x02C8(0x0004) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
 
 	static UClass* StaticClass()
 	{
