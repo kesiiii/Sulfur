@@ -397,8 +397,10 @@ public:
 	class UProperty*                                   RemoteRoleProperty;                                       // 0x00F8(0x0008) (ZeroConstructor, IsPlainOldData)
 	struct FName                                       NetDriverName;                                            // 0x0100(0x0008) (ZeroConstructor, Config, IsPlainOldData)
 	unsigned char                                      UnknownData05[0x48];                                      // 0x0108(0x0048) MISSED OFFSET
-	float                                              Time;                                                     // 0x0150(0x0004) (ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData06[0x3AC];                                     // 0x0154(0x03AC) MISSED OFFSET
+	float                                              Time; // 0x0150(0x0004) (ZeroConstructor, IsPlainOldData)
+	unsigned char pad[0x1C6];
+	uint32_t RepFrame;
+	unsigned char                                      UnknownData06[0x1E2];                                     // 0x0154(0x03AC) MISSED OFFSET
 	class UReplicationDriver*                          ReplicationDriver;                                        // 0x0500(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
 	unsigned char                                      UnknownData07[0x18];                                      // 0x0508(0x0018) MISSED OFFSET
 

@@ -142,6 +142,7 @@ namespace Hooks
 			if (GetAsyncKeyState(VK_F1) & 0x01)
 			{
 				auto FortEngine = UObject::FindObject<UFortEngine>("FortEngine_");
+				World = FortEngine->GameViewport->World;
 				auto PC = reinterpret_cast<AFortPlayerControllerAthena*>(FortEngine->GameInstance->LocalPlayers[0]->PlayerController);
 				auto GPS = reinterpret_cast<UGameplayStatics*>(UGameplayStatics::StaticClass());
 				auto FortCheatManager = reinterpret_cast<UFortCheatManager*>(PC->CheatManager);
@@ -217,6 +218,11 @@ namespace Hooks
 				BeaconHost->ListenPort = 7777;
 				auto result = InitHost(BeaconHost);
 				PauseBeaconRequest(BeaconHost, false);
+
+				std::cout << "RepFrame: " << std::to_string(BeaconHost->NetDriver->RepFrame) << std::endl;
+				BeaconHost->NetDriver->RepFrame++;
+				std::cout << "RepFrame: " << std::to_string(BeaconHost->NetDriver->RepFrame) << std::endl;
+
 				std::cout << "InitHost Result: " << result << std::endl;
 
 				//BeaconHost->BeaconState = EBeaconState::AllowRequests;
@@ -226,12 +232,6 @@ namespace Hooks
 
 			if (GetAsyncKeyState(VK_F3) && 0x01)
 			{
-				auto FortEngine = UObject::FindObject<UFortEngine>("FortEngine_");
-				auto PC = reinterpret_cast<AFortPlayerControllerAthena*>(FortEngine->GameInstance->LocalPlayers[0]->PlayerController);
-				auto PlayerState = reinterpret_cast<AFortPlayerStateAthena*>(PC->PlayerState);
-				PlayerState->TeamIndex = EFortTeam::HumanPvP_Team2;
-				PlayerState->OnRep_PlayerTeam();
-				PlayerState->OnRep_SquadId();
 			}
 		}
 
