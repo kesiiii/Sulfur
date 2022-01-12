@@ -1,91 +1,76 @@
 #pragma once
 
 #include <cstdint>
-#include <winnt.h>
-#include <cstdio>
-#include <consoleapi.h>
-#include <libloaderapi.h>
 #include <vector>
-
-namespace Offset
-{
-	uintptr_t InitHost = 0x39DAB0;
-	uintptr_t OnlineBeaconHostNotifyControlMessage = 0x3A1040;
-	uintptr_t WorldNotifyControlMessage = 0x2542030;
-	uintptr_t WorldWelcomePlayer = 0x254D760;
-}
+#include <libloaderapi.h>
+#include <consoleapi.h>
 
 class Util
 {
 public:
-	static __forceinline VOID InitConsole()
-	{
-		FILE* fDummy;
-		AllocConsole();
-		freopen_s(&fDummy, "CONIN$", "r", stdin);
-		freopen_s(&fDummy, "CONOUT$", "w", stderr);
-		freopen_s(&fDummy, "CONOUT$", "w", stdout);
-	}
+    static void SetupConsole()
+    {
+        AllocConsole();
 
-	static __forceinline uintptr_t BaseAddress()
-	{
-		return reinterpret_cast<uintptr_t>(GetModuleHandle(0));
-	}
+        FILE* pFile;
+        freopen_s(&pFile, "CONOUT$", "w", stdout);
+    }
 
-	static __forceinline uintptr_t FindPattern(const char* signature, bool bRelative = false, uint32_t offset = 0)
-	{
-		uintptr_t base_address = reinterpret_cast<uintptr_t>(GetModuleHandle(NULL));
-		static auto patternToByte = [](const char* pattern)
-		{
-			auto bytes = std::vector<int>{};
-			const auto start = const_cast<char*>(pattern);
-			const auto end = const_cast<char*>(pattern) + strlen(pattern);
+    static __forceinline uintptr_t FindPattern(const char* signature, bool bRelative = false, uint32_t offset = 0)
+    {
+        uintptr_t base_address = reinterpret_cast<uintptr_t>(GetModuleHandle(NULL));
+        static auto patternToByte = [](const char* pattern)
+        {
+            auto bytes = std::vector<int>{};
+            const auto start = const_cast<char*>(pattern);
+            const auto end = const_cast<char*>(pattern) + strlen(pattern);
 
-			for (auto current = start; current < end; ++current)
-			{
-				if (*current == '?')
-				{
-					++current;
-					if (*current == '?') ++current;
-					bytes.push_back(-1);
-				}
-				else { bytes.push_back(strtoul(current, &current, 16)); }
-			}
-			return bytes;
-		};
+            for (auto current = start; current < end; ++current)
+            {
+                if (*current == '?')
+                {
+                    ++current;
+                    if (*current == '?')
+                        ++current;
+                    bytes.push_back(-1);
+                }
+                else { bytes.push_back(strtoul(current, &current, 16)); }
+            }
+            return bytes;
+        };
 
-		const auto dosHeader = (PIMAGE_DOS_HEADER)base_address;
-		const auto ntHeaders = (PIMAGE_NT_HEADERS)((std::uint8_t*)base_address + dosHeader->e_lfanew);
+        const auto dosHeader = (PIMAGE_DOS_HEADER)base_address;
+        const auto ntHeaders = (PIMAGE_NT_HEADERS)((std::uint8_t*)base_address + dosHeader->e_lfanew);
 
-		const auto sizeOfImage = ntHeaders->OptionalHeader.SizeOfImage;
-		auto patternBytes = patternToByte(signature);
-		const auto scanBytes = reinterpret_cast<std::uint8_t*>(base_address);
+        const auto sizeOfImage = ntHeaders->OptionalHeader.SizeOfImage;
+        auto patternBytes = patternToByte(signature);
+        const auto scanBytes = reinterpret_cast<std::uint8_t*>(base_address);
 
-		const auto s = patternBytes.size();
-		const auto d = patternBytes.data();
+        const auto s = patternBytes.size();
+        const auto d = patternBytes.data();
 
-		for (auto i = 0ul; i < sizeOfImage - s; ++i)
-		{
-			bool found = true;
-			for (auto j = 0ul; j < s; ++j)
-			{
-				if (scanBytes[i + j] != d[j] && d[j] != -1)
-				{
-					found = false;
-					break;
-				}
-			}
-			if (found)
-			{
-				uintptr_t address = reinterpret_cast<uintptr_t>(&scanBytes[i]);
-				if (bRelative)
-				{
-					address = ((address + offset + 4) + *(int32_t*)(address + offset));
-					return address;
-				}
-				return address;
-			}
-		}
-		return NULL;
-	}
+        for (auto i = 0ul; i < sizeOfImage - s; ++i)
+        {
+            bool found = true;
+            for (auto j = 0ul; j < s; ++j)
+            {
+                if (scanBytes[i + j] != d[j] && d[j] != -1)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            if (found)
+            {
+                uintptr_t address = reinterpret_cast<uintptr_t>(&scanBytes[i]);
+                if (bRelative)
+                {
+                    address = ((address + offset + 4) + *(int32_t*)(address + offset));
+                    return address;
+                }
+                return address;
+            }
+        }
+        return NULL;
+    }
 };

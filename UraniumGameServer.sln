@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UraniumGameServer", "UraniumGameServer.vcxproj", "{DEB43D95-7A0C-45C0-BAA1-B55C4341F2FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DEB43D95-7A0C-45C0-BAA1-B55C4341F2FC}.Debug|x64.ActiveCfg = Debug|x64
+		{DEB43D95-7A0C-45C0-BAA1-B55C4341F2FC}.Debug|x64.Build.0 = Debug|x64
+		{DEB43D95-7A0C-45C0-BAA1-B55C4341F2FC}.Release|x64.ActiveCfg = Release|x64
+		{DEB43D95-7A0C-45C0-BAA1-B55C4341F2FC}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {768B159A-00C0-4874-8633-A97D61112C55}
+	EndGlobalSection
+EndGlobal
