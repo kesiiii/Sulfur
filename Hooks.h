@@ -131,6 +131,10 @@ namespace Hooks
 			return;
 		}
 
+		if (std::to_string(a3) == "15") {
+			return;
+		}
+
 		printf("LogUGS: AOnlineBeaconHost::NotifyControlMessage Called! (%s)\n", std::to_string(a3).c_str());
 		printf("LogUGS: Channel count (%s)\n", std::to_string(NetConnection->OpenChannels.Num()).c_str());
 		return UWorld_NotifyControlMessage(World, NetConnection, a3, a4);
@@ -157,74 +161,57 @@ namespace Hooks
 
 		auto NewPlayerPawn = reinterpret_cast<APlayerPawn_Athena_C*>(SpawnActor(APlayerPawn_Athena_C::StaticClass(), ActorToUse->K2_GetActorLocation(), FRotator()));
 
-		// ReplicateActor(Connection, World->AuthorityGameMode);
-		// ReplicateActor(Connection, World->GameState);
-		// ReplicateActor(Connection, NewPlayerPawn);
+		TArray<AActor*> AllActors;
+		GPS->STATIC_GetAllActorsOfClass(World, AActor::StaticClass(), &AllActors);
+
+		for (int i = 0; i < AllActors.Num(); i++)
+		{
+			auto Actor = AllActors[i];
+
+			if (Actor->bReplicates && Actor->NetDormancy != ENetDormancy::DORM_Initial && Actor->bNetStartup == false && Actor->RemoteRole != ENetRole::ROLE_None)
+			{
+				Replicate(Actor, Connection);
+			}
+		}
 
 		Replicate(World->GameState, Connection);
 		Replicate(World->AuthorityGameMode, Connection);
-		Replicate(NewPlayerPawn, Connection);
+		Replicate(World->PersistentLevel->WorldSettings, Connection);
+		Replicate(static_cast<AFortWorldSettings*>(World->PersistentLevel->WorldSettings)->TimeOfDayManager, Connection);
+		Replicate(NewPlayerPawn);
 
 		auto NewPlayerController = reinterpret_cast<AFortPlayerControllerAthena*>(SpawnPlayActor(World, Connection, a3, a4, a5, Src, a7));
-		NewPlayerController->Player = Connection;
-		NewPlayerController->Player->PlayerController = NewPlayerController;
-		NewPlayerController->Possess(NewPlayerPawn);
-		NewPlayerPawn->PawnUniqueID = (int)a5;
-		NewPlayerPawn->OnRep_PawnUniqueID();
-		/*NewPlayerPawn->PlayerState = reinterpret_cast<AFortPlayerStateAthena*>(SpawnActor(AFortPlayerStateAthena::StaticClass(), FVector(0, 0, 10432), FRotator()));
-		NewPlayerPawn->OnRep_PlayerState();*/
-		NewPlayerPawn->PlayerState = NewPlayerController->PlayerState;
-
-		// ReplicateActor(Connection, NewPlayerController->PlayerState);
-		// ReplicateActor(Connection, NewPlayerPawn->PlayerState);
-
-		Replicate(NewPlayerController->PlayerState, Connection);
-		Replicate(NewPlayerPawn->PlayerState, Connection);
-
-		NewPlayerPawn->OnRep_PlayerState();
-
-		NewPlayerPawn->SetMaxHealth(420);
-		NewPlayerPawn->SetHealth(420);
-
-		NewPlayerPawn->PlayerState->bIsABot = false;
-		NewPlayerPawn->PlayerState->bIsSpectator = false;
-
-		auto NewAthenaPlayerState = reinterpret_cast<AFortPlayerStateAthena*>(NewPlayerController->PlayerState);
-		NewAthenaPlayerState->bHasStartedPlaying = true;
-		NewAthenaPlayerState->bHasFinishedLoading = true;
-		NewAthenaPlayerState->OnRep_bHasStartedPlaying();
-
-		NewPlayerController->ServerSetClientHasFinishedLoading(true);
-		NewPlayerController->ServerLoadingScreenDropped();
-
-		NewPlayerController->bHasInitiallySpawned = true;
-		NewPlayerController->bAssignedStartSpawn = true;
-		NewPlayerController->bReadyToStartMatch = true;
-		NewPlayerController->bClientPawnIsLoaded = true;
-		NewPlayerController->bHasClientFinishedLoading = true;
-		NewPlayerController->bHasServerFinishedLoading = true;
-
-		auto MyAthenaPlayerState = reinterpret_cast<AFortPlayerStateAthena*>(UObject::FindObject<UFortEngine>("FortEngine_")->GameInstance->LocalPlayers[0]->PlayerController->PlayerState);
-
-		NewAthenaPlayerState->MaxShield = 100;
-		NewAthenaPlayerState->CurrentShield = 69;
-		NewAthenaPlayerState->TeamIndex = EFortTeam::HumanPvP_Team1;
-		NewAthenaPlayerState->SquadId = MyAthenaPlayerState->SquadId;
-		NewAthenaPlayerState->OnRep_SquadId();
-		NewAthenaPlayerState->OnRep_PlayerTeam();
-
-		NewAthenaPlayerState->CharacterParts[0] = UObject::FindObject<UCustomCharacterPart>("CustomCharacterPart F_Med_Head1.F_Med_Head1");
-		NewAthenaPlayerState->CharacterParts[1] = UObject::FindObject<UCustomCharacterPart>("CustomCharacterPart F_Med_Soldier_01.F_Med_Soldier_01");
-		NewAthenaPlayerState->OnRep_CharacterParts();
-
-		std::cout << Replicate(NewAthenaPlayerState, Connection) << std::endl;
 
 		auto FortEngine = UObject::FindObject<UFortEngine>("FortEngine_");
-		auto PC = FortEngine->GameInstance->LocalPlayers[0]->PlayerController;
-		NewPlayerController->ServerReadyToStartMatch();
+		auto PC = reinterpret_cast<AFortPlayerControllerAthena*>(FortEngine->GameInstance->LocalPlayers[0]->PlayerController);
 
-		// AFortGameModeAthena->AlivePlayers == TArray of PlayerControllers that are alive / not replicated yet!
-		
+		NewPlayerController->Possess(NewPlayerPawn);
+
+		Replicate(NewPlayerController->PlayerState, Connection);
+		Replicate(PC->Pawn, Connection);
+		NewPlayerPawn->PlayerState = NewPlayerController->PlayerState;
+		NewPlayerPawn->OnRep_PlayerState();
+
+		auto ZonePlayerState = static_cast<AFortPlayerStateAthena*>(NewPlayerController->PlayerState);
+
+		ZonePlayerState->bHasFinishedLoading = true;
+		ZonePlayerState->bHasStartedPlaying = true;
+		ZonePlayerState->OnRep_bHasStartedPlaying();
+
+		NewPlayerController->bHasServerFinishedLoading = true;
+		NewPlayerController->OnRep_bHasServerFinishedLoading();
+
+		NewPlayerController->bHasClientFinishedLoading = true;
+		NewPlayerController->bHasInitializedWorldInventory = true;
+
+		ZonePlayerState->TeamIndex = EFortTeam::HumanPvP_Team2;
+		ZonePlayerState->OnRep_PlayerTeam();
+		ZonePlayerState->OnRep_SquadId();
+
+		ZonePlayerState->CharacterParts[0] = UObject::FindObject<UCustomCharacterPart>("CustomCharacterPart F_Med_Head1.F_Med_Head1");
+		ZonePlayerState->CharacterParts[1] = UObject::FindObject<UCustomCharacterPart>("CustomCharacterPart F_Med_Soldier_01.F_Med_Soldier_01");
+		ZonePlayerState->OnRep_CharacterParts();
+
 		std::cout << "OpenChannels: " << Connection->OpenChannels.Num() << std::endl;
 
 		return NewPlayerController;
@@ -233,6 +220,11 @@ namespace Hooks
 	void* (*ProcessEvent)(UObject*, UFunction*, void*);
 	void* ProcessEventHook(UObject* pObject, UFunction* pFunction, void* pParams)
 	{
+		if (pFunction->GetName().find("ReadyToStartMatch") != std::string::npos)
+		{
+			printf("Called ReadyToStartMatch!\n");
+		}
+
 		if (pFunction->GetName().find("BP_PlayButton") != std::string::npos)
 		{
 			auto FortEngine = UObject::FindObject<UFortEngine>("FortEngine_");
@@ -276,20 +268,18 @@ namespace Hooks
 				auto NewConsole = GPS->STATIC_SpawnObject(UFortConsole::StaticClass(), FortEngine->GameViewport);
 				FortEngine->GameViewport->ViewportConsole = static_cast<UFortConsole*>(NewConsole);
 
-				auto SpawningActor = GPS->STATIC_BeginSpawningActorFromClass(FortEngine->GameViewport->World, APlayerPawn_Athena_C::StaticClass(), SpawnTransform, false, nullptr);
-				auto Pawn = reinterpret_cast<APlayerPawn_Athena_C*>(GPS->STATIC_FinishSpawningActor(SpawningActor, SpawnTransform));
-				Pawn->bCanBeDamaged = false;
+				//auto SpawningActor = GPS->STATIC_BeginSpawningActorFromClass(FortEngine->GameViewport->World, APlayerPawn_Athena_C::StaticClass(), SpawnTransform, false, nullptr);
+				//auto Pawn = reinterpret_cast<APlayerPawn_Athena_C*>(GPS->STATIC_FinishSpawningActor(SpawningActor, SpawnTransform));
+				//Pawn->bCanBeDamaged = false;
 
 				auto AthenaPlayerState = reinterpret_cast<AFortPlayerStateAthena*>(PC->PlayerState);
 
-				PC->Possess(Pawn);
+				//PC->Possess(Pawn);
+				PC->CheatManager->ToggleDebugCamera();
 
-				AthenaPlayerState->CharacterParts[0] = UObject::FindObject<UCustomCharacterPart>("CustomCharacterPart F_Med_Head1.F_Med_Head1");
-				AthenaPlayerState->CharacterParts[1] = UObject::FindObject<UCustomCharacterPart>("CustomCharacterPart F_Med_Soldier_01.F_Med_Soldier_01");
-				AthenaPlayerState->OnRep_CharacterParts();
-
-				static_cast<AGameMode*>(FortEngine->GameViewport->World->AuthorityGameMode)->StartMatch();
-				static_cast<AFortPlayerControllerAthena*>(PC)->ServerReadyToStartMatch();
+				//AthenaPlayerState->CharacterParts[0] = UObject::FindObject<UCustomCharacterPart>("CustomCharacterPart F_Med_Head1.F_Med_Head1");
+				//AthenaPlayerState->CharacterParts[1] = UObject::FindObject<UCustomCharacterPart>("CustomCharacterPart F_Med_Soldier_01.F_Med_Soldier_01");
+				//AthenaPlayerState->OnRep_CharacterParts();
 
 				bIsInGame = true;
 				bIsReady = false;
@@ -363,6 +353,48 @@ namespace Hooks
 				PlayerState->TeamIndex = EFortTeam::HumanPvP_Team2;
 				PlayerState->OnRep_PlayerTeam();
 				PlayerState->OnRep_SquadId();
+			}
+
+			if (GetAsyncKeyState(VK_F4) & 0x1)
+			{
+				auto FortEngine = UObject::FindObject<UFortEngine>("FortEngine_");
+				auto PC = reinterpret_cast<AFortPlayerControllerAthena*>(FortEngine->GameInstance->LocalPlayers[0]->PlayerController);
+				PC->ServerReadyToStartMatch();
+
+				for (int i = 0; i < BeaconHost->NetDriver->ClientConnections.Num(); i++)
+				{
+					reinterpret_cast<AFortPlayerControllerAthena*>(BeaconHost->NetDriver->ClientConnections[i]->PlayerController)->ServerReadyToStartMatch();
+				}
+
+				static_cast<AGameMode*>(World->AuthorityGameMode)->StartPlay();
+				static_cast<AGameMode*>(World->AuthorityGameMode)->StartMatch();
+
+				auto AthenaGameState = static_cast<AFortGameStateAthena*>(World->GameState);
+				AthenaGameState->GameplayState = EFortGameplayState::NormalGameplay;
+				AthenaGameState->OnRep_GameplayState();
+				AthenaGameState->GamePhase = EAthenaGamePhase::Warmup;
+				AthenaGameState->OnRep_GamePhase(EAthenaGamePhase::None);
+
+				Replicate(World->AuthorityGameMode);
+				Replicate(World->GameState);
+			}
+
+			if (GetAsyncKeyState(VK_F5) & 0x1)
+			{
+				auto GPS = reinterpret_cast<UGameplayStatics*>(UGameplayStatics::StaticClass());
+
+				TArray<AActor*> AllActors;
+				GPS->STATIC_GetAllActorsOfClass(World, AActor::StaticClass(), &AllActors);
+
+				for (int i = 0; i < AllActors.Num(); i++)
+				{
+					auto Actor = AllActors[i];
+
+					if (Actor->bReplicates && Actor->NetDormancy != ENetDormancy::DORM_Initial && Actor->bNetStartup == false && Actor->RemoteRole != ENetRole::ROLE_None)
+					{
+						Replicate(Actor);
+					}
+				}
 			}
 		}
 
