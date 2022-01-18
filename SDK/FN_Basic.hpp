@@ -327,6 +327,10 @@ public:
 	{
 		return TWeakObjectPtrBase::IsValid();
 	}
+
+	/*TWeakObjectPtr(void* Object)
+	{
+	}*/
 };
 
 template<class T, class TBASE>

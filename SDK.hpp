@@ -5835,6 +5835,44 @@
 #include "SDK/FN_DefaultUIDataConfiguration_classes.hpp"
 #include "SDK/FN_DefaultUIDataConfiguration_parameters.hpp"
 
+template<class ObjectType>
+class TSharedPtr
+{
+public:
+	ObjectType* Object;
+
+	int32_t SharedReferenceCount;
+	int32_t WeakReferenceCount;
+};
+
+template<class ObjectType>
+class TSharedRef
+{
+private:
+	struct Counts
+	{
+		int32_t SharedReferenceCount;
+		int32_t WeakReferenceCount;
+	};
+
+public:
+
+	ObjectType* Object;
+	Counts* ReferenceController;
+};
+
+template<class PtrType>
+class TWeakObjectPtr2
+{
+public:
+	int32_t ObjectIndex;
+	int32_t ObjectSerialNumber;
+
+	TWeakObjectPtr2(void* Object) // should be UObject, but I dont have a UObject here right now
+	{
+	}
+};
+
 enum EObjectFlags
 {
     RF_NoFlags = 0x00000000,

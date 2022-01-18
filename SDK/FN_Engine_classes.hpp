@@ -6959,7 +6959,9 @@ public:
 	class UProperty*                                   RemoteRoleProperty;                                       // 0x00E8(0x0008) (ZeroConstructor, IsPlainOldData)
 	struct FName                                       NetDriverName;                                            // 0x00F0(0x0008) (ZeroConstructor, Config, IsPlainOldData)
 	unsigned char                                      UnknownData05[0x48];                                      // 0x00F8(0x0048) MISSED OFFSET
-	float                                              Time;                                                     // 0x0140(0x0004) (ZeroConstructor, IsPlainOldData)
+	float                                              Time; // 0x0140(0x0004) (ZeroConstructor, IsPlainOldData)
+	unsigned char Pad[0x1C7];
+	uint32_t ReplicationFrame;
 	unsigned char                                      UnknownData06[0x159];                                     // 0x0144(0x0364) MISSED OFFSET
 
 	static UClass* StaticClass()
