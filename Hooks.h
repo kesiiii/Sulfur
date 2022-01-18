@@ -182,13 +182,9 @@ namespace Hooks
 
 		auto NewPlayerController = reinterpret_cast<AFortPlayerControllerAthena*>(SpawnPlayActor(World, Connection, a3, a4, a5, Src, a7));
 
-		auto FortEngine = UObject::FindObject<UFortEngine>("FortEngine_");
-		auto PC = reinterpret_cast<AFortPlayerControllerAthena*>(FortEngine->GameInstance->LocalPlayers[0]->PlayerController);
-
 		NewPlayerController->Possess(NewPlayerPawn);
 
 		Replicate(NewPlayerController->PlayerState, Connection);
-		Replicate(PC->Pawn, Connection);
 		NewPlayerPawn->PlayerState = NewPlayerController->PlayerState;
 		NewPlayerPawn->OnRep_PlayerState();
 
@@ -222,7 +218,7 @@ namespace Hooks
 	{
 		if (pFunction->GetName().find("ReadyToStartMatch") != std::string::npos)
 		{
-			printf("Called ReadyToStartMatch!\n");
+			//printf("Called ReadyToStartMatch!\n");
 		}
 
 		if (pFunction->GetName().find("BP_PlayButton") != std::string::npos)
