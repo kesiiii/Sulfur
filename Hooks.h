@@ -59,11 +59,31 @@ namespace Hooks
 	__int64(*WelcomePlayer)(UWorld* This, UNetConnection* NetConnection);
 	APlayerController* (*SpawnPlayActor)(UWorld* a1, UPlayer* a2, ENetRole a3, FURL a4, void* a5, FString& Src, uint8_t a7);
 	__int64(*SetChannelActor)(UActorChannel*, AActor*);
-	UActorChannel* (*CreateChannel)(UNetConnection*, int, bool, int32_t);
+	UChannel* (*CreateChannel)(UNetConnection*, int, bool, int32_t);
 	TSharedRef<void*>& (*FindOrCreateReplicator)(UActorChannel*, TWeakObjectPtr2<UObject>&);
 	void(*StartReplicating)(void*, UActorChannel*);
 
-	static void ReplicateActor(UNetConnection* NetConnection, AActor* Actor)
+	bool (*ReplicateActorG)(UActorChannel*);
+
+	bool Replicate(AActor* Actor, UNetConnection* Connection)
+	{
+		auto Channel = (UActorChannel*)CreateChannel(Connection, EChannelType::CHTYPE_Actor, 1, -1); // https://github.com/EpicGames/UnrealEngine/blob/ea87f4fb26ff8b9d8cd49b3a930f10585a6a7230/Engine/Source/Runtime/Engine/Private/DemoNetDriver.cpp#L1071
+		if (Channel) SetChannelActor(Channel, Actor); // https://github.com/EpicGames/UnrealEngine/blob/ea87f4fb26ff8b9d8cd49b3a930f10585a6a7230/Engine/Source/Runtime/Engine/Private/DemoNetDriver.cpp#L1071
+		return ReplicateActorG(Channel); // https://github.com/EpicGames/UnrealEngine/blob/ea87f4fb26ff8b9d8cd49b3a930f10585a6a7230/Engine/Source/Runtime/Engine/Private/DemoNetDriver.cpp#L1081
+	}
+
+	bool Replicate(AActor* Actor) // Replicate to all Clients
+	{
+		bool ret = false;
+		UNetConnection* Connection = nullptr;
+		for (int i = 0; i < BeaconHost->NetDriver->ClientConnections.Num(); i++)
+		{
+			ret = Replicate(Actor, BeaconHost->NetDriver->ClientConnections[i]);
+		}
+		return ret;
+	}
+
+	/* static void ReplicateActor(UNetConnection* NetConnection, AActor* Actor)
 	{
 		auto NewActorChannel = CreateChannel(NetConnection, EChannelType::CHTYPE_Actor, true, 1);
 		std::cout << "NewActorChannel: " << NewActorChannel->GetFullName() << std::endl;
@@ -75,7 +95,7 @@ namespace Hooks
 		StartReplicating(Replicator, NewActorChannel);
 
 		std::cout << "AllOpenChannels: " << NetConnection->OpenChannels.Num() << std::endl;
-	}
+	} */
 
 	static int32_t ServerReplicateActors(float DeltaSeconds)
 	{
@@ -123,9 +143,9 @@ namespace Hooks
 	}
 
 	// https://github.com/EpicGames/UnrealEngine/blob/4.19/Engine/Source/Runtime/Engine/Private/LevelActor.cpp#L705
-	APlayerController* SpawnPlayActorHook(UWorld* a1, UNetConnection* a2, ENetRole a3, FURL a4, void* a5, FString& Src, uint8_t a7)
+	APlayerController* SpawnPlayActorHook(UWorld* a1, UNetConnection* Connection, ENetRole a3, FURL a4, void* a5, FString& Src, uint8_t a7)
 	{
-		printf("LogUGS: SpawnPlayActor Called!\n");
+		printf("LogUGS: SpawnPlayActor was called!\n");
 
 		auto GPS = reinterpret_cast<UGameplayStatics*>(UGameplayStatics::StaticClass());
 
@@ -137,12 +157,16 @@ namespace Hooks
 
 		auto NewPlayerPawn = reinterpret_cast<APlayerPawn_Athena_C*>(SpawnActor(APlayerPawn_Athena_C::StaticClass(), ActorToUse->K2_GetActorLocation(), FRotator()));
 
-		ReplicateActor(a2, World->AuthorityGameMode);
-		ReplicateActor(a2, World->GameState);
-		ReplicateActor(a2, NewPlayerPawn);
+		// ReplicateActor(Connection, World->AuthorityGameMode);
+		// ReplicateActor(Connection, World->GameState);
+		// ReplicateActor(Connection, NewPlayerPawn);
 
-		auto NewPlayerController = reinterpret_cast<AFortPlayerControllerAthena*>(SpawnPlayActor(World, a2, a3, a4, a5, Src, a7));
-		NewPlayerController->Player = a2;
+		Replicate(World->GameState, Connection);
+		Replicate(World->AuthorityGameMode, Connection);
+		Replicate(NewPlayerPawn, Connection);
+
+		auto NewPlayerController = reinterpret_cast<AFortPlayerControllerAthena*>(SpawnPlayActor(World, Connection, a3, a4, a5, Src, a7));
+		NewPlayerController->Player = Connection;
 		NewPlayerController->Player->PlayerController = NewPlayerController;
 		NewPlayerController->Possess(NewPlayerPawn);
 		NewPlayerPawn->PawnUniqueID = (int)a5;
@@ -151,8 +175,11 @@ namespace Hooks
 		NewPlayerPawn->OnRep_PlayerState();*/
 		NewPlayerPawn->PlayerState = NewPlayerController->PlayerState;
 
-		ReplicateActor(a2, NewPlayerController->PlayerState);
-		ReplicateActor(a2, NewPlayerPawn->PlayerState);
+		// ReplicateActor(Connection, NewPlayerController->PlayerState);
+		// ReplicateActor(Connection, NewPlayerPawn->PlayerState);
+
+		Replicate(NewPlayerController->PlayerState, Connection);
+		Replicate(NewPlayerPawn->PlayerState, Connection);
 
 		NewPlayerPawn->OnRep_PlayerState();
 
@@ -190,7 +217,7 @@ namespace Hooks
 		NewAthenaPlayerState->CharacterParts[1] = UObject::FindObject<UCustomCharacterPart>("CustomCharacterPart F_Med_Soldier_01.F_Med_Soldier_01");
 		NewAthenaPlayerState->OnRep_CharacterParts();
 
-		ReplicateActor(a2, NewAthenaPlayerState);
+		std::cout << Replicate(NewAthenaPlayerState, Connection) << std::endl;
 
 		auto FortEngine = UObject::FindObject<UFortEngine>("FortEngine_");
 		auto PC = FortEngine->GameInstance->LocalPlayers[0]->PlayerController;
@@ -198,7 +225,7 @@ namespace Hooks
 
 		// AFortGameModeAthena->AlivePlayers == TArray of PlayerControllers that are alive / not replicated yet!
 		
-		std::cout << "OpenChannels: " << a2->OpenChannels.Num() << std::endl;
+		std::cout << "OpenChannels: " << Connection->OpenChannels.Num() << std::endl;
 
 		return NewPlayerController;
 	}
@@ -282,6 +309,7 @@ namespace Hooks
 				CreateChannel = decltype(CreateChannel)(BaseAddr + 0x1B0C510);
 				FindOrCreateReplicator = decltype(FindOrCreateReplicator)(BaseAddr + 0x19943D0);
 				StartReplicating = decltype(StartReplicating)(BaseAddr + 0x19ACA70);
+				ReplicateActorG = decltype(ReplicateActorG)(BaseAddr + 0x19A60D0);
 
 				auto AOnlineBeaconHost_NotifyControlMessageAddr = BaseAddr + 0x27B7620;
 				auto WelcomePlayerAddr = BaseAddr + 0x1DACC50;
