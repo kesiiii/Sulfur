@@ -85,6 +85,7 @@
     <ClCompile Include="SDK\FN_CoreUObject_functions.cpp" />
     <ClCompile Include="SDK\FN_Engine_functions.cpp" />
     <ClCompile Include="SDK\FN_FortniteGame_functions.cpp" />
+    <ClCompile Include="SDK\FN_PlayerPawn_Generic_functions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Hooks.h" />

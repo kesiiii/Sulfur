@@ -14,6 +14,9 @@
     <ClCompile Include="SDK\FN_FortniteGame_functions.cpp">
       <Filter>SDK\sdk</Filter>
     </ClCompile>
+    <ClCompile Include="SDK\FN_PlayerPawn_Generic_functions.cpp">
+      <Filter>SDK\sdk</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Util.h" />
