@@ -79,7 +79,10 @@ namespace Hooks
 	bool Replicate(AActor* Actor, UNetConnection* Connection)
 	{
 		auto Channel = (UActorChannel*)CreateChannel(Connection, EChannelType::CHTYPE_Actor, 1, -1); // https://github.com/EpicGames/UnrealEngine/blob/ea87f4fb26ff8b9d8cd49b3a930f10585a6a7230/Engine/Source/Runtime/Engine/Private/DemoNetDriver.cpp#L1071
-		if (Channel) SetChannelActor(Channel, Actor); // https://github.com/EpicGames/UnrealEngine/blob/ea87f4fb26ff8b9d8cd49b3a930f10585a6a7230/Engine/Source/Runtime/Engine/Private/DemoNetDriver.cpp#L1071
+		if (Channel) {
+			Channel->Connection = Connection;
+			SetChannelActor(Channel, Actor); // https://github.com/EpicGames/UnrealEngine/blob/ea87f4fb26ff8b9d8cd49b3a930f10585a6a7230/Engine/Source/Runtime/Engine/Private/DemoNetDriver.cpp#L1071
+		}
 		return ReplicateActorG(Channel); // https://github.com/EpicGames/UnrealEngine/blob/ea87f4fb26ff8b9d8cd49b3a930f10585a6a7230/Engine/Source/Runtime/Engine/Private/DemoNetDriver.cpp#L1081
 	}
 
@@ -116,7 +119,7 @@ namespace Hooks
 			auto Actor = OutActors[i];
 
 			if (Actor->bReplicates && Actor->NetDormancy != ENetDormancy::DORM_Initial && !Actor->bNetStartup) {
-				Replicate(Actor);
+				Replicate(Actor, Connection);
 			}
 		}
 	}
@@ -149,13 +152,133 @@ namespace Hooks
 		std::cout << "Spawning Player For: " << reinterpret_cast<FString*>(a5)->ToString() << std::endl;
 
 		auto Pawn = reinterpret_cast<APlayerPawn_Athena_C*>(SpawnActor(APlayerPawn_Athena_C::StaticClass(), GetPlayerStateLocation(), FRotator()));
+		auto PlayerController = reinterpret_cast<AFortPlayerControllerAthena*>(SpawnPlayActor(World, Connection, ENetRole::ROLE_AutonomousProxy, a4, a5, Src, a7));
+
+		PlayerController->Owner = reinterpret_cast<AActor*>(Connection);
+		PlayerController->OnRep_Owner();
+		Pawn->Owner = PlayerController;
+		Pawn->OnRep_Owner();
 		Pawn->Role = ENetRole::ROLE_SimulatedProxy;
 		Pawn->RemoteRole = ENetRole::ROLE_AutonomousProxy;
 
-		auto PlayerController = reinterpret_cast<AFortPlayerControllerAthena*>(SpawnPlayActor(World, Connection, ENetRole::ROLE_AutonomousProxy, a4, a5, Src, a7));
+		Replicate(Pawn, Connection);
+		Replicate(PlayerController, Connection);
 
+		Connection->PlayerController = PlayerController;
 
+		Pawn->SetOwner(PlayerController);
+		Pawn->OnRep_Owner();
 
+		Pawn->Controller = PlayerController;
+		Pawn->OnRep_Controller();
+
+		PlayerController->Pawn = Pawn;
+		PlayerController->AcknowledgedPawn = Pawn;
+		PlayerController->OnRep_Pawn();
+
+		Pawn->PlayerState = PlayerController->PlayerState;
+		Pawn->OnRep_PlayerState();
+
+		Replicate(Pawn->PlayerState);
+		Replicate(PlayerController->PlayerState);
+
+		//Set PlayerController Vars / Calls RPC's
+		PlayerController->ClientForceProfileQuery();
+		PlayerController->ServerSetClientHasFinishedLoading(true);
+		PlayerController->ServerClientPawnLoaded(true);
+		
+		PlayerController->bClientPawnIsLoaded = true;
+		PlayerController->bHasClientFinishedLoading = true;
+		PlayerController->bHasServerFinishedLoading = true;
+		PlayerController->bReadyToStartMatch = true;
+		PlayerController->bInfiniteAmmo = true;
+		
+		PlayerController->OnRep_bHasServerFinishedLoading();
+		PlayerController->OnRep_AttachmentReplication();
+		PlayerController->OnRep_CheatMovement();
+		PlayerController->OnRep_CombatManager();
+		PlayerController->OnRep_Instigator();
+		PlayerController->OnRep_IntensityGraphInfo();
+		PlayerController->OnRep_LatestRewardReport();
+		PlayerController->OnRep_Owner();
+		PlayerController->OnRep_Pawn();
+		PlayerController->OnRep_PIDContributionsGraphInfo();
+		PlayerController->OnRep_PIDValuesGraphInfo();
+		PlayerController->OnRep_PinnedSchematics();
+		PlayerController->OnRep_PlayerState();
+		PlayerController->OnRep_QuickBar();
+		PlayerController->OnRep_ReplicatedMovement();
+		PlayerController->OnRep_ReplicateMovement();
+		PlayerController->OnRep_UpdatedObjectiveStats();
+		PlayerController->OnRep_UpdatedUnsavedPrimaryMissionProgress();
+		PlayerController->OnRep_ViewTargetDBNO();
+		PlayerController->OnRep_ViewTargetHealth();
+		PlayerController->OnRep_ViewTargetShield();
+
+		//Set's Pawn vars / RPC's
+		Pawn->bActorEnableCollision = true;
+		Pawn->bIsPlayerPawnReady = true;
+		Pawn->bIsLocalPlayer = false;
+		Pawn->bReplicateMovement = true;
+
+		//Set's PlayerState Vars / RPC's
+		auto PlayerState = reinterpret_cast<AFortPlayerStateAthena*>(PlayerController->PlayerState);
+		PlayerState->bHasStartedPlaying = true;
+		PlayerState->bHasFinishedLoading = true;
+		PlayerState->bIsABot = false;
+		PlayerState->bIsDisconnected = false;
+		PlayerState->bIsGameSessionAdmin = false;
+		PlayerState->bIsGameSessionOwner = false;
+		PlayerState->bIsInactive = false;
+		PlayerState->bIsMuted = false;
+		PlayerState->bIsTalking = true;
+		PlayerState->bIsSpectator = false;
+		PlayerState->bIsReadyToContinue = true;
+		PlayerState->CurrentHealth = 100;
+		PlayerState->CurrentShield = 0;
+		PlayerState->MaxHealth = 100;
+		PlayerState->MaxShield = 100;
+		PlayerState->TeamIndex = EFortTeam::HumanPvP_Team1;
+		PlayerState->ReadyCheckState = EReadyCheckState::Ready;
+		PlayerState->CharacterParts[0] = UObject::FindObject<UCustomCharacterPart>("CustomCharacterPart F_Med_Head1.F_Med_Head1");
+		PlayerState->CharacterParts[1] = UObject::FindObject<UCustomCharacterPart>("CustomCharacterPart F_Med_Soldier_01.F_Med_Soldier_01");
+
+		PlayerState->OnRep_bHasStartedPlaying();
+		PlayerState->OnRep_bIsInactive();
+		PlayerState->OnRep_PlayerTeam();
+		PlayerState->OnRep_SquadId();
+		PlayerState->OnRep_AccessoryColorSwatches();
+		PlayerState->OnRep_AccumulatedItems();
+		PlayerState->OnRep_AttachmentReplication();
+		PlayerState->OnRep_CharacterColorSwatches();
+		PlayerState->OnRep_CharacterParts();
+		PlayerState->OnRep_CurrentCharXP();
+		PlayerState->OnRep_DeathInfo();
+		PlayerState->OnRep_Downs();
+		PlayerState->OnRep_HeroId();
+		PlayerState->OnRep_HeroType();
+		PlayerState->OnRep_Instigator();
+		PlayerState->OnRep_Kills();
+		PlayerState->OnRep_NumRejoins();
+		PlayerState->OnRep_Owner();
+		PlayerState->OnRep_PartyOwner();
+		PlayerState->OnRep_Place();
+		PlayerState->OnRep_PlatformUniqueNetIdString();
+		PlayerState->OnRep_PlayerId();
+		PlayerState->OnRep_PlayerName();
+		PlayerState->OnRep_ReplicatedMovement();
+		PlayerState->OnRep_ReplicateMovement();
+		PlayerState->OnRep_Score();
+		PlayerState->OnRep_ScoreStatChanged();
+		PlayerState->OnRep_SessionOwner();
+		PlayerState->OnRep_ShowHeroBackpack();
+		PlayerState->OnRep_ShowHeroHeadAccessories();
+		PlayerState->OnRep_SpectatingTarget();
+		PlayerState->OnRep_UniqueId();
+
+		ReplicateAllActors(Connection);
+
+		return PlayerController;
 	}
 
 	void* (*ProcessEvent)(UObject*, UFunction*, void*);
@@ -209,7 +332,7 @@ namespace Hooks
 				PlayerPawn = reinterpret_cast<APlayerPawn_Athena_C*>(GPS->STATIC_FinishSpawningActor(SpawningActor, SpawnTransform));
 				//Pawn->bCanBeDamaged = false;
 
-				auto FortPlayerStateZone = reinterpret_cast<AFortPlayerStateZone*>(PC->PlayerState);
+				auto FortPlayerStateZone = reinterpret_cast<AFortPlayerStateAthena*>(PC->PlayerState);
 
 				PC->Possess(PlayerPawn);
 
@@ -221,6 +344,10 @@ namespace Hooks
 				AsFortQuickbars->QuickBars->ServerActivateSlotInternal(EFortQuickBars::Primary, 0, 0, true);
 
 				PlayerPawn->EquipWeaponDefinition(UObject::FindObject<UFortWeaponItemDefinition>("WID_Assault_AutoHigh_Athena_SR_Ore_T03.WID_Assault_AutoHigh_Athena_SR_Ore_T03"), FGuid());
+
+				FortPlayerStateZone->TeamIndex = EFortTeam::HumanPvP_Team1;
+				FortPlayerStateZone->OnRep_PlayerTeam();
+				FortPlayerStateZone->OnRep_SquadId();
 
 				FortPlayerStateZone->CharacterParts[0] = UObject::FindObject<UCustomCharacterPart>("CustomCharacterPart F_Med_Head1.F_Med_Head1");
 				FortPlayerStateZone->CharacterParts[1] = UObject::FindObject<UCustomCharacterPart>("CustomCharacterPart F_Med_Soldier_01.F_Med_Soldier_01");
@@ -290,14 +417,12 @@ namespace Hooks
 				printf("LogUGS: Beacons Setup!\n");
 			}
 
-			if (GetAsyncKeyState(VK_F3) && 0x01)
+			if (GetAsyncKeyState(VK_F3) & 0x1)
 			{
-				auto FortEngine = UObject::FindObject<UFortEngine>("FortEngine_");
-				auto PC = reinterpret_cast<AFortPlayerControllerAthena*>(FortEngine->GameInstance->LocalPlayers[0]->PlayerController);
-				auto PlayerState = reinterpret_cast<AFortPlayerStateAthena*>(PC->PlayerState);
-				PlayerState->TeamIndex = EFortTeam::HumanPvP_Team2;
-				PlayerState->OnRep_PlayerTeam();
-				PlayerState->OnRep_SquadId();
+				auto FortPlayerStateZone = reinterpret_cast<AFortPlayerStateAthena*>(PC->PlayerState);
+				FortPlayerStateZone->TeamIndex = EFortTeam::HumanPvP_Team1;
+				FortPlayerStateZone->OnRep_PlayerTeam();
+				FortPlayerStateZone->OnRep_SquadId();
 			}
 
 			if (GetAsyncKeyState(VK_F4) & 0x1)
@@ -344,9 +469,14 @@ namespace Hooks
 			}
 		}
 
-		if (pObject->Class->GetName().find("FortPlayerController") != std::string::npos && pObject != PC && pFunction->GetName().find("Tick") == std::string::npos && pFunction->GetName().find("ClientRestart") == std::string::npos) {
+		if (pObject->Class->GetName().find("FortPlayerController") != std::string::npos && pObject != PC && pFunction->GetName().find("Tick") == std::string::npos) {
 			std::cout << "Object: " << pObject->GetFullName() << std::endl;
 			std::cout << "Function: " << pFunction->GetFullName() << std::endl;
+		}
+
+		if (pFunction->GetName().find("OnRep_") != std::string::npos)
+		{
+			std::cout << "Tried To Replicate Var: " << pFunction->GetName() << " With Object: " << pObject->GetName() << std::endl;
 		}
 
 		if (pFunction->GetName().find("ServerShortTimeout") != std::string::npos) {
