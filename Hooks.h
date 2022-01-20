@@ -73,7 +73,7 @@ namespace Hooks
 	APlayerController* (*SpawnPlayActor)(UWorld* a1, UPlayer* a2, ENetRole a3, FURL a4, void* a5, FString& Src, uint8_t a7);
 	__int64(*SetChannelActor)(UActorChannel*, AActor*);
 	UChannel* (*CreateChannel)(UNetConnection*, int, bool, int32_t);
-	bool (*PauseBeaconRequests)(AOnlineBeaconHost*, bool);
+	void (*PauseBeaconRequests)(AOnlineBeaconHost*, bool);
 	bool (*ReplicateActorG)(UActorChannel*);
 
 	bool Replicate(AActor* Actor, UNetConnection* Connection)
