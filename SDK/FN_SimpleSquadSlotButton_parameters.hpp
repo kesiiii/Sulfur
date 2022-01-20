@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -50,7 +50,7 @@ struct USimpleSquadSlotButton_C_Update_Bang_State_Params
 // Function SimpleSquadSlotButton.SimpleSquadSlotButton_C.GetSimpleSquadButtonTooltipWidget
 struct USimpleSquadSlotButton_C_GetSimpleSquadButtonTooltipWidget_Params
 {
-	class UWidget*                                     ReturnValue;                                              // (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+	class UWidget*                                     ReturnValue;                                              // (Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, IsPlainOldData)
 };
 
 // Function SimpleSquadSlotButton.SimpleSquadSlotButton_C.PreConstruct
@@ -74,8 +74,8 @@ struct USimpleSquadSlotButton_C_SquadSlotWidgetUpdated_Params
 {
 };
 
-// Function SimpleSquadSlotButton.SimpleSquadSlotButton_C.OnSelected
-struct USimpleSquadSlotButton_C_OnSelected_Params
+// Function SimpleSquadSlotButton.SimpleSquadSlotButton_C.BP_OnSelected
+struct USimpleSquadSlotButton_C_BP_OnSelected_Params
 {
 };
 

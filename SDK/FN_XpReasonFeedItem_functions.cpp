@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -32,51 +32,17 @@ void UXpReasonFeedItem_C::SetXpText(const struct FText& Text)
 }
 
 
-// Function XpReasonFeedItem.XpReasonFeedItem_C.PlayPresentEffectAndRemove
+// Function XpReasonFeedItem.XpReasonFeedItem_C.PlayPresentEffect
 // (Public, BlueprintCallable, BlueprintEvent)
-
-void UXpReasonFeedItem_C::PlayPresentEffectAndRemove()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function XpReasonFeedItem.XpReasonFeedItem_C.PlayPresentEffectAndRemove");
-
-	UXpReasonFeedItem_C_PlayPresentEffectAndRemove_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function XpReasonFeedItem.XpReasonFeedItem_C.BndEvt__Present_K2Node_ComponentBoundEvent_1_OnWidgetAnimationPlaybackStatusChanged__DelegateSignature
-// (BlueprintEvent)
-
-void UXpReasonFeedItem_C::BndEvt__Present_K2Node_ComponentBoundEvent_1_OnWidgetAnimationPlaybackStatusChanged__DelegateSignature()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function XpReasonFeedItem.XpReasonFeedItem_C.BndEvt__Present_K2Node_ComponentBoundEvent_1_OnWidgetAnimationPlaybackStatusChanged__DelegateSignature");
-
-	UXpReasonFeedItem_C_BndEvt__Present_K2Node_ComponentBoundEvent_1_OnWidgetAnimationPlaybackStatusChanged__DelegateSignature_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function XpReasonFeedItem.XpReasonFeedItem_C.ExecuteUbergraph_XpReasonFeedItem
-// ()
 // Parameters:
-// int                            EntryPoint                     (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// float                          PlaybackSpeed                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 
-void UXpReasonFeedItem_C::ExecuteUbergraph_XpReasonFeedItem(int EntryPoint)
+void UXpReasonFeedItem_C::PlayPresentEffect(float PlaybackSpeed)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function XpReasonFeedItem.XpReasonFeedItem_C.ExecuteUbergraph_XpReasonFeedItem");
+	static auto fn = UObject::FindObject<UFunction>("Function XpReasonFeedItem.XpReasonFeedItem_C.PlayPresentEffect");
 
-	UXpReasonFeedItem_C_ExecuteUbergraph_XpReasonFeedItem_Params params;
-	params.EntryPoint = EntryPoint;
+	UXpReasonFeedItem_C_PlayPresentEffect_Params params;
+	params.PlaybackSpeed = PlaybackSpeed;
 
 	auto flags = fn->FunctionFlags;
 

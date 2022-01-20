@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,63 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function AthenaInventoryEquipSlot.AthenaInventoryEquipSlot_C.Show Athena Gadget Fuel Widget
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UFortItem*               Item                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void UAthenaInventoryEquipSlot_C::Show_Athena_Gadget_Fuel_Widget(class UFortItem* Item)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaInventoryEquipSlot.AthenaInventoryEquipSlot_C.Show Athena Gadget Fuel Widget");
+
+	UAthenaInventoryEquipSlot_C_Show_Athena_Gadget_Fuel_Widget_Params params;
+	params.Item = Item;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AthenaInventoryEquipSlot.AthenaInventoryEquipSlot_C.Hide Athena Gadget Fuel Widget
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UAthenaInventoryEquipSlot_C::Hide_Athena_Gadget_Fuel_Widget()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaInventoryEquipSlot.AthenaInventoryEquipSlot_C.Hide Athena Gadget Fuel Widget");
+
+	UAthenaInventoryEquipSlot_C_Hide_Athena_Gadget_Fuel_Widget_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AthenaInventoryEquipSlot.AthenaInventoryEquipSlot_C.Update Athena Gadget Fuel Widget
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UFortItem*               ItemInSlot                     (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void UAthenaInventoryEquipSlot_C::Update_Athena_Gadget_Fuel_Widget(class UFortItem* ItemInSlot)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaInventoryEquipSlot.AthenaInventoryEquipSlot_C.Update Athena Gadget Fuel Widget");
+
+	UAthenaInventoryEquipSlot_C_Update_Athena_Gadget_Fuel_Widget_Params params;
+	params.ItemInSlot = ItemInSlot;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
 
 // Function AthenaInventoryEquipSlot.AthenaInventoryEquipSlot_C.IsFocusOfDrop
 // (Public, HasOutParms, BlueprintCallable, BlueprintEvent)
@@ -88,7 +145,7 @@ bool UAthenaInventoryEquipSlot_C::OnDragOver(struct FGeometry* MyGeometry, struc
 // (BlueprintCosmetic, Event, Public, HasOutParms, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // struct FGeometry*              MyGeometry                     (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData)
-// struct FPointerEvent           MouseEvent                     (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+// struct FPointerEvent*          MouseEvent                     (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
 // struct FEventReply             ReturnValue                    (Parm, OutParm, ReturnParm)
 
 struct FEventReply UAthenaInventoryEquipSlot_C::OnPreviewMouseButtonDown(struct FGeometry* MyGeometry, struct FPointerEvent* MouseEvent)
@@ -97,15 +154,13 @@ struct FEventReply UAthenaInventoryEquipSlot_C::OnPreviewMouseButtonDown(struct 
 
 	UAthenaInventoryEquipSlot_C_OnPreviewMouseButtonDown_Params params;
 	params.MyGeometry = MyGeometry;
+	params.MouseEvent = MouseEvent;
 
 	auto flags = fn->FunctionFlags;
 
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
-
-	if (MouseEvent != nullptr)
-		*MouseEvent = params.MouseEvent;
 
 	return params.ReturnValue;
 }
@@ -153,7 +208,7 @@ void UAthenaInventoryEquipSlot_C::TryAndShowDropTarget()
 // (BlueprintCosmetic, Event, Public, HasOutParms, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // struct FGeometry*              MyGeometry                     (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData)
-// struct FPointerEvent           PointerEvent                   (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+// struct FPointerEvent*          PointerEvent                   (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
 // class UDragDropOperation*      Operation                      (Parm, OutParm, ZeroConstructor, IsPlainOldData)
 
 void UAthenaInventoryEquipSlot_C::OnDragDetected(struct FGeometry* MyGeometry, struct FPointerEvent* PointerEvent, class UDragDropOperation** Operation)
@@ -162,6 +217,7 @@ void UAthenaInventoryEquipSlot_C::OnDragDetected(struct FGeometry* MyGeometry, s
 
 	UAthenaInventoryEquipSlot_C_OnDragDetected_Params params;
 	params.MyGeometry = MyGeometry;
+	params.PointerEvent = PointerEvent;
 
 	auto flags = fn->FunctionFlags;
 
@@ -169,8 +225,6 @@ void UAthenaInventoryEquipSlot_C::OnDragDetected(struct FGeometry* MyGeometry, s
 
 	fn->FunctionFlags = flags;
 
-	if (PointerEvent != nullptr)
-		*PointerEvent = params.PointerEvent;
 	if (Operation != nullptr)
 		*Operation = params.Operation;
 }
@@ -260,16 +314,18 @@ void UAthenaInventoryEquipSlot_C::Tick(struct FGeometry* MyGeometry, float* InDe
 
 
 // Function AthenaInventoryEquipSlot.AthenaInventoryEquipSlot_C.OnQuickbarContentsChanged_Event_0_1
-// (BlueprintCallable, BlueprintEvent)
+// (HasOutParms, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // EFortQuickBars                 QuickbarIndex                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// TArray<int>                    ChangedSlots                   (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ZeroConstructor, ReferenceParm)
 
-void UAthenaInventoryEquipSlot_C::OnQuickbarContentsChanged_Event_0_1(EFortQuickBars QuickbarIndex)
+void UAthenaInventoryEquipSlot_C::OnQuickbarContentsChanged_Event_0_1(EFortQuickBars QuickbarIndex, TArray<int> ChangedSlots)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AthenaInventoryEquipSlot.AthenaInventoryEquipSlot_C.OnQuickbarContentsChanged_Event_0_1");
 
 	UAthenaInventoryEquipSlot_C_OnQuickbarContentsChanged_Event_0_1_Params params;
 	params.QuickbarIndex = QuickbarIndex;
+	params.ChangedSlots = ChangedSlots;
 
 	auto flags = fn->FunctionFlags;
 
@@ -279,14 +335,14 @@ void UAthenaInventoryEquipSlot_C::OnQuickbarContentsChanged_Event_0_1(EFortQuick
 }
 
 
-// Function AthenaInventoryEquipSlot.AthenaInventoryEquipSlot_C.OnClicked
+// Function AthenaInventoryEquipSlot.AthenaInventoryEquipSlot_C.BP_OnClicked
 // (Event, Protected, BlueprintEvent)
 
-void UAthenaInventoryEquipSlot_C::OnClicked()
+void UAthenaInventoryEquipSlot_C::BP_OnClicked()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaInventoryEquipSlot.AthenaInventoryEquipSlot_C.OnClicked");
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaInventoryEquipSlot.AthenaInventoryEquipSlot_C.BP_OnClicked");
 
-	UAthenaInventoryEquipSlot_C_OnClicked_Params params;
+	UAthenaInventoryEquipSlot_C_BP_OnClicked_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -316,14 +372,14 @@ void UAthenaInventoryEquipSlot_C::OnAddedToFocusPath(struct FFocusEvent* InFocus
 }
 
 
-// Function AthenaInventoryEquipSlot.AthenaInventoryEquipSlot_C.OnSelected
+// Function AthenaInventoryEquipSlot.AthenaInventoryEquipSlot_C.BP_OnSelected
 // (Event, Protected, BlueprintEvent)
 
-void UAthenaInventoryEquipSlot_C::OnSelected()
+void UAthenaInventoryEquipSlot_C::BP_OnSelected()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaInventoryEquipSlot.AthenaInventoryEquipSlot_C.OnSelected");
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaInventoryEquipSlot.AthenaInventoryEquipSlot_C.BP_OnSelected");
 
-	UAthenaInventoryEquipSlot_C_OnSelected_Params params;
+	UAthenaInventoryEquipSlot_C_BP_OnSelected_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -333,14 +389,14 @@ void UAthenaInventoryEquipSlot_C::OnSelected()
 }
 
 
-// Function AthenaInventoryEquipSlot.AthenaInventoryEquipSlot_C.OnDeselected
+// Function AthenaInventoryEquipSlot.AthenaInventoryEquipSlot_C.BP_OnDeselected
 // (Event, Protected, BlueprintEvent)
 
-void UAthenaInventoryEquipSlot_C::OnDeselected()
+void UAthenaInventoryEquipSlot_C::BP_OnDeselected()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaInventoryEquipSlot.AthenaInventoryEquipSlot_C.OnDeselected");
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaInventoryEquipSlot.AthenaInventoryEquipSlot_C.BP_OnDeselected");
 
-	UAthenaInventoryEquipSlot_C_OnDeselected_Params params;
+	UAthenaInventoryEquipSlot_C_BP_OnDeselected_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -350,14 +406,14 @@ void UAthenaInventoryEquipSlot_C::OnDeselected()
 }
 
 
-// Function AthenaInventoryEquipSlot.AthenaInventoryEquipSlot_C.OnDoubleClicked
+// Function AthenaInventoryEquipSlot.AthenaInventoryEquipSlot_C.BP_OnDoubleClicked
 // (Event, Protected, BlueprintEvent)
 
-void UAthenaInventoryEquipSlot_C::OnDoubleClicked()
+void UAthenaInventoryEquipSlot_C::BP_OnDoubleClicked()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaInventoryEquipSlot.AthenaInventoryEquipSlot_C.OnDoubleClicked");
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaInventoryEquipSlot.AthenaInventoryEquipSlot_C.BP_OnDoubleClicked");
 
-	UAthenaInventoryEquipSlot_C_OnDoubleClicked_Params params;
+	UAthenaInventoryEquipSlot_C_BP_OnDoubleClicked_Params params;
 
 	auto flags = fn->FunctionFlags;
 

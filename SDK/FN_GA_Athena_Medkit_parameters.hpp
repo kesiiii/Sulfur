@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -46,6 +46,12 @@ struct UGA_Athena_Medkit_C_Triggered_4F161F934DDA0C407BD9A48EEEE7DDCE_Params
 // Function GA_Athena_Medkit.GA_Athena_Medkit_C.K2_ActivateAbility
 struct UGA_Athena_Medkit_C_K2_ActivateAbility_Params
 {
+};
+
+// Function GA_Athena_Medkit.GA_Athena_Medkit_C.K2_OnEndAbility
+struct UGA_Athena_Medkit_C_K2_OnEndAbility_Params
+{
+	bool*                                              bWasCancelled;                                            // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function GA_Athena_Medkit.GA_Athena_Medkit_C.ExecuteUbergraph_GA_Athena_Medkit

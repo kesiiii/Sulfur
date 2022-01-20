@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -77,7 +77,7 @@ void UObject::ExecuteUbergraph(int EntryPoint)
 
 	auto flags = fn->FunctionFlags;
 
-	UObject::ProcessEvent(fn, &params);
+	((UObject*)(this))->ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
 }

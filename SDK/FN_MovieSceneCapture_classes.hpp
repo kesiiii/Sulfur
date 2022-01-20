@@ -1,58 +1,16 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
 //---------------------------------------------------------------------------
 //Classes
 //---------------------------------------------------------------------------
-
-// Class MovieSceneCapture.MovieSceneCapture
-// 0x0218 (0x0240 - 0x0028)
-class UMovieSceneCapture : public UObject
-{
-public:
-	unsigned char                                      UnknownData00[0x10];                                      // 0x0028(0x0010) MISSED OFFSET
-	struct FCaptureProtocolID                          CaptureType;                                              // 0x0038(0x0008) (Edit, Config)
-	class UMovieSceneCaptureProtocolSettings*          ProtocolSettings;                                         // 0x0040(0x0008) (Edit, ZeroConstructor, IsPlainOldData)
-	struct FMovieSceneCaptureSettings                  Settings;                                                 // 0x0048(0x0048) (Edit, Config)
-	bool                                               bUseSeparateProcess;                                      // 0x0090(0x0001) (Edit, ZeroConstructor, Config, IsPlainOldData)
-	bool                                               bCloseEditorWhenCaptureStarts;                            // 0x0091(0x0001) (Edit, ZeroConstructor, Config, IsPlainOldData)
-	unsigned char                                      UnknownData01[0x6];                                       // 0x0092(0x0006) MISSED OFFSET
-	struct FString                                     AdditionalCommandLineArguments;                           // 0x0098(0x0010) (Edit, ZeroConstructor, Config)
-	struct FString                                     InheritedCommandLineArguments;                            // 0x00A8(0x0010) (Edit, ZeroConstructor, Transient)
-	unsigned char                                      UnknownData02[0x188];                                     // 0x00B8(0x0188) MISSED OFFSET
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class MovieSceneCapture.MovieSceneCapture");
-		return ptr;
-	}
-
-};
-
-
-// Class MovieSceneCapture.AutomatedLevelSequenceCapture
-// 0x0000 (0x0240 - 0x0240)
-class UAutomatedLevelSequenceCapture : public UMovieSceneCapture
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class MovieSceneCapture.AutomatedLevelSequenceCapture");
-		return ptr;
-	}
-
-};
-
 
 // Class MovieSceneCapture.MovieSceneCaptureProtocolSettings
 // 0x0000 (0x0028 - 0x0028)
@@ -70,17 +28,19 @@ public:
 
 
 // Class MovieSceneCapture.CompositionGraphCaptureSettings
-// 0x0038 (0x0060 - 0x0028)
+// 0x0040 (0x0068 - 0x0028)
 class UCompositionGraphCaptureSettings : public UMovieSceneCaptureProtocolSettings
 {
 public:
-	struct FCompositionGraphCapturePasses              IncludeRenderPasses;                                      // 0x0028(0x0010) (Edit, Config)
-	bool                                               bCaptureFramesInHDR;                                      // 0x0038(0x0001) (Edit, ZeroConstructor, Config, IsPlainOldData)
+	struct FCompositionGraphCapturePasses              IncludeRenderPasses;                                      // 0x0028(0x0010) (Edit, BlueprintVisible, Config)
+	bool                                               bCaptureFramesInHDR;                                      // 0x0038(0x0001) (Edit, BlueprintVisible, ZeroConstructor, Config, IsPlainOldData)
 	unsigned char                                      UnknownData00[0x3];                                       // 0x0039(0x0003) MISSED OFFSET
-	int                                                HDRCompressionQuality;                                    // 0x003C(0x0004) (Edit, ZeroConstructor, Config, IsPlainOldData)
-	TEnumAsByte<EHDRCaptureGamut>                      CaptureGamut;                                             // 0x0040(0x0001) (Edit, ZeroConstructor, Config, IsPlainOldData)
+	int                                                HDRCompressionQuality;                                    // 0x003C(0x0004) (Edit, BlueprintVisible, ZeroConstructor, Config, IsPlainOldData)
+	TEnumAsByte<EHDRCaptureGamut>                      CaptureGamut;                                             // 0x0040(0x0001) (Edit, BlueprintVisible, ZeroConstructor, Config, IsPlainOldData)
 	unsigned char                                      UnknownData01[0x7];                                       // 0x0041(0x0007) MISSED OFFSET
-	struct FSoftObjectPath                             PostProcessingMaterial;                                   // 0x0048(0x0018) (Edit, Config)
+	struct FSoftObjectPath                             PostProcessingMaterial;                                   // 0x0048(0x0018) (Edit, BlueprintVisible, Config)
+	bool                                               bDisableScreenPercentage;                                 // 0x0060(0x0001) (Edit, BlueprintVisible, ZeroConstructor, Config, IsPlainOldData)
+	unsigned char                                      UnknownData02[0x7];                                       // 0x0061(0x0007) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -154,14 +114,40 @@ public:
 };
 
 
+// Class MovieSceneCapture.MovieSceneCapture
+// 0x01B0 (0x01D8 - 0x0028)
+class UMovieSceneCapture : public UObject
+{
+public:
+	unsigned char                                      UnknownData00[0x10];                                      // 0x0028(0x0010) MISSED OFFSET
+	struct FCaptureProtocolID                          CaptureType;                                              // 0x0038(0x0008) (Edit, BlueprintVisible, Config)
+	class UMovieSceneCaptureProtocolSettings*          ProtocolSettings;                                         // 0x0040(0x0008) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	struct FMovieSceneCaptureSettings                  Settings;                                                 // 0x0048(0x0050) (Edit, BlueprintVisible, Config)
+	bool                                               bUseSeparateProcess;                                      // 0x0098(0x0001) (Edit, BlueprintVisible, ZeroConstructor, Config, IsPlainOldData)
+	bool                                               bCloseEditorWhenCaptureStarts;                            // 0x0099(0x0001) (Edit, BlueprintVisible, ZeroConstructor, Config, IsPlainOldData)
+	unsigned char                                      UnknownData01[0x6];                                       // 0x009A(0x0006) MISSED OFFSET
+	struct FString                                     AdditionalCommandLineArguments;                           // 0x00A0(0x0010) (Edit, BlueprintVisible, ZeroConstructor, Config)
+	struct FString                                     InheritedCommandLineArguments;                            // 0x00B0(0x0010) (Edit, BlueprintVisible, ZeroConstructor, Transient, Config)
+	unsigned char                                      UnknownData02[0x118];                                     // 0x00C0(0x0118) MISSED OFFSET
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class MovieSceneCapture.MovieSceneCapture");
+		return ptr;
+	}
+
+};
+
+
 // Class MovieSceneCapture.LevelCapture
-// 0x0020 (0x0260 - 0x0240)
+// 0x0020 (0x01F8 - 0x01D8)
 class ULevelCapture : public UMovieSceneCapture
 {
 public:
-	unsigned char                                      UnknownData00[0x4];                                       // 0x0240(0x0004) MISSED OFFSET
-	struct FGuid                                       PrerequisiteActorId;                                      // 0x0244(0x0010) (IsPlainOldData)
-	unsigned char                                      UnknownData01[0xC];                                       // 0x0254(0x000C) MISSED OFFSET
+	bool                                               bAutoStartCapture;                                        // 0x01D8(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0xB];                                       // 0x01D9(0x000B) MISSED OFFSET
+	struct FGuid                                       PrerequisiteActorId;                                      // 0x01E4(0x0010) (IsPlainOldData)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x01F4(0x0004) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

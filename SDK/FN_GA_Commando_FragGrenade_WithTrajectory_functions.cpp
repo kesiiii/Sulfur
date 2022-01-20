@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -85,14 +85,14 @@ void UGA_Commando_FragGrenade_WithTrajectory_C::UpdateTrajectorySpline()
 }
 
 
-// Function GA_Commando_FragGrenade_WithTrajectory.GA_Commando_FragGrenade_WithTrajectory_C.SetupDummyProjectile
+// Function GA_Commando_FragGrenade_WithTrajectory.GA_Commando_FragGrenade_WithTrajectory_C.SetUpDummyProjectile
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
 
-void UGA_Commando_FragGrenade_WithTrajectory_C::SetupDummyProjectile()
+void UGA_Commando_FragGrenade_WithTrajectory_C::SetUpDummyProjectile()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function GA_Commando_FragGrenade_WithTrajectory.GA_Commando_FragGrenade_WithTrajectory_C.SetupDummyProjectile");
+	static auto fn = UObject::FindObject<UFunction>("Function GA_Commando_FragGrenade_WithTrajectory.GA_Commando_FragGrenade_WithTrajectory_C.SetUpDummyProjectile");
 
-	UGA_Commando_FragGrenade_WithTrajectory_C_SetupDummyProjectile_Params params;
+	UGA_Commando_FragGrenade_WithTrajectory_C_SetUpDummyProjectile_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -130,7 +130,7 @@ void UGA_Commando_FragGrenade_WithTrajectory_C::SpawnLocationAndRotation(struct 
 // Function GA_Commando_FragGrenade_WithTrajectory.GA_Commando_FragGrenade_WithTrajectory_C.SetupAbility
 // (Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// class UAbilitySystemComponent* AbilitySystemComponentRef      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UAbilitySystemComponent* AbilitySystemComponentRef      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 
 void UGA_Commando_FragGrenade_WithTrajectory_C::SetupAbility(class UAbilitySystemComponent* AbilitySystemComponentRef)
 {
@@ -424,6 +424,23 @@ void UGA_Commando_FragGrenade_WithTrajectory_C::CleanupTrajectoryDisplay()
 }
 
 
+// Function GA_Commando_FragGrenade_WithTrajectory.GA_Commando_FragGrenade_WithTrajectory_C.TossGrenade
+// (BlueprintCallable, BlueprintEvent)
+
+void UGA_Commando_FragGrenade_WithTrajectory_C::TossGrenade()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function GA_Commando_FragGrenade_WithTrajectory.GA_Commando_FragGrenade_WithTrajectory_C.TossGrenade");
+
+	UGA_Commando_FragGrenade_WithTrajectory_C_TossGrenade_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function GA_Commando_FragGrenade_WithTrajectory.GA_Commando_FragGrenade_WithTrajectory_C.K2_ActivateAbility
 // (Event, Protected, BlueprintEvent)
 
@@ -441,14 +458,14 @@ void UGA_Commando_FragGrenade_WithTrajectory_C::K2_ActivateAbility()
 }
 
 
-// Function GA_Commando_FragGrenade_WithTrajectory.GA_Commando_FragGrenade_WithTrajectory_C.TossGrenade
-// (BlueprintCallable, BlueprintEvent)
+// Function GA_Commando_FragGrenade_WithTrajectory.GA_Commando_FragGrenade_WithTrajectory_C.CommitOnSever
+// (Net, NetServer, BlueprintCallable, BlueprintEvent)
 
-void UGA_Commando_FragGrenade_WithTrajectory_C::TossGrenade()
+void UGA_Commando_FragGrenade_WithTrajectory_C::CommitOnSever()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function GA_Commando_FragGrenade_WithTrajectory.GA_Commando_FragGrenade_WithTrajectory_C.TossGrenade");
+	static auto fn = UObject::FindObject<UFunction>("Function GA_Commando_FragGrenade_WithTrajectory.GA_Commando_FragGrenade_WithTrajectory_C.CommitOnSever");
 
-	UGA_Commando_FragGrenade_WithTrajectory_C_TossGrenade_Params params;
+	UGA_Commando_FragGrenade_WithTrajectory_C_CommitOnSever_Params params;
 
 	auto flags = fn->FunctionFlags;
 

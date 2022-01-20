@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -33,10 +33,10 @@ void AGCN_MiniBoss_C::OverwriteElementalParticles(class AEnemyPawn_Parent_C* Ene
 
 
 // Function GCN_MiniBoss.GCN_MiniBoss_C.OnActive
-// (Event, Public, HasOutParms, HasDefaults, BlueprintCallable, BlueprintEvent)
+// (Event, Public, HasOutParms, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // class AActor**                 MyTarget                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-// struct FGameplayCueParameters  Parameters                     (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+// struct FGameplayCueParameters* Parameters                     (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
 // bool                           ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
 
 bool AGCN_MiniBoss_C::OnActive(class AActor** MyTarget, struct FGameplayCueParameters* Parameters)
@@ -45,15 +45,13 @@ bool AGCN_MiniBoss_C::OnActive(class AActor** MyTarget, struct FGameplayCueParam
 
 	AGCN_MiniBoss_C_OnActive_Params params;
 	params.MyTarget = MyTarget;
+	params.Parameters = Parameters;
 
 	auto flags = fn->FunctionFlags;
 
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
-
-	if (Parameters != nullptr)
-		*Parameters = params.Parameters;
 
 	return params.ReturnValue;
 }
@@ -63,7 +61,7 @@ bool AGCN_MiniBoss_C::OnActive(class AActor** MyTarget, struct FGameplayCueParam
 // (Event, Public, HasOutParms, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // class AActor**                 MyTarget                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-// struct FGameplayCueParameters  Parameters                     (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+// struct FGameplayCueParameters* Parameters                     (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
 // bool                           ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
 
 bool AGCN_MiniBoss_C::OnRemove(class AActor** MyTarget, struct FGameplayCueParameters* Parameters)
@@ -72,15 +70,13 @@ bool AGCN_MiniBoss_C::OnRemove(class AActor** MyTarget, struct FGameplayCueParam
 
 	AGCN_MiniBoss_C_OnRemove_Params params;
 	params.MyTarget = MyTarget;
+	params.Parameters = Parameters;
 
 	auto flags = fn->FunctionFlags;
 
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
-
-	if (Parameters != nullptr)
-		*Parameters = params.Parameters;
 
 	return params.ReturnValue;
 }

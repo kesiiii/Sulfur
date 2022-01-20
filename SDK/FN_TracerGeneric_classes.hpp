@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -15,7 +13,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass TracerGeneric.TracerGeneric_C
-// 0x0000 (0x03F0 - 0x03F0)
+// 0x0000 (0x03E0 - 0x03E0)
 class ATracerGeneric_C : public AFortTracerBase
 {
 public:

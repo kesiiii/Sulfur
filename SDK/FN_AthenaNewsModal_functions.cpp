@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -42,7 +42,7 @@ struct FEventReply UAthenaNewsModal_C::OnMouseButtonDown_0_1(const struct FGeome
 // Function AthenaNewsModal.AthenaNewsModal_C.BndEvt__CloseButton_K2Node_ComponentBoundEvent_21_CommonButtonClicked__DelegateSignature
 // (BlueprintEvent)
 // Parameters:
-// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 
 void UAthenaNewsModal_C::BndEvt__CloseButton_K2Node_ComponentBoundEvent_21_CommonButtonClicked__DelegateSignature(class UCommonButton* Button)
 {
@@ -84,6 +84,23 @@ void UAthenaNewsModal_C::ForceNewsClosed()
 	static auto fn = UObject::FindObject<UFunction>("Function AthenaNewsModal.AthenaNewsModal_C.ForceNewsClosed");
 
 	UAthenaNewsModal_C_ForceNewsClosed_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AthenaNewsModal.AthenaNewsModal_C.OnActivated
+// (Event, Protected, BlueprintEvent)
+
+void UAthenaNewsModal_C::OnActivated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaNewsModal.AthenaNewsModal_C.OnActivated");
+
+	UAthenaNewsModal_C_OnActivated_Params params;
 
 	auto flags = fn->FunctionFlags;
 

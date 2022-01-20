@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -17,12 +17,6 @@ namespace SDK
 // Function EpicCMSUIFramework.EpicCMSTileBase.Launch
 struct UEpicCMSTileBase_Launch_Params
 {
-};
-
-// Function EpicCMSUIFramework.EpicCMSTileBase.DynamicHandleIconLoadingStateChanged
-struct UEpicCMSTileBase_DynamicHandleIconLoadingStateChanged_Params
-{
-	bool                                               bIsLoading;                                               // (Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function EpicCMSUIFramework.EpicCMSTileCarousel.SetCurrentPageByIndex

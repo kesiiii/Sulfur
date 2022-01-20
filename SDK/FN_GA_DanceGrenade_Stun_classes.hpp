@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -15,13 +13,13 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass GA_DanceGrenade_Stun.GA_DanceGrenade_Stun_C
-// 0x0018 (0x0AC8 - 0x0AB0)
+// 0x0018 (0x08E8 - 0x08D0)
 class UGA_DanceGrenade_Stun_C : public UFortGameplayAbility
 {
 public:
-	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x0AB0(0x0008) (Transient, DuplicateTransient)
-	struct FActiveGameplayEffectHandle                 EffectHandle;                                             // 0x0AB8(0x0008) (Edit, BlueprintVisible, DisableEditOnInstance)
-	class UAnimMontage*                                AnimMontage;                                              // 0x0AC0(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x08D0(0x0008) (Transient, DuplicateTransient)
+	struct FActiveGameplayEffectHandle                 EffectHandle;                                             // 0x08D8(0x0008) (Edit, BlueprintVisible, DisableEditOnInstance)
+	class UAnimMontage*                                AnimMontage;                                              // 0x08E0(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
 
 	static UClass* StaticClass()
 	{

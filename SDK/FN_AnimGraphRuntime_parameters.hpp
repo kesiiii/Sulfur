@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -29,6 +29,30 @@ struct UKismetAnimationLibrary_K2_TwoBoneIK_Params
 	float                                              MaxStretchScale;                                          // (Parm, ZeroConstructor, IsPlainOldData)
 };
 
+// Function AnimGraphRuntime.KismetAnimationLibrary.K2_MakePerlinNoiseVectorAndRemap
+struct UKismetAnimationLibrary_K2_MakePerlinNoiseVectorAndRemap_Params
+{
+	float                                              X;                                                        // (Parm, ZeroConstructor, IsPlainOldData)
+	float                                              Y;                                                        // (Parm, ZeroConstructor, IsPlainOldData)
+	float                                              Z;                                                        // (Parm, ZeroConstructor, IsPlainOldData)
+	float                                              RangeOutMinX;                                             // (Parm, ZeroConstructor, IsPlainOldData)
+	float                                              RangeOutMaxX;                                             // (Parm, ZeroConstructor, IsPlainOldData)
+	float                                              RangeOutMinY;                                             // (Parm, ZeroConstructor, IsPlainOldData)
+	float                                              RangeOutMaxY;                                             // (Parm, ZeroConstructor, IsPlainOldData)
+	float                                              RangeOutMinZ;                                             // (Parm, ZeroConstructor, IsPlainOldData)
+	float                                              RangeOutMaxZ;                                             // (Parm, ZeroConstructor, IsPlainOldData)
+	struct FVector                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm, IsPlainOldData)
+};
+
+// Function AnimGraphRuntime.KismetAnimationLibrary.K2_MakePerlinNoiseAndRemap
+struct UKismetAnimationLibrary_K2_MakePerlinNoiseAndRemap_Params
+{
+	float                                              Value;                                                    // (Parm, ZeroConstructor, IsPlainOldData)
+	float                                              RangeOutMin;                                              // (Parm, ZeroConstructor, IsPlainOldData)
+	float                                              RangeOutMax;                                              // (Parm, ZeroConstructor, IsPlainOldData)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+};
+
 // Function AnimGraphRuntime.KismetAnimationLibrary.K2_LookAt
 struct UKismetAnimationLibrary_K2_LookAt_Params
 {
@@ -39,6 +63,31 @@ struct UKismetAnimationLibrary_K2_LookAt_Params
 	struct FVector                                     UpVector;                                                 // (Parm, IsPlainOldData)
 	float                                              ClampConeInDegree;                                        // (Parm, ZeroConstructor, IsPlainOldData)
 	struct FTransform                                  ReturnValue;                                              // (Parm, OutParm, ReturnParm, IsPlainOldData)
+};
+
+// Function AnimGraphRuntime.KismetAnimationLibrary.K2_DistanceBetweenTwoSocketsAndMapRange
+struct UKismetAnimationLibrary_K2_DistanceBetweenTwoSocketsAndMapRange_Params
+{
+	class USkeletalMeshComponent*                      Component;                                                // (ConstParm, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
+	struct FName                                       SocketOrBoneNameA;                                        // (ConstParm, Parm, ZeroConstructor, IsPlainOldData)
+	TEnumAsByte<ERelativeTransformSpace>               SocketSpaceA;                                             // (Parm, ZeroConstructor, IsPlainOldData)
+	struct FName                                       SocketOrBoneNameB;                                        // (ConstParm, Parm, ZeroConstructor, IsPlainOldData)
+	TEnumAsByte<ERelativeTransformSpace>               SocketSpaceB;                                             // (Parm, ZeroConstructor, IsPlainOldData)
+	bool                                               bRemapRange;                                              // (Parm, ZeroConstructor, IsPlainOldData)
+	float                                              InRangeMin;                                               // (Parm, ZeroConstructor, IsPlainOldData)
+	float                                              InRangeMax;                                               // (Parm, ZeroConstructor, IsPlainOldData)
+	float                                              OutRangeMin;                                              // (Parm, ZeroConstructor, IsPlainOldData)
+	float                                              OutRangeMax;                                              // (Parm, ZeroConstructor, IsPlainOldData)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+};
+
+// Function AnimGraphRuntime.KismetAnimationLibrary.K2_DirectionBetweenSockets
+struct UKismetAnimationLibrary_K2_DirectionBetweenSockets_Params
+{
+	class USkeletalMeshComponent*                      Component;                                                // (ConstParm, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
+	struct FName                                       SocketOrBoneNameFrom;                                     // (ConstParm, Parm, ZeroConstructor, IsPlainOldData)
+	struct FName                                       SocketOrBoneNameTo;                                       // (ConstParm, Parm, ZeroConstructor, IsPlainOldData)
+	struct FVector                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm, IsPlainOldData)
 };
 
 // Function AnimGraphRuntime.PlayMontageCallbackProxy.OnNotifyEndReceived

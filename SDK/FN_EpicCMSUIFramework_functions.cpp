@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -20,27 +20,6 @@ void UEpicCMSTileBase::Launch()
 	static auto fn = UObject::FindObject<UFunction>("Function EpicCMSUIFramework.EpicCMSTileBase.Launch");
 
 	UEpicCMSTileBase_Launch_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function EpicCMSUIFramework.EpicCMSTileBase.DynamicHandleIconLoadingStateChanged
-// (Final, Native, Private)
-// Parameters:
-// bool                           bIsLoading                     (Parm, ZeroConstructor, IsPlainOldData)
-
-void UEpicCMSTileBase::DynamicHandleIconLoadingStateChanged(bool bIsLoading)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function EpicCMSUIFramework.EpicCMSTileBase.DynamicHandleIconLoadingStateChanged");
-
-	UEpicCMSTileBase_DynamicHandleIconLoadingStateChanged_Params params;
-	params.bIsLoading = bIsLoading;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;

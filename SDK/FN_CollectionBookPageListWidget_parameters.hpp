@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -44,12 +44,6 @@ struct UCollectionBookPageListWidget_C_SetupAsPage_Params
 	class UFortCollectionBookPage**                    Page;                                                     // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
-// Function CollectionBookPageListWidget.CollectionBookPageListWidget_C.OnExpansionChanged
-struct UCollectionBookPageListWidget_C_OnExpansionChanged_Params
-{
-	bool*                                              bExpanded;                                                // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-};
-
 // Function CollectionBookPageListWidget.CollectionBookPageListWidget_C.PreConstruct
 struct UCollectionBookPageListWidget_C_PreConstruct_Params
 {
@@ -68,7 +62,7 @@ struct UCollectionBookPageListWidget_C_OnPageDetailsUpdated_Params
 // Function CollectionBookPageListWidget.CollectionBookPageListWidget_C.OnSelectionChanged
 struct UCollectionBookPageListWidget_C_OnSelectionChanged_Params
 {
-	class UCommonButton*                               ThisButton;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class UCommonButton*                               ThisButton;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 	bool                                               bSelected;                                                // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
@@ -78,6 +72,12 @@ struct UCollectionBookPageListWidget_C_OnCategoryDetailsUpdated_Params
 	int*                                               AvailableSlots;                                           // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 	int*                                               FilledSlots;                                              // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 	int*                                               TotalSlots;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function CollectionBookPageListWidget.CollectionBookPageListWidget_C.BP_OnItemExpansionChanged
+struct UCollectionBookPageListWidget_C_BP_OnItemExpansionChanged_Params
+{
+	bool*                                              bIsExpanded;                                              // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function CollectionBookPageListWidget.CollectionBookPageListWidget_C.ExecuteUbergraph_CollectionBookPageListWidget

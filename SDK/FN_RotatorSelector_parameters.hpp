@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -14,14 +14,33 @@ namespace SDK
 //Parameters
 //---------------------------------------------------------------------------
 
+// Function RotatorSelector.RotatorSelector_C.Show Param Name
+struct URotatorSelector_C_Show_Param_Name_Params
+{
+	bool                                               Show;                                                     // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function RotatorSelector.RotatorSelector_C.Update Size
+struct URotatorSelector_C_Update_Size_Params
+{
+};
+
+// Function RotatorSelector.RotatorSelector_C.OnFocusReceived
+struct URotatorSelector_C_OnFocusReceived_Params
+{
+	struct FGeometry*                                  MyGeometry;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData)
+	struct FFocusEvent*                                InFocusEvent;                                             // (BlueprintVisible, BlueprintReadOnly, Parm)
+	struct FEventReply                                 ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function RotatorSelector.RotatorSelector_C.Update Options
 struct URotatorSelector_C_Update_Options_Params
 {
 	TArray<struct FText>                               NewParam;                                                 // (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ZeroConstructor, ReferenceParm)
 };
 
-// Function RotatorSelector.RotatorSelector_C.Center on Widget
-struct URotatorSelector_C_Center_on_Widget_Params
+// Function RotatorSelector.RotatorSelector_C.Center On Widget
+struct URotatorSelector_C_Center_On_Widget_Params
 {
 };
 
@@ -29,9 +48,9 @@ struct URotatorSelector_C_Center_on_Widget_Params
 struct URotatorSelector_C_Initialize_Params
 {
 	struct FText                                       Display_Text;                                             // (BlueprintVisible, BlueprintReadOnly, Parm)
-	TArray<struct FText>                               options;                                                  // (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ZeroConstructor, ReferenceParm)
+	TArray<struct FText>                               Options;                                                  // (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ZeroConstructor, ReferenceParm)
 	struct FText                                       Hover_Text;                                               // (BlueprintVisible, BlueprintReadOnly, Parm)
-	class UCommonTextBlock*                            Tab_Tooltip;                                              // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class UCommonTextBlock*                            Tab_Tooltip;                                              // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 };
 
 // Function RotatorSelector.RotatorSelector_C.Update Row Selector
@@ -67,13 +86,19 @@ struct URotatorSelector_C_BndEvt__TextRotator_K2Node_ComponentBoundEvent_5_OnRot
 // Function RotatorSelector.RotatorSelector_C.BndEvt__ButtonLeft_K2Node_ComponentBoundEvent_1_CommonButtonClicked__DelegateSignature
 struct URotatorSelector_C_BndEvt__ButtonLeft_K2Node_ComponentBoundEvent_1_CommonButtonClicked__DelegateSignature_Params
 {
-	class UCommonButton*                               Button;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class UCommonButton*                               Button;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 };
 
 // Function RotatorSelector.RotatorSelector_C.BndEvt__ButtonRight_K2Node_ComponentBoundEvent_15_CommonButtonClicked__DelegateSignature
 struct URotatorSelector_C_BndEvt__ButtonRight_K2Node_ComponentBoundEvent_15_CommonButtonClicked__DelegateSignature_Params
 {
-	class UCommonButton*                               Button;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class UCommonButton*                               Button;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
+};
+
+// Function RotatorSelector.RotatorSelector_C.PreConstruct
+struct URotatorSelector_C_PreConstruct_Params
+{
+	bool*                                              IsDesignTime;                                             // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function RotatorSelector.RotatorSelector_C.ExecuteUbergraph_RotatorSelector

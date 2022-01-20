@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,104 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function EliminatedOverlay.EliminatedOverlay_C.GetMultiwinnerIndex
+// (Public, HasOutParms, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// int                            RequestedPosition              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// int                            ValidatedPosition              (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+
+void UEliminatedOverlay_C::GetMultiwinnerIndex(int RequestedPosition, int* ValidatedPosition)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function EliminatedOverlay.EliminatedOverlay_C.GetMultiwinnerIndex");
+
+	UEliminatedOverlay_C_GetMultiwinnerIndex_Params params;
+	params.RequestedPosition = RequestedPosition;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (ValidatedPosition != nullptr)
+		*ValidatedPosition = params.ValidatedPosition;
+}
+
+
+// Function EliminatedOverlay.EliminatedOverlay_C.UpdateMultiwinner
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void UEliminatedOverlay_C::UpdateMultiwinner()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function EliminatedOverlay.EliminatedOverlay_C.UpdateMultiwinner");
+
+	UEliminatedOverlay_C_UpdateMultiwinner_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function EliminatedOverlay.EliminatedOverlay_C.UpdatePlayerLost
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void UEliminatedOverlay_C::UpdatePlayerLost()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function EliminatedOverlay.EliminatedOverlay_C.UpdatePlayerLost");
+
+	UEliminatedOverlay_C_UpdatePlayerLost_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function EliminatedOverlay.EliminatedOverlay_C.OnPlayerLost
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// EEndOfMatchReason              LostReason                     (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void UEliminatedOverlay_C::OnPlayerLost(EEndOfMatchReason LostReason)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function EliminatedOverlay.EliminatedOverlay_C.OnPlayerLost");
+
+	UEliminatedOverlay_C_OnPlayerLost_Params params;
+	params.LostReason = LostReason;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function EliminatedOverlay.EliminatedOverlay_C.Winning Score Determined
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// int                            Score                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void UEliminatedOverlay_C::Winning_Score_Determined(int Score)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function EliminatedOverlay.EliminatedOverlay_C.Winning Score Determined");
+
+	UEliminatedOverlay_C_Winning_Score_Determined_Params params;
+	params.Score = Score;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
 
 // Function EliminatedOverlay.EliminatedOverlay_C.StreamingLoadingChanged
 // (Public, BlueprintCallable, BlueprintEvent)
@@ -58,11 +156,10 @@ void UEliminatedOverlay_C::SetBannerForKiller(struct FFortPlayerDeathReport* For
 // (Public, HasOutParms, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // struct FFortPlayerDeathReport  FortPlayerDeathReport          (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
-// class AFortPawn*               KillerPawn                     (Parm, OutParm, ZeroConstructor, IsPlainOldData)
 // bool                           DidPlayerKillThemselves        (Parm, OutParm, ZeroConstructor, IsPlainOldData)
 // struct FText                   KillerName                     (Parm, OutParm)
 
-void UEliminatedOverlay_C::ProcessDeathReport(struct FFortPlayerDeathReport* FortPlayerDeathReport, class AFortPawn** KillerPawn, bool* DidPlayerKillThemselves, struct FText* KillerName)
+void UEliminatedOverlay_C::ProcessDeathReport(struct FFortPlayerDeathReport* FortPlayerDeathReport, bool* DidPlayerKillThemselves, struct FText* KillerName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function EliminatedOverlay.EliminatedOverlay_C.ProcessDeathReport");
 
@@ -76,8 +173,6 @@ void UEliminatedOverlay_C::ProcessDeathReport(struct FFortPlayerDeathReport* For
 
 	if (FortPlayerDeathReport != nullptr)
 		*FortPlayerDeathReport = params.FortPlayerDeathReport;
-	if (KillerPawn != nullptr)
-		*KillerPawn = params.KillerPawn;
 	if (DidPlayerKillThemselves != nullptr)
 		*DidPlayerKillThemselves = params.DidPlayerKillThemselves;
 	if (KillerName != nullptr)
@@ -242,6 +337,40 @@ void UEliminatedOverlay_C::Construct()
 	static auto fn = UObject::FindObject<UFunction>("Function EliminatedOverlay.EliminatedOverlay_C.Construct");
 
 	UEliminatedOverlay_C_Construct_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function EliminatedOverlay.EliminatedOverlay_C.EventUpdateMultiWinner
+// (BlueprintCallable, BlueprintEvent)
+
+void UEliminatedOverlay_C::EventUpdateMultiWinner()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function EliminatedOverlay.EliminatedOverlay_C.EventUpdateMultiWinner");
+
+	UEliminatedOverlay_C_EventUpdateMultiWinner_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function EliminatedOverlay.EliminatedOverlay_C.WinnerSwapComplete
+// (BlueprintCallable, BlueprintEvent)
+
+void UEliminatedOverlay_C::WinnerSwapComplete()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function EliminatedOverlay.EliminatedOverlay_C.WinnerSwapComplete");
+
+	UEliminatedOverlay_C_WinnerSwapComplete_Params params;
 
 	auto flags = fn->FunctionFlags;
 

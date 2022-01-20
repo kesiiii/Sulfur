@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -63,6 +63,57 @@ void AB_StockBattleBus_C::Bus_Music_Fader__UpdateFunc()
 }
 
 
+// Function B_StockBattleBus.B_StockBattleBus_C.Light Flash Timeline__FinishedFunc
+// (BlueprintEvent)
+
+void AB_StockBattleBus_C::Light_Flash_Timeline__FinishedFunc()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function B_StockBattleBus.B_StockBattleBus_C.Light Flash Timeline__FinishedFunc");
+
+	AB_StockBattleBus_C_Light_Flash_Timeline__FinishedFunc_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function B_StockBattleBus.B_StockBattleBus_C.Light Flash Timeline__UpdateFunc
+// (BlueprintEvent)
+
+void AB_StockBattleBus_C::Light_Flash_Timeline__UpdateFunc()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function B_StockBattleBus.B_StockBattleBus_C.Light Flash Timeline__UpdateFunc");
+
+	AB_StockBattleBus_C_Light_Flash_Timeline__UpdateFunc_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function B_StockBattleBus.B_StockBattleBus_C.Light Flash Timeline__Loop__EventFunc
+// (BlueprintEvent)
+
+void AB_StockBattleBus_C::Light_Flash_Timeline__Loop__EventFunc()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function B_StockBattleBus.B_StockBattleBus_C.Light Flash Timeline__Loop__EventFunc");
+
+	AB_StockBattleBus_C_Light_Flash_Timeline__Loop__EventFunc_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function B_StockBattleBus.B_StockBattleBus_C.ReceiveBeginPlay
 // (Event, Protected, BlueprintEvent)
 
@@ -105,6 +156,26 @@ void AB_StockBattleBus_C::GrabAudioReferences()
 	static auto fn = UObject::FindObject<UFunction>("Function B_StockBattleBus.B_StockBattleBus_C.GrabAudioReferences");
 
 	AB_StockBattleBus_C_GrabAudioReferences_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function B_StockBattleBus.B_StockBattleBus_C.ReceiveEndPlay
+// (Event, Public, BlueprintEvent)
+// Parameters:
+// TEnumAsByte<EEndPlayReason>*   EndPlayReason                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void AB_StockBattleBus_C::ReceiveEndPlay(TEnumAsByte<EEndPlayReason>* EndPlayReason)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function B_StockBattleBus.B_StockBattleBus_C.ReceiveEndPlay");
+
+	AB_StockBattleBus_C_ReceiveEndPlay_Params params;
+	params.EndPlayReason = EndPlayReason;
 
 	auto flags = fn->FunctionFlags;
 

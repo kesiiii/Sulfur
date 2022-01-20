@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -140,6 +140,26 @@ void UAthenaIndicatorLayer_C::SquadIndicatorsChanged(TArray<class AFortPlayerSta
 
 	UAthenaIndicatorLayer_C_SquadIndicatorsChanged_Params params;
 	params.PlayerStates = PlayerStates;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AthenaIndicatorLayer.AthenaIndicatorLayer_C.SetDataSource
+// (Event, Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UAthenaPlayerViewModel** PlayerViewModel                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void UAthenaIndicatorLayer_C::SetDataSource(class UAthenaPlayerViewModel** PlayerViewModel)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaIndicatorLayer.AthenaIndicatorLayer_C.SetDataSource");
+
+	UAthenaIndicatorLayer_C_SetDataSource_Params params;
+	params.PlayerViewModel = PlayerViewModel;
 
 	auto flags = fn->FunctionFlags;
 

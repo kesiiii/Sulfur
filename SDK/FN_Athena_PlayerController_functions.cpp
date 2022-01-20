@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -71,12 +71,19 @@ void AAthena_PlayerController_C::ReceiveBeginPlay()
 
 // Function Athena_PlayerController.Athena_PlayerController_C.PlayWinEffects
 // (Event, Public, BlueprintEvent)
+// Parameters:
+// class APawn**                  FinisherPawn                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UFortWeaponItemDefinition** FinishingWeapon                (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// EDeathCause*                   DeathCause                     (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 
-void AAthena_PlayerController_C::PlayWinEffects()
+void AAthena_PlayerController_C::PlayWinEffects(class APawn** FinisherPawn, class UFortWeaponItemDefinition** FinishingWeapon, EDeathCause* DeathCause)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Athena_PlayerController.Athena_PlayerController_C.PlayWinEffects");
 
 	AAthena_PlayerController_C_PlayWinEffects_Params params;
+	params.FinisherPawn = FinisherPawn;
+	params.FinishingWeapon = FinishingWeapon;
+	params.DeathCause = DeathCause;
 
 	auto flags = fn->FunctionFlags;
 
@@ -87,7 +94,7 @@ void AAthena_PlayerController_C::PlayWinEffects()
 
 
 // Function Athena_PlayerController.Athena_PlayerController_C.ExecuteUbergraph_Athena_PlayerController
-// (HasDefaults)
+// ()
 // Parameters:
 // int                            EntryPoint                     (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 

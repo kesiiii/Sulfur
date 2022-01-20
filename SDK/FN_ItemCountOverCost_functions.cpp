@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,28 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function ItemCountOverCost.ItemCountOverCost_C.HasRequired
+// (Public, HasOutParms, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                           bHasRequired                   (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+
+void UItemCountOverCost_C::HasRequired(bool* bHasRequired)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ItemCountOverCost.ItemCountOverCost_C.HasRequired");
+
+	UItemCountOverCost_C_HasRequired_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (bHasRequired != nullptr)
+		*bHasRequired = params.bHasRequired;
+}
+
 
 // Function ItemCountOverCost.ItemCountOverCost_C.Calculate Total Item Def in Inventory
 // (Public, HasOutParms, BlueprintCallable, BlueprintEvent, BlueprintPure)

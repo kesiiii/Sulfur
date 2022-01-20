@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -49,14 +49,14 @@ void UAnnouncement_ZoneModifiers_C::OnDisplayTimerFinished()
 }
 
 
-// Function Announcement_ZoneModifiers.Announcement_ZoneModifiers_C.OnConversationDelayFinished
+// Function Announcement_ZoneModifiers.Announcement_ZoneModifiers_C.WidgetCachingHack
 // (BlueprintCallable, BlueprintEvent)
 
-void UAnnouncement_ZoneModifiers_C::OnConversationDelayFinished()
+void UAnnouncement_ZoneModifiers_C::WidgetCachingHack()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function Announcement_ZoneModifiers.Announcement_ZoneModifiers_C.OnConversationDelayFinished");
+	static auto fn = UObject::FindObject<UFunction>("Function Announcement_ZoneModifiers.Announcement_ZoneModifiers_C.WidgetCachingHack");
 
-	UAnnouncement_ZoneModifiers_C_OnConversationDelayFinished_Params params;
+	UAnnouncement_ZoneModifiers_C_WidgetCachingHack_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -66,14 +66,14 @@ void UAnnouncement_ZoneModifiers_C::OnConversationDelayFinished()
 }
 
 
-// Function Announcement_ZoneModifiers.Announcement_ZoneModifiers_C.WidgetCachingHack
+// Function Announcement_ZoneModifiers.Announcement_ZoneModifiers_C.OnConversationStopped
 // (BlueprintCallable, BlueprintEvent)
 
-void UAnnouncement_ZoneModifiers_C::WidgetCachingHack()
+void UAnnouncement_ZoneModifiers_C::OnConversationStopped()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function Announcement_ZoneModifiers.Announcement_ZoneModifiers_C.WidgetCachingHack");
+	static auto fn = UObject::FindObject<UFunction>("Function Announcement_ZoneModifiers.Announcement_ZoneModifiers_C.OnConversationStopped");
 
-	UAnnouncement_ZoneModifiers_C_WidgetCachingHack_Params params;
+	UAnnouncement_ZoneModifiers_C_OnConversationStopped_Params params;
 
 	auto flags = fn->FunctionFlags;
 

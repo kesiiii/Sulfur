@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,6 +13,17 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function HUD.HUD_C.HandleGameViewportActivationChanged
+struct UHUD_C_HandleGameViewportActivationChanged_Params
+{
+	bool                                               IsActive;                                                 // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function HUD.HUD_C.InitializeTagVisibilityWidgets
+struct UHUD_C_InitializeTagVisibilityWidgets_Params
+{
+};
 
 // Function HUD.HUD_C.PrepareMgmtMenu
 struct UHUD_C_PrepareMgmtMenu_Params
@@ -29,7 +40,7 @@ struct UHUD_C_CheckHUDElementVisibility_Params
 {
 	struct FGameplayTagContainer                       HiddenHUDElementTags;                                     // (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
 	struct FGameplayTag                                HUDElementTagToCheck;                                     // (BlueprintVisible, BlueprintReadOnly, Parm)
-	class UWidget*                                     HUDElement;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData)
+	class UWidget*                                     HUDElement;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ZeroConstructor, InstancedReference, ReferenceParm, IsPlainOldData)
 };
 
 // Function HUD.HUD_C.OnHUDElementVisibilityChanged
@@ -48,7 +59,7 @@ struct UHUD_C_OnManagementTabSelected_Params
 struct UHUD_C_PopContentWidgetInternal_Params
 {
 	struct FContentPushState*                          State;                                                    // (BlueprintVisible, BlueprintReadOnly, Parm)
-	class UWidget*                                     ReturnValue;                                              // (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+	class UWidget*                                     ReturnValue;                                              // (Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, IsPlainOldData)
 };
 
 // Function HUD.HUD_C.CreateInterestIndicatorWidget
@@ -121,7 +132,7 @@ struct UHUD_C_HandleIndicatorModeChanged_Params
 // Function HUD.HUD_C.SetCursorModeContent
 struct UHUD_C_SetCursorModeContent_Params
 {
-	class UUserWidget*                                 CustomWidget;                                             // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class UUserWidget*                                 CustomWidget;                                             // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 	struct FName                                       ActionName;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData)
 };
 
@@ -146,13 +157,6 @@ struct UHUD_C_HandleZoneCompleted_Params
 {
 };
 
-// Function HUD.HUD_C.OnHandleAction
-struct UHUD_C_OnHandleAction_Params
-{
-	struct FEventReply                                 Result;                                                   // (Parm, OutParm)
-	bool                                               bPassThrough;                                             // (Parm, OutParm, ZeroConstructor, IsPlainOldData)
-};
-
 // Function HUD.HUD_C.SetQuickbarSizes
 struct UHUD_C_SetQuickbarSizes_Params
 {
@@ -170,40 +174,13 @@ struct UHUD_C_HandleCursorModeChanged_Params
 {
 	bool                                               IsEnabled;                                                // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 	struct FName                                       ActionName;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-	class UUserWidget*                                 CursorModeContentCustomWidget;                            // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-};
-
-// Function HUD.HUD_C.OnDeclined_0E0300084F8A9EB1D6CB5E836DBF8C7A
-struct UHUD_C_OnDeclined_0E0300084F8A9EB1D6CB5E836DBF8C7A_Params
-{
-};
-
-// Function HUD.HUD_C.OnConfirmed_0E0300084F8A9EB1D6CB5E836DBF8C7A
-struct UHUD_C_OnConfirmed_0E0300084F8A9EB1D6CB5E836DBF8C7A_Params
-{
+	class UUserWidget*                                 CursorModeContentCustomWidget;                            // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 };
 
 // Function HUD.HUD_C.OnEnterState
 struct UHUD_C_OnEnterState_Params
 {
 	EFortUIState*                                      PreviousUIState;                                          // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-};
-
-// Function HUD.HUD_C.QuestsCompleted
-struct UHUD_C_QuestsCompleted_Params
-{
-	TArray<class UFortQuestItem*>                      Quests;                                                   // (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ZeroConstructor, ReferenceParm)
-};
-
-// Function HUD.HUD_C.Construct
-struct UHUD_C_Construct_Params
-{
-};
-
-// Function HUD.HUD_C.LoadingScreenChanged
-struct UHUD_C_LoadingScreenChanged_Params
-{
-	bool                                               bVisible;                                                 // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function HUD.HUD_C.EndOfDayRecapStarted
@@ -220,7 +197,7 @@ struct UHUD_C_EndOfDayRecapEnded_Params
 // Function HUD.HUD_C.PushContentWidgetInternal
 struct UHUD_C_PushContentWidgetInternal_Params
 {
-	class UWidget**                                    Widget;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class UWidget**                                    Widget;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 	struct FContentPushState*                          State;                                                    // (BlueprintVisible, BlueprintReadOnly, Parm)
 };
 
@@ -248,6 +225,48 @@ struct UHUD_C_BndEvt__BP_FortLiveStreamGrantWindowExpires_K2Node_ComponentBoundE
 // Function HUD.HUD_C.RequestOpenSocialMenu
 struct UHUD_C_RequestOpenSocialMenu_Params
 {
+};
+
+// Function HUD.HUD_C.PersonalVehicleModeChanged
+struct UHUD_C_PersonalVehicleModeChanged_Params
+{
+	bool                                               bEnteredVehicle;                                          // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function HUD.HUD_C.InputActionHoldStarted
+struct UHUD_C_InputActionHoldStarted_Params
+{
+	struct FName                                       InputActionName;                                          // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	float                                              Duration;                                                 // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function HUD.HUD_C.InputActionHoldStopped
+struct UHUD_C_InputActionHoldStopped_Params
+{
+	struct FName                                       InputActionName;                                          // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	bool                                               bCompletedSuccessfully;                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function HUD.HUD_C.ShowPersonalVehicleMounting
+struct UHUD_C_ShowPersonalVehicleMounting_Params
+{
+};
+
+// Function HUD.HUD_C.Construct
+struct UHUD_C_Construct_Params
+{
+};
+
+// Function HUD.HUD_C.OnHUDScaleChanged
+struct UHUD_C_OnHUDScaleChanged_Params
+{
+	float*                                             HUDScale;                                                 // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function HUD.HUD_C.OnLoadingScreenVisibilityChanged
+struct UHUD_C_OnLoadingScreenVisibilityChanged_Params
+{
+	bool*                                              IsVisible;                                                // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function HUD.HUD_C.ExecuteUbergraph_HUD

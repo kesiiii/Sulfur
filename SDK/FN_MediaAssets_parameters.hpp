@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -108,10 +108,23 @@ struct UMediaPlayer_SetTrackFormat_Params
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
 };
 
+// Function MediaAssets.MediaPlayer.SetTimeDelay
+struct UMediaPlayer_SetTimeDelay_Params
+{
+	struct FTimespan                                   TimeDelay;                                                // (Parm)
+};
+
 // Function MediaAssets.MediaPlayer.SetRate
 struct UMediaPlayer_SetRate_Params
 {
 	float                                              Rate;                                                     // (Parm, ZeroConstructor, IsPlainOldData)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+};
+
+// Function MediaAssets.MediaPlayer.SetNativeVolume
+struct UMediaPlayer_SetNativeVolume_Params
+{
+	float                                              Volume;                                                   // (Parm, ZeroConstructor, IsPlainOldData)
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
 };
 
@@ -126,6 +139,12 @@ struct UMediaPlayer_SetLooping_Params
 struct UMediaPlayer_SetDesiredPlayerName_Params
 {
 	struct FName                                       PlayerName;                                               // (Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function MediaAssets.MediaPlayer.SetBlockOnTime
+struct UMediaPlayer_SetBlockOnTime_Params
+{
+	struct FTimespan                                   Time;                                                     // (ConstParm, Parm, OutParm, ReferenceParm)
 };
 
 // Function MediaAssets.MediaPlayer.SelectTrack
@@ -343,6 +362,12 @@ struct UMediaPlayer_GetTrackDisplayName_Params
 	EMediaPlayerTrack                                  TrackType;                                                // (Parm, ZeroConstructor, IsPlainOldData)
 	int                                                TrackIndex;                                               // (Parm, ZeroConstructor, IsPlainOldData)
 	struct FText                                       ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function MediaAssets.MediaPlayer.GetTimeDelay
+struct UMediaPlayer_GetTimeDelay_Params
+{
+	struct FTimespan                                   ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function MediaAssets.MediaPlayer.GetTime
@@ -565,6 +590,19 @@ struct UMediaPlaylist_Add_Params
 struct UMediaSoundComponent_SetMediaPlayer_Params
 {
 	class UMediaPlayer*                                NewMediaPlayer;                                           // (Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function MediaAssets.MediaSoundComponent.GetMediaPlayer
+struct UMediaSoundComponent_GetMediaPlayer_Params
+{
+	class UMediaPlayer*                                ReturnValue;                                              // (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+};
+
+// Function MediaAssets.MediaSoundComponent.BP_GetAttenuationSettingsToApply
+struct UMediaSoundComponent_BP_GetAttenuationSettingsToApply_Params
+{
+	struct FSoundAttenuationSettings                   OutAttenuationSettings;                                   // (Parm, OutParm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
 };
 
 // Function MediaAssets.MediaTexture.SetMediaPlayer

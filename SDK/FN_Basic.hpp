@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -19,21 +17,93 @@ inline Fn GetVFunction(const void *instance, std::size_t index)
 
 class UObject;
 
-struct TUObjectArray
+struct FUObjectItem
 {
-	uint8_t* Objects;
-	uint32_t MaxElements;
-	uint32_t NumElements;
+	UObject* Object;
+	DWORD Flags;
+	DWORD ClusterIndex;
+	DWORD SerialNumber;
+	DWORD SerialNumber2;
+};
+
+struct TUObjectArrayNew
+{
+	FUObjectItem* Objects[9];
+};
+
+struct GlobalObjectsArray
+{
+	TUObjectArrayNew* ObjectArray;
+	BYTE _padding_0[0xC];
+	DWORD ObjectCount;
+
+	inline void NumChunks(int* start, int* end)
+	{
+		int cStart = 0, cEnd = 0;
+
+		if (!cEnd)
+		{
+			while (1)
+			{
+				if (ObjectArray->Objects[cStart] == 0)
+				{
+					cStart++;
+				}
+				else
+				{
+					break;
+				}
+			}
+
+			cEnd = cStart;
+			while (1)
+			{
+				if (ObjectArray->Objects[cEnd] == 0)
+				{
+					break;
+				}
+				else
+				{
+					cEnd++;
+				}
+			}
+		}
+
+		*start = cStart;
+		*end = cEnd;
+	}
 
 	inline int32_t Num()
 	{
-		return NumElements;
+		return ObjectCount;
 	}
 
-	inline UObject* GetByIndex(int32_t id)
+	inline UObject* GetByIndex(int32_t Index)
 	{
-		auto Offset = 24 * id;
-		return *(UObject**)(Objects + Offset);
+		int cStart = 0, cEnd = 0;
+		int chunkIndex = 0, chunkSize = 0xFFFF, chunkPos;
+		FUObjectItem* Object;
+
+		NumChunks(&cStart, &cEnd);
+
+		chunkIndex = Index / chunkSize;
+		if (chunkSize * chunkIndex != 0 &&
+			chunkSize * chunkIndex == Index)
+		{
+			chunkIndex--;
+		}
+
+		chunkPos = cStart + chunkIndex;
+		if (chunkPos < cEnd)
+		{
+			Object = ObjectArray->Objects[chunkPos] + (Index - chunkSize * chunkIndex);
+
+			if (!Object) { return NULL; }
+
+			return Object->Object;
+		}
+
+		return nullptr;
 	}
 };
 
@@ -69,55 +139,10 @@ public:
 		return i < Num();
 	}
 
-	inline void Add(T InputData)
-	{
-		Data = (T*)realloc(Data, sizeof(T) * (Count + 1));
-		Data[Count++] = InputData;
-		Max = Count;
-	};
-
 private:
 	T* Data;
 	int32_t Count;
 	int32_t Max;
-};
-
-template<typename ElementType, int32_t MaxTotalElements, int32_t ElementsPerChunk>
-class TStaticIndirectArrayThreadSafeRead
-{
-public:
-	inline size_t Num() const
-	{
-		return NumElements;
-	}
-
-	inline bool IsValidIndex(int32_t index) const
-	{
-		return index < Num() && index >= 0;
-	}
-
-	inline ElementType const* const& operator[](int32_t index) const
-	{
-		return *GetItemPtr(index);
-	}
-
-private:
-	inline ElementType const* const* GetItemPtr(int32_t Index) const
-	{
-		int32_t ChunkIndex = Index / ElementsPerChunk;
-		int32_t WithinChunkIndex = Index % ElementsPerChunk;
-		ElementType** Chunk = Chunks[ChunkIndex];
-		return Chunk + WithinChunkIndex;
-	}
-
-	enum
-	{
-		ChunkTableSize = (MaxTotalElements + ElementsPerChunk - 1) / ElementsPerChunk
-	};
-
-	ElementType** Chunks[ChunkTableSize];
-	int32_t NumElements;
-	int32_t NumChunks;
 };
 
 struct FString : private TArray<wchar_t>
@@ -160,8 +185,8 @@ struct FString : private TArray<wchar_t>
 
 struct FName;
 
-inline void (*FNameToString)(FName* This, FString& OutStr);
-inline void (*FreeInternal)(__int64);
+inline void(*FNameToString)(FName*, FString&);
+inline void(*FreeMemory)(void*);
 
 struct FName
 {
@@ -170,25 +195,15 @@ struct FName
 
 	std::string ToString()
 	{
-		if (!this)
-			return "";
+		FString Temp;
 
-		FString temp;
+		FNameToString(this, Temp);
 
-		FNameToString(this, temp);
+		auto OutWSTR = std::wstring(Temp.c_str());
 
-		auto wName = std::wstring(temp.c_str());
-		auto name = std::string(wName.begin(), wName.end());
+		FreeMemory((void*)(Temp.c_str()));
 
-		FreeInternal((__int64)temp.c_str());
-
-		auto pos = name.rfind('/');
-		if (pos == std::string::npos)
-		{
-			return name;
-		}
-
-		return name.substr(pos + 1);
+		return std::string(OutWSTR.begin(), OutWSTR.end());
 	}
 };
 
@@ -296,6 +311,11 @@ class TMap
 struct FWeakObjectPtr
 {
 public:
+	inline bool SerialNumbersMatch(FUObjectItem* ObjectItem) const
+	{
+		return ObjectItem->SerialNumber == ObjectSerialNumber;
+	}
+
 	bool IsValid() const;
 
 	UObject* Get() const;
@@ -327,10 +347,6 @@ public:
 	{
 		return TWeakObjectPtrBase::IsValid();
 	}
-
-	/*TWeakObjectPtr(void* Object)
-	{
-	}*/
 };
 
 template<class T, class TBASE>

@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -15,7 +13,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // WidgetBlueprintGeneratedClass AthenaLobbyPlayerPanelActions.AthenaLobbyPlayerPanelActions_C
-// 0x01F8 (0x0408 - 0x0210)
+// 0x02B8 (0x04C8 - 0x0210)
 class UAthenaLobbyPlayerPanelActions_C : public UCommonUserWidget
 {
 public:
@@ -26,9 +24,14 @@ public:
 	class UIconTextButton_C*                           ButtonManage;                                             // 0x0230(0x0008) (BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, RepNotify, Interp, NonTransactional, EditorOnly, NoDestructor, AutoWeak, ContainsInstancedReference, AssetRegistrySearchable, SimpleDisplay, AdvancedDisplay, Protected, BlueprintCallable, BlueprintAuthorityOnly, TextExportTransient, NonPIEDuplicateTransient, ExposeOnSpawn, PersistentInstance, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic, NativeAccessSpecifierProtected, NativeAccessSpecifierPrivate)
 	class UIconTextButton_C*                           ButtonMute;                                               // 0x0238(0x0008) (BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, RepNotify, Interp, NonTransactional, EditorOnly, NoDestructor, AutoWeak, ContainsInstancedReference, AssetRegistrySearchable, SimpleDisplay, AdvancedDisplay, Protected, BlueprintCallable, BlueprintAuthorityOnly, TextExportTransient, NonPIEDuplicateTransient, ExposeOnSpawn, PersistentInstance, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic, NativeAccessSpecifierProtected, NativeAccessSpecifierPrivate)
 	class UIconTextButton_C*                           ViewProfileButton;                                        // 0x0240(0x0008) (BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, RepNotify, Interp, NonTransactional, EditorOnly, NoDestructor, AutoWeak, ContainsInstancedReference, AssetRegistrySearchable, SimpleDisplay, AdvancedDisplay, Protected, BlueprintCallable, BlueprintAuthorityOnly, TextExportTransient, NonPIEDuplicateTransient, ExposeOnSpawn, PersistentInstance, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic, NativeAccessSpecifierProtected, NativeAccessSpecifierPrivate)
-	class UIconTextButton_C*                           HoveredActionButton;                                      // 0x0248(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	class UIconTextButton_C*                           HoveredActionButton;                                      // 0x0248(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData)
 	struct FScriptMulticastDelegate                    OnGadgetsClicked;                                         // 0x0250(0x0010) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable)
-	struct FFortTeamMemberInfo                         TeamMemberInfo;                                           // 0x0260(0x01A8) (Edit, BlueprintVisible)
+	struct FFortTeamMemberInfo                         TeamMemberInfo;                                           // 0x0260(0x01F8) (Edit, BlueprintVisible)
+	struct FScriptMulticastDelegate                    OnEmoteClicked;                                           // 0x0458(0x0010) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable)
+	struct FText                                       AddFriendText;                                            // 0x0468(0x0018) (Edit, BlueprintVisible, DisableEditOnInstance)
+	struct FText                                       AcceptInviteText;                                         // 0x0480(0x0018) (Edit, BlueprintVisible, DisableEditOnInstance)
+	struct FText                                       SentInviteText;                                           // 0x0498(0x0018) (Edit, BlueprintVisible, DisableEditOnInstance)
+	struct FText                                       AcceptedInviteText;                                       // 0x04B0(0x0018) (Edit, BlueprintVisible, DisableEditOnInstance)
 
 	static UClass* StaticClass()
 	{
@@ -37,6 +40,7 @@ public:
 	}
 
 
+	void RefreshAddFriendButton();
 	void OnMutingChanged(const struct FUniqueNetIdRepl& NewParam, bool NewParam1);
 	void CanViewProfile(bool* CanView);
 	bool IsTeamMemberLocalPlayer();
@@ -50,7 +54,7 @@ public:
 	void CanManage(bool* bCanManage);
 	void IsInvitationPending(bool* bIsInvitationPending);
 	void CanInviteToParty(bool* bCanInviteToParty);
-	void CanFriend(bool* bCanFriend);
+	void CanFriendInviteOrAccept(bool* bCanFriend);
 	void IsMissionLocalPlayersOutpost(bool* isLocalPlayersOutpost);
 	void IsLocalPlayer(bool* bIsLocalPlayer);
 	void Refresh();
@@ -62,6 +66,7 @@ public:
 	void BndEvt__ViewProfileButton_K2Node_ComponentBoundEvent_51_CommonButtonClicked__DelegateSignature(class UCommonButton* Button);
 	void BndEvt__ButtonMute_K2Node_ComponentBoundEvent_46_CommonButtonClicked__DelegateSignature(class UCommonButton* Button);
 	void ExecuteUbergraph_AthenaLobbyPlayerPanelActions(int EntryPoint);
+	void OnEmoteClicked__DelegateSignature();
 	void OnGadgetsClicked__DelegateSignature();
 };
 

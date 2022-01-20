@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -15,14 +13,14 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass BP_PlayerControllerOutpost.BP_PlayerControllerOutpost_C
-// 0x0019 (0x2A79 - 0x2A60)
+// 0x0019 (0x1D99 - 0x1D80)
 class ABP_PlayerControllerOutpost_C : public AFortPlayerControllerOutpost
 {
 public:
-	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x2A60(0x0008) (Transient, DuplicateTransient)
-	class AOutpostStructureBase*                       NewVar_0_1;                                               // 0x2A68(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData)
-	class AOutpostStructureBase*                       NewVar_1_2;                                               // 0x2A70(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData)
-	bool                                               GetHelp;                                                  // 0x2A78(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x1D80(0x0008) (Transient, DuplicateTransient)
+	class AOutpostStructureBase*                       NewVar_0_1;                                               // 0x1D88(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData)
+	class AOutpostStructureBase*                       NewVar_1_2;                                               // 0x1D90(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData)
+	bool                                               GetHelp;                                                  // 0x1D98(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
 
 	static UClass* StaticClass()
 	{

@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,43 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.MapPingTimeOut
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UAthenaTeamMemberInfo_C::MapPingTimeOut()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.MapPingTimeOut");
+
+	UAthenaTeamMemberInfo_C_MapPingTimeOut_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.Mapping
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class AFortGameStateAthena*    AthenaGameState                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void UAthenaTeamMemberInfo_C::Mapping(class AFortGameStateAthena* AthenaGameState)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.Mapping");
+
+	UAthenaTeamMemberInfo_C_Mapping_Params params;
+	params.AthenaGameState = AthenaGameState;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
 
 // Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.InitSpeakerMaterial
 // (Public, BlueprintCallable, BlueprintEvent)
@@ -43,45 +80,6 @@ void UAthenaTeamMemberInfo_C::UpdateUniqueID()
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
-}
-
-
-// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.SendFriendInvite
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-
-void UAthenaTeamMemberInfo_C::SendFriendInvite()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.SendFriendInvite");
-
-	UAthenaTeamMemberInfo_C_SendFriendInvite_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.CanFriend
-// (Public, HasOutParms, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure)
-// Parameters:
-// bool                           CanFriend                      (Parm, OutParm, ZeroConstructor, IsPlainOldData)
-
-void UAthenaTeamMemberInfo_C::CanFriend(bool* CanFriend)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.CanFriend");
-
-	UAthenaTeamMemberInfo_C_CanFriend_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (CanFriend != nullptr)
-		*CanFriend = params.CanFriend;
 }
 
 
@@ -259,14 +257,17 @@ void UAthenaTeamMemberInfo_C::SetHealth(float Value)
 }
 
 
-// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.DisplayAddFriendIfApplicable
-// (BlueprintCallable, BlueprintEvent)
+// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.BndEvt__AddFriendButton_K2Node_ComponentBoundEvent_11_CommonButtonClicked__DelegateSignature
+// (BlueprintEvent)
+// Parameters:
+// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 
-void UAthenaTeamMemberInfo_C::DisplayAddFriendIfApplicable()
+void UAthenaTeamMemberInfo_C::BndEvt__AddFriendButton_K2Node_ComponentBoundEvent_11_CommonButtonClicked__DelegateSignature(class UCommonButton* Button)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.DisplayAddFriendIfApplicable");
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.BndEvt__AddFriendButton_K2Node_ComponentBoundEvent_11_CommonButtonClicked__DelegateSignature");
 
-	UAthenaTeamMemberInfo_C_DisplayAddFriendIfApplicable_Params params;
+	UAthenaTeamMemberInfo_C_BndEvt__AddFriendButton_K2Node_ComponentBoundEvent_11_CommonButtonClicked__DelegateSignature_Params params;
+	params.Button = Button;
 
 	auto flags = fn->FunctionFlags;
 
@@ -276,17 +277,217 @@ void UAthenaTeamMemberInfo_C::DisplayAddFriendIfApplicable()
 }
 
 
-// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.BndEvt__AddFriendButton_K2Node_ComponentBoundEvent_11_CommonButtonClicked__DelegateSignature
-// (BlueprintEvent)
+// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.TalkingStateChanged
+// (Event, Protected, BlueprintEvent)
 // Parameters:
-// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class AFortPlayerStateAthena** PS                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// bool*                          bTalking                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 
-void UAthenaTeamMemberInfo_C::BndEvt__AddFriendButton_K2Node_ComponentBoundEvent_11_CommonButtonClicked__DelegateSignature(class UCommonButton* Button)
+void UAthenaTeamMemberInfo_C::TalkingStateChanged(class AFortPlayerStateAthena** PS, bool* bTalking)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.BndEvt__AddFriendButton_K2Node_ComponentBoundEvent_11_CommonButtonClicked__DelegateSignature");
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.TalkingStateChanged");
 
-	UAthenaTeamMemberInfo_C_BndEvt__AddFriendButton_K2Node_ComponentBoundEvent_11_CommonButtonClicked__DelegateSignature_Params params;
-	params.Button = Button;
+	UAthenaTeamMemberInfo_C_TalkingStateChanged_Params params;
+	params.PS = PS;
+	params.bTalking = bTalking;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.DBNOStateChanged
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// class AFortPlayerStateAthena** PS                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// bool*                          bDBNO                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void UAthenaTeamMemberInfo_C::DBNOStateChanged(class AFortPlayerStateAthena** PS, bool* bDBNO)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.DBNOStateChanged");
+
+	UAthenaTeamMemberInfo_C_DBNOStateChanged_Params params;
+	params.PS = PS;
+	params.bDBNO = bDBNO;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.BeingRevivedStateChanged
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// class AFortPlayerStateAthena** PS                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// bool*                          bReviving                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void UAthenaTeamMemberInfo_C::BeingRevivedStateChanged(class AFortPlayerStateAthena** PS, bool* bReviving)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.BeingRevivedStateChanged");
+
+	UAthenaTeamMemberInfo_C_BeingRevivedStateChanged_Params params;
+	params.PS = PS;
+	params.bReviving = bReviving;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.PlayerNameChanged
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// class AFortPlayerStateAthena** PS                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// struct FString*                PlayerName                     (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor)
+
+void UAthenaTeamMemberInfo_C::PlayerNameChanged(class AFortPlayerStateAthena** PS, struct FString* PlayerName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.PlayerNameChanged");
+
+	UAthenaTeamMemberInfo_C_PlayerNameChanged_Params params;
+	params.PS = PS;
+	params.PlayerName = PlayerName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.HitPointsChanged
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// class AFortPlayerStateAthena** PS                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// float*                         HealthPercent                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// float*                         ShieldPercent                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void UAthenaTeamMemberInfo_C::HitPointsChanged(class AFortPlayerStateAthena** PS, float* HealthPercent, float* ShieldPercent)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.HitPointsChanged");
+
+	UAthenaTeamMemberInfo_C_HitPointsChanged_Params params;
+	params.PS = PS;
+	params.HealthPercent = HealthPercent;
+	params.ShieldPercent = ShieldPercent;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.MutedStateChanged
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// class AFortPlayerStateAthena** PS                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// bool*                          Muted                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void UAthenaTeamMemberInfo_C::MutedStateChanged(class AFortPlayerStateAthena** PS, bool* Muted)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.MutedStateChanged");
+
+	UAthenaTeamMemberInfo_C_MutedStateChanged_Params params;
+	params.PS = PS;
+	params.Muted = Muted;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.DeadStateChanged
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// class AFortPlayerStateAthena** PS                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// bool*                          DeadStateChanged               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void UAthenaTeamMemberInfo_C::DeadStateChanged(class AFortPlayerStateAthena** PS, bool* DeadStateChanged)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.DeadStateChanged");
+
+	UAthenaTeamMemberInfo_C_DeadStateChanged_Params params;
+	params.PS = PS;
+	params.DeadStateChanged = DeadStateChanged;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.DisconnectedStateChanged
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// class AFortPlayerStateAthena** PS                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// bool*                          Disconnected                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void UAthenaTeamMemberInfo_C::DisconnectedStateChanged(class AFortPlayerStateAthena** PS, bool* Disconnected)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.DisconnectedStateChanged");
+
+	UAthenaTeamMemberInfo_C_DisconnectedStateChanged_Params params;
+	params.PS = PS;
+	params.Disconnected = Disconnected;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.PlayerPlatformChanged
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// class AFortPlayerStateAthena** PS                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// struct FString*                CurrentPlatform                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor)
+
+void UAthenaTeamMemberInfo_C::PlayerPlatformChanged(class AFortPlayerStateAthena** PS, struct FString* CurrentPlatform)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.PlayerPlatformChanged");
+
+	UAthenaTeamMemberInfo_C_PlayerPlatformChanged_Params params;
+	params.PS = PS;
+	params.CurrentPlatform = CurrentPlatform;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.MapIndicatorPositionChanged
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// class AFortPlayerStateAthena** PS                             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void UAthenaTeamMemberInfo_C::MapIndicatorPositionChanged(class AFortPlayerStateAthena** PS)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.MapIndicatorPositionChanged");
+
+	UAthenaTeamMemberInfo_C_MapIndicatorPositionChanged_Params params;
+	params.PS = PS;
 
 	auto flags = fn->FunctionFlags;
 
@@ -313,176 +514,17 @@ void UAthenaTeamMemberInfo_C::Construct()
 }
 
 
-// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.DisplayAddFriend_NoAnim
-// (BlueprintCallable, BlueprintEvent)
-
-void UAthenaTeamMemberInfo_C::DisplayAddFriend_NoAnim()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.DisplayAddFriend_NoAnim");
-
-	UAthenaTeamMemberInfo_C_DisplayAddFriend_NoAnim_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.TalkingStateChanged
+// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.OnDisplayAddFriend
 // (Event, Protected, BlueprintEvent)
 // Parameters:
-// bool*                          bTalking                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// bool*                          bShowAnimation                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 
-void UAthenaTeamMemberInfo_C::TalkingStateChanged(bool* bTalking)
+void UAthenaTeamMemberInfo_C::OnDisplayAddFriend(bool* bShowAnimation)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.TalkingStateChanged");
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.OnDisplayAddFriend");
 
-	UAthenaTeamMemberInfo_C_TalkingStateChanged_Params params;
-	params.bTalking = bTalking;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.DBNOStateChanged
-// (Event, Protected, BlueprintEvent)
-// Parameters:
-// bool*                          bDBNO                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-
-void UAthenaTeamMemberInfo_C::DBNOStateChanged(bool* bDBNO)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.DBNOStateChanged");
-
-	UAthenaTeamMemberInfo_C_DBNOStateChanged_Params params;
-	params.bDBNO = bDBNO;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.BeingRevivedStateChanged
-// (Event, Protected, BlueprintEvent)
-// Parameters:
-// bool*                          bReviving                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-
-void UAthenaTeamMemberInfo_C::BeingRevivedStateChanged(bool* bReviving)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.BeingRevivedStateChanged");
-
-	UAthenaTeamMemberInfo_C_BeingRevivedStateChanged_Params params;
-	params.bReviving = bReviving;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.PlayerNameChanged
-// (Event, Protected, BlueprintEvent)
-// Parameters:
-// struct FString*                PlayerName                     (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor)
-
-void UAthenaTeamMemberInfo_C::PlayerNameChanged(struct FString* PlayerName)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.PlayerNameChanged");
-
-	UAthenaTeamMemberInfo_C_PlayerNameChanged_Params params;
-	params.PlayerName = PlayerName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.HitPointsChanged
-// (Event, Protected, BlueprintEvent)
-// Parameters:
-// float*                         HealthPercent                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-// float*                         ShieldPercent                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-
-void UAthenaTeamMemberInfo_C::HitPointsChanged(float* HealthPercent, float* ShieldPercent)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.HitPointsChanged");
-
-	UAthenaTeamMemberInfo_C_HitPointsChanged_Params params;
-	params.HealthPercent = HealthPercent;
-	params.ShieldPercent = ShieldPercent;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.MutedStateChanged
-// (Event, Protected, BlueprintEvent)
-// Parameters:
-// bool*                          Muted                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-
-void UAthenaTeamMemberInfo_C::MutedStateChanged(bool* Muted)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.MutedStateChanged");
-
-	UAthenaTeamMemberInfo_C_MutedStateChanged_Params params;
-	params.Muted = Muted;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.DeadStateChanged
-// (Event, Protected, BlueprintEvent)
-// Parameters:
-// bool*                          DeadStateChanged               (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-
-void UAthenaTeamMemberInfo_C::DeadStateChanged(bool* DeadStateChanged)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.DeadStateChanged");
-
-	UAthenaTeamMemberInfo_C_DeadStateChanged_Params params;
-	params.DeadStateChanged = DeadStateChanged;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.DisconnectedStateChanged
-// (Event, Protected, BlueprintEvent)
-// Parameters:
-// bool*                          Disconnected                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-
-void UAthenaTeamMemberInfo_C::DisconnectedStateChanged(bool* Disconnected)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaTeamMemberInfo.AthenaTeamMemberInfo_C.DisconnectedStateChanged");
-
-	UAthenaTeamMemberInfo_C_DisconnectedStateChanged_Params params;
-	params.Disconnected = Disconnected;
+	UAthenaTeamMemberInfo_C_OnDisplayAddFriend_Params params;
+	params.bShowAnimation = bShowAnimation;
 
 	auto flags = fn->FunctionFlags;
 

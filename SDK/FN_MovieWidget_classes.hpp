@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -15,7 +13,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // WidgetBlueprintGeneratedClass MovieWidget.MovieWidget_C
-// 0x0030 (0x0270 - 0x0240)
+// 0x0040 (0x0280 - 0x0240)
 class UMovieWidget_C : public UFortMovieWidget
 {
 public:
@@ -27,6 +25,7 @@ public:
 	bool                                               MaintainAspectRatio;                                      // 0x025A(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
 	unsigned char                                      UnknownData00[0x5];                                       // 0x025B(0x0005) MISSED OFFSET
 	struct FScriptMulticastDelegate                    OnMediaReadyToPlay;                                       // 0x0260(0x0010) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable)
+	struct FScriptMulticastDelegate                    OnMediaFailedToOpen;                                      // 0x0270(0x0010) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable)
 
 	static UClass* StaticClass()
 	{
@@ -43,6 +42,7 @@ public:
 	void MediaDimensionsUpdated(float* NewWidth, float* NewHeight);
 	void OnMediaLoaded();
 	void ExecuteUbergraph_MovieWidget(int EntryPoint);
+	void OnMediaFailedToOpen__DelegateSignature();
 	void OnMediaReadyToPlay__DelegateSignature();
 };
 

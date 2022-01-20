@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -15,16 +13,16 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass CheckExpeditionRewardsAction.CheckExpeditionRewardsAction_C
-// 0x0068 (0x0430 - 0x03C8)
+// 0x0080 (0x0408 - 0x0388)
 class ACheckExpeditionRewardsAction_C : public AFortScriptedAction
 {
 public:
-	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x03C8(0x0008) (Transient, DuplicateTransient)
-	class USceneComponent*                             DefaultSceneRoot;                                         // 0x03D0(0x0008) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
-	struct FFrontEndRewards_Definition                 RewardsDefinition;                                        // 0x03D8(0x0048) (Edit, BlueprintVisible, DisableEditOnInstance)
-	bool                                               ShowRewardsWidget;                                        // 0x0420(0x0001) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
-	unsigned char                                      UnknownData00[0x7];                                       // 0x0421(0x0007) MISSED OFFSET
-	class UFrontEndRewards_Widget_C*                   Claimed_Reward_Widget;                                    // 0x0428(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x0388(0x0008) (Transient, DuplicateTransient)
+	class USceneComponent*                             DefaultSceneRoot;                                         // 0x0390(0x0008) (BlueprintVisible, ZeroConstructor, InstancedReference, IsPlainOldData)
+	struct FFrontEndRewards_Definition                 RewardsDefinition;                                        // 0x0398(0x0060) (Edit, BlueprintVisible, DisableEditOnInstance)
+	bool                                               ShowRewardsWidget;                                        // 0x03F8(0x0001) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x03F9(0x0007) MISSED OFFSET
+	class UFrontEndRewards_Widget_C*                   Claimed_Reward_Widget;                                    // 0x0400(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData)
 
 	static UClass* StaticClass()
 	{

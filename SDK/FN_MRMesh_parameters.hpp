@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -50,19 +50,22 @@ struct UMeshReconstructorBase_DisconnectMRMesh_Params
 struct UMeshReconstructorBase_ConnectMRMesh_Params
 {
 	class UMRMeshComponent*                            Mesh;                                                     // (Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
-	struct FMRMeshConfiguration                        ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
-// Function MRMesh.MRMeshComponent.GetReconstructor
-struct UMRMeshComponent_GetReconstructor_Params
+// Function MRMesh.MRMeshComponent.IsConnected
+struct UMRMeshComponent_IsConnected_Params
 {
-	class UMeshReconstructorBase*                      ReturnValue;                                              // (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
 };
 
-// Function MRMesh.MRMeshComponent.ConnectReconstructor
-struct UMRMeshComponent_ConnectReconstructor_Params
+// Function MRMesh.MRMeshComponent.ForceNavMeshUpdate
+struct UMRMeshComponent_ForceNavMeshUpdate_Params
 {
-	class UMeshReconstructorBase*                      Reconstructor;                                            // (Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function MRMesh.MRMeshComponent.Clear
+struct UMRMeshComponent_Clear_Params
+{
 };
 
 }

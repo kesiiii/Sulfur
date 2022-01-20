@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -14,8 +14,35 @@ namespace SDK
 //Parameters
 //---------------------------------------------------------------------------
 
+// Function AthenaAerialFeedback.AthenaAerialFeedback_C.CheckPawnForGliderDeploy
+struct UAthenaAerialFeedback_C_CheckPawnForGliderDeploy_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+};
+
 // Function AthenaAerialFeedback.AthenaAerialFeedback_C.Update
 struct UAthenaAerialFeedback_C_Update_Params
+{
+};
+
+// Function AthenaAerialFeedback.AthenaAerialFeedback_C.OnLocalPlayerBeginSkydiving_Bind
+struct UAthenaAerialFeedback_C_OnLocalPlayerBeginSkydiving_Bind_Params
+{
+};
+
+// Function AthenaAerialFeedback.AthenaAerialFeedback_C.GamePhaseStepChanged
+struct UAthenaAerialFeedback_C_GamePhaseStepChanged_Params
+{
+	EAthenaGamePhaseStep                               GamePhaseStep;                                            // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function AthenaAerialFeedback.AthenaAerialFeedback_C.OnKeybindsChanged_Bind
+struct UAthenaAerialFeedback_C_OnKeybindsChanged_Bind_Params
+{
+};
+
+// Function AthenaAerialFeedback.AthenaAerialFeedback_C.Construct
+struct UAthenaAerialFeedback_C_Construct_Params
 {
 };
 
@@ -26,20 +53,14 @@ struct UAthenaAerialFeedback_C_Tick_Params
 	float*                                             InDeltaTime;                                              // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
-// Function AthenaAerialFeedback.AthenaAerialFeedback_C.Construct
-struct UAthenaAerialFeedback_C_Construct_Params
+// Function AthenaAerialFeedback.AthenaAerialFeedback_C.HandleFallingStarted
+struct UAthenaAerialFeedback_C_HandleFallingStarted_Params
 {
 };
 
-// Function AthenaAerialFeedback.AthenaAerialFeedback_C.CustomEvent_1_2
-struct UAthenaAerialFeedback_C_CustomEvent_1_2_Params
+// Function AthenaAerialFeedback.AthenaAerialFeedback_C.CheckFallingForGlider
+struct UAthenaAerialFeedback_C_CheckFallingForGlider_Params
 {
-};
-
-// Function AthenaAerialFeedback.AthenaAerialFeedback_C.CustomEvent_2_3
-struct UAthenaAerialFeedback_C_CustomEvent_2_3_Params
-{
-	EAthenaGamePhaseStep                               GamePhaseStep;                                            // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function AthenaAerialFeedback.AthenaAerialFeedback_C.ExecuteUbergraph_AthenaAerialFeedback

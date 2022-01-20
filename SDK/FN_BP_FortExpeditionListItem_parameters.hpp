@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -87,15 +87,14 @@ struct UBP_FortExpeditionListItem_C_Setup_Base_Item_Data_Params
 	class UFortExpeditionItem*                         Expedition;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
-// Function BP_FortExpeditionListItem.BP_FortExpeditionListItem_C.SetData
-struct UBP_FortExpeditionListItem_C_SetData_Params
+// Function BP_FortExpeditionListItem.BP_FortExpeditionListItem_C.OnListItemObjectSet
+struct UBP_FortExpeditionListItem_C_OnListItemObjectSet_Params
 {
-	class UObject**                                    InData;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-	class UCommonListView**                            OwningList;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class UObject**                                    ListItemObject;                                           // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
-// Function BP_FortExpeditionListItem.BP_FortExpeditionListItem_C.OnSelected
-struct UBP_FortExpeditionListItem_C_OnSelected_Params
+// Function BP_FortExpeditionListItem.BP_FortExpeditionListItem_C.BP_OnSelected
+struct UBP_FortExpeditionListItem_C_BP_OnSelected_Params
 {
 };
 
@@ -104,20 +103,20 @@ struct UBP_FortExpeditionListItem_C_OnItemChanged_Params
 {
 };
 
-// Function BP_FortExpeditionListItem.BP_FortExpeditionListItem_C.OnDeselected
-struct UBP_FortExpeditionListItem_C_OnDeselected_Params
+// Function BP_FortExpeditionListItem.BP_FortExpeditionListItem_C.BP_OnDeselected
+struct UBP_FortExpeditionListItem_C_BP_OnDeselected_Params
 {
 };
 
 // Function BP_FortExpeditionListItem.BP_FortExpeditionListItem_C.BndEvt__InProgressSwitcher_K2Node_ComponentBoundEvent_17_OnActiveWidgetChanged__DelegateSignature
 struct UBP_FortExpeditionListItem_C_BndEvt__InProgressSwitcher_K2Node_ComponentBoundEvent_17_OnActiveWidgetChanged__DelegateSignature_Params
 {
-	class UWidget*                                     ActiveWidget;                                             // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class UWidget*                                     ActiveWidget;                                             // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 	int                                                ActiveWidgetIndex;                                        // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
-// Function BP_FortExpeditionListItem.BP_FortExpeditionListItem_C.OnHovered
-struct UBP_FortExpeditionListItem_C_OnHovered_Params
+// Function BP_FortExpeditionListItem.BP_FortExpeditionListItem_C.BP_OnHovered
+struct UBP_FortExpeditionListItem_C_BP_OnHovered_Params
 {
 };
 

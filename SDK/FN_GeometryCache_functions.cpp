@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -31,6 +31,33 @@ class UGeometryCacheComponent* AGeometryCacheActor::GetGeometryCacheComponent()
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
+}
+
+
+// Function GeometryCache.GeometryCacheComponent.TickAtThisTime
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// float                          Time                           (ConstParm, Parm, ZeroConstructor, IsPlainOldData)
+// bool                           bInIsRunning                   (Parm, ZeroConstructor, IsPlainOldData)
+// bool                           bInBackwards                   (Parm, ZeroConstructor, IsPlainOldData)
+// bool                           bInIsLooping                   (Parm, ZeroConstructor, IsPlainOldData)
+
+void UGeometryCacheComponent::TickAtThisTime(float Time, bool bInIsRunning, bool bInBackwards, bool bInIsLooping)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function GeometryCache.GeometryCacheComponent.TickAtThisTime");
+
+	UGeometryCacheComponent_TickAtThisTime_Params params;
+	params.Time = Time;
+	params.bInIsRunning = bInIsRunning;
+	params.bInBackwards = bInBackwards;
+	params.bInIsLooping = bInIsLooping;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
 }
 
 
@@ -116,7 +143,7 @@ void UGeometryCacheComponent::SetLooping(bool bNewLooping)
 
 
 // Function GeometryCache.GeometryCacheComponent.SetGeometryCache
-// (Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // class UGeometryCache*          NewGeomCache                   (Parm, ZeroConstructor, IsPlainOldData)
 // bool                           ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
@@ -327,6 +354,94 @@ float UGeometryCacheComponent::GetPlaybackSpeed()
 	static auto fn = UObject::FindObject<UFunction>("Function GeometryCache.GeometryCacheComponent.GetPlaybackSpeed");
 
 	UGeometryCacheComponent_GetPlaybackSpeed_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function GeometryCache.GeometryCacheComponent.GetPlaybackDirection
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// float                          ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+
+float UGeometryCacheComponent::GetPlaybackDirection()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function GeometryCache.GeometryCacheComponent.GetPlaybackDirection");
+
+	UGeometryCacheComponent_GetPlaybackDirection_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function GeometryCache.GeometryCacheComponent.GetNumberOfFrames
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// int                            ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+
+int UGeometryCacheComponent::GetNumberOfFrames()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function GeometryCache.GeometryCacheComponent.GetNumberOfFrames");
+
+	UGeometryCacheComponent_GetNumberOfFrames_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function GeometryCache.GeometryCacheComponent.GetDuration
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// float                          ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+
+float UGeometryCacheComponent::GetDuration()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function GeometryCache.GeometryCacheComponent.GetDuration");
+
+	UGeometryCacheComponent_GetDuration_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function GeometryCache.GeometryCacheComponent.GetAnimationTime
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// float                          ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+
+float UGeometryCacheComponent::GetAnimationTime()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function GeometryCache.GeometryCacheComponent.GetAnimationTime");
+
+	UGeometryCacheComponent_GetAnimationTime_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;

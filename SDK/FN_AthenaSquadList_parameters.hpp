@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -14,18 +14,19 @@ namespace SDK
 //Parameters
 //---------------------------------------------------------------------------
 
+// Function AthenaSquadList.AthenaSquadList_C.HandleSquadMemberDisconnected
+struct UAthenaSquadList_C_HandleSquadMemberDisconnected_Params
+{
+	class AFortPlayerStateAthena*                      Player;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
 // Function AthenaSquadList.AthenaSquadList_C.ClearSquadMembers
 struct UAthenaSquadList_C_ClearSquadMembers_Params
 {
 };
 
-// Function AthenaSquadList.AthenaSquadList_C.HandleSquadMembersChanged
-struct UAthenaSquadList_C_HandleSquadMembersChanged_Params
-{
-};
-
-// Function AthenaSquadList.AthenaSquadList_C.ClearContents
-struct UAthenaSquadList_C_ClearContents_Params
+// Function AthenaSquadList.AthenaSquadList_C.RebuildSquadMembersList
+struct UAthenaSquadList_C_RebuildSquadMembersList_Params
 {
 };
 
@@ -41,20 +42,10 @@ struct UAthenaSquadList_C_Construct_Params
 {
 };
 
-// Function AthenaSquadList.AthenaSquadList_C.HandlePartyLeft
-struct UAthenaSquadList_C_HandlePartyLeft_Params
-{
-};
-
 // Function AthenaSquadList.AthenaSquadList_C.PreConstruct
 struct UAthenaSquadList_C_PreConstruct_Params
 {
 	bool*                                              IsDesignTime;                                             // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-};
-
-// Function AthenaSquadList.AthenaSquadList_C.RolloutAddFriend
-struct UAthenaSquadList_C_RolloutAddFriend_Params
-{
 };
 
 // Function AthenaSquadList.AthenaSquadList_C.ExecuteUbergraph_AthenaSquadList

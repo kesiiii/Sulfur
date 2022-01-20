@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -15,15 +13,22 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // WidgetBlueprintGeneratedClass PanelButton.PanelButton_C
-// 0x0030 (0x07B0 - 0x0780)
+// 0x0048 (0x08D8 - 0x0890)
 class UPanelButton_C : public UCommonButton
 {
 public:
-	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x0780(0x0008) (Transient, DuplicateTransient)
-	class UNamedSlot*                                  ContentSlot;                                              // 0x0788(0x0008) (BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, RepNotify, Interp, NonTransactional, EditorOnly, NoDestructor, AutoWeak, ContainsInstancedReference, AssetRegistrySearchable, SimpleDisplay, AdvancedDisplay, Protected, BlueprintCallable, BlueprintAuthorityOnly, TextExportTransient, NonPIEDuplicateTransient, ExposeOnSpawn, PersistentInstance, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic, NativeAccessSpecifierProtected, NativeAccessSpecifierPrivate)
-	class UClass*                                      ControllerInputStyle;                                     // 0x0790(0x0008) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
-	class UClass*                                      MouseKeyboardStyle;                                       // 0x0798(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
-	struct FDataTableRowHandle                         ButtonClickAction;                                        // 0x07A0(0x0010) (Edit, BlueprintVisible, DisableEditOnInstance)
+	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x0890(0x0008) (Transient, DuplicateTransient)
+	class UNamedSlot*                                  ContentSlot;                                              // 0x0898(0x0008) (BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, RepNotify, Interp, NonTransactional, EditorOnly, NoDestructor, AutoWeak, ContainsInstancedReference, AssetRegistrySearchable, SimpleDisplay, AdvancedDisplay, Protected, BlueprintCallable, BlueprintAuthorityOnly, TextExportTransient, NonPIEDuplicateTransient, ExposeOnSpawn, PersistentInstance, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic, NativeAccessSpecifierProtected, NativeAccessSpecifierPrivate)
+	class UClass*                                      ControllerInputStyle;                                     // 0x08A0(0x0008) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	class UClass*                                      MouseKeyboardStyle;                                       // 0x08A8(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	struct FDataTableRowHandle                         ButtonClickAction;                                        // 0x08B0(0x0010) (Edit, BlueprintVisible, DisableEditOnInstance)
+	TEnumAsByte<EHorizontalAlignment>                  InputActionHorizontalAlignment;                           // 0x08C0(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	TEnumAsByte<EVerticalAlignment>                    InputActionVerticalAlignment;                             // 0x08C1(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x2];                                       // 0x08C2(0x0002) MISSED OFFSET
+	struct FVector2D                                   InputActionRenderTranslation;                             // 0x08C4(0x0008) (Edit, BlueprintVisible, IsPlainOldData)
+	bool                                               InputActionUseRimBrush;                                   // 0x08CC(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData01[0x3];                                       // 0x08CD(0x0003) MISSED OFFSET
+	struct FVector2D                                   InputActionRimBrushSize;                                  // 0x08D0(0x0008) (Edit, BlueprintVisible, IsPlainOldData)
 
 	static UClass* StaticClass()
 	{
@@ -32,6 +37,7 @@ public:
 	}
 
 
+	void UpdateInputActionLayout();
 	void UpdateStyle(bool bUsingGamepad);
 	void InitializeButton();
 	void UpdateTextAndStyle();
@@ -41,8 +47,8 @@ public:
 	void OnActionProgress(float* HeldPercent);
 	void OnActionComplete();
 	void Construct();
-	void OnHovered();
-	void OnUnhovered();
+	void BP_OnHovered();
+	void BP_OnUnhovered();
 	void ExecuteUbergraph_PanelButton(int EntryPoint);
 };
 

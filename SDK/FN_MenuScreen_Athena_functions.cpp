@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -12,14 +12,14 @@ namespace SDK
 //Functions
 //---------------------------------------------------------------------------
 
-// Function MenuScreen_Athena.MenuScreen_Athena_C.BlueprintBeginPlay
-// (Event, Public, BlueprintEvent)
+// Function MenuScreen_Athena.MenuScreen_Athena_C.AnimNotify_playFacialAnim
+// (BlueprintCallable, BlueprintEvent)
 
-void UMenuScreen_Athena_C::BlueprintBeginPlay()
+void UMenuScreen_Athena_C::AnimNotify_playFacialAnim()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function MenuScreen_Athena.MenuScreen_Athena_C.BlueprintBeginPlay");
+	static auto fn = UObject::FindObject<UFunction>("Function MenuScreen_Athena.MenuScreen_Athena_C.AnimNotify_playFacialAnim");
 
-	UMenuScreen_Athena_C_BlueprintBeginPlay_Params params;
+	UMenuScreen_Athena_C_AnimNotify_playFacialAnim_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46,14 +46,14 @@ void UMenuScreen_Athena_C::UserFocus()
 }
 
 
-// Function MenuScreen_Athena.MenuScreen_Athena_C.AnimNotify_playFacialAnim
+// Function MenuScreen_Athena.MenuScreen_Athena_C.AnimNotify_LeftB
 // (BlueprintCallable, BlueprintEvent)
 
-void UMenuScreen_Athena_C::AnimNotify_playFacialAnim()
+void UMenuScreen_Athena_C::AnimNotify_LeftB()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function MenuScreen_Athena.MenuScreen_Athena_C.AnimNotify_playFacialAnim");
+	static auto fn = UObject::FindObject<UFunction>("Function MenuScreen_Athena.MenuScreen_Athena_C.AnimNotify_LeftB");
 
-	UMenuScreen_Athena_C_AnimNotify_playFacialAnim_Params params;
+	UMenuScreen_Athena_C_AnimNotify_LeftB_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -71,23 +71,6 @@ void UMenuScreen_Athena_C::EvaluateGraphExposedInputs_ExecuteUbergraph_MenuScree
 	static auto fn = UObject::FindObject<UFunction>("Function MenuScreen_Athena.MenuScreen_Athena_C.EvaluateGraphExposedInputs_ExecuteUbergraph_MenuScreen_Athena_AnimGraphNode_ModifyBone_AE51F624415A5BC37D7F2FABCBE3FBE1");
 
 	UMenuScreen_Athena_C_EvaluateGraphExposedInputs_ExecuteUbergraph_MenuScreen_Athena_AnimGraphNode_ModifyBone_AE51F624415A5BC37D7F2FABCBE3FBE1_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function MenuScreen_Athena.MenuScreen_Athena_C.EvaluateGraphExposedInputs_ExecuteUbergraph_MenuScreen_Athena_AnimGraphNode_LegIK_3BACE47B4A5EF86B449B81BE7045ADA2
-// (BlueprintEvent)
-
-void UMenuScreen_Athena_C::EvaluateGraphExposedInputs_ExecuteUbergraph_MenuScreen_Athena_AnimGraphNode_LegIK_3BACE47B4A5EF86B449B81BE7045ADA2()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function MenuScreen_Athena.MenuScreen_Athena_C.EvaluateGraphExposedInputs_ExecuteUbergraph_MenuScreen_Athena_AnimGraphNode_LegIK_3BACE47B4A5EF86B449B81BE7045ADA2");
-
-	UMenuScreen_Athena_C_EvaluateGraphExposedInputs_ExecuteUbergraph_MenuScreen_Athena_AnimGraphNode_LegIK_3BACE47B4A5EF86B449B81BE7045ADA2_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -148,23 +131,6 @@ void UMenuScreen_Athena_C::EvaluateGraphExposedInputs_ExecuteUbergraph_MenuScree
 }
 
 
-// Function MenuScreen_Athena.MenuScreen_Athena_C.AnimNotify_LeftB
-// (BlueprintCallable, BlueprintEvent)
-
-void UMenuScreen_Athena_C::AnimNotify_LeftB()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function MenuScreen_Athena.MenuScreen_Athena_C.AnimNotify_LeftB");
-
-	UMenuScreen_Athena_C_AnimNotify_LeftB_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function MenuScreen_Athena.MenuScreen_Athena_C.BlueprintUpdateAnimation
 // (Event, Public, BlueprintEvent)
 // Parameters:
@@ -176,6 +142,23 @@ void UMenuScreen_Athena_C::BlueprintUpdateAnimation(float* DeltaTimeX)
 
 	UMenuScreen_Athena_C_BlueprintUpdateAnimation_Params params;
 	params.DeltaTimeX = DeltaTimeX;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function MenuScreen_Athena.MenuScreen_Athena_C.BlueprintInitializeAnimation
+// (Event, Public, BlueprintEvent)
+
+void UMenuScreen_Athena_C::BlueprintInitializeAnimation()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function MenuScreen_Athena.MenuScreen_Athena_C.BlueprintInitializeAnimation");
+
+	UMenuScreen_Athena_C_BlueprintInitializeAnimation_Params params;
 
 	auto flags = fn->FunctionFlags;
 

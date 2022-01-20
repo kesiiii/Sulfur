@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -24,14 +24,15 @@ struct UJournalQuestProgressBar_C_Construct_Params
 {
 };
 
-// Function JournalQuestProgressBar.JournalQuestProgressBar_C.HandleNewQuestObjectiveBP
-struct UJournalQuestProgressBar_C_HandleNewQuestObjectiveBP_Params
-{
-};
-
 // Function JournalQuestProgressBar.JournalQuestProgressBar_C.Handle Quests Updated
 struct UJournalQuestProgressBar_C_Handle_Quests_Updated_Params
 {
+};
+
+// Function JournalQuestProgressBar.JournalQuestProgressBar_C.OnListItemObjectSet
+struct UJournalQuestProgressBar_C_OnListItemObjectSet_Params
+{
+	class UObject**                                    ListItemObject;                                           // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function JournalQuestProgressBar.JournalQuestProgressBar_C.ExecuteUbergraph_JournalQuestProgressBar

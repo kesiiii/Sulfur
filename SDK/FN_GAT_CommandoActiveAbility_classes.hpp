@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -15,15 +13,15 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass GAT_CommandoActiveAbility.GAT_CommandoActiveAbility_C
-// 0x00BA (0x0B7A - 0x0AC0)
+// 0x00BA (0x09B2 - 0x08F8)
 class UGAT_CommandoActiveAbility_C : public UGAT_ActiveAbility_C
 {
 public:
-	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x0AC0(0x0008) (Transient, DuplicateTransient)
-	struct FGameplayEventData                          Event_Data;                                               // 0x0AC8(0x00A8) (Edit, BlueprintVisible, DisableEditOnInstance)
-	class APlayerPawn_Commando_C*                      CommandoPlayerPawn;                                       // 0x0B70(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData)
-	bool                                               isAutoCommitted;                                          // 0x0B78(0x0001) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
-	bool                                               isStaminaLockedOut;                                       // 0x0B79(0x0001) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x08F8(0x0008) (Transient, DuplicateTransient)
+	struct FGameplayEventData                          Event_Data;                                               // 0x0900(0x00A8) (Edit, BlueprintVisible, DisableEditOnInstance)
+	class AFortPawn*                                   CommandoPlayerPawn;                                       // 0x09A8(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnTemplate, DisableEditOnInstance, IsPlainOldData)
+	bool                                               isAutoCommitted;                                          // 0x09B0(0x0001) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	bool                                               isStaminaLockedOut;                                       // 0x09B1(0x0001) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
 
 	static UClass* StaticClass()
 	{

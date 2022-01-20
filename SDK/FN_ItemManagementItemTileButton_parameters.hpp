@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,6 +13,27 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.Populate
+struct UItemManagementItemTileButton_C_Populate_Params
+{
+};
+
+// Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.Initial Reset
+struct UItemManagementItemTileButton_C_Initial_Reset_Params
+{
+};
+
+// Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.IsItemMulchable
+struct UItemManagementItemTileButton_C_IsItemMulchable_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+};
+
+// Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.UpdateCollectionBookIndicator
+struct UItemManagementItemTileButton_C_UpdateCollectionBookIndicator_Params
+{
+};
 
 // Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.HandleSlottedSurvivor
 struct UItemManagementItemTileButton_C_HandleSlottedSurvivor_Params
@@ -44,7 +65,7 @@ struct UItemManagementItemTileButton_C_SetEquipSlotOverlay_Params
 struct UItemManagementItemTileButton_C_OnDragDetected_Params
 {
 	struct FGeometry*                                  MyGeometry;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData)
-	struct FPointerEvent                               PointerEvent;                                             // (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+	struct FPointerEvent*                              PointerEvent;                                             // (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
 	class UDragDropOperation*                          Operation;                                                // (Parm, OutParm, ZeroConstructor, IsPlainOldData)
 };
 
@@ -76,13 +97,13 @@ struct UItemManagementItemTileButton_C_HandleDifferentItemManagementModeSetBP_Pa
 {
 };
 
-// Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.OnHovered
-struct UItemManagementItemTileButton_C_OnHovered_Params
+// Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.BP_OnHovered
+struct UItemManagementItemTileButton_C_BP_OnHovered_Params
 {
 };
 
-// Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.OnUnhovered
-struct UItemManagementItemTileButton_C_OnUnhovered_Params
+// Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.BP_OnUnhovered
+struct UItemManagementItemTileButton_C_BP_OnUnhovered_Params
 {
 };
 
@@ -109,8 +130,8 @@ struct UItemManagementItemTileButton_C_OnDragCancelled_Params
 	class UDragDropOperation**                         Operation;                                                // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
-// Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.OnSelected
-struct UItemManagementItemTileButton_C_OnSelected_Params
+// Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.BP_OnSelected
+struct UItemManagementItemTileButton_C_BP_OnSelected_Params
 {
 };
 
@@ -123,6 +144,11 @@ struct UItemManagementItemTileButton_C_HandleItemChangedBP_Params
 struct UItemManagementItemTileButton_C_BndEvt__PopupMenuAnchor_K2Node_ComponentBoundEvent_0_OnMenuOpenChangedEvent__DelegateSignature_Params
 {
 	bool                                               bIsOpen;                                                  // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.HandleShowCollectionBookIndicatorChanged
+struct UItemManagementItemTileButton_C_HandleShowCollectionBookIndicatorChanged_Params
+{
 };
 
 // Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.ExecuteUbergraph_ItemManagementItemTileButton

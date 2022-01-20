@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -128,7 +128,7 @@ void USimpleSquadSlotButton_C::Update_Bang_State()
 // Function SimpleSquadSlotButton.SimpleSquadSlotButton_C.GetSimpleSquadButtonTooltipWidget
 // (Public, HasOutParms, BlueprintCallable, BlueprintEvent, BlueprintPure)
 // Parameters:
-// class UWidget*                 ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+// class UWidget*                 ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, IsPlainOldData)
 
 class UWidget* USimpleSquadSlotButton_C::GetSimpleSquadButtonTooltipWidget()
 {
@@ -217,14 +217,14 @@ void USimpleSquadSlotButton_C::SquadSlotWidgetUpdated()
 }
 
 
-// Function SimpleSquadSlotButton.SimpleSquadSlotButton_C.OnSelected
+// Function SimpleSquadSlotButton.SimpleSquadSlotButton_C.BP_OnSelected
 // (Event, Protected, BlueprintEvent)
 
-void USimpleSquadSlotButton_C::OnSelected()
+void USimpleSquadSlotButton_C::BP_OnSelected()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function SimpleSquadSlotButton.SimpleSquadSlotButton_C.OnSelected");
+	static auto fn = UObject::FindObject<UFunction>("Function SimpleSquadSlotButton.SimpleSquadSlotButton_C.BP_OnSelected");
 
-	USimpleSquadSlotButton_C_OnSelected_Params params;
+	USimpleSquadSlotButton_C_BP_OnSelected_Params params;
 
 	auto flags = fn->FunctionFlags;
 

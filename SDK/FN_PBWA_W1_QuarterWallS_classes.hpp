@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -15,11 +13,11 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass PBWA_W1_QuarterWallS.PBWA_W1_QuarterWallS_C
-// 0x0008 (0x0EF8 - 0x0EF0)
+// 0x0008 (0x0D10 - 0x0D08)
 class APBWA_W1_QuarterWallS_C : public ABuildingWall
 {
 public:
-	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x0EF0(0x0008) (Transient, DuplicateTransient)
+	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x0D08(0x0008) (Transient, DuplicateTransient)
 
 	static UClass* StaticClass()
 	{

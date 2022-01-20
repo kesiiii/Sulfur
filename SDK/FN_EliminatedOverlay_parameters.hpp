@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,6 +13,35 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function EliminatedOverlay.EliminatedOverlay_C.GetMultiwinnerIndex
+struct UEliminatedOverlay_C_GetMultiwinnerIndex_Params
+{
+	int                                                RequestedPosition;                                        // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	int                                                ValidatedPosition;                                        // (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function EliminatedOverlay.EliminatedOverlay_C.UpdateMultiwinner
+struct UEliminatedOverlay_C_UpdateMultiwinner_Params
+{
+};
+
+// Function EliminatedOverlay.EliminatedOverlay_C.UpdatePlayerLost
+struct UEliminatedOverlay_C_UpdatePlayerLost_Params
+{
+};
+
+// Function EliminatedOverlay.EliminatedOverlay_C.OnPlayerLost
+struct UEliminatedOverlay_C_OnPlayerLost_Params
+{
+	EEndOfMatchReason                                  LostReason;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function EliminatedOverlay.EliminatedOverlay_C.Winning Score Determined
+struct UEliminatedOverlay_C_Winning_Score_Determined_Params
+{
+	int                                                Score;                                                    // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
 
 // Function EliminatedOverlay.EliminatedOverlay_C.StreamingLoadingChanged
 struct UEliminatedOverlay_C_StreamingLoadingChanged_Params
@@ -30,7 +59,6 @@ struct UEliminatedOverlay_C_SetBannerForKiller_Params
 struct UEliminatedOverlay_C_ProcessDeathReport_Params
 {
 	struct FFortPlayerDeathReport                      FortPlayerDeathReport;                                    // (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
-	class AFortPawn*                                   KillerPawn;                                               // (Parm, OutParm, ZeroConstructor, IsPlainOldData)
 	bool                                               DidPlayerKillThemselves;                                  // (Parm, OutParm, ZeroConstructor, IsPlainOldData)
 	struct FText                                       KillerName;                                               // (Parm, OutParm)
 };
@@ -81,6 +109,16 @@ struct UEliminatedOverlay_C_Tick_Params
 
 // Function EliminatedOverlay.EliminatedOverlay_C.Construct
 struct UEliminatedOverlay_C_Construct_Params
+{
+};
+
+// Function EliminatedOverlay.EliminatedOverlay_C.EventUpdateMultiWinner
+struct UEliminatedOverlay_C_EventUpdateMultiWinner_Params
+{
+};
+
+// Function EliminatedOverlay.EliminatedOverlay_C.WinnerSwapComplete
+struct UEliminatedOverlay_C_WinnerSwapComplete_Params
 {
 };
 

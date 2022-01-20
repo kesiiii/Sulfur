@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -15,7 +13,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // WidgetBlueprintGeneratedClass ItemTransformKeyPicker.ItemTransformKeyPicker_C
-// 0x0000 (0x02E0 - 0x02E0)
+// 0x0000 (0x0350 - 0x0350)
 class UItemTransformKeyPicker_C : public UFortTransformKeyPicker
 {
 public:

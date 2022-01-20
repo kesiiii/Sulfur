@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -112,7 +112,7 @@ void UAthenaInventoryFortItemTileButton_C::UpdateInteractionWidgetVisibility()
 // (BlueprintCosmetic, Event, Public, HasOutParms, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // struct FGeometry*              MyGeometry                     (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData)
-// struct FPointerEvent           PointerEvent                   (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+// struct FPointerEvent*          PointerEvent                   (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
 // class UDragDropOperation*      Operation                      (Parm, OutParm, ZeroConstructor, IsPlainOldData)
 
 void UAthenaInventoryFortItemTileButton_C::OnDragDetected(struct FGeometry* MyGeometry, struct FPointerEvent* PointerEvent, class UDragDropOperation** Operation)
@@ -121,6 +121,7 @@ void UAthenaInventoryFortItemTileButton_C::OnDragDetected(struct FGeometry* MyGe
 
 	UAthenaInventoryFortItemTileButton_C_OnDragDetected_Params params;
 	params.MyGeometry = MyGeometry;
+	params.PointerEvent = PointerEvent;
 
 	auto flags = fn->FunctionFlags;
 
@@ -128,8 +129,6 @@ void UAthenaInventoryFortItemTileButton_C::OnDragDetected(struct FGeometry* MyGe
 
 	fn->FunctionFlags = flags;
 
-	if (PointerEvent != nullptr)
-		*PointerEvent = params.PointerEvent;
 	if (Operation != nullptr)
 		*Operation = params.Operation;
 }
@@ -152,68 +151,14 @@ void UAthenaInventoryFortItemTileButton_C::UpdateStyle()
 }
 
 
-// Function AthenaInventoryFortItemTileButton.AthenaInventoryFortItemTileButton_C.OnInventoryItemSelected_Event_0_1
-// (BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class UFortItem*               Item                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-
-void UAthenaInventoryFortItemTileButton_C::OnInventoryItemSelected_Event_0_1(class UFortItem* Item)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaInventoryFortItemTileButton.AthenaInventoryFortItemTileButton_C.OnInventoryItemSelected_Event_0_1");
-
-	UAthenaInventoryFortItemTileButton_C_OnInventoryItemSelected_Event_0_1_Params params;
-	params.Item = Item;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function AthenaInventoryFortItemTileButton.AthenaInventoryFortItemTileButton_C.Construct
-// (BlueprintCosmetic, Event, Public, BlueprintEvent)
-
-void UAthenaInventoryFortItemTileButton_C::Construct()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaInventoryFortItemTileButton.AthenaInventoryFortItemTileButton_C.Construct");
-
-	UAthenaInventoryFortItemTileButton_C_Construct_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function AthenaInventoryFortItemTileButton.AthenaInventoryFortItemTileButton_C.Destruct
-// (BlueprintCosmetic, Event, Public, BlueprintEvent)
-
-void UAthenaInventoryFortItemTileButton_C::Destruct()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaInventoryFortItemTileButton.AthenaInventoryFortItemTileButton_C.Destruct");
-
-	UAthenaInventoryFortItemTileButton_C_Destruct_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function AthenaInventoryFortItemTileButton.AthenaInventoryFortItemTileButton_C.OnSelected
+// Function AthenaInventoryFortItemTileButton.AthenaInventoryFortItemTileButton_C.BP_OnSelected
 // (Event, Protected, BlueprintEvent)
 
-void UAthenaInventoryFortItemTileButton_C::OnSelected()
+void UAthenaInventoryFortItemTileButton_C::BP_OnSelected()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaInventoryFortItemTileButton.AthenaInventoryFortItemTileButton_C.OnSelected");
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaInventoryFortItemTileButton.AthenaInventoryFortItemTileButton_C.BP_OnSelected");
 
-	UAthenaInventoryFortItemTileButton_C_OnSelected_Params params;
+	UAthenaInventoryFortItemTileButton_C_BP_OnSelected_Params params;
 
 	auto flags = fn->FunctionFlags;
 

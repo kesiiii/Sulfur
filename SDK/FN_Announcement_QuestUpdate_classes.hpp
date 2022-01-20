@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -30,7 +28,7 @@ public:
 
 
 	void UpdateWidgetData(class AFortClientAnnouncement** Announcement);
-	void AllUpdatesFinished(class UQuestUpdateEntry_C* UpdateWidget);
+	void AnnouncementStopped(class AFortClientAnnouncement** Announcement);
 	void ExecuteUbergraph_Announcement_QuestUpdate(int EntryPoint);
 };
 

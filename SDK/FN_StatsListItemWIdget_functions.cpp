@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,40 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function StatsListItemWIdget.StatsListItemWIdget_C.Initial Reset
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UStatsListItemWIdget_C::Initial_Reset()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function StatsListItemWIdget.StatsListItemWIdget_C.Initial Reset");
+
+	UStatsListItemWIdget_C_Initial_Reset_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function StatsListItemWIdget.StatsListItemWIdget_C.Populate-Update
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UStatsListItemWIdget_C::Populate_Update()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function StatsListItemWIdget.StatsListItemWIdget_C.Populate-Update");
+
+	UStatsListItemWIdget_C_Populate_Update_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
 
 // Function StatsListItemWIdget.StatsListItemWIdget_C.SetTextAndBorderHighlight
 // (Public, BlueprintCallable, BlueprintEvent)
@@ -35,7 +69,7 @@ void UStatsListItemWIdget_C::SetTextAndBorderHighlight(bool bHightlight)
 // Function StatsListItemWIdget.StatsListItemWIdget_C.GetListItemTooltipWidget
 // (Public, HasOutParms, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure)
 // Parameters:
-// class UWidget*                 ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+// class UWidget*                 ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, IsPlainOldData)
 
 class UWidget* UStatsListItemWIdget_C::GetListItemTooltipWidget()
 {

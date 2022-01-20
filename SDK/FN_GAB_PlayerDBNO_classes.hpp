@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -15,17 +13,23 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass GAB_PlayerDBNO.GAB_PlayerDBNO_C
-// 0x00E0 (0x0B90 - 0x0AB0)
+// 0x0158 (0x0A28 - 0x08D0)
 class UGAB_PlayerDBNO_C : public UFortGameplayAbility
 {
 public:
-	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x0AB0(0x0008) (Transient, DuplicateTransient)
-	class UAnimMontage*                                DeathMontage;                                             // 0x0AB8(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
-	struct FVector                                     DeathHitDirection;                                        // 0x0AC0(0x000C) (Edit, BlueprintVisible, DisableEditOnInstance, IsPlainOldData)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x0ACC(0x0004) MISSED OFFSET
-	struct FHitResult                                  DeathHitResult;                                           // 0x0AD0(0x0080) (Edit, BlueprintVisible, DisableEditOnInstance, IsPlainOldData)
-	struct FGameplayTagContainer                       DamageTags;                                               // 0x0B50(0x0020) (Edit, BlueprintVisible, DisableEditOnInstance)
-	struct FGameplayTagContainer                       GameplayStatusAfflicted;                                  // 0x0B70(0x0020) (Edit, BlueprintVisible, DisableEditOnInstance)
+	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x08D0(0x0008) (Transient, DuplicateTransient)
+	class UAnimMontage*                                DeathMontage;                                             // 0x08D8(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	struct FVector                                     DeathHitDirection;                                        // 0x08E0(0x000C) (Edit, BlueprintVisible, DisableEditOnInstance, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x08EC(0x0004) MISSED OFFSET
+	struct FHitResult                                  DeathHitResult;                                           // 0x08F0(0x0088) (Edit, BlueprintVisible, DisableEditOnInstance, IsPlainOldData)
+	struct FGameplayTagContainer                       DamageTags;                                               // 0x0978(0x0020) (Edit, BlueprintVisible, DisableEditOnInstance)
+	struct FGameplayTagContainer                       GameplayStatusAfflicted;                                  // 0x0998(0x0020) (Edit, BlueprintVisible, DisableEditOnInstance)
+	class UClass*                                      GE_DBNOSpeed;                                             // 0x09B8(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	struct FActiveGameplayEffectHandle                 DBNOSpeedHandle;                                          // 0x09C0(0x0008) (Edit, BlueprintVisible, DisableEditOnInstance)
+	float                                              F_FailsafeDBNOSpeed;                                      // 0x09C8(0x0004) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x09CC(0x0004) MISSED OFFSET
+	TMap<struct FGameplayTag, struct FName>            MAP_DBNOSpeedRowNames;                                    // 0x09D0(0x0050) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance)
+	struct FName                                       N_DBNOSpeedRowName;                                       // 0x0A20(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
 
 	static UClass* StaticClass()
 	{
@@ -35,11 +39,11 @@ public:
 
 
 	void InitializeDeathHitDirection(const struct FGameplayEventData& EventHitData);
-	void OnCancelled_4B0F8658452931EE3B297A9E70C9C496();
-	void OnInterrupted_4B0F8658452931EE3B297A9E70C9C496();
-	void OnBlendOut_4B0F8658452931EE3B297A9E70C9C496();
-	void OnCompleted_4B0F8658452931EE3B297A9E70C9C496();
+	void Completed_F61877974D2CED083195EF8A8CDA60C2(const struct FGameplayAbilityTargetDataHandle& TargetData, const struct FGameplayTag& ApplicationTag);
+	void Cancelled_F61877974D2CED083195EF8A8CDA60C2(const struct FGameplayAbilityTargetDataHandle& TargetData, const struct FGameplayTag& ApplicationTag);
+	void Triggered_F61877974D2CED083195EF8A8CDA60C2(const struct FGameplayAbilityTargetDataHandle& TargetData, const struct FGameplayTag& ApplicationTag);
 	void K2_ActivateAbilityFromEvent(struct FGameplayEventData* EventData);
+	void K2_OnEndAbility(bool* bWasCancelled);
 	void ExecuteUbergraph_GAB_PlayerDBNO(int EntryPoint);
 };
 

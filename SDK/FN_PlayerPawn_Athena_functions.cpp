@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,298 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.CleanUpTeleportationFXLight
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void APlayerPawn_Athena_C::CleanUpTeleportationFXLight()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.CleanUpTeleportationFXLight");
+
+	APlayerPawn_Athena_C_CleanUpTeleportationFXLight_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.UpdatePreDissolve
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                          GlowScalar                     (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void APlayerPawn_Athena_C::UpdatePreDissolve(float GlowScalar)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.UpdatePreDissolve");
+
+	APlayerPawn_Athena_C_UpdatePreDissolve_Params params;
+	params.GlowScalar = GlowScalar;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.RestoreCharacterMats
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void APlayerPawn_Athena_C::RestoreCharacterMats()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.RestoreCharacterMats");
+
+	APlayerPawn_Athena_C_RestoreCharacterMats_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.SetupDissolveFX
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void APlayerPawn_Athena_C::SetupDissolveFX()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.SetupDissolveFX");
+
+	APlayerPawn_Athena_C_SetupDissolveFX_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.UpdateTeleportationPointLight
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// struct FVector                 NewWorldLoc                    (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData)
+// float                          IntensityScalar                (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void APlayerPawn_Athena_C::UpdateTeleportationPointLight(const struct FVector& NewWorldLoc, float IntensityScalar)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.UpdateTeleportationPointLight");
+
+	APlayerPawn_Athena_C_UpdateTeleportationPointLight_Params params;
+	params.NewWorldLoc = NewWorldLoc;
+	params.IntensityScalar = IntensityScalar;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.GetDissolveValues
+// (Public, HasOutParms, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// float                          ZheightNormScalar              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// float                          DissolveGradientDistance       (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+// struct FVector                 WorldDissolveLocation          (Parm, OutParm, IsPlainOldData)
+// struct FLinearColor            DissolveGradientDirectionColor (Parm, OutParm, IsPlainOldData)
+// struct FLinearColor            DissolveGradientBaseLocColor   (Parm, OutParm, IsPlainOldData)
+
+void APlayerPawn_Athena_C::GetDissolveValues(float ZheightNormScalar, float* DissolveGradientDistance, struct FVector* WorldDissolveLocation, struct FLinearColor* DissolveGradientDirectionColor, struct FLinearColor* DissolveGradientBaseLocColor)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.GetDissolveValues");
+
+	APlayerPawn_Athena_C_GetDissolveValues_Params params;
+	params.ZheightNormScalar = ZheightNormScalar;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (DissolveGradientDistance != nullptr)
+		*DissolveGradientDistance = params.DissolveGradientDistance;
+	if (WorldDissolveLocation != nullptr)
+		*WorldDissolveLocation = params.WorldDissolveLocation;
+	if (DissolveGradientDirectionColor != nullptr)
+		*DissolveGradientDirectionColor = params.DissolveGradientDirectionColor;
+	if (DissolveGradientBaseLocColor != nullptr)
+		*DissolveGradientBaseLocColor = params.DissolveGradientBaseLocColor;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.UpdateDissolveFX
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// float                          Scalar_Transition              (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// float                          Scalar_ZHeight                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// float                          Scalar_LightIntensity          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void APlayerPawn_Athena_C::UpdateDissolveFX(float Scalar_Transition, float Scalar_ZHeight, float Scalar_LightIntensity)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.UpdateDissolveFX");
+
+	APlayerPawn_Athena_C_UpdateDissolveFX_Params params;
+	params.Scalar_Transition = Scalar_Transition;
+	params.Scalar_ZHeight = Scalar_ZHeight;
+	params.Scalar_LightIntensity = Scalar_LightIntensity;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.SpawnTeleportationLight
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void APlayerPawn_Athena_C::SpawnTeleportationLight()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.SpawnTeleportationLight");
+
+	APlayerPawn_Athena_C_SpawnTeleportationLight_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.FindBounds
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void APlayerPawn_Athena_C::FindBounds()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.FindBounds");
+
+	APlayerPawn_Athena_C_FindBounds_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.QueueTeleportOut
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void APlayerPawn_Athena_C::QueueTeleportOut()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.QueueTeleportOut");
+
+	APlayerPawn_Athena_C_QueueTeleportOut_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.QueueTeleportIn
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void APlayerPawn_Athena_C::QueueTeleportIn()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.QueueTeleportIn");
+
+	APlayerPawn_Athena_C_QueueTeleportIn_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.OnOpenParachute
+// (Event, Protected, HasOutParms, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                           bConsumeEvent                  (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+
+void APlayerPawn_Athena_C::OnOpenParachute(bool* bConsumeEvent)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.OnOpenParachute");
+
+	APlayerPawn_Athena_C_OnOpenParachute_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (bConsumeEvent != nullptr)
+		*bConsumeEvent = params.bConsumeEvent;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.OnStartLongInteract
+// (Event, Public, HasOutParms, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class AActor**                 ReceivingActor                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// bool                           Out_bConsumeEvent              (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+// bool                           Out_bSkipSetInteractDuration   (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+// bool                           Out_bSkipStartAnimation        (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+
+void APlayerPawn_Athena_C::OnStartLongInteract(class AActor** ReceivingActor, bool* Out_bConsumeEvent, bool* Out_bSkipSetInteractDuration, bool* Out_bSkipStartAnimation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.OnStartLongInteract");
+
+	APlayerPawn_Athena_C_OnStartLongInteract_Params params;
+	params.ReceivingActor = ReceivingActor;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Out_bConsumeEvent != nullptr)
+		*Out_bConsumeEvent = params.Out_bConsumeEvent;
+	if (Out_bSkipSetInteractDuration != nullptr)
+		*Out_bSkipSetInteractDuration = params.Out_bSkipSetInteractDuration;
+	if (Out_bSkipStartAnimation != nullptr)
+		*Out_bSkipStartAnimation = params.Out_bSkipStartAnimation;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.InWarmUp
+// (Public, HasOutParms, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                           InWarmUp                       (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+
+void APlayerPawn_Athena_C::InWarmUp(bool* InWarmUp)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.InWarmUp");
+
+	APlayerPawn_Athena_C_InWarmUp_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (InWarmUp != nullptr)
+		*InWarmUp = params.InWarmUp;
+}
+
 
 // Function PlayerPawn_Athena.PlayerPawn_Athena_C.StopLoopingAudio
 // (Public, BlueprintCallable, BlueprintEvent)
@@ -229,6 +521,108 @@ void APlayerPawn_Athena_C::Storm_Audio_Fader__UpdateFunc()
 }
 
 
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.Timeline_0__FinishedFunc
+// (BlueprintEvent)
+
+void APlayerPawn_Athena_C::Timeline_0__FinishedFunc()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.Timeline_0__FinishedFunc");
+
+	APlayerPawn_Athena_C_Timeline_0__FinishedFunc_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.Timeline_0__UpdateFunc
+// (BlueprintEvent)
+
+void APlayerPawn_Athena_C::Timeline_0__UpdateFunc()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.Timeline_0__UpdateFunc");
+
+	APlayerPawn_Athena_C_Timeline_0__UpdateFunc_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.TFX_GlowCharacterMesh__FinishedFunc
+// (BlueprintEvent)
+
+void APlayerPawn_Athena_C::TFX_GlowCharacterMesh__FinishedFunc()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.TFX_GlowCharacterMesh__FinishedFunc");
+
+	APlayerPawn_Athena_C_TFX_GlowCharacterMesh__FinishedFunc_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.TFX_GlowCharacterMesh__UpdateFunc
+// (BlueprintEvent)
+
+void APlayerPawn_Athena_C::TFX_GlowCharacterMesh__UpdateFunc()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.TFX_GlowCharacterMesh__UpdateFunc");
+
+	APlayerPawn_Athena_C_TFX_GlowCharacterMesh__UpdateFunc_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.TFX_ResOutCharacterMesh__FinishedFunc
+// (BlueprintEvent)
+
+void APlayerPawn_Athena_C::TFX_ResOutCharacterMesh__FinishedFunc()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.TFX_ResOutCharacterMesh__FinishedFunc");
+
+	APlayerPawn_Athena_C_TFX_ResOutCharacterMesh__FinishedFunc_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.TFX_ResOutCharacterMesh__UpdateFunc
+// (BlueprintEvent)
+
+void APlayerPawn_Athena_C::TFX_ResOutCharacterMesh__UpdateFunc()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.TFX_ResOutCharacterMesh__UpdateFunc");
+
+	APlayerPawn_Athena_C_TFX_ResOutCharacterMesh__UpdateFunc_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function PlayerPawn_Athena.PlayerPawn_Athena_C.GameplayCue.Abilities.Activation.Generic.HarvestBuff.Tier1
 // (BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -293,23 +687,6 @@ void APlayerPawn_Athena_C::ReceivePossessed(class AController** NewController)
 }
 
 
-// Function PlayerPawn_Athena.PlayerPawn_Athena_C.SetMenuScreenClassName
-// (BlueprintCallable, BlueprintEvent)
-
-void APlayerPawn_Athena_C::SetMenuScreenClassName()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.SetMenuScreenClassName");
-
-	APlayerPawn_Athena_C_SetMenuScreenClassName_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function PlayerPawn_Athena.PlayerPawn_Athena_C.ReceiveBeginPlay
 // (Event, Protected, BlueprintEvent)
 
@@ -318,26 +695,6 @@ void APlayerPawn_Athena_C::ReceiveBeginPlay()
 	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.ReceiveBeginPlay");
 
 	APlayerPawn_Athena_C_ReceiveBeginPlay_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function PlayerPawn_Athena.PlayerPawn_Athena_C.SelectPawn
-// (BlueprintCallable, BlueprintEvent)
-// Parameters:
-// class UAnimInstance*           AnimInst                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-
-void APlayerPawn_Athena_C::SelectPawn(class UAnimInstance* AnimInst)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.SelectPawn");
-
-	APlayerPawn_Athena_C_SelectPawn_Params params;
-	params.AnimInst = AnimInst;
 
 	auto flags = fn->FunctionFlags;
 
@@ -387,7 +744,7 @@ void APlayerPawn_Athena_C::GameplayCue_Athena_OutsideSafeZone(TEnumAsByte<EGamep
 
 
 // Function PlayerPawn_Athena.PlayerPawn_Athena_C.SafeZoneStatusChanged
-// (Event, Protected, BlueprintEvent)
+// (Event, Public, BlueprintEvent)
 
 void APlayerPawn_Athena_C::SafeZoneStatusChanged()
 {
@@ -448,26 +805,6 @@ void APlayerPawn_Athena_C::OnDeathPlayEffects(float* Damage, struct FGameplayTag
 	params.InstigatedBy = InstigatedBy;
 	params.DamageCauser = DamageCauser;
 	params.EffectContext = EffectContext;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function PlayerPawn_Athena.PlayerPawn_Athena_C.ReceiveTick
-// (Event, Public, BlueprintEvent)
-// Parameters:
-// float*                         DeltaSeconds                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-
-void APlayerPawn_Athena_C::ReceiveTick(float* DeltaSeconds)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.ReceiveTick");
-
-	APlayerPawn_Athena_C_ReceiveTick_Params params;
-	params.DeltaSeconds = DeltaSeconds;
 
 	auto flags = fn->FunctionFlags;
 
@@ -756,6 +1093,185 @@ void APlayerPawn_Athena_C::OnExitedWaterVolume()
 	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.OnExitedWaterVolume");
 
 	APlayerPawn_Athena_C_OnExitedWaterVolume_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.NotifyTeammateSkydivedFromBus
+// (Event, Public, BlueprintEvent)
+
+void APlayerPawn_Athena_C::NotifyTeammateSkydivedFromBus()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.NotifyTeammateSkydivedFromBus");
+
+	APlayerPawn_Athena_C_NotifyTeammateSkydivedFromBus_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.ReceiveEndPlay
+// (Event, Public, BlueprintEvent)
+// Parameters:
+// TEnumAsByte<EEndPlayReason>*   EndPlayReason                  (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void APlayerPawn_Athena_C::ReceiveEndPlay(TEnumAsByte<EEndPlayReason>* EndPlayReason)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.ReceiveEndPlay");
+
+	APlayerPawn_Athena_C_ReceiveEndPlay_Params params;
+	params.EndPlayReason = EndPlayReason;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.OnSignificantTick
+// (BlueprintCosmetic, Event, Public, BlueprintEvent)
+// Parameters:
+// float*                         Significance                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void APlayerPawn_Athena_C::OnSignificantTick(float* Significance)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.OnSignificantTick");
+
+	APlayerPawn_Athena_C_OnSignificantTick_Params params;
+	params.Significance = Significance;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.OnLeftReplayRelevancy
+// (Event, Public, BlueprintEvent)
+
+void APlayerPawn_Athena_C::OnLeftReplayRelevancy()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.OnLeftReplayRelevancy");
+
+	APlayerPawn_Athena_C_OnLeftReplayRelevancy_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.OnEnteredReplayRelevancy
+// (Event, Public, BlueprintEvent)
+
+void APlayerPawn_Athena_C::OnEnteredReplayRelevancy()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.OnEnteredReplayRelevancy");
+
+	APlayerPawn_Athena_C_OnEnteredReplayRelevancy_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.OnCharacterCustomizationCompleted
+// (BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class AFortPlayerPawn*         Pawn                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void APlayerPawn_Athena_C::OnCharacterCustomizationCompleted(class AFortPlayerPawn* Pawn)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.OnCharacterCustomizationCompleted");
+
+	APlayerPawn_Athena_C_OnCharacterCustomizationCompleted_Params params;
+	params.Pawn = Pawn;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.PlayResOut
+// (Net, NetMulticast, BlueprintCallable, BlueprintEvent)
+
+void APlayerPawn_Athena_C::PlayResOut()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.PlayResOut");
+
+	APlayerPawn_Athena_C_PlayResOut_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.OnResInDuringWarmup
+// (BlueprintCosmetic, Event, Public, BlueprintCallable, BlueprintEvent)
+
+void APlayerPawn_Athena_C::OnResInDuringWarmup()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.OnResInDuringWarmup");
+
+	APlayerPawn_Athena_C_OnResInDuringWarmup_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.PlayResInFX
+// (BlueprintCallable, BlueprintEvent)
+
+void APlayerPawn_Athena_C::PlayResInFX()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.PlayResInFX");
+
+	APlayerPawn_Athena_C_PlayResInFX_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.PlayResOutFX
+// (BlueprintCallable, BlueprintEvent)
+
+void APlayerPawn_Athena_C::PlayResOutFX()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PlayerPawn_Athena.PlayerPawn_Athena_C.PlayResOutFX");
+
+	APlayerPawn_Athena_C_PlayResOutFX_Params params;
 
 	auto flags = fn->FunctionFlags;
 

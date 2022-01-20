@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -27,8 +27,8 @@ struct UItemInspectEvolutionChoiceEntry_C_SetItemToRepresent_Params
 	bool                                               EnabledChoice;                                            // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
-// Function ItemInspectEvolutionChoiceEntry.ItemInspectEvolutionChoiceEntry_C.OnSelected
-struct UItemInspectEvolutionChoiceEntry_C_OnSelected_Params
+// Function ItemInspectEvolutionChoiceEntry.ItemInspectEvolutionChoiceEntry_C.BP_OnSelected
+struct UItemInspectEvolutionChoiceEntry_C_BP_OnSelected_Params
 {
 };
 

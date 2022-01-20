@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -37,8 +37,8 @@ struct UGA_Commando_FragGrenade_WithTrajectory_C_UpdateTrajectorySpline_Params
 {
 };
 
-// Function GA_Commando_FragGrenade_WithTrajectory.GA_Commando_FragGrenade_WithTrajectory_C.SetupDummyProjectile
-struct UGA_Commando_FragGrenade_WithTrajectory_C_SetupDummyProjectile_Params
+// Function GA_Commando_FragGrenade_WithTrajectory.GA_Commando_FragGrenade_WithTrajectory_C.SetUpDummyProjectile
+struct UGA_Commando_FragGrenade_WithTrajectory_C_SetUpDummyProjectile_Params
 {
 };
 
@@ -52,7 +52,7 @@ struct UGA_Commando_FragGrenade_WithTrajectory_C_SpawnLocationAndRotation_Params
 // Function GA_Commando_FragGrenade_WithTrajectory.GA_Commando_FragGrenade_WithTrajectory_C.SetupAbility
 struct UGA_Commando_FragGrenade_WithTrajectory_C_SetupAbility_Params
 {
-	class UAbilitySystemComponent*                     AbilitySystemComponentRef;                                // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class UAbilitySystemComponent*                     AbilitySystemComponentRef;                                // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 };
 
 // Function GA_Commando_FragGrenade_WithTrajectory.GA_Commando_FragGrenade_WithTrajectory_C.SetupGrenade
@@ -139,13 +139,18 @@ struct UGA_Commando_FragGrenade_WithTrajectory_C_CleanupTrajectoryDisplay_Params
 {
 };
 
+// Function GA_Commando_FragGrenade_WithTrajectory.GA_Commando_FragGrenade_WithTrajectory_C.TossGrenade
+struct UGA_Commando_FragGrenade_WithTrajectory_C_TossGrenade_Params
+{
+};
+
 // Function GA_Commando_FragGrenade_WithTrajectory.GA_Commando_FragGrenade_WithTrajectory_C.K2_ActivateAbility
 struct UGA_Commando_FragGrenade_WithTrajectory_C_K2_ActivateAbility_Params
 {
 };
 
-// Function GA_Commando_FragGrenade_WithTrajectory.GA_Commando_FragGrenade_WithTrajectory_C.TossGrenade
-struct UGA_Commando_FragGrenade_WithTrajectory_C_TossGrenade_Params
+// Function GA_Commando_FragGrenade_WithTrajectory.GA_Commando_FragGrenade_WithTrajectory_C.CommitOnSever
+struct UGA_Commando_FragGrenade_WithTrajectory_C_CommitOnSever_Params
 {
 };
 

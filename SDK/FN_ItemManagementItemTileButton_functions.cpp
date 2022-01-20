@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,78 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.Populate
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UItemManagementItemTileButton_C::Populate()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.Populate");
+
+	UItemManagementItemTileButton_C_Populate_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.Initial Reset
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UItemManagementItemTileButton_C::Initial_Reset()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.Initial Reset");
+
+	UItemManagementItemTileButton_C_Initial_Reset_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.IsItemMulchable
+// (Public, HasOutParms, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// bool                           ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+
+bool UItemManagementItemTileButton_C::IsItemMulchable()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.IsItemMulchable");
+
+	UItemManagementItemTileButton_C_IsItemMulchable_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.UpdateCollectionBookIndicator
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UItemManagementItemTileButton_C::UpdateCollectionBookIndicator()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.UpdateCollectionBookIndicator");
+
+	UItemManagementItemTileButton_C_UpdateCollectionBookIndicator_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
 
 // Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.HandleSlottedSurvivor
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
@@ -104,7 +176,7 @@ void UItemManagementItemTileButton_C::SetEquipSlotOverlay(int EquipSlot)
 // (BlueprintCosmetic, Event, Public, HasOutParms, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // struct FGeometry*              MyGeometry                     (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData)
-// struct FPointerEvent           PointerEvent                   (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+// struct FPointerEvent*          PointerEvent                   (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
 // class UDragDropOperation*      Operation                      (Parm, OutParm, ZeroConstructor, IsPlainOldData)
 
 void UItemManagementItemTileButton_C::OnDragDetected(struct FGeometry* MyGeometry, struct FPointerEvent* PointerEvent, class UDragDropOperation** Operation)
@@ -113,6 +185,7 @@ void UItemManagementItemTileButton_C::OnDragDetected(struct FGeometry* MyGeometr
 
 	UItemManagementItemTileButton_C_OnDragDetected_Params params;
 	params.MyGeometry = MyGeometry;
+	params.PointerEvent = PointerEvent;
 
 	auto flags = fn->FunctionFlags;
 
@@ -120,8 +193,6 @@ void UItemManagementItemTileButton_C::OnDragDetected(struct FGeometry* MyGeometr
 
 	fn->FunctionFlags = flags;
 
-	if (PointerEvent != nullptr)
-		*PointerEvent = params.PointerEvent;
 	if (Operation != nullptr)
 		*Operation = params.Operation;
 }
@@ -222,14 +293,14 @@ void UItemManagementItemTileButton_C::HandleDifferentItemManagementModeSetBP()
 }
 
 
-// Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.OnHovered
+// Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.BP_OnHovered
 // (Event, Protected, BlueprintEvent)
 
-void UItemManagementItemTileButton_C::OnHovered()
+void UItemManagementItemTileButton_C::BP_OnHovered()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.OnHovered");
+	static auto fn = UObject::FindObject<UFunction>("Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.BP_OnHovered");
 
-	UItemManagementItemTileButton_C_OnHovered_Params params;
+	UItemManagementItemTileButton_C_BP_OnHovered_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -239,14 +310,14 @@ void UItemManagementItemTileButton_C::OnHovered()
 }
 
 
-// Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.OnUnhovered
+// Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.BP_OnUnhovered
 // (Event, Protected, BlueprintEvent)
 
-void UItemManagementItemTileButton_C::OnUnhovered()
+void UItemManagementItemTileButton_C::BP_OnUnhovered()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.OnUnhovered");
+	static auto fn = UObject::FindObject<UFunction>("Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.BP_OnUnhovered");
 
-	UItemManagementItemTileButton_C_OnUnhovered_Params params;
+	UItemManagementItemTileButton_C_BP_OnUnhovered_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -332,14 +403,14 @@ void UItemManagementItemTileButton_C::OnDragCancelled(struct FPointerEvent* Poin
 }
 
 
-// Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.OnSelected
+// Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.BP_OnSelected
 // (Event, Protected, BlueprintEvent)
 
-void UItemManagementItemTileButton_C::OnSelected()
+void UItemManagementItemTileButton_C::BP_OnSelected()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.OnSelected");
+	static auto fn = UObject::FindObject<UFunction>("Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.BP_OnSelected");
 
-	UItemManagementItemTileButton_C_OnSelected_Params params;
+	UItemManagementItemTileButton_C_BP_OnSelected_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -377,6 +448,23 @@ void UItemManagementItemTileButton_C::BndEvt__PopupMenuAnchor_K2Node_ComponentBo
 
 	UItemManagementItemTileButton_C_BndEvt__PopupMenuAnchor_K2Node_ComponentBoundEvent_0_OnMenuOpenChangedEvent__DelegateSignature_Params params;
 	params.bIsOpen = bIsOpen;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.HandleShowCollectionBookIndicatorChanged
+// (Event, Protected, BlueprintEvent)
+
+void UItemManagementItemTileButton_C::HandleShowCollectionBookIndicatorChanged()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ItemManagementItemTileButton.ItemManagementItemTileButton_C.HandleShowCollectionBookIndicatorChanged");
+
+	UItemManagementItemTileButton_C_HandleShowCollectionBookIndicatorChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 

@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -332,6 +332,94 @@ struct FAssetData UAssetRegistryHelpers::STATIC_CreateAssetData(class UObject* I
 }
 
 
+// Function AssetRegistry.AssetRegistry.SearchAllAssets
+// (Native, Public, BlueprintCallable)
+// Parameters:
+// bool                           bSynchronousSearch             (Parm, ZeroConstructor, IsPlainOldData)
+
+void UAssetRegistry::SearchAllAssets(bool bSynchronousSearch)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AssetRegistry.AssetRegistry.SearchAllAssets");
+
+	UAssetRegistry_SearchAllAssets_Params params;
+	params.bSynchronousSearch = bSynchronousSearch;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AssetRegistry.AssetRegistry.ScanPathsSynchronous
+// (Native, Public, HasOutParms, BlueprintCallable)
+// Parameters:
+// TArray<struct FString>         InPaths                        (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm)
+// bool                           bForceRescan                   (Parm, ZeroConstructor, IsPlainOldData)
+
+void UAssetRegistry::ScanPathsSynchronous(TArray<struct FString> InPaths, bool bForceRescan)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AssetRegistry.AssetRegistry.ScanPathsSynchronous");
+
+	UAssetRegistry_ScanPathsSynchronous_Params params;
+	params.InPaths = InPaths;
+	params.bForceRescan = bForceRescan;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AssetRegistry.AssetRegistry.ScanModifiedAssetFiles
+// (Native, Public, HasOutParms, BlueprintCallable)
+// Parameters:
+// TArray<struct FString>         InFilePaths                    (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm)
+
+void UAssetRegistry::ScanModifiedAssetFiles(TArray<struct FString> InFilePaths)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AssetRegistry.AssetRegistry.ScanModifiedAssetFiles");
+
+	UAssetRegistry_ScanModifiedAssetFiles_Params params;
+	params.InFilePaths = InFilePaths;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AssetRegistry.AssetRegistry.ScanFilesSynchronous
+// (Native, Public, HasOutParms, BlueprintCallable)
+// Parameters:
+// TArray<struct FString>         InFilePaths                    (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm)
+// bool                           bForceRescan                   (Parm, ZeroConstructor, IsPlainOldData)
+
+void UAssetRegistry::ScanFilesSynchronous(TArray<struct FString> InFilePaths, bool bForceRescan)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AssetRegistry.AssetRegistry.ScanFilesSynchronous");
+
+	UAssetRegistry_ScanFilesSynchronous_Params params;
+	params.InFilePaths = InFilePaths;
+	params.bForceRescan = bForceRescan;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function AssetRegistry.AssetRegistry.RunAssetsThroughFilter
 // (Native, Public, HasOutParms, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
@@ -354,6 +442,27 @@ void UAssetRegistry::RunAssetsThroughFilter(const struct FARFilter& Filter, TArr
 
 	if (AssetDataList != nullptr)
 		*AssetDataList = params.AssetDataList;
+}
+
+
+// Function AssetRegistry.AssetRegistry.PrioritizeSearchPath
+// (Native, Public, BlueprintCallable)
+// Parameters:
+// struct FString                 PathToPrioritize               (Parm, ZeroConstructor)
+
+void UAssetRegistry::PrioritizeSearchPath(const struct FString& PathToPrioritize)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AssetRegistry.AssetRegistry.PrioritizeSearchPath");
+
+	UAssetRegistry_PrioritizeSearchPath_Params params;
+	params.PathToPrioritize = PathToPrioritize;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
 }
 
 

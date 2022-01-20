@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,57 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function StoreMain_MTXOffer.StoreMain_MTXOffer_C.TriggerReset
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UStoreMain_MTXOffer_C::TriggerReset()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function StoreMain_MTXOffer.StoreMain_MTXOffer_C.TriggerReset");
+
+	UStoreMain_MTXOffer_C_TriggerReset_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function StoreMain_MTXOffer.StoreMain_MTXOffer_C.InitialReset
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UStoreMain_MTXOffer_C::InitialReset()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function StoreMain_MTXOffer.StoreMain_MTXOffer_C.InitialReset");
+
+	UStoreMain_MTXOffer_C_InitialReset_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function StoreMain_MTXOffer.StoreMain_MTXOffer_C.TriggerIntro
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UStoreMain_MTXOffer_C::TriggerIntro()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function StoreMain_MTXOffer.StoreMain_MTXOffer_C.TriggerIntro");
+
+	UStoreMain_MTXOffer_C_TriggerIntro_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
 
 // Function StoreMain_MTXOffer.StoreMain_MTXOffer_C.ShowDetails
 // (Public, BlueprintCallable, BlueprintEvent)
@@ -66,7 +117,7 @@ void UStoreMain_MTXOffer_C::Construct()
 // Function StoreMain_MTXOffer.StoreMain_MTXOffer_C.OnClick
 // (BlueprintCallable, BlueprintEvent)
 // Parameters:
-// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 
 void UStoreMain_MTXOffer_C::OnClick(class UCommonButton* Button)
 {
@@ -83,14 +134,14 @@ void UStoreMain_MTXOffer_C::OnClick(class UCommonButton* Button)
 }
 
 
-// Function StoreMain_MTXOffer.StoreMain_MTXOffer_C.OnHovered
+// Function StoreMain_MTXOffer.StoreMain_MTXOffer_C.BP_OnHovered
 // (Event, Protected, BlueprintEvent)
 
-void UStoreMain_MTXOffer_C::OnHovered()
+void UStoreMain_MTXOffer_C::BP_OnHovered()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function StoreMain_MTXOffer.StoreMain_MTXOffer_C.OnHovered");
+	static auto fn = UObject::FindObject<UFunction>("Function StoreMain_MTXOffer.StoreMain_MTXOffer_C.BP_OnHovered");
 
-	UStoreMain_MTXOffer_C_OnHovered_Params params;
+	UStoreMain_MTXOffer_C_BP_OnHovered_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -100,14 +151,14 @@ void UStoreMain_MTXOffer_C::OnHovered()
 }
 
 
-// Function StoreMain_MTXOffer.StoreMain_MTXOffer_C.OnUnhovered
+// Function StoreMain_MTXOffer.StoreMain_MTXOffer_C.BP_OnUnhovered
 // (Event, Protected, BlueprintEvent)
 
-void UStoreMain_MTXOffer_C::OnUnhovered()
+void UStoreMain_MTXOffer_C::BP_OnUnhovered()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function StoreMain_MTXOffer.StoreMain_MTXOffer_C.OnUnhovered");
+	static auto fn = UObject::FindObject<UFunction>("Function StoreMain_MTXOffer.StoreMain_MTXOffer_C.BP_OnUnhovered");
 
-	UStoreMain_MTXOffer_C_OnUnhovered_Params params;
+	UStoreMain_MTXOffer_C_BP_OnUnhovered_Params params;
 
 	auto flags = fn->FunctionFlags;
 

@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,48 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function IconTextButton.IconTextButton_C.Get Dynamic Material
+// (Public, HasOutParms, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class UMaterialInstanceDynamic* Ret_Material                   (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+
+void UIconTextButton_C::Get_Dynamic_Material(class UMaterialInstanceDynamic** Ret_Material)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function IconTextButton.IconTextButton_C.Get Dynamic Material");
+
+	UIconTextButton_C_Get_Dynamic_Material_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Ret_Material != nullptr)
+		*Ret_Material = params.Ret_Material;
+}
+
+
+// Function IconTextButton.IconTextButton_C.ShowIcon
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                           bShouldShow                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void UIconTextButton_C::ShowIcon(bool bShouldShow)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function IconTextButton.IconTextButton_C.ShowIcon");
+
+	UIconTextButton_C_ShowIcon_Params params;
+	params.bShouldShow = bShouldShow;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
 
 // Function IconTextButton.IconTextButton_C.SetTextInternal
 // (Private, BlueprintCallable, BlueprintEvent)

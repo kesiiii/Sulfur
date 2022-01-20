@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -558,14 +556,6 @@ enum class EPawnActionMoveMode : uint8_t
 //Script Structs
 //---------------------------------------------------------------------------
 
-// ScriptStruct AIModule.AIMoveRequest
-// 0x0040
-struct FAIMoveRequest
-{
-	class AActor*                                      GoalActor;                                                // 0x0000(0x0008) (ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData00[0x38];                                      // 0x0008(0x0038) MISSED OFFSET
-};
-
 // ScriptStruct AIModule.AIStimulus
 // 0x0048
 struct FAIStimulus
@@ -591,6 +581,14 @@ struct FActorPerceptionBlueprintInfo
 	TArray<struct FAIStimulus>                         LastSensedStimuli;                                        // 0x0008(0x0010) (BlueprintVisible, ZeroConstructor)
 	unsigned char                                      bIsHostile : 1;                                           // 0x0018(0x0001) (BlueprintVisible)
 	unsigned char                                      UnknownData00[0x7];                                       // 0x0019(0x0007) MISSED OFFSET
+};
+
+// ScriptStruct AIModule.AIMoveRequest
+// 0x0040
+struct FAIMoveRequest
+{
+	class AActor*                                      GoalActor;                                                // 0x0000(0x0008) (ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x38];                                      // 0x0008(0x0038) MISSED OFFSET
 };
 
 // ScriptStruct AIModule.BlackboardKeySelector
@@ -712,7 +710,7 @@ struct FEnvDirection
 // 0x0004
 struct FAIRequestID
 {
-	uint32_t                                           RequestID;                                                // 0x0000(0x0004) (ZeroConstructor, IsPlainOldData)
+	uint32_t                                           RequestId;                                                // 0x0000(0x0004) (ZeroConstructor, IsPlainOldData)
 };
 
 // ScriptStruct AIModule.AIDamageEvent
@@ -850,11 +848,11 @@ struct FEnvNamedValue
 };
 
 // ScriptStruct AIModule.EnvQueryInstanceCache
-// 0x01C0
+// 0x0178
 struct FEnvQueryInstanceCache
 {
 	class UEnvQuery*                                   Template;                                                 // 0x0000(0x0008) (ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData00[0x1B8];                                     // 0x0008(0x01B8) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x170];                                     // 0x0008(0x0170) MISSED OFFSET
 };
 
 // ScriptStruct AIModule.EnvOverlapData

@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -14,14 +14,8 @@ namespace SDK
 //Parameters
 //---------------------------------------------------------------------------
 
-// Function XpReasonFeed.XpReasonFeed_C.ShowAllXpRewards
-struct UXpReasonFeed_C_ShowAllXpRewards_Params
-{
-	bool                                               Show;                                                     // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-};
-
-// Function XpReasonFeed.XpReasonFeed_C.SetXpRewards
-struct UXpReasonFeed_C_SetXpRewards_Params
+// Function XpReasonFeed.XpReasonFeed_C.ImmediatelyShowXpRewards
+struct UXpReasonFeed_C_ImmediatelyShowXpRewards_Params
 {
 	TArray<struct FAthenaMatchXpReward>                XpRewards;                                                // (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ZeroConstructor, ReferenceParm)
 };

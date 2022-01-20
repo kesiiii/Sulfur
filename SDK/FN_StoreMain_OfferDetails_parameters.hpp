@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,6 +13,16 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function StoreMain_OfferDetails.StoreMain_OfferDetails_C.UnregisterInput
+struct UStoreMain_OfferDetails_C_UnregisterInput_Params
+{
+};
+
+// Function StoreMain_OfferDetails.StoreMain_OfferDetails_C.RegisterInput
+struct UStoreMain_OfferDetails_C_RegisterInput_Params
+{
+};
 
 // Function StoreMain_OfferDetails.StoreMain_OfferDetails_C.PopDetails
 struct UStoreMain_OfferDetails_C_PopDetails_Params
@@ -30,22 +40,6 @@ struct UStoreMain_OfferDetails_C_HandleBack_Params
 	bool                                               Passthrough;                                              // (Parm, OutParm, ZeroConstructor, IsPlainOldData)
 };
 
-// Function StoreMain_OfferDetails.StoreMain_OfferDetails_C.OnActivated
-struct UStoreMain_OfferDetails_C_OnActivated_Params
-{
-};
-
-// Function StoreMain_OfferDetails.StoreMain_OfferDetails_C.OnDeactivated
-struct UStoreMain_OfferDetails_C_OnDeactivated_Params
-{
-};
-
-// Function StoreMain_OfferDetails.StoreMain_OfferDetails_C.BndEvt__PurchaseButton_K2Node_ComponentBoundEvent_16_CommonButtonClicked__DelegateSignature
-struct UStoreMain_OfferDetails_C_BndEvt__PurchaseButton_K2Node_ComponentBoundEvent_16_CommonButtonClicked__DelegateSignature_Params
-{
-	class UCommonButton*                               Button;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-};
-
 // Function StoreMain_OfferDetails.StoreMain_OfferDetails_C.HandlePurchaseComplete
 struct UStoreMain_OfferDetails_C_HandlePurchaseComplete_Params
 {
@@ -57,9 +51,16 @@ struct UStoreMain_OfferDetails_C_Construct_Params
 {
 };
 
-// Function StoreMain_OfferDetails.StoreMain_OfferDetails_C.Destruct
-struct UStoreMain_OfferDetails_C_Destruct_Params
+// Function StoreMain_OfferDetails.StoreMain_OfferDetails_C.BndEvt__BacchusCloseButton_K2Node_ComponentBoundEvent_25_CommonButtonClicked__DelegateSignature
+struct UStoreMain_OfferDetails_C_BndEvt__BacchusCloseButton_K2Node_ComponentBoundEvent_25_CommonButtonClicked__DelegateSignature_Params
 {
+	class UCommonButton*                               Button;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
+};
+
+// Function StoreMain_OfferDetails.StoreMain_OfferDetails_C.BndEvt__PurchaseButton_K2Node_ComponentBoundEvent_16_CommonButtonClicked__DelegateSignature
+struct UStoreMain_OfferDetails_C_BndEvt__PurchaseButton_K2Node_ComponentBoundEvent_16_CommonButtonClicked__DelegateSignature_Params
+{
+	class UCommonButton*                               Button;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 };
 
 // Function StoreMain_OfferDetails.StoreMain_OfferDetails_C.ExecuteUbergraph_StoreMain_OfferDetails

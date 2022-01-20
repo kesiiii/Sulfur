@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -20,10 +20,10 @@ struct UAnnouncement_QuestUpdate_C_UpdateWidgetData_Params
 	class AFortClientAnnouncement**                    Announcement;                                             // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
-// Function Announcement_QuestUpdate.Announcement_QuestUpdate_C.AllUpdatesFinished
-struct UAnnouncement_QuestUpdate_C_AllUpdatesFinished_Params
+// Function Announcement_QuestUpdate.Announcement_QuestUpdate_C.AnnouncementStopped
+struct UAnnouncement_QuestUpdate_C_AnnouncementStopped_Params
 {
-	class UQuestUpdateEntry_C*                         UpdateWidget;                                             // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class AFortClientAnnouncement**                    Announcement;                                             // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function Announcement_QuestUpdate.Announcement_QuestUpdate_C.ExecuteUbergraph_Announcement_QuestUpdate

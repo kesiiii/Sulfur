@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,6 +13,14 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function TopBar.TopBar_C.On_TouchZone_MouseButtonDown_0_1
+struct UTopBar_C_On_TouchZone_MouseButtonDown_0_1_Params
+{
+	struct FGeometry                                   MyGeometry;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData)
+	struct FPointerEvent                               MouseEvent;                                               // (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+	struct FEventReply                                 ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
 
 // Function TopBar.TopBar_C.HandleSocialPanelAnimComplete
 struct UTopBar_C_HandleSocialPanelAnimComplete_Params
@@ -50,8 +58,8 @@ struct UTopBar_C_FireOpenAnalyticsEvent_Params
 {
 };
 
-// Function TopBar.TopBar_C.HideMTXPlusButton
-struct UTopBar_C_HideMTXPlusButton_Params
+// Function TopBar.TopBar_C.UpdateMTXButton
+struct UTopBar_C_UpdateMTXButton_Params
 {
 };
 
@@ -63,13 +71,13 @@ struct UTopBar_C_ForceMenuClosed_Params
 // Function TopBar.TopBar_C.GetMainMenuTooltipWidget
 struct UTopBar_C_GetMainMenuTooltipWidget_Params
 {
-	class UWidget*                                     ReturnValue;                                              // (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+	class UWidget*                                     ReturnValue;                                              // (Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, IsPlainOldData)
 };
 
 // Function TopBar.TopBar_C.GetFriendsTooltipWidget
 struct UTopBar_C_GetFriendsTooltipWidget_Params
 {
-	class UWidget*                                     ReturnValue;                                              // (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+	class UWidget*                                     ReturnValue;                                              // (Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, IsPlainOldData)
 };
 
 // Function TopBar.TopBar_C.HandleActiveInvitesCountChanged
@@ -194,7 +202,7 @@ struct UTopBar_C_BndEvt__MainMenu_K2Node_ComponentBoundEvent_48_OnRequestShowFee
 // Function TopBar.TopBar_C.BndEvt__Social_K2Node_ComponentBoundEvent_64_CommonButtonClicked__DelegateSignature
 struct UTopBar_C_BndEvt__Social_K2Node_ComponentBoundEvent_64_CommonButtonClicked__DelegateSignature_Params
 {
-	class UCommonButton*                               Button;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class UCommonButton*                               Button;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 };
 
 // Function TopBar.TopBar_C.PreConstruct
@@ -211,7 +219,7 @@ struct UTopBar_C_Destruct_Params
 // Function TopBar.TopBar_C.OnAnimationFinished
 struct UTopBar_C_OnAnimationFinished_Params
 {
-	class UWidgetAnimation**                           Animation;                                                // (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class UWidgetAnimation**                           Animation;                                                // (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 };
 
 // Function TopBar.TopBar_C.BndEvt__BP_FortLiveStreamGrantWindowExpires_K2Node_ComponentBoundEvent_101_StreamTimerStarted__DelegateSignature
@@ -238,13 +246,13 @@ struct UTopBar_C_On_Power_Increased_Params
 // Function TopBar.TopBar_C.BndEvt__MainMenuButton_K2Node_ComponentBoundEvent_70_CommonButtonClicked__DelegateSignature
 struct UTopBar_C_BndEvt__MainMenuButton_K2Node_ComponentBoundEvent_70_CommonButtonClicked__DelegateSignature_Params
 {
-	class UCommonButton*                               Button;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class UCommonButton*                               Button;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 };
 
 // Function TopBar.TopBar_C.AddIconToScreen
 struct UTopBar_C_AddIconToScreen_Params
 {
-	class UCommonLazyImage**                           Image;                                                    // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	class UCommonLazyImage**                           Image;                                                    // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 };
 
 // Function TopBar.TopBar_C.ManualToggleMainMenu
@@ -262,8 +270,13 @@ struct UTopBar_C_BndEvt__MainMenu_K2Node_ComponentBoundEvent_0_OnRequestShowSoci
 {
 };
 
-// Function TopBar.TopBar_C.On Social Panel Closed
-struct UTopBar_C_On_Social_Panel_Closed_Params
+// Function TopBar.TopBar_C.BndEvt__MainMenu_K2Node_ComponentBoundEvent_5_OnRequestShowPlayerReportWidget__DelegateSignature
+struct UTopBar_C_BndEvt__MainMenu_K2Node_ComponentBoundEvent_5_OnRequestShowPlayerReportWidget__DelegateSignature_Params
+{
+};
+
+// Function TopBar.TopBar_C.BndEvt__SocialPanel_K2Node_ComponentBoundEvent_0_SocialPanelCloseRequested__DelegateSignature
+struct UTopBar_C_BndEvt__SocialPanel_K2Node_ComponentBoundEvent_0_SocialPanelCloseRequested__DelegateSignature_Params
 {
 };
 

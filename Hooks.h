@@ -17,8 +17,10 @@ namespace Hooks
 	UWorld* World;
 	AFortTeamInfoAthena* PlayerTeam;
 	AOnlineBeaconHost* BeaconHost;
-	APlayerPawn_Athena_C* PlayerPawn;
+	AFortPlayerPawn* PlayerPawn;
 	AFortPlayerController* PC;
+
+	std::vector <UActorChannel*> ChannelsToTick;
 
 	TArray<APlayerPawn_Athena_C*> ClientPawns;
 
@@ -71,9 +73,7 @@ namespace Hooks
 	APlayerController* (*SpawnPlayActor)(UWorld* a1, UPlayer* a2, ENetRole a3, FURL a4, void* a5, FString& Src, uint8_t a7);
 	__int64(*SetChannelActor)(UActorChannel*, AActor*);
 	UChannel* (*CreateChannel)(UNetConnection*, int, bool, int32_t);
-	TSharedRef<void*>& (*FindOrCreateReplicator)(UActorChannel*, TWeakObjectPtr2<UObject>&);
-	void(*StartReplicating)(void*, UActorChannel*);
-
+	bool (*PauseBeaconRequests)(AOnlineBeaconHost*, bool);
 	bool (*ReplicateActorG)(UActorChannel*);
 
 	bool Replicate(AActor* Actor, UNetConnection* Connection)
@@ -82,6 +82,7 @@ namespace Hooks
 		if (Channel) {
 			Channel->Connection = Connection;
 			SetChannelActor(Channel, Actor); // https://github.com/EpicGames/UnrealEngine/blob/ea87f4fb26ff8b9d8cd49b3a930f10585a6a7230/Engine/Source/Runtime/Engine/Private/DemoNetDriver.cpp#L1071
+			ChannelsToTick.push_back(Channel);
 		}
 		return ReplicateActorG(Channel); // https://github.com/EpicGames/UnrealEngine/blob/ea87f4fb26ff8b9d8cd49b3a930f10585a6a7230/Engine/Source/Runtime/Engine/Private/DemoNetDriver.cpp#L1081
 	}
@@ -95,6 +96,19 @@ namespace Hooks
 			ret = Replicate(Actor, BeaconHost->NetDriver->ClientConnections[i]);
 		}
 		return ret;
+	}
+
+	DWORD WINAPI ReplicationThread(LPVOID)
+	{
+		while (1)
+		{
+			for (auto Channel : ChannelsToTick)
+			{
+				ReplicateActorG(Channel);
+			}
+
+			Sleep(1000 / 20);
+		}
 	}
 
 	static FVector GetPlayerStateLocation()
@@ -211,9 +225,6 @@ namespace Hooks
 		PlayerController->OnRep_ReplicateMovement();
 		PlayerController->OnRep_UpdatedObjectiveStats();
 		PlayerController->OnRep_UpdatedUnsavedPrimaryMissionProgress();
-		PlayerController->OnRep_ViewTargetDBNO();
-		PlayerController->OnRep_ViewTargetHealth();
-		PlayerController->OnRep_ViewTargetShield();
 
 		//Set's Pawn vars / RPC's
 		Pawn->bActorEnableCollision = true;
@@ -263,7 +274,6 @@ namespace Hooks
 		PlayerState->OnRep_Owner();
 		PlayerState->OnRep_PartyOwner();
 		PlayerState->OnRep_Place();
-		PlayerState->OnRep_PlatformUniqueNetIdString();
 		PlayerState->OnRep_PlayerId();
 		PlayerState->OnRep_PlayerName();
 		PlayerState->OnRep_ReplicatedMovement();
@@ -293,22 +303,21 @@ namespace Hooks
 		{
 			auto FortEngine = UObject::FindObject<UFortEngine>("FortEngine_");
 			World = FortEngine->GameViewport->World;
-			FortEngine->GameInstance->LocalPlayers[0]->PlayerController->SwitchLevel(L"Athena_Terrain");
+			FortEngine->GameInstance->LocalPlayers[0]->PlayerController->SwitchLevel(L"Athena_Terrain?Game=Zone");
 			bIsReady = true;
 		}
 
 		if (pFunction->GetName().find("Tick") != std::string::npos)
 		{
-			if (pObject == World->AuthorityGameMode && BeaconHost) {
-				BeaconHost->NetDriver->ReplicationFrame++;
-			}
-
 			if (GetAsyncKeyState(VK_F1) & 0x01)
 			{
 				auto FortEngine = UObject::FindObject<UFortEngine>("FortEngine_");
 				PC = reinterpret_cast<AFortPlayerController*>(FortEngine->GameInstance->LocalPlayers[0]->PlayerController);
 				auto GPS = reinterpret_cast<UGameplayStatics*>(UGameplayStatics::StaticClass());
 				auto FortCheatManager = reinterpret_cast<UFortCheatManager*>(PC->CheatManager);
+
+				auto NewCheatManager = GPS->STATIC_SpawnObject(UCheatManager::StaticClass(), FortEngine->GameInstance->LocalPlayers[0]->PlayerController);
+				FortEngine->GameInstance->LocalPlayers[0]->PlayerController->CheatManager = (UCheatManager*)(NewCheatManager);
 
 				PC->CheatManager->DestroyAll(AFortHLODSMActor::StaticClass());
 
@@ -328,26 +337,15 @@ namespace Hooks
 				auto NewConsole = GPS->STATIC_SpawnObject(UFortConsole::StaticClass(), FortEngine->GameViewport);
 				FortEngine->GameViewport->ViewportConsole = static_cast<UFortConsole*>(NewConsole);
 
-				auto SpawningActor = GPS->STATIC_BeginSpawningActorFromClass(FortEngine->GameViewport->World, APlayerPawn_Athena_C::StaticClass(), SpawnTransform, false, nullptr);
-				PlayerPawn = reinterpret_cast<APlayerPawn_Athena_C*>(GPS->STATIC_FinishSpawningActor(SpawningActor, SpawnTransform));
+				auto SpawningActor = GPS->STATIC_BeginSpawningActorFromClass(FortEngine->GameViewport->World, APlayerPawn_Generic_C::StaticClass(), SpawnTransform, false, nullptr);
+				PlayerPawn = reinterpret_cast<AFortPlayerPawn*>(GPS->STATIC_FinishSpawningActor(SpawningActor, SpawnTransform));
 				//Pawn->bCanBeDamaged = false;
 
-				auto FortPlayerStateZone = reinterpret_cast<AFortPlayerStateAthena*>(PC->PlayerState);
+				auto FortPlayerStateZone = reinterpret_cast<AFortPlayerStateZone*>(PC->PlayerState);
 
 				PC->Possess(PlayerPawn);
 
-				auto AsFortQuickbars = reinterpret_cast<AFortAsQuickBars*>(PC);
-				auto NewQuickBar = reinterpret_cast<AFortQuickBars*>(SpawnActor(AFortQuickBars::StaticClass(), FVector(0, 0, 3234), FRotator()));
-				NewQuickBar->SetOwner(PC);
-				AsFortQuickbars->QuickBars = NewQuickBar;
-				PC->OnRep_QuickBar();
-				AsFortQuickbars->QuickBars->ServerActivateSlotInternal(EFortQuickBars::Primary, 0, 0, true);
-
 				PlayerPawn->EquipWeaponDefinition(UObject::FindObject<UFortWeaponItemDefinition>("WID_Assault_AutoHigh_Athena_SR_Ore_T03.WID_Assault_AutoHigh_Athena_SR_Ore_T03"), FGuid());
-
-				FortPlayerStateZone->TeamIndex = EFortTeam::HumanPvP_Team1;
-				FortPlayerStateZone->OnRep_PlayerTeam();
-				FortPlayerStateZone->OnRep_SquadId();
 
 				FortPlayerStateZone->CharacterParts[0] = UObject::FindObject<UCustomCharacterPart>("CustomCharacterPart F_Med_Head1.F_Med_Head1");
 				FortPlayerStateZone->CharacterParts[1] = UObject::FindObject<UCustomCharacterPart>("CustomCharacterPart F_Med_Soldier_01.F_Med_Soldier_01");
@@ -364,18 +362,17 @@ namespace Hooks
 
 				auto BaseAddr = (uintptr_t)(GetModuleHandle(NULL));
 
-				InitHost = decltype(InitHost)(BaseAddr + 0x27B4820);
-				UWorld_NotifyControlMessage = decltype(UWorld_NotifyControlMessage)(BaseAddr + 0x1DA15C0);
-				WelcomePlayer = decltype(WelcomePlayer)(BaseAddr + 0x1DACC50);
-				SetChannelActor = decltype(SetChannelActor)(BaseAddr + 0x19AA960);
-				CreateChannel = decltype(CreateChannel)(BaseAddr + 0x1B0C510);
-				FindOrCreateReplicator = decltype(FindOrCreateReplicator)(BaseAddr + 0x19943D0);
-				StartReplicating = decltype(StartReplicating)(BaseAddr + 0x19ACA70);
-				ReplicateActorG = decltype(ReplicateActorG)(BaseAddr + 0x19A60D0);
+				InitHost = decltype(InitHost)(Util::FindPattern("48 8B C4 48 81 EC ? ? ? ? 48 89 58 18 4C 8D 05 ? ? ? ?"));
+				UWorld_NotifyControlMessage = decltype(UWorld_NotifyControlMessage)(Util::FindPattern("48 89 5C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 48 89 4C 24 ? 55 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 33 FF"));
+				WelcomePlayer = decltype(WelcomePlayer)(Util::FindPattern("48 8B C4 55 48 8D A8 ? ? ? ? 48 81 EC ? ? ? ? 48 89 70 20"));
+				SetChannelActor = decltype(SetChannelActor)(Util::FindPattern("40 55 53 56 57 41 54 41 56 41 57 48 8D 6C 24 ? 48 81 EC ? ? ? ? 45 33 E4 4C 8D 35 ? ? ? ? 44 89 A5 ? ? ? ?"));
+				CreateChannel = decltype(CreateChannel)(Util::FindPattern("40 57 41 54 41 55 41 56 41 57 48 83 EC 60 48 8B 01 41 8B F9 45 0F B6"));
+				ReplicateActorG = decltype(ReplicateActorG)(Util::FindPattern("48 8B C4 48 89 48 08 55 53 48 8D A8 ? ? ? ? 48 81 EC ? ? ? ? 48 89 70 E8 48 8D 71 68 48 89 78 E0"));
+				PauseBeaconRequests = decltype(PauseBeaconRequests)(Util::FindPattern("40 53 48 83 EC 30 48 8B 99 ? ? ? ? 48 85 DB 0F 84 ? ? ? ? 84 D2"));
 
-				auto AOnlineBeaconHost_NotifyControlMessageAddr = BaseAddr + 0x27B7620;
-				auto WelcomePlayerAddr = BaseAddr + 0x1DACC50;
-				auto SpawnPlayActorAddr = BaseAddr + 0x1A9E7B0;
+				auto AOnlineBeaconHost_NotifyControlMessageAddr = Util::FindPattern("4C 8B DC 49 89 5B 18 49 89 7B 20 49 89 4B 08");
+				auto WelcomePlayerAddr = Util::FindPattern("48 8B C4 55 48 8D A8 ? ? ? ? 48 81 EC ? ? ? ? 48 89 70 20");
+				auto SpawnPlayActorAddr = Util::FindPattern("48 81 EC ? ? ? ? 48 89 78 E0 33 F6");
 
 				SpawnPlayActor = decltype(SpawnPlayActor)(SpawnPlayActorAddr);
 
@@ -404,15 +401,8 @@ namespace Hooks
 				auto result = InitHost(BeaconHost);
 				std::cout << "InitHost Result: " << result << std::endl;
 
-				//auto ReplicationFrame = reinterpret_cast<uint32_t*>((uintptr_t)(BeaconHost->NetDriver) + 202);
-				//std::cout << "ReplicationFrame: " << ReplicationFrame << std::endl;
-				std::cout << "OtherReplicationFrame: " << BeaconHost->NetDriver->ReplicationFrame << std::endl;
-				//ReplicationFrame++;
-				BeaconHost->NetDriver->ReplicationFrame++;
-				//std::cout << "ReplicationFrame: " << ReplicationFrame << std::endl;
-				std::cout << "OtherReplicationFrame: " << BeaconHost->NetDriver->ReplicationFrame << std::endl;
-
-				BeaconHost->BeaconState = EBeaconState::AllowRequests;
+				PauseBeaconRequests(BeaconHost, false);
+				//BeaconHost->BeaconState = EBeaconState::AllowRequests;
 
 				printf("LogUGS: Beacons Setup!\n");
 			}
@@ -428,22 +418,10 @@ namespace Hooks
 			if (GetAsyncKeyState(VK_F4) & 0x1)
 			{
 				auto FortEngine = UObject::FindObject<UFortEngine>("FortEngine_");
-				auto PC = reinterpret_cast<AFortPlayerControllerAthena*>(FortEngine->GameInstance->LocalPlayers[0]->PlayerController);
-				PC->ServerReadyToStartMatch();
+				auto PC = reinterpret_cast<AFortPlayerControllerZone*>(FortEngine->GameInstance->LocalPlayers[0]->PlayerController);
 
-				for (int i = 0; i < BeaconHost->NetDriver->ClientConnections.Num(); i++)
-				{
-					reinterpret_cast<AFortPlayerControllerAthena*>(BeaconHost->NetDriver->ClientConnections[i]->PlayerController)->ServerReadyToStartMatch();
-				}
-
-				static_cast<AGameMode*>(World->AuthorityGameMode)->StartPlay();
 				static_cast<AGameMode*>(World->AuthorityGameMode)->StartMatch();
-
-				auto AthenaGameState = static_cast<AFortGameStateAthena*>(World->GameState);
-				AthenaGameState->GameplayState = EFortGameplayState::NormalGameplay;
-				AthenaGameState->OnRep_GameplayState();
-				AthenaGameState->GamePhase = EAthenaGamePhase::Warmup;
-				AthenaGameState->OnRep_GamePhase(EAthenaGamePhase::None);
+				static_cast<AGameMode*>(World->AuthorityGameMode)->StartPlay();
 
 				//Replicate(World->AuthorityGameMode);
 				Replicate(World->GameState);

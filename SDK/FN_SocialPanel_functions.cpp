@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -68,6 +68,40 @@ void USocialPanel_C::Construct()
 }
 
 
+// Function SocialPanel.SocialPanel_C.OnActivated
+// (Event, Protected, BlueprintEvent)
+
+void USocialPanel_C::OnActivated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function SocialPanel.SocialPanel_C.OnActivated");
+
+	USocialPanel_C_OnActivated_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function SocialPanel.SocialPanel_C.OnDeactivated
+// (Event, Protected, BlueprintEvent)
+
+void USocialPanel_C::OnDeactivated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function SocialPanel.SocialPanel_C.OnDeactivated");
+
+	USocialPanel_C_OnDeactivated_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function SocialPanel.SocialPanel_C.ExecuteUbergraph_SocialPanel
 // ()
 // Parameters:
@@ -79,6 +113,23 @@ void USocialPanel_C::ExecuteUbergraph_SocialPanel(int EntryPoint)
 
 	USocialPanel_C_ExecuteUbergraph_SocialPanel_Params params;
 	params.EntryPoint = EntryPoint;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function SocialPanel.SocialPanel_C.SocialPanelCloseRequested__DelegateSignature
+// (Public, Delegate, BlueprintCallable, BlueprintEvent)
+
+void USocialPanel_C::SocialPanelCloseRequested__DelegateSignature()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function SocialPanel.SocialPanel_C.SocialPanelCloseRequested__DelegateSignature");
+
+	USocialPanel_C_SocialPanelCloseRequested__DelegateSignature_Params params;
 
 	auto flags = fn->FunctionFlags;
 

@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,26 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function Car_Copper.Car_Copper_C.PlayJumpOnCarSound
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// struct FVector                 Location                       (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData)
+
+void ACar_Copper_C::PlayJumpOnCarSound(const struct FVector& Location)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Car_Copper.Car_Copper_C.PlayJumpOnCarSound");
+
+	ACar_Copper_C_PlayJumpOnCarSound_Params params;
+	params.Location = Location;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
 
 // Function Car_Copper.Car_Copper_C.toggle light visibility
 // (Public, BlueprintCallable, BlueprintEvent)
@@ -313,9 +333,9 @@ void ACar_Copper_C::ReceiveBeginPlay()
 // Function Car_Copper.Car_Copper_C.ReceiveHit
 // (Event, Public, HasOutParms, BlueprintEvent)
 // Parameters:
-// class UPrimitiveComponent**    MyComp                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UPrimitiveComponent**    MyComp                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 // class AActor**                 Other                          (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-// class UPrimitiveComponent**    OtherComp                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UPrimitiveComponent**    OtherComp                      (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 // bool*                          bSelfMoved                     (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 // struct FVector*                HitLocation                    (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData)
 // struct FVector*                HitNormal                      (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData)

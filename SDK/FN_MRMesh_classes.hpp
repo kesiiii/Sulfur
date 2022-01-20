@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -33,22 +31,22 @@ public:
 	bool IsReconstructionStarted();
 	bool IsReconstructionPaused();
 	void DisconnectMRMesh();
-	struct FMRMeshConfiguration ConnectMRMesh(class UMRMeshComponent* Mesh);
+	void ConnectMRMesh(class UMRMeshComponent* Mesh);
 };
 
 
 // Class MRMesh.MRMeshComponent
-// 0x0050 (0x06D0 - 0x0680)
+// 0x0050 (0x05B0 - 0x0560)
 class UMRMeshComponent : public UPrimitiveComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0680(0x0008) MISSED OFFSET
-	class UMaterialInterface*                          Material;                                                 // 0x0688(0x0008) (Edit, ZeroConstructor, IsPlainOldData)
-	class UMeshReconstructorBase*                      MeshReconstructor;                                        // 0x0690(0x0008) (Edit, ZeroConstructor, IsPlainOldData)
-	bool                                               bEnableCollision;                                         // 0x0698(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData01[0x7];                                       // 0x0699(0x0007) MISSED OFFSET
-	TArray<class UBodySetup*>                          BodySetups;                                               // 0x06A0(0x0010) (ZeroConstructor, Transient)
-	unsigned char                                      UnknownData02[0x20];                                      // 0x06B0(0x0020) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0560(0x0008) MISSED OFFSET
+	class UMaterialInterface*                          Material;                                                 // 0x0568(0x0008) (Edit, ZeroConstructor, IsPlainOldData)
+	bool                                               bCreateMeshProxySections;                                 // 0x0570(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
+	bool                                               bUpdateNavMeshOnMeshUpdate;                               // 0x0571(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData01[0x6];                                       // 0x0572(0x0006) MISSED OFFSET
+	TArray<class UBodySetup*>                          BodySetups;                                               // 0x0578(0x0010) (ZeroConstructor, Transient)
+	unsigned char                                      UnknownData02[0x28];                                      // 0x0588(0x0028) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -57,8 +55,9 @@ public:
 	}
 
 
-	class UMeshReconstructorBase* GetReconstructor();
-	void ConnectReconstructor(class UMeshReconstructorBase* Reconstructor);
+	bool IsConnected();
+	void ForceNavMeshUpdate();
+	void Clear();
 };
 
 

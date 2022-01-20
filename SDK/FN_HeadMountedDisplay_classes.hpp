@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -33,7 +31,7 @@ public:
 	void STATIC_SetSpectatorScreenModeTexturePlusEyeLayout(const struct FVector2D& EyeRectMin, const struct FVector2D& EyeRectMax, const struct FVector2D& TextureRectMin, const struct FVector2D& TextureRectMax, bool bDrawEyeFirst, bool bClearBlack);
 	void STATIC_SetSpectatorScreenMode(ESpectatorScreenMode Mode);
 	void STATIC_SetClippingPlanes(float Near, float Far);
-	void STATIC_ResetOrientationAndPosition(float Yaw, TEnumAsByte<EOrientPositionSelector> options);
+	void STATIC_ResetOrientationAndPosition(float Yaw, TEnumAsByte<EOrientPositionSelector> Options);
 	bool STATIC_IsSpectatorScreenModeControllable();
 	bool STATIC_IsInLowPersistenceMode();
 	bool STATIC_IsHeadMountedDisplayEnabled();
@@ -41,31 +39,44 @@ public:
 	bool STATIC_HasValidTrackingPosition();
 	float STATIC_GetWorldToMetersScale(class UObject* WorldContext);
 	void STATIC_GetVRFocusState(bool* bUseFocus, bool* bHasFocus);
+	struct FTransform STATIC_GetTrackingToWorldTransform(class UObject* WorldContext);
 	void STATIC_GetTrackingSensorParameters(int Index, struct FVector* Origin, struct FRotator* Rotation, float* LeftFOV, float* RightFOV, float* TopFOV, float* BottomFOV, float* Distance, float* NearPlane, float* FarPlane, bool* IsActive);
 	TEnumAsByte<EHMDTrackingOrigin> STATIC_GetTrackingOrigin();
 	float STATIC_GetScreenPercentage();
 	void STATIC_GetPositionalTrackingCameraParameters(struct FVector* CameraOrigin, struct FRotator* CameraRotation, float* HFOV, float* VFOV, float* CameraDistance, float* NearPlane, float* FarPlane);
+	float STATIC_GetPixelDensity();
 	void STATIC_GetOrientationAndPosition(struct FRotator* DeviceRotation, struct FVector* DevicePosition);
 	int STATIC_GetNumOfTrackingSensors();
 	TEnumAsByte<EHMDWornState> STATIC_GetHMDWornState();
 	struct FName STATIC_GetHMDDeviceName();
+	void STATIC_GetDeviceWorldPose(class UObject* WorldContext, const struct FXRDeviceId& XRDeviceId, bool* bIsTracked, struct FRotator* Orientation, bool* bHasPositionalTracking, struct FVector* Position);
+	void STATIC_GetDevicePose(const struct FXRDeviceId& XRDeviceId, bool* bIsTracked, struct FRotator* Orientation, bool* bHasPositionalTracking, struct FVector* Position);
+	TArray<struct FXRDeviceId> STATIC_EnumerateTrackedDevices(const struct FName& SystemId, EXRTrackedDeviceType DeviceType);
 	void STATIC_EnableLowPersistenceMode(bool bEnable);
 	bool STATIC_EnableHMD(bool bEnable);
 };
 
 
 // Class HeadMountedDisplay.MotionControllerComponent
-// 0x0060 (0x06E0 - 0x0680)
+// 0x00C0 (0x0620 - 0x0560)
 class UMotionControllerComponent : public UPrimitiveComponent
 {
 public:
-	int                                                PlayerIndex;                                              // 0x0680(0x0004) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
-	EControllerHand                                    Hand;                                                     // 0x0684(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0685(0x0003) MISSED OFFSET
-	unsigned char                                      bDisableLowLatencyUpdate : 1;                             // 0x0688(0x0001) (Edit, BlueprintVisible)
-	unsigned char                                      UnknownData01[0x3];                                       // 0x0689(0x0003) MISSED OFFSET
-	ETrackingStatus                                    CurrentTrackingStatus;                                    // 0x068C(0x0001) (BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData02[0x53];                                      // 0x068D(0x0053) MISSED OFFSET
+	int                                                PlayerIndex;                                              // 0x0560(0x0004) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	EControllerHand                                    Hand;                                                     // 0x0564(0x0001) (BlueprintVisible, ZeroConstructor, Deprecated, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0565(0x0003) MISSED OFFSET
+	struct FName                                       MotionSource;                                             // 0x0568(0x0008) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      bDisableLowLatencyUpdate : 1;                             // 0x0570(0x0001) (Edit, BlueprintVisible)
+	unsigned char                                      UnknownData01[0x3];                                       // 0x0571(0x0003) MISSED OFFSET
+	ETrackingStatus                                    CurrentTrackingStatus;                                    // 0x0574(0x0001) (BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData)
+	bool                                               bDisplayDeviceModel;                                      // 0x0575(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData02[0x2];                                       // 0x0576(0x0002) MISSED OFFSET
+	struct FName                                       DisplayModelSource;                                       // 0x0578(0x0008) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	class UStaticMesh*                                 CustomDisplayMesh;                                        // 0x0580(0x0008) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	TArray<class UMaterialInterface*>                  DisplayMeshMaterialOverrides;                             // 0x0588(0x0010) (Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor)
+	unsigned char                                      UnknownData03[0x68];                                      // 0x0598(0x0068) MISSED OFFSET
+	class UPrimitiveComponent*                         DisplayComponent;                                         // 0x0600(0x0008) (BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, Transient, InstancedReference, IsPlainOldData)
+	unsigned char                                      UnknownData04[0x18];                                      // 0x0608(0x0018) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -74,7 +85,16 @@ public:
 	}
 
 
+	void SetTrackingSource(EControllerHand NewSource);
+	void SetTrackingMotionSource(const struct FName& NewSource);
+	void SetShowDeviceModel(bool bShowControllerModel);
+	void SetDisplayModelSource(const struct FName& NewDisplayModelSource);
+	void SetCustomDisplayMesh(class UStaticMesh* NewDisplayMesh);
+	void SetAssociatedPlayerIndex(int NewPlayer);
+	void OnMotionControllerUpdated();
 	bool IsTracked();
+	EControllerHand GetTrackingSource();
+	float GetParameterValue(const struct FName& InName, bool* bValueFound);
 };
 
 
@@ -92,13 +112,18 @@ public:
 
 
 	void STATIC_SetIsControllerMotionTrackingEnabledByDefault(bool Enable);
+	bool STATIC_IsMotionTrackingEnabledForSource(int PlayerIndex, const struct FName& SourceName);
 	bool STATIC_IsMotionTrackingEnabledForDevice(int PlayerIndex, EControllerHand Hand);
 	bool STATIC_IsMotionTrackingEnabledForComponent(class UMotionControllerComponent* MotionControllerComponent);
 	bool STATIC_IsMotionTrackedDeviceCountManagementNecessary();
 	int STATIC_GetMotionTrackingEnabledControllerCount();
 	int STATIC_GetMaximumMotionTrackedControllerCount();
+	struct FName STATIC_GetActiveTrackingSystemName();
+	TArray<struct FName> STATIC_EnumerateMotionSources();
+	bool STATIC_EnableMotionTrackingOfSource(int PlayerIndex, const struct FName& SourceName);
 	bool STATIC_EnableMotionTrackingOfDevice(int PlayerIndex, EControllerHand Hand);
 	bool STATIC_EnableMotionTrackingForComponent(class UMotionControllerComponent* MotionControllerComponent);
+	void STATIC_DisableMotionTrackingOfSource(int PlayerIndex, const struct FName& SourceName);
 	void STATIC_DisableMotionTrackingOfDevice(int PlayerIndex, EControllerHand Hand);
 	void STATIC_DisableMotionTrackingOfControllersForPlayer(int PlayerIndex);
 	void STATIC_DisableMotionTrackingOfAllControllers();
@@ -127,6 +152,46 @@ public:
 		return ptr;
 	}
 
+};
+
+
+// Class HeadMountedDisplay.XRAssetFunctionLibrary
+// 0x0000 (0x0028 - 0x0028)
+class UXRAssetFunctionLibrary : public UBlueprintFunctionLibrary
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class HeadMountedDisplay.XRAssetFunctionLibrary");
+		return ptr;
+	}
+
+
+	class UPrimitiveComponent* STATIC_AddNamedDeviceVisualizationComponentBlocking(class AActor* Target, const struct FName& SystemName, const struct FName& DeviceName, bool bManualAttachment, const struct FTransform& RelativeTransform);
+	class UPrimitiveComponent* STATIC_AddDeviceVisualizationComponentBlocking(class AActor* Target, const struct FXRDeviceId& XRDeviceId, bool bManualAttachment, const struct FTransform& RelativeTransform);
+};
+
+
+// Class HeadMountedDisplay.AsyncTask_LoadXRDeviceVisComponent
+// 0x0030 (0x0060 - 0x0030)
+class UAsyncTask_LoadXRDeviceVisComponent : public UBlueprintAsyncActionBase
+{
+public:
+	struct FScriptMulticastDelegate                    OnModelLoaded;                                            // 0x0030(0x0010) (ZeroConstructor, InstancedReference, BlueprintAssignable)
+	struct FScriptMulticastDelegate                    OnLoadFailure;                                            // 0x0040(0x0010) (ZeroConstructor, InstancedReference, BlueprintAssignable)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0050(0x0008) MISSED OFFSET
+	class UPrimitiveComponent*                         SpawnedComponent;                                         // 0x0058(0x0008) (ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class HeadMountedDisplay.AsyncTask_LoadXRDeviceVisComponent");
+		return ptr;
+	}
+
+
+	class UAsyncTask_LoadXRDeviceVisComponent* STATIC_AddNamedDeviceVisualizationComponentAsync(class AActor* Target, const struct FName& SystemName, const struct FName& DeviceName, bool bManualAttachment, const struct FTransform& RelativeTransform, class UPrimitiveComponent** NewComponent);
+	class UAsyncTask_LoadXRDeviceVisComponent* STATIC_AddDeviceVisualizationComponentAsync(class AActor* Target, const struct FXRDeviceId& XRDeviceId, bool bManualAttachment, const struct FTransform& RelativeTransform, class UPrimitiveComponent** NewComponent);
 };
 
 

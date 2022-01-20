@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,65 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function DuplicateResOutMesh.DuplicateResOutMesh_C.RestoreInProgressRes
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void ADuplicateResOutMesh_C::RestoreInProgressRes()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DuplicateResOutMesh.DuplicateResOutMesh_C.RestoreInProgressRes");
+
+	ADuplicateResOutMesh_C_RestoreInProgressRes_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DuplicateResOutMesh.DuplicateResOutMesh_C.Store Original Material for Teleport In
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void ADuplicateResOutMesh_C::Store_Original_Material_for_Teleport_In()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DuplicateResOutMesh.DuplicateResOutMesh_C.Store Original Material for Teleport In");
+
+	ADuplicateResOutMesh_C_Store_Original_Material_for_Teleport_In_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function DuplicateResOutMesh.DuplicateResOutMesh_C.External Mesh Masked Setup
+// (Public, HasOutParms, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// TArray<class USkeletalMeshComponent*> External_MEsh_Component_Array  (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ZeroConstructor, ReferenceParm)
+// TArray<class UMaterialInstanceDynamic*> Corrected_Mid_Array            (Parm, OutParm, ZeroConstructor)
+
+void ADuplicateResOutMesh_C::External_Mesh_Masked_Setup(TArray<class USkeletalMeshComponent*>* External_MEsh_Component_Array, TArray<class UMaterialInstanceDynamic*>* Corrected_Mid_Array)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function DuplicateResOutMesh.DuplicateResOutMesh_C.External Mesh Masked Setup");
+
+	ADuplicateResOutMesh_C_External_Mesh_Masked_Setup_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (External_MEsh_Component_Array != nullptr)
+		*External_MEsh_Component_Array = params.External_MEsh_Component_Array;
+	if (Corrected_Mid_Array != nullptr)
+		*Corrected_Mid_Array = params.Corrected_Mid_Array;
+}
+
 
 // Function DuplicateResOutMesh.DuplicateResOutMesh_C.ProcessSpawnInTimeline
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)

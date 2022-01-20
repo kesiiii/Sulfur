@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -14,9 +14,12 @@ namespace SDK
 //Parameters
 //---------------------------------------------------------------------------
 
-// Function RadialPickerItem.RadialPickerItem_C.SetKeybindVisibility
-struct URadialPickerItem_C_SetKeybindVisibility_Params
+// Function RadialPickerItem.RadialPickerItem_C.OnTouchStarted
+struct URadialPickerItem_C_OnTouchStarted_Params
 {
+	struct FGeometry*                                  MyGeometry;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData)
+	struct FPointerEvent*                              InTouchEvent;                                             // (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+	struct FEventReply                                 ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function RadialPickerItem.RadialPickerItem_C.SetShowImageAndLabel
@@ -57,6 +60,12 @@ struct URadialPickerItem_C_Construct_Params
 struct URadialPickerItem_C_ExecuteUbergraph_RadialPickerItem_Params
 {
 	int                                                EntryPoint;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function RadialPickerItem.RadialPickerItem_C.On Item Touched__DelegateSignature
+struct URadialPickerItem_C_On_Item_Touched__DelegateSignature_Params
+{
+	class URadialPickerItem_C*                         Picked_Option;                                            // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 };
 
 }

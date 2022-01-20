@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,57 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function HeroSquadSlotsView.HeroSquadSlotsView_C.Bonus
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UHeroSquadSlotsView_C::Bonus()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function HeroSquadSlotsView.HeroSquadSlotsView_C.Bonus");
+
+	UHeroSquadSlotsView_C_Bonus_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function HeroSquadSlotsView.HeroSquadSlotsView_C.Defenders
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UHeroSquadSlotsView_C::Defenders()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function HeroSquadSlotsView.HeroSquadSlotsView_C.Defenders");
+
+	UHeroSquadSlotsView_C_Defenders_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function HeroSquadSlotsView.HeroSquadSlotsView_C.Primary
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UHeroSquadSlotsView_C::Primary()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function HeroSquadSlotsView.HeroSquadSlotsView_C.Primary");
+
+	UHeroSquadSlotsView_C_Primary_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
 
 // Function HeroSquadSlotsView.HeroSquadSlotsView_C.UndarkenAllSlots
 // (Public, BlueprintCallable, BlueprintEvent)
@@ -74,10 +125,10 @@ void UHeroSquadSlotsView_C::HandleSquadNavigation(const struct FName& SquadId, i
 // Function HeroSquadSlotsView.HeroSquadSlotsView_C.CreateAndAddSquadSlotButton
 // (Event, Protected, HasOutParms, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// int*                           SquadSlotIndex                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-// struct FHomebaseSquadSlot      SquadSlotDefinition            (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
-// class UWidget*                 OutSquadSlotButtonHost         (Parm, OutParm, ZeroConstructor, IsPlainOldData)
-// class UFortSquadSlotSelectorButton* ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+// int*                           SquadSlotIndex                 (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// struct FHomebaseSquadSlot*     SquadSlotDefinition            (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+// class UWidget*                 OutSquadSlotButtonHost         (Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData)
+// class UFortSquadSlotSelectorButton* ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, IsPlainOldData)
 
 class UFortSquadSlotSelectorButton* UHeroSquadSlotsView_C::CreateAndAddSquadSlotButton(int* SquadSlotIndex, struct FHomebaseSquadSlot* SquadSlotDefinition, class UWidget** OutSquadSlotButtonHost)
 {
@@ -85,6 +136,7 @@ class UFortSquadSlotSelectorButton* UHeroSquadSlotsView_C::CreateAndAddSquadSlot
 
 	UHeroSquadSlotsView_C_CreateAndAddSquadSlotButton_Params params;
 	params.SquadSlotIndex = SquadSlotIndex;
+	params.SquadSlotDefinition = SquadSlotDefinition;
 
 	auto flags = fn->FunctionFlags;
 
@@ -92,8 +144,6 @@ class UFortSquadSlotSelectorButton* UHeroSquadSlotsView_C::CreateAndAddSquadSlot
 
 	fn->FunctionFlags = flags;
 
-	if (SquadSlotDefinition != nullptr)
-		*SquadSlotDefinition = params.SquadSlotDefinition;
 	if (OutSquadSlotButtonHost != nullptr)
 		*OutSquadSlotButtonHost = params.OutSquadSlotButtonHost;
 

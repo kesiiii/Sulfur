@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -40,6 +40,12 @@ struct UQuestTreeEntry_C_Set_Quest_Display_Name_Params
 struct UQuestTreeEntry_C_Get_Quest_Item_Def_Params
 {
 	class UFortQuestItemDefinition*                    AsFort_Quest_Item_Definition;                             // (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function QuestTreeEntry.QuestTreeEntry_C.Quest Category Have Unseen Quests
+struct UQuestTreeEntry_C_Quest_Category_Have_Unseen_Quests_Params
+{
+	bool                                               HasUnseen;                                                // (Parm, OutParm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function QuestTreeEntry.QuestTreeEntry_C.Update Quest Category Bang State
@@ -84,14 +90,8 @@ struct UQuestTreeEntry_C_SetupAsQuest_Params
 	class UFortQuestItem**                             Category;                                                 // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
-// Function QuestTreeEntry.QuestTreeEntry_C.ExpansionChanged
-struct UQuestTreeEntry_C_ExpansionChanged_Params
-{
-	bool*                                              bExpanded;                                                // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-};
-
-// Function QuestTreeEntry.QuestTreeEntry_C.OnSelected
-struct UQuestTreeEntry_C_OnSelected_Params
+// Function QuestTreeEntry.QuestTreeEntry_C.BP_OnSelected
+struct UQuestTreeEntry_C_BP_OnSelected_Params
 {
 };
 
@@ -100,8 +100,8 @@ struct UQuestTreeEntry_C_OnQuestsUpdated_Params
 {
 };
 
-// Function QuestTreeEntry.QuestTreeEntry_C.OnHovered
-struct UQuestTreeEntry_C_OnHovered_Params
+// Function QuestTreeEntry.QuestTreeEntry_C.BP_OnHovered
+struct UQuestTreeEntry_C_BP_OnHovered_Params
 {
 };
 
@@ -116,9 +116,15 @@ struct UQuestTreeEntry_C_Destruct_Params
 {
 };
 
-// Function QuestTreeEntry.QuestTreeEntry_C.OnDeselected
-struct UQuestTreeEntry_C_OnDeselected_Params
+// Function QuestTreeEntry.QuestTreeEntry_C.BP_OnDeselected
+struct UQuestTreeEntry_C_BP_OnDeselected_Params
 {
+};
+
+// Function QuestTreeEntry.QuestTreeEntry_C.BP_OnItemExpansionChanged
+struct UQuestTreeEntry_C_BP_OnItemExpansionChanged_Params
+{
+	bool*                                              bIsExpanded;                                              // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function QuestTreeEntry.QuestTreeEntry_C.ExecuteUbergraph_QuestTreeEntry

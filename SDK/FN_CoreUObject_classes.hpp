@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -19,7 +17,7 @@ namespace SDK
 class UObject
 {
 public:
-	static TUObjectArray*                              GObjects;                                                 // 0x0000(0x0000)
+	static GlobalObjectsArray*                         GObjects;                                                 // 0x0000(0x0000)
 	void*                                              Vtable;                                                   // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
 	int32_t                                            ObjectFlags;                                              // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
 	int32_t                                            InternalIndex;                                            // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
@@ -27,7 +25,7 @@ public:
 	FName                                              Name;                                                     // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
 	class UObject*                                     Outer;                                                    // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
 
-	static inline TUObjectArray* GetGlobalObjects()
+	static inline GlobalObjectsArray* GetGlobalObjects()
 	{
 		return GObjects;
 	}
@@ -61,12 +59,12 @@ public:
 		for (int i = 0; i < GetGlobalObjects()->Num(); ++i)
 		{
 			auto object = GetGlobalObjects()->GetByIndex(i);
-
+	
 			if (object == nullptr)
 			{
 				continue;
 			}
-
+	
 			if (object->GetFullName() == name)
 			{
 				return reinterpret_cast<UClass*>(object);
@@ -78,7 +76,7 @@ public:
 	template<typename T>
 	static T* GetObjectCasted(std::size_t index)
 	{
-		return static_cast<T*>(GetGlobalObjects()->GetByIndex(index));
+		return static_cast<T*>(GetGlobalObjects().GetByIndex(index));
 	}
 
 	bool IsA(UClass* cmp) const;
@@ -93,7 +91,6 @@ public:
 	{
 		return GetVFunction<void(*)(UObject*, class UFunction*, void*)>(this, 64)(this, function, parms);
 	}
-
 
 	void ExecuteUbergraph(int EntryPoint);
 };
@@ -114,32 +111,16 @@ public:
 };
 
 
-// Class CoreUObject.GCObjectReferencer
-// 0x0038 (0x0060 - 0x0028)
-class UGCObjectReferencer : public UObject
+// Class CoreUObject.Package
+// 0x0068 (0x0090 - 0x0028)
+class UPackage : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0x38];                                      // 0x0028(0x0038) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x68];                                      // 0x0028(0x0068) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
-		static auto ptr = UObject::FindClass("Class CoreUObject.GCObjectReferencer");
-		return ptr;
-	}
-
-};
-
-
-// Class CoreUObject.TextBuffer
-// 0x0028 (0x0050 - 0x0028)
-class UTextBuffer : public UObject
-{
-public:
-	unsigned char                                      UnknownData00[0x28];                                      // 0x0028(0x0028) MISSED OFFSET
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class CoreUObject.TextBuffer");
+		static auto ptr = UObject::FindClass("Class CoreUObject.Package");
 		return ptr;
 	}
 
@@ -182,6 +163,65 @@ public:
 };
 
 
+// Class CoreUObject.Class
+// 0x0178 (0x0200 - 0x0088)
+class UClass : public UStruct
+{
+public:
+	unsigned char                                      UnknownData00[0x178];                                     // 0x0088(0x0178) MISSED OFFSET
+
+	template<typename T>
+	inline T* CreateDefaultObject()
+	{
+		return static_cast<T*>(CreateDefaultObject());
+	}
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class CoreUObject.Class");
+		return ptr;
+	}
+
+	inline UObject* CreateDefaultObject()
+	{
+		return GetVFunction<UObject*(*)(UClass*)>(this, 101)(this);
+	}
+
+};
+
+
+// Class CoreUObject.GCObjectReferencer
+// 0x0038 (0x0060 - 0x0028)
+class UGCObjectReferencer : public UObject
+{
+public:
+	unsigned char                                      UnknownData00[0x38];                                      // 0x0028(0x0038) MISSED OFFSET
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class CoreUObject.GCObjectReferencer");
+		return ptr;
+	}
+
+};
+
+
+// Class CoreUObject.TextBuffer
+// 0x0028 (0x0050 - 0x0028)
+class UTextBuffer : public UObject
+{
+public:
+	unsigned char                                      UnknownData00[0x28];                                      // 0x0028(0x0028) MISSED OFFSET
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class CoreUObject.TextBuffer");
+		return ptr;
+	}
+
+};
+
+
 // Class CoreUObject.ScriptStruct
 // 0x0010 (0x0098 - 0x0088)
 class UScriptStruct : public UStruct
@@ -193,43 +233,6 @@ public:
 	{
 		static auto ptr = UObject::FindClass("Class CoreUObject.ScriptStruct");
 		return ptr;
-	}
-
-};
-
-
-// Class CoreUObject.Package
-// 0x0070 (0x0098 - 0x0028)
-class UPackage : public UObject
-{
-public:
-	unsigned char                                      UnknownData00[0x70];                                      // 0x0028(0x0070) MISSED OFFSET
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class CoreUObject.Package");
-		return ptr;
-	}
-
-};
-
-
-// Class CoreUObject.Class
-// 0x0170 (0x01F8 - 0x0088)
-class UClass : public UStruct
-{
-public:
-	unsigned char                                      UnknownData00[0x170];                                     // 0x0088(0x0170) MISSED OFFSET
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class CoreUObject.Class");
-		return ptr;
-	}
-
-	inline UObject* CreateDefaultObject()
-	{
-		return GetVFunction<UObject*(*)(UClass*)>(this, 100)(this);
 	}
 
 };
@@ -278,11 +281,11 @@ public:
 
 
 // Class CoreUObject.DynamicClass
-// 0x0068 (0x0260 - 0x01F8)
+// 0x0068 (0x0268 - 0x0200)
 class UDynamicClass : public UClass
 {
 public:
-	unsigned char                                      UnknownData00[0x68];                                      // 0x01F8(0x0068) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x68];                                      // 0x0200(0x0068) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -358,11 +361,11 @@ public:
 
 
 // Class CoreUObject.LinkerPlaceholderClass
-// 0x01A0 (0x0398 - 0x01F8)
+// 0x01B8 (0x03B8 - 0x0200)
 class ULinkerPlaceholderClass : public UClass
 {
 public:
-	unsigned char                                      UnknownData00[0x1A0];                                     // 0x01F8(0x01A0) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x1B8];                                     // 0x0200(0x01B8) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -374,11 +377,11 @@ public:
 
 
 // Class CoreUObject.LinkerPlaceholderExportObject
-// 0x00B0 (0x00D8 - 0x0028)
+// 0x00C8 (0x00F0 - 0x0028)
 class ULinkerPlaceholderExportObject : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0xB0];                                      // 0x0028(0x00B0) MISSED OFFSET
+	unsigned char                                      UnknownData00[0xC8];                                      // 0x0028(0x00C8) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -390,11 +393,11 @@ public:
 
 
 // Class CoreUObject.LinkerPlaceholderFunction
-// 0x01A0 (0x0258 - 0x00B8)
+// 0x01B8 (0x0270 - 0x00B8)
 class ULinkerPlaceholderFunction : public UFunction
 {
 public:
-	unsigned char                                      UnknownData00[0x1A0];                                     // 0x00B8(0x01A0) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x1B8];                                     // 0x00B8(0x01B8) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

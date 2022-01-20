@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -132,9 +132,8 @@ void UMeshReconstructorBase::DisconnectMRMesh()
 // (Native, Public)
 // Parameters:
 // class UMRMeshComponent*        Mesh                           (Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
-// struct FMRMeshConfiguration    ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FMRMeshConfiguration UMeshReconstructorBase::ConnectMRMesh(class UMRMeshComponent* Mesh)
+void UMeshReconstructorBase::ConnectMRMesh(class UMRMeshComponent* Mesh)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function MRMesh.MeshReconstructorBase.ConnectMRMesh");
 
@@ -147,21 +146,19 @@ struct FMRMeshConfiguration UMeshReconstructorBase::ConnectMRMesh(class UMRMeshC
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
 }
 
 
-// Function MRMesh.MRMeshComponent.GetReconstructor
+// Function MRMesh.MRMeshComponent.IsConnected
 // (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// class UMeshReconstructorBase*  ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+// bool                           ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
 
-class UMeshReconstructorBase* UMRMeshComponent::GetReconstructor()
+bool UMRMeshComponent::IsConnected()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function MRMesh.MRMeshComponent.GetReconstructor");
+	static auto fn = UObject::FindObject<UFunction>("Function MRMesh.MRMeshComponent.IsConnected");
 
-	UMRMeshComponent_GetReconstructor_Params params;
+	UMRMeshComponent_IsConnected_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -174,17 +171,32 @@ class UMeshReconstructorBase* UMRMeshComponent::GetReconstructor()
 }
 
 
-// Function MRMesh.MRMeshComponent.ConnectReconstructor
+// Function MRMesh.MRMeshComponent.ForceNavMeshUpdate
 // (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// class UMeshReconstructorBase*  Reconstructor                  (Parm, ZeroConstructor, IsPlainOldData)
 
-void UMRMeshComponent::ConnectReconstructor(class UMeshReconstructorBase* Reconstructor)
+void UMRMeshComponent::ForceNavMeshUpdate()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function MRMesh.MRMeshComponent.ConnectReconstructor");
+	static auto fn = UObject::FindObject<UFunction>("Function MRMesh.MRMeshComponent.ForceNavMeshUpdate");
 
-	UMRMeshComponent_ConnectReconstructor_Params params;
-	params.Reconstructor = Reconstructor;
+	UMRMeshComponent_ForceNavMeshUpdate_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function MRMesh.MRMeshComponent.Clear
+// (Final, Native, Public, BlueprintCallable)
+
+void UMRMeshComponent::Clear()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function MRMesh.MRMeshComponent.Clear");
+
+	UMRMeshComponent_Clear_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;

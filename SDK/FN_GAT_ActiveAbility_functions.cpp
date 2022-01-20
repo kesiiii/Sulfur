@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,93 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function GAT_ActiveAbility.GAT_ActiveAbility_C.K2_ShouldAbilityRespondToEvent
+// (Event, Protected, HasOutParms, BlueprintCallable, BlueprintEvent, Const)
+// Parameters:
+// struct FGameplayAbilityActorInfo* ActorInfo                      (BlueprintVisible, BlueprintReadOnly, Parm)
+// struct FGameplayEventData*     Payload                        (BlueprintVisible, BlueprintReadOnly, Parm)
+// bool                           ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+
+bool UGAT_ActiveAbility_C::K2_ShouldAbilityRespondToEvent(struct FGameplayAbilityActorInfo* ActorInfo, struct FGameplayEventData* Payload)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function GAT_ActiveAbility.GAT_ActiveAbility_C.K2_ShouldAbilityRespondToEvent");
+
+	UGAT_ActiveAbility_C_K2_ShouldAbilityRespondToEvent_Params params;
+	params.ActorInfo = ActorInfo;
+	params.Payload = Payload;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function GAT_ActiveAbility.GAT_ActiveAbility_C.ActiveAbilitySetup
+// (Public, BlueprintCallable, BlueprintEvent, Const)
+// Parameters:
+// class UAbilitySystemComponent* AbilitySystemComponent         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
+
+void UGAT_ActiveAbility_C::ActiveAbilitySetup(class UAbilitySystemComponent* AbilitySystemComponent)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function GAT_ActiveAbility.GAT_ActiveAbility_C.ActiveAbilitySetup");
+
+	UGAT_ActiveAbility_C_ActiveAbilitySetup_Params params;
+	params.AbilitySystemComponent = AbilitySystemComponent;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function GAT_ActiveAbility.GAT_ActiveAbility_C.SetKnockbackImmunity
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                           ImmunityOn                     (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void UGAT_ActiveAbility_C::SetKnockbackImmunity(bool ImmunityOn)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function GAT_ActiveAbility.GAT_ActiveAbility_C.SetKnockbackImmunity");
+
+	UGAT_ActiveAbility_C_SetKnockbackImmunity_Params params;
+	params.ImmunityOn = ImmunityOn;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function GAT_ActiveAbility.GAT_ActiveAbility_C.SetPawnCollision
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class AFortPawn*               FortPawn                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// bool                           CollisionOn                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void UGAT_ActiveAbility_C::SetPawnCollision(class AFortPawn* FortPawn, bool CollisionOn)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function GAT_ActiveAbility.GAT_ActiveAbility_C.SetPawnCollision");
+
+	UGAT_ActiveAbility_C_SetPawnCollision_Params params;
+	params.FortPawn = FortPawn;
+	params.CollisionOn = CollisionOn;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
 
 // Function GAT_ActiveAbility.GAT_ActiveAbility_C.K2_ActivateAbility
 // (Event, Protected, BlueprintEvent)

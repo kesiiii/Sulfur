@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -188,6 +188,26 @@ void AThreatPostProcessManagerAndParticleBlueprint_C::ForceUpdateLensEffect()
 	static auto fn = UObject::FindObject<UFunction>("Function ThreatPostProcessManagerAndParticleBlueprint.ThreatPostProcessManagerAndParticleBlueprint_C.ForceUpdateLensEffect");
 
 	AThreatPostProcessManagerAndParticleBlueprint_C_ForceUpdateLensEffect_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ThreatPostProcessManagerAndParticleBlueprint.ThreatPostProcessManagerAndParticleBlueprint_C.OnThreatOverrideChanged
+// (Event, Public, BlueprintEvent)
+// Parameters:
+// bool*                          bForceThreatOn                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void AThreatPostProcessManagerAndParticleBlueprint_C::OnThreatOverrideChanged(bool* bForceThreatOn)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ThreatPostProcessManagerAndParticleBlueprint.ThreatPostProcessManagerAndParticleBlueprint_C.OnThreatOverrideChanged");
+
+	AThreatPostProcessManagerAndParticleBlueprint_C_OnThreatOverrideChanged_Params params;
+	params.bForceThreatOn = bForceThreatOn;
 
 	auto flags = fn->FunctionFlags;
 

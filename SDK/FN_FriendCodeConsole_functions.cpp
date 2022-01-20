@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -49,14 +49,14 @@ void UFriendCodeConsole_C::OnSendFriendCodeMessageComplete(bool bMessageSent)
 }
 
 
-// Function FriendCodeConsole.FriendCodeConsole_C.OnClicked
+// Function FriendCodeConsole.FriendCodeConsole_C.BP_OnClicked
 // (Event, Protected, BlueprintEvent)
 
-void UFriendCodeConsole_C::OnClicked()
+void UFriendCodeConsole_C::BP_OnClicked()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function FriendCodeConsole.FriendCodeConsole_C.OnClicked");
+	static auto fn = UObject::FindObject<UFunction>("Function FriendCodeConsole.FriendCodeConsole_C.BP_OnClicked");
 
-	UFriendCodeConsole_C_OnClicked_Params params;
+	UFriendCodeConsole_C_BP_OnClicked_Params params;
 
 	auto flags = fn->FunctionFlags;
 

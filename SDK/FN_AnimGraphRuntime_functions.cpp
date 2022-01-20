@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -54,6 +54,74 @@ void UKismetAnimationLibrary::STATIC_K2_TwoBoneIK(const struct FVector& RootPos,
 }
 
 
+// Function AnimGraphRuntime.KismetAnimationLibrary.K2_MakePerlinNoiseVectorAndRemap
+// (Final, Native, Static, Public, HasDefaults, BlueprintCallable, BlueprintPure)
+// Parameters:
+// float                          X                              (Parm, ZeroConstructor, IsPlainOldData)
+// float                          Y                              (Parm, ZeroConstructor, IsPlainOldData)
+// float                          Z                              (Parm, ZeroConstructor, IsPlainOldData)
+// float                          RangeOutMinX                   (Parm, ZeroConstructor, IsPlainOldData)
+// float                          RangeOutMaxX                   (Parm, ZeroConstructor, IsPlainOldData)
+// float                          RangeOutMinY                   (Parm, ZeroConstructor, IsPlainOldData)
+// float                          RangeOutMaxY                   (Parm, ZeroConstructor, IsPlainOldData)
+// float                          RangeOutMinZ                   (Parm, ZeroConstructor, IsPlainOldData)
+// float                          RangeOutMaxZ                   (Parm, ZeroConstructor, IsPlainOldData)
+// struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm, IsPlainOldData)
+
+struct FVector UKismetAnimationLibrary::STATIC_K2_MakePerlinNoiseVectorAndRemap(float X, float Y, float Z, float RangeOutMinX, float RangeOutMaxX, float RangeOutMinY, float RangeOutMaxY, float RangeOutMinZ, float RangeOutMaxZ)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AnimGraphRuntime.KismetAnimationLibrary.K2_MakePerlinNoiseVectorAndRemap");
+
+	UKismetAnimationLibrary_K2_MakePerlinNoiseVectorAndRemap_Params params;
+	params.X = X;
+	params.Y = Y;
+	params.Z = Z;
+	params.RangeOutMinX = RangeOutMinX;
+	params.RangeOutMaxX = RangeOutMaxX;
+	params.RangeOutMinY = RangeOutMinY;
+	params.RangeOutMaxY = RangeOutMaxY;
+	params.RangeOutMinZ = RangeOutMinZ;
+	params.RangeOutMaxZ = RangeOutMaxZ;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function AnimGraphRuntime.KismetAnimationLibrary.K2_MakePerlinNoiseAndRemap
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// float                          Value                          (Parm, ZeroConstructor, IsPlainOldData)
+// float                          RangeOutMin                    (Parm, ZeroConstructor, IsPlainOldData)
+// float                          RangeOutMax                    (Parm, ZeroConstructor, IsPlainOldData)
+// float                          ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+
+float UKismetAnimationLibrary::STATIC_K2_MakePerlinNoiseAndRemap(float Value, float RangeOutMin, float RangeOutMax)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AnimGraphRuntime.KismetAnimationLibrary.K2_MakePerlinNoiseAndRemap");
+
+	UKismetAnimationLibrary_K2_MakePerlinNoiseAndRemap_Params params;
+	params.Value = Value;
+	params.RangeOutMin = RangeOutMin;
+	params.RangeOutMax = RangeOutMax;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function AnimGraphRuntime.KismetAnimationLibrary.K2_LookAt
 // (Final, Native, Static, Public, HasOutParms, HasDefaults, BlueprintCallable, BlueprintPure)
 // Parameters:
@@ -76,6 +144,76 @@ struct FTransform UKismetAnimationLibrary::STATIC_K2_LookAt(const struct FTransf
 	params.bUseUpVector = bUseUpVector;
 	params.UpVector = UpVector;
 	params.ClampConeInDegree = ClampConeInDegree;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function AnimGraphRuntime.KismetAnimationLibrary.K2_DistanceBetweenTwoSocketsAndMapRange
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// class USkeletalMeshComponent*  Component                      (ConstParm, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
+// struct FName                   SocketOrBoneNameA              (ConstParm, Parm, ZeroConstructor, IsPlainOldData)
+// TEnumAsByte<ERelativeTransformSpace> SocketSpaceA                   (Parm, ZeroConstructor, IsPlainOldData)
+// struct FName                   SocketOrBoneNameB              (ConstParm, Parm, ZeroConstructor, IsPlainOldData)
+// TEnumAsByte<ERelativeTransformSpace> SocketSpaceB                   (Parm, ZeroConstructor, IsPlainOldData)
+// bool                           bRemapRange                    (Parm, ZeroConstructor, IsPlainOldData)
+// float                          InRangeMin                     (Parm, ZeroConstructor, IsPlainOldData)
+// float                          InRangeMax                     (Parm, ZeroConstructor, IsPlainOldData)
+// float                          OutRangeMin                    (Parm, ZeroConstructor, IsPlainOldData)
+// float                          OutRangeMax                    (Parm, ZeroConstructor, IsPlainOldData)
+// float                          ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+
+float UKismetAnimationLibrary::STATIC_K2_DistanceBetweenTwoSocketsAndMapRange(class USkeletalMeshComponent* Component, const struct FName& SocketOrBoneNameA, TEnumAsByte<ERelativeTransformSpace> SocketSpaceA, const struct FName& SocketOrBoneNameB, TEnumAsByte<ERelativeTransformSpace> SocketSpaceB, bool bRemapRange, float InRangeMin, float InRangeMax, float OutRangeMin, float OutRangeMax)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AnimGraphRuntime.KismetAnimationLibrary.K2_DistanceBetweenTwoSocketsAndMapRange");
+
+	UKismetAnimationLibrary_K2_DistanceBetweenTwoSocketsAndMapRange_Params params;
+	params.Component = Component;
+	params.SocketOrBoneNameA = SocketOrBoneNameA;
+	params.SocketSpaceA = SocketSpaceA;
+	params.SocketOrBoneNameB = SocketOrBoneNameB;
+	params.SocketSpaceB = SocketSpaceB;
+	params.bRemapRange = bRemapRange;
+	params.InRangeMin = InRangeMin;
+	params.InRangeMax = InRangeMax;
+	params.OutRangeMin = OutRangeMin;
+	params.OutRangeMax = OutRangeMax;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function AnimGraphRuntime.KismetAnimationLibrary.K2_DirectionBetweenSockets
+// (Final, Native, Static, Public, HasDefaults, BlueprintCallable, BlueprintPure)
+// Parameters:
+// class USkeletalMeshComponent*  Component                      (ConstParm, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
+// struct FName                   SocketOrBoneNameFrom           (ConstParm, Parm, ZeroConstructor, IsPlainOldData)
+// struct FName                   SocketOrBoneNameTo             (ConstParm, Parm, ZeroConstructor, IsPlainOldData)
+// struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm, IsPlainOldData)
+
+struct FVector UKismetAnimationLibrary::STATIC_K2_DirectionBetweenSockets(class USkeletalMeshComponent* Component, const struct FName& SocketOrBoneNameFrom, const struct FName& SocketOrBoneNameTo)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AnimGraphRuntime.KismetAnimationLibrary.K2_DirectionBetweenSockets");
+
+	UKismetAnimationLibrary_K2_DirectionBetweenSockets_Params params;
+	params.Component = Component;
+	params.SocketOrBoneNameFrom = SocketOrBoneNameFrom;
+	params.SocketOrBoneNameTo = SocketOrBoneNameTo;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;

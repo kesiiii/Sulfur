@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -15,7 +13,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass GCNS_GM_OnDeathExplosionFriendly.GCNS_GM_OnDeathExplosionFriendly_C
-// 0x0000 (0x00B0 - 0x00B0)
+// 0x0000 (0x0080 - 0x0080)
 class UGCNS_GM_OnDeathExplosionFriendly_C : public UFortGameplayCueNotify_Simple
 {
 public:

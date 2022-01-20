@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,6 +13,93 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.CleanUpTeleportationFXLight
+struct APlayerPawn_Athena_C_CleanUpTeleportationFXLight_Params
+{
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.UpdatePreDissolve
+struct APlayerPawn_Athena_C_UpdatePreDissolve_Params
+{
+	float                                              GlowScalar;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.RestoreCharacterMats
+struct APlayerPawn_Athena_C_RestoreCharacterMats_Params
+{
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.SetupDissolveFX
+struct APlayerPawn_Athena_C_SetupDissolveFX_Params
+{
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.UpdateTeleportationPointLight
+struct APlayerPawn_Athena_C_UpdateTeleportationPointLight_Params
+{
+	struct FVector                                     NewWorldLoc;                                              // (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData)
+	float                                              IntensityScalar;                                          // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.GetDissolveValues
+struct APlayerPawn_Athena_C_GetDissolveValues_Params
+{
+	float                                              ZheightNormScalar;                                        // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	float                                              DissolveGradientDistance;                                 // (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+	struct FVector                                     WorldDissolveLocation;                                    // (Parm, OutParm, IsPlainOldData)
+	struct FLinearColor                                DissolveGradientDirectionColor;                           // (Parm, OutParm, IsPlainOldData)
+	struct FLinearColor                                DissolveGradientBaseLocColor;                             // (Parm, OutParm, IsPlainOldData)
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.UpdateDissolveFX
+struct APlayerPawn_Athena_C_UpdateDissolveFX_Params
+{
+	float                                              Scalar_Transition;                                        // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	float                                              Scalar_ZHeight;                                           // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	float                                              Scalar_LightIntensity;                                    // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.SpawnTeleportationLight
+struct APlayerPawn_Athena_C_SpawnTeleportationLight_Params
+{
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.FindBounds
+struct APlayerPawn_Athena_C_FindBounds_Params
+{
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.QueueTeleportOut
+struct APlayerPawn_Athena_C_QueueTeleportOut_Params
+{
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.QueueTeleportIn
+struct APlayerPawn_Athena_C_QueueTeleportIn_Params
+{
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.OnOpenParachute
+struct APlayerPawn_Athena_C_OnOpenParachute_Params
+{
+	bool                                               bConsumeEvent;                                            // (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.OnStartLongInteract
+struct APlayerPawn_Athena_C_OnStartLongInteract_Params
+{
+	class AActor**                                     ReceivingActor;                                           // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	bool                                               Out_bConsumeEvent;                                        // (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+	bool                                               Out_bSkipSetInteractDuration;                             // (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+	bool                                               Out_bSkipStartAnimation;                                  // (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.InWarmUp
+struct APlayerPawn_Athena_C_InWarmUp_Params
+{
+	bool                                               InWarmUp;                                                 // (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+};
 
 // Function PlayerPawn_Athena.PlayerPawn_Athena_C.StopLoopingAudio
 struct APlayerPawn_Athena_C_StopLoopingAudio_Params
@@ -77,6 +164,36 @@ struct APlayerPawn_Athena_C_Storm_Audio_Fader__UpdateFunc_Params
 {
 };
 
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.Timeline_0__FinishedFunc
+struct APlayerPawn_Athena_C_Timeline_0__FinishedFunc_Params
+{
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.Timeline_0__UpdateFunc
+struct APlayerPawn_Athena_C_Timeline_0__UpdateFunc_Params
+{
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.TFX_GlowCharacterMesh__FinishedFunc
+struct APlayerPawn_Athena_C_TFX_GlowCharacterMesh__FinishedFunc_Params
+{
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.TFX_GlowCharacterMesh__UpdateFunc
+struct APlayerPawn_Athena_C_TFX_GlowCharacterMesh__UpdateFunc_Params
+{
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.TFX_ResOutCharacterMesh__FinishedFunc
+struct APlayerPawn_Athena_C_TFX_ResOutCharacterMesh__FinishedFunc_Params
+{
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.TFX_ResOutCharacterMesh__UpdateFunc
+struct APlayerPawn_Athena_C_TFX_ResOutCharacterMesh__UpdateFunc_Params
+{
+};
+
 // Function PlayerPawn_Athena.PlayerPawn_Athena_C.GameplayCue.Abilities.Activation.Generic.HarvestBuff.Tier1
 struct APlayerPawn_Athena_C_GameplayCue_Abilities_Activation_Generic_HarvestBuff_Tier1_Params
 {
@@ -97,20 +214,9 @@ struct APlayerPawn_Athena_C_ReceivePossessed_Params
 	class AController**                                NewController;                                            // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
-// Function PlayerPawn_Athena.PlayerPawn_Athena_C.SetMenuScreenClassName
-struct APlayerPawn_Athena_C_SetMenuScreenClassName_Params
-{
-};
-
 // Function PlayerPawn_Athena.PlayerPawn_Athena_C.ReceiveBeginPlay
 struct APlayerPawn_Athena_C_ReceiveBeginPlay_Params
 {
-};
-
-// Function PlayerPawn_Athena.PlayerPawn_Athena_C.SelectPawn
-struct APlayerPawn_Athena_C_SelectPawn_Params
-{
-	class UAnimInstance*                               AnimInst;                                                 // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function PlayerPawn_Athena.PlayerPawn_Athena_C.ReceiveDestroyed
@@ -147,12 +253,6 @@ struct APlayerPawn_Athena_C_OnDeathPlayEffects_Params
 	class AFortPawn**                                  InstigatedBy;                                             // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 	class AActor**                                     DamageCauser;                                             // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 	struct FGameplayEffectContextHandle*               EffectContext;                                            // (BlueprintVisible, BlueprintReadOnly, Parm)
-};
-
-// Function PlayerPawn_Athena.PlayerPawn_Athena_C.ReceiveTick
-struct APlayerPawn_Athena_C_ReceiveTick_Params
-{
-	float*                                             DeltaSeconds;                                             // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function PlayerPawn_Athena.PlayerPawn_Athena_C.ContrailCheck
@@ -238,6 +338,59 @@ struct APlayerPawn_Athena_C_OnEnteredWaterVolume_Params
 
 // Function PlayerPawn_Athena.PlayerPawn_Athena_C.OnExitedWaterVolume
 struct APlayerPawn_Athena_C_OnExitedWaterVolume_Params
+{
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.NotifyTeammateSkydivedFromBus
+struct APlayerPawn_Athena_C_NotifyTeammateSkydivedFromBus_Params
+{
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.ReceiveEndPlay
+struct APlayerPawn_Athena_C_ReceiveEndPlay_Params
+{
+	TEnumAsByte<EEndPlayReason>*                       EndPlayReason;                                            // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.OnSignificantTick
+struct APlayerPawn_Athena_C_OnSignificantTick_Params
+{
+	float*                                             Significance;                                             // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.OnLeftReplayRelevancy
+struct APlayerPawn_Athena_C_OnLeftReplayRelevancy_Params
+{
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.OnEnteredReplayRelevancy
+struct APlayerPawn_Athena_C_OnEnteredReplayRelevancy_Params
+{
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.OnCharacterCustomizationCompleted
+struct APlayerPawn_Athena_C_OnCharacterCustomizationCompleted_Params
+{
+	class AFortPlayerPawn*                             Pawn;                                                     // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.PlayResOut
+struct APlayerPawn_Athena_C_PlayResOut_Params
+{
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.OnResInDuringWarmup
+struct APlayerPawn_Athena_C_OnResInDuringWarmup_Params
+{
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.PlayResInFX
+struct APlayerPawn_Athena_C_PlayResInFX_Params
+{
+};
+
+// Function PlayerPawn_Athena.PlayerPawn_Athena_C.PlayResOutFX
+struct APlayerPawn_Athena_C_PlayResOutFX_Params
 {
 };
 

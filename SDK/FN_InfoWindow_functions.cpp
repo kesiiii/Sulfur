@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -56,7 +56,7 @@ void UInfoWindow_C::AddInfo(const struct FText& Title, TArray<class UFortItemDef
 // Function InfoWindow.InfoWindow_C.BndEvt__IconTextButton_K2Node_ComponentBoundEvent_37_CommonButtonClicked__DelegateSignature
 // (BlueprintEvent)
 // Parameters:
-// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 
 void UInfoWindow_C::BndEvt__IconTextButton_K2Node_ComponentBoundEvent_37_CommonButtonClicked__DelegateSignature(class UCommonButton* Button)
 {
@@ -178,7 +178,7 @@ void UInfoWindow_C::OnBeginIntro()
 // Function InfoWindow.InfoWindow_C.BndEvt__InfoButtons_K2Node_ComponentBoundEvent_212_OnListViewItemWidgetCreated__DelegateSignature
 // (BlueprintEvent)
 // Parameters:
-// class UUserWidget*             Widget                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UUserWidget*             Widget                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 
 void UInfoWindow_C::BndEvt__InfoButtons_K2Node_ComponentBoundEvent_212_OnListViewItemWidgetCreated__DelegateSignature(class UUserWidget* Widget)
 {
@@ -226,6 +226,23 @@ void UInfoWindow_C::ExecuteUbergraph_InfoWindow(int EntryPoint)
 
 	UInfoWindow_C_ExecuteUbergraph_InfoWindow_Params params;
 	params.EntryPoint = EntryPoint;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function InfoWindow.InfoWindow_C.OnInfoIndowClosed__DelegateSignature
+// (Public, Delegate, BlueprintCallable, BlueprintEvent)
+
+void UInfoWindow_C::OnInfoIndowClosed__DelegateSignature()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function InfoWindow.InfoWindow_C.OnInfoIndowClosed__DelegateSignature");
+
+	UInfoWindow_C_OnInfoIndowClosed__DelegateSignature_Params params;
 
 	auto flags = fn->FunctionFlags;
 

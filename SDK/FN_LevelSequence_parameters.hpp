@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,6 +13,12 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function LevelSequence.LevelSequenceBurnInOptions.SetBurnIn
+struct ULevelSequenceBurnInOptions_SetBurnIn_Params
+{
+	struct FSoftClassPath                              InBurnInClass;                                            // (Parm)
+};
 
 // Function LevelSequence.LevelSequenceActor.SetSequence
 struct ALevelSequenceActor_SetSequence_Params

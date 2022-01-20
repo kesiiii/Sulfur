@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -15,7 +13,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // WidgetBlueprintGeneratedClass ItemCountOverCost.ItemCountOverCost_C
-// 0x0051 (0x0261 - 0x0210)
+// 0x0052 (0x0262 - 0x0210)
 class UItemCountOverCost_C : public UCommonUserWidget
 {
 public:
@@ -31,6 +29,7 @@ public:
 	int                                                Count;                                                    // 0x0258(0x0004) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
 	int                                                Required;                                                 // 0x025C(0x0004) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
 	bool                                               DisplayIconLeftSide;                                      // 0x0260(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	bool                                               bOverrideQuantity;                                        // 0x0261(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
 
 	static UClass* StaticClass()
 	{
@@ -39,6 +38,7 @@ public:
 	}
 
 
+	void HasRequired(bool* bHasRequired);
 	void Calculate_Total_Item_Def_in_Inventory(class UFortItemDefinition* ItemDefinition, int* Count);
 	void Update();
 	struct FLinearColor Get_Meets_Criteria_Color();

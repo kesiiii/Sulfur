@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -19,7 +17,7 @@ enum class ESimulationSpace : uint8_t
 {
 	ComponentSpace                 = 0,
 	WorldSpace                     = 1,
-	RootBoneSpace                  = 2,
+	BaseBoneSpace                  = 2,
 	ESimulationSpace_MAX           = 3
 };
 
@@ -30,22 +28,29 @@ enum class ESimulationSpace : uint8_t
 //---------------------------------------------------------------------------
 
 // ScriptStruct ImmediatePhysics.AnimNode_RigidBody
-// 0x01E0 (0x0250 - 0x0070)
+// 0x0480 (0x0570 - 0x00F0)
 struct FAnimNode_RigidBody : public FAnimNode_SkeletalControlBase
 {
-	class UPhysicsAsset*                               OverridePhysicsAsset;                                     // 0x0070(0x0008) (Edit, ZeroConstructor, IsPlainOldData)
-	struct FVector                                     OverrideWorldGravity;                                     // 0x0078(0x000C) (Edit, IsPlainOldData)
-	struct FVector                                     ExternalForce;                                            // 0x0084(0x000C) (Edit, IsPlainOldData)
-	TEnumAsByte<ECollisionChannel>                     OverlapChannel;                                           // 0x0090(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
-	bool                                               bEnableWorldGeometry;                                     // 0x0091(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x0092(0x0002) MISSED OFFSET
-	ESimulationSpace                                   SimulationSpace;                                          // 0x0094(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData01[0x3];                                       // 0x0092(0x0003) FIX WRONG TYPE SIZE OF PREVIOUS PROPERTY
-	bool                                               bOverrideWorldGravity;                                    // 0x0098(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData02[0x3];                                       // 0x0099(0x0003) MISSED OFFSET
-	float                                              CachedBoundsScale;                                        // 0x009C(0x0004) (Edit, ZeroConstructor, IsPlainOldData)
-	bool                                               bComponentSpaceSimulation;                                // 0x00A0(0x0001) (ZeroConstructor, Deprecated, IsPlainOldData)
-	unsigned char                                      UnknownData03[0x1AF];                                     // 0x00A1(0x01AF) MISSED OFFSET
+	class UPhysicsAsset*                               OverridePhysicsAsset;                                     // 0x00F0(0x0008) (Edit, ZeroConstructor, IsPlainOldData)
+	struct FVector                                     OverrideWorldGravity;                                     // 0x00F8(0x000C) (Edit, IsPlainOldData)
+	struct FVector                                     ExternalForce;                                            // 0x0104(0x000C) (Edit, IsPlainOldData)
+	struct FVector                                     ComponentLinearAccScale;                                  // 0x0110(0x000C) (Edit, IsPlainOldData)
+	struct FVector                                     ComponentLinearVelScale;                                  // 0x011C(0x000C) (Edit, IsPlainOldData)
+	struct FVector                                     ComponentAppliedLinearAccClamp;                           // 0x0128(0x000C) (Edit, IsPlainOldData)
+	TEnumAsByte<ECollisionChannel>                     OverlapChannel;                                           // 0x0134(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
+	bool                                               bEnableWorldGeometry;                                     // 0x0135(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x2];                                       // 0x0136(0x0002) MISSED OFFSET
+	ESimulationSpace                                   SimulationSpace;                                          // 0x0138(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData01[0x3];                                       // 0x0136(0x0003) FIX WRONG TYPE SIZE OF PREVIOUS PROPERTY
+	unsigned char                                      UnknownData02[0x4];                                       // 0x013C(0x0004) MISSED OFFSET
+	struct FBoneReference                              BaseBoneRef;                                              // 0x0140(0x0018) (Edit)
+	bool                                               bOverrideWorldGravity;                                    // 0x0158(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData03[0x3];                                       // 0x0159(0x0003) MISSED OFFSET
+	float                                              CachedBoundsScale;                                        // 0x015C(0x0004) (Edit, ZeroConstructor, IsPlainOldData)
+	bool                                               bTransferBoneVelocities;                                  // 0x0160(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
+	bool                                               bFreezeIncomingPoseOnStart;                               // 0x0161(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
+	bool                                               bComponentSpaceSimulation;                                // 0x0162(0x0001) (ZeroConstructor, Deprecated, IsPlainOldData)
+	unsigned char                                      UnknownData04[0x40D];                                     // 0x0163(0x040D) MISSED OFFSET
 };
 
 }

@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -14,8 +14,8 @@ namespace SDK
 //Parameters
 //---------------------------------------------------------------------------
 
-// Function MenuScreen_Athena.MenuScreen_Athena_C.BlueprintBeginPlay
-struct UMenuScreen_Athena_C_BlueprintBeginPlay_Params
+// Function MenuScreen_Athena.MenuScreen_Athena_C.AnimNotify_playFacialAnim
+struct UMenuScreen_Athena_C_AnimNotify_playFacialAnim_Params
 {
 };
 
@@ -24,18 +24,13 @@ struct UMenuScreen_Athena_C_UserFocus_Params
 {
 };
 
-// Function MenuScreen_Athena.MenuScreen_Athena_C.AnimNotify_playFacialAnim
-struct UMenuScreen_Athena_C_AnimNotify_playFacialAnim_Params
+// Function MenuScreen_Athena.MenuScreen_Athena_C.AnimNotify_LeftB
+struct UMenuScreen_Athena_C_AnimNotify_LeftB_Params
 {
 };
 
 // Function MenuScreen_Athena.MenuScreen_Athena_C.EvaluateGraphExposedInputs_ExecuteUbergraph_MenuScreen_Athena_AnimGraphNode_ModifyBone_AE51F624415A5BC37D7F2FABCBE3FBE1
 struct UMenuScreen_Athena_C_EvaluateGraphExposedInputs_ExecuteUbergraph_MenuScreen_Athena_AnimGraphNode_ModifyBone_AE51F624415A5BC37D7F2FABCBE3FBE1_Params
-{
-};
-
-// Function MenuScreen_Athena.MenuScreen_Athena_C.EvaluateGraphExposedInputs_ExecuteUbergraph_MenuScreen_Athena_AnimGraphNode_LegIK_3BACE47B4A5EF86B449B81BE7045ADA2
-struct UMenuScreen_Athena_C_EvaluateGraphExposedInputs_ExecuteUbergraph_MenuScreen_Athena_AnimGraphNode_LegIK_3BACE47B4A5EF86B449B81BE7045ADA2_Params
 {
 };
 
@@ -54,15 +49,15 @@ struct UMenuScreen_Athena_C_EvaluateGraphExposedInputs_ExecuteUbergraph_MenuScre
 {
 };
 
-// Function MenuScreen_Athena.MenuScreen_Athena_C.AnimNotify_LeftB
-struct UMenuScreen_Athena_C_AnimNotify_LeftB_Params
-{
-};
-
 // Function MenuScreen_Athena.MenuScreen_Athena_C.BlueprintUpdateAnimation
 struct UMenuScreen_Athena_C_BlueprintUpdateAnimation_Params
 {
 	float*                                             DeltaTimeX;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function MenuScreen_Athena.MenuScreen_Athena_C.BlueprintInitializeAnimation
+struct UMenuScreen_Athena_C_BlueprintInitializeAnimation_Params
+{
 };
 
 // Function MenuScreen_Athena.MenuScreen_Athena_C.ExecuteUbergraph_MenuScreen_Athena

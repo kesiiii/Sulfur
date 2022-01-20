@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,28 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function JoinServer.JoinServer_C.IsCampaignSubGame
+// (Public, HasOutParms, BlueprintCallable, BlueprintEvent, BlueprintPure)
+// Parameters:
+// bool                           Value                          (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+
+void UJoinServer_C::IsCampaignSubGame(bool* Value)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function JoinServer.JoinServer_C.IsCampaignSubGame");
+
+	UJoinServer_C_IsCampaignSubGame_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Value != nullptr)
+		*Value = params.Value;
+}
+
 
 // Function JoinServer.JoinServer_C.HandleLobbyConnectingToGame
 // (Public, BlueprintCallable, BlueprintEvent)
@@ -142,7 +164,7 @@ void UJoinServer_C::ShowRejoinWindow()
 // Function JoinServer.JoinServer_C.HandleGetMainMenuContent
 // (Public, HasOutParms, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// class UWidget*                 ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+// class UWidget*                 ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, IsPlainOldData)
 
 class UWidget* UJoinServer_C::HandleGetMainMenuContent()
 {

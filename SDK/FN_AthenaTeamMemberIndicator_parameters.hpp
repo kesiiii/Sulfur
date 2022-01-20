@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -17,24 +17,28 @@ namespace SDK
 // Function AthenaTeamMemberIndicator.AthenaTeamMemberIndicator_C.DBNOStateChanged
 struct UAthenaTeamMemberIndicator_C_DBNOStateChanged_Params
 {
+	class AFortPlayerStateAthena**                     PS;                                                       // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 	bool*                                              bDBNO;                                                    // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function AthenaTeamMemberIndicator.AthenaTeamMemberIndicator_C.TalkingStateChanged
 struct UAthenaTeamMemberIndicator_C_TalkingStateChanged_Params
 {
+	class AFortPlayerStateAthena**                     PS;                                                       // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 	bool*                                              bTalking;                                                 // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function AthenaTeamMemberIndicator.AthenaTeamMemberIndicator_C.BeingRevivedStateChanged
 struct UAthenaTeamMemberIndicator_C_BeingRevivedStateChanged_Params
 {
+	class AFortPlayerStateAthena**                     PS;                                                       // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 	bool*                                              bReviving;                                                // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function AthenaTeamMemberIndicator.AthenaTeamMemberIndicator_C.PlayerNameChanged
 struct UAthenaTeamMemberIndicator_C_PlayerNameChanged_Params
 {
+	class AFortPlayerStateAthena**                     PS;                                                       // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 	struct FString*                                    PlayerName;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor)
 };
 

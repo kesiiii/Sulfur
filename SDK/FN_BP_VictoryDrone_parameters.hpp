@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -19,18 +19,13 @@ struct ABP_VictoryDrone_C_NotifyTeleportFinishedTriggered_Params
 {
 };
 
-// Function BP_VictoryDrone.BP_VictoryDrone_C.PlaySpawnOutAnim
-struct ABP_VictoryDrone_C_PlaySpawnOutAnim_Params
+// Function BP_VictoryDrone.BP_VictoryDrone_C.PlaySpawnAnim
+struct ABP_VictoryDrone_C_PlaySpawnAnim_Params
 {
 };
 
 // Function BP_VictoryDrone.BP_VictoryDrone_C.InitDrone
 struct ABP_VictoryDrone_C_InitDrone_Params
-{
-};
-
-// Function BP_VictoryDrone.BP_VictoryDrone_C.TriggerPlayerSpawnEffects
-struct ABP_VictoryDrone_C_TriggerPlayerSpawnEffects_Params
 {
 };
 

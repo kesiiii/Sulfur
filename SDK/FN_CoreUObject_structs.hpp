@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -37,6 +35,16 @@ enum class ERangeBoundTypes : uint8_t
 };
 
 
+// Enum CoreUObject.ELocalizedTextSourceCategory
+enum class ELocalizedTextSourceCategory : uint8_t
+{
+	Game                           = 0,
+	Engine                         = 1,
+	Editor                         = 2,
+	ELocalizedTextSourceCategory_MAX = 3
+};
+
+
 // Enum CoreUObject.EAutomationEventType
 enum class EAutomationEventType : uint8_t
 {
@@ -44,6 +52,27 @@ enum class EAutomationEventType : uint8_t
 	Warning                        = 1,
 	Error                          = 2,
 	EAutomationEventType_MAX       = 3
+};
+
+
+// Enum CoreUObject.EMouseCursor
+enum class EMouseCursor : uint8_t
+{
+	None                           = 0,
+	Default                        = 1,
+	TextEditBeam                   = 2,
+	ResizeLeftRight                = 3,
+	ResizeUpDown                   = 4,
+	ResizeSouthEast                = 5,
+	ResizeSouthWest                = 6,
+	CardinalCross                  = 7,
+	Crosshairs                     = 8,
+	Hand                           = 9,
+	GrabHand                       = 10,
+	GrabHandClosed                 = 11,
+	SlashedCircle                  = 12,
+	EyeDropper                     = 13,
+	EMouseCursor_MAX               = 14
 };
 
 
@@ -125,27 +154,6 @@ enum class EUnit : uint8_t
 };
 
 
-// Enum CoreUObject.EMouseCursor
-enum class EMouseCursor : uint8_t
-{
-	None                           = 0,
-	Default                        = 1,
-	TextEditBeam                   = 2,
-	ResizeLeftRight                = 3,
-	ResizeUpDown                   = 4,
-	ResizeSouthEast                = 5,
-	ResizeSouthWest                = 6,
-	CardinalCross                  = 7,
-	Crosshairs                     = 8,
-	Hand                           = 9,
-	GrabHand                       = 10,
-	GrabHandClosed                 = 11,
-	SlashedCircle                  = 12,
-	EyeDropper                     = 13,
-	EMouseCursor_MAX               = 14
-};
-
-
 // Enum CoreUObject.EPixelFormat
 enum class EPixelFormat : uint8_t
 {
@@ -211,7 +219,9 @@ enum class EPixelFormat : uint8_t
 	PF_XGXR8                       = 59,
 	PF_R8G8B8A8_UINT               = 60,
 	PF_R8G8B8A8_SNORM              = 61,
-	//PF_MAX                         = 62
+	PF_R16G16B16A16_UNORM          = 62,
+	PF_R16G16B16A16_SNORM          = 63,
+	//PF_MAX                         = 64
 };
 
 
@@ -647,6 +657,49 @@ struct FDateTime
 	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) MISSED OFFSET
 };
 
+// ScriptStruct CoreUObject.FrameNumber
+// 0x0004
+struct FFrameNumber
+{
+	int                                                Value;                                                    // 0x0000(0x0004) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+};
+
+// ScriptStruct CoreUObject.FrameRate
+// 0x0008
+struct FFrameRate
+{
+	int                                                Numerator;                                                // 0x0000(0x0004) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	int                                                Denominator;                                              // 0x0004(0x0004) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+};
+
+// ScriptStruct CoreUObject.FrameTime
+// 0x0008
+struct FFrameTime
+{
+	struct FFrameNumber                                FrameNumber;                                              // 0x0000(0x0004) (BlueprintVisible)
+	float                                              SubFrame;                                                 // 0x0004(0x0004) (ZeroConstructor, IsPlainOldData)
+};
+
+// ScriptStruct CoreUObject.QualifiedFrameTime
+// 0x0010
+struct FQualifiedFrameTime
+{
+	struct FFrameTime                                  Time;                                                     // 0x0000(0x0008) (BlueprintVisible)
+	struct FFrameRate                                  Rate;                                                     // 0x0008(0x0008) (BlueprintVisible)
+};
+
+// ScriptStruct CoreUObject.Timecode
+// 0x0014
+struct FTimecode
+{
+	int                                                Hours;                                                    // 0x0000(0x0004) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	int                                                Minutes;                                                  // 0x0004(0x0004) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	int                                                Seconds;                                                  // 0x0008(0x0004) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	int                                                Frames;                                                   // 0x000C(0x0004) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	bool                                               bDropFrameFormat;                                         // 0x0010(0x0001) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0011(0x0003) MISSED OFFSET
+};
+
 // ScriptStruct CoreUObject.Timespan
 // 0x0008
 struct FTimespan
@@ -741,18 +794,40 @@ struct FInt32Interval
 	int                                                Max;                                                      // 0x0004(0x0004) (Edit, ZeroConstructor, IsPlainOldData)
 };
 
+// ScriptStruct CoreUObject.PolyglotTextData
+// 0x00B0
+struct FPolyglotTextData
+{
+	ELocalizedTextSourceCategory                       Category;                                                 // 0x0000(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x0001(0x0007) MISSED OFFSET
+	struct FString                                     NativeCulture;                                            // 0x0008(0x0010) (Edit, BlueprintVisible, ZeroConstructor)
+	struct FString                                     Namespace;                                                // 0x0018(0x0010) (Edit, BlueprintVisible, ZeroConstructor)
+	struct FString                                     Key;                                                      // 0x0028(0x0010) (Edit, BlueprintVisible, ZeroConstructor)
+	struct FString                                     NativeString;                                             // 0x0038(0x0010) (Edit, BlueprintVisible, ZeroConstructor)
+	TMap<struct FString, struct FString>               LocalizedStrings;                                         // 0x0048(0x0050) (Edit, BlueprintVisible, ZeroConstructor)
+	struct FText                                       CachedText;                                               // 0x0098(0x0018) (Transient)
+};
+
 // ScriptStruct CoreUObject.AutomationEvent
-// 0x0048
+// 0x0038
 struct FAutomationEvent
 {
 	EAutomationEventType                               Type;                                                     // 0x0000(0x0001) (ZeroConstructor, IsPlainOldData)
 	unsigned char                                      UnknownData00[0x7];                                       // 0x0001(0x0007) MISSED OFFSET
 	struct FString                                     MESSAGE;                                                  // 0x0008(0x0010) (ZeroConstructor)
 	struct FString                                     Context;                                                  // 0x0018(0x0010) (ZeroConstructor)
-	struct FString                                     Filename;                                                 // 0x0028(0x0010) (ZeroConstructor)
-	int                                                LineNumber;                                               // 0x0038(0x0004) (ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x003C(0x0004) MISSED OFFSET
-	struct FDateTime                                   Timestamp;                                                // 0x0040(0x0008)
+	struct FGuid                                       Artifact;                                                 // 0x0028(0x0010) (IsPlainOldData)
+};
+
+// ScriptStruct CoreUObject.AutomationExecutionEntry
+// 0x0058
+struct FAutomationExecutionEntry
+{
+	struct FAutomationEvent                            Event;                                                    // 0x0000(0x0038)
+	struct FString                                     Filename;                                                 // 0x0038(0x0010) (ZeroConstructor)
+	int                                                LineNumber;                                               // 0x0048(0x0004) (ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x004C(0x0004) MISSED OFFSET
+	struct FDateTime                                   Timestamp;                                                // 0x0050(0x0008)
 };
 
 }

@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -15,20 +13,21 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // WidgetBlueprintGeneratedClass TabInputOptions.TabInputOptions_C
-// 0x0050 (0x02A8 - 0x0258)
+// 0x0058 (0x02C0 - 0x0268)
 class UTabInputOptions_C : public UFortInputOptions
 {
 public:
-	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x0258(0x0008) (Transient, DuplicateTransient)
-	class UCommonBorder*                               OverlayBorder;                                            // 0x0260(0x0008) (BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, RepNotify, Interp, NonTransactional, EditorOnly, NoDestructor, AutoWeak, ContainsInstancedReference, AssetRegistrySearchable, SimpleDisplay, AdvancedDisplay, Protected, BlueprintCallable, BlueprintAuthorityOnly, TextExportTransient, NonPIEDuplicateTransient, ExposeOnSpawn, PersistentInstance, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic, NativeAccessSpecifierProtected, NativeAccessSpecifierPrivate)
-	int                                                Currently_Selected_Input;                                 // 0x0268(0x0004) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
-	bool                                               Is_Currently_Primary;                                     // 0x026C(0x0001) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x026D(0x0003) MISSED OFFSET
-	struct FScriptMulticastDelegate                    Enable_Overlay;                                           // 0x0270(0x0010) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable)
-	struct FScriptMulticastDelegate                    Disable_Overlay;                                          // 0x0280(0x0010) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable)
-	bool                                               Using_Gamepad;                                            // 0x0290(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData01[0x7];                                       // 0x0291(0x0007) MISSED OFFSET
-	struct FScriptMulticastDelegate                    Gamepad_Changed;                                          // 0x0298(0x0010) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable)
+	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x0268(0x0008) (Transient, DuplicateTransient)
+	class UCommonBorder*                               OverlayBorder;                                            // 0x0270(0x0008) (BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, RepSkip, RepNotify, Interp, NonTransactional, EditorOnly, NoDestructor, AutoWeak, ContainsInstancedReference, AssetRegistrySearchable, SimpleDisplay, AdvancedDisplay, Protected, BlueprintCallable, BlueprintAuthorityOnly, TextExportTransient, NonPIEDuplicateTransient, ExposeOnSpawn, PersistentInstance, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic, NativeAccessSpecifierProtected, NativeAccessSpecifierPrivate)
+	int                                                Currently_Selected_Input;                                 // 0x0278(0x0004) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	bool                                               Is_Currently_Primary;                                     // 0x027C(0x0001) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x027D(0x0003) MISSED OFFSET
+	struct FScriptMulticastDelegate                    Enable_Overlay;                                           // 0x0280(0x0010) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable)
+	struct FScriptMulticastDelegate                    Disable_Overlay;                                          // 0x0290(0x0010) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable)
+	bool                                               Using_Gamepad;                                            // 0x02A0(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData01[0x7];                                       // 0x02A1(0x0007) MISSED OFFSET
+	struct FScriptMulticastDelegate                    Gamepad_Changed;                                          // 0x02A8(0x0010) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, BlueprintAssignable)
+	class UOptionsMenuInputDisplayOnly_C*              DisplayObject;                                            // 0x02B8(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, InstancedReference, IsPlainOldData)
 
 	static UClass* StaticClass()
 	{
@@ -37,16 +36,19 @@ public:
 	}
 
 
-	void NewFunction_0_1();
-	void Set_Input_Enabled();
+	void SetupDisplayOption(int InputIndex, class UOptionsMenuInputDisplayOnly_C** ReturnObject);
+	void Set_Input_Enabled(bool Enabled);
 	void Overlay_Key_Pressed(const struct FKey& NewKey);
-	void Construct();
-	void Input_Clicked(int Number_In_List, bool Is_Primary_Button);
+	void DialogResult_018CEC524FAF598D4D7A358441037217(EFortDialogResult Result, const struct FName& ResultName);
 	void CenterOnTab();
-	void UpdateOptionsTab();
 	void BndEvt__InputCommonListView_K2Node_ComponentBoundEvent_14_OnListViewItemWidgetCreated__DelegateSignature(class UUserWidget* Widget);
-	void HandleUsingGamepadChanged(bool* bUsingGamepad);
-	void UnbindClicked(int Number_In_List);
+	void HandleUsingGamepadChanged(ECommonInputType* bNewInputType);
+	void UnbindClicked(int Number_In_List, class UOptionsMenuInput_C* Widget);
+	void ClearAndConstructKeybindList();
+	void Input_Clicked(int Number_In_List, bool Is_Primary_Button);
+	void UpdateOptionsTab();
+	void Construct();
+	void HandleChangeBinding(const struct FKey& NewKey);
 	void ExecuteUbergraph_TabInputOptions(int EntryPoint);
 	void Gamepad_Changed__DelegateSignature(bool Gamepad_Enabled);
 	void Disable_Overlay__DelegateSignature();

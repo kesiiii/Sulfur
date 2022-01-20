@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -94,14 +94,14 @@ void UExpeditionSquadSlotButton_C::HandlePostDifferentSquadSlotSetBP()
 }
 
 
-// Function ExpeditionSquadSlotButton.ExpeditionSquadSlotButton_C.OnSelected
+// Function ExpeditionSquadSlotButton.ExpeditionSquadSlotButton_C.BP_OnSelected
 // (Event, Protected, BlueprintEvent)
 
-void UExpeditionSquadSlotButton_C::OnSelected()
+void UExpeditionSquadSlotButton_C::BP_OnSelected()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function ExpeditionSquadSlotButton.ExpeditionSquadSlotButton_C.OnSelected");
+	static auto fn = UObject::FindObject<UFunction>("Function ExpeditionSquadSlotButton.ExpeditionSquadSlotButton_C.BP_OnSelected");
 
-	UExpeditionSquadSlotButton_C_OnSelected_Params params;
+	UExpeditionSquadSlotButton_C_BP_OnSelected_Params params;
 
 	auto flags = fn->FunctionFlags;
 

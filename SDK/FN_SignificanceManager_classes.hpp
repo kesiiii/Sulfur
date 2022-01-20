@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -15,12 +13,12 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // Class SignificanceManager.SignificanceManager
-// 0x00D0 (0x00F8 - 0x0028)
+// 0x00F0 (0x0118 - 0x0028)
 class USignificanceManager : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0xB8];                                      // 0x0028(0x00B8) MISSED OFFSET
-	struct FSoftClassPath                              SignificanceManagerClassName;                             // 0x00E0(0x0018) (Edit, Config, GlobalConfig, NoClear)
+	unsigned char                                      UnknownData00[0xD8];                                      // 0x0028(0x00D8) MISSED OFFSET
+	struct FSoftClassPath                              SignificanceManagerClassName;                             // 0x0100(0x0018) (Edit, Config, GlobalConfig, NoClear)
 
 	static UClass* StaticClass()
 	{

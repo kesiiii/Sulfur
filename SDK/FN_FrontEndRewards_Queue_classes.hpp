@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -52,6 +50,7 @@ public:
 	void DequeueReward(class UFortRewardNotificationData** OutReward);
 	void QueueReward(class UFortRewardNotificationData* RewardItem, bool IsDesignTime, class URewardsIcon_C** OutIcon);
 	void PreConstruct(bool* IsDesignTime);
+	void Destruct();
 	void ExecuteUbergraph_FrontEndRewards_Queue(int EntryPoint);
 };
 

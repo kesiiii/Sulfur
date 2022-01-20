@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -26,9 +26,10 @@ struct ULeaderboardRowWidget_C_SetDataDirect_Params
 	class UFortLeaderboardRowProxyInstance*            NewData;                                                  // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
-// Function LeaderboardRowWidget.LeaderboardRowWidget_C.OnLeaderboardEntryDataSet
-struct ULeaderboardRowWidget_C_OnLeaderboardEntryDataSet_Params
+// Function LeaderboardRowWidget.LeaderboardRowWidget_C.OnListItemObjectSet
+struct ULeaderboardRowWidget_C_OnListItemObjectSet_Params
 {
+	class UObject**                                    ListItemObject;                                           // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function LeaderboardRowWidget.LeaderboardRowWidget_C.ExecuteUbergraph_LeaderboardRowWidget

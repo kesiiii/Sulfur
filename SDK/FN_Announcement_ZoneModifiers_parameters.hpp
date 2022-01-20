@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -25,13 +25,13 @@ struct UAnnouncement_ZoneModifiers_C_OnDisplayTimerFinished_Params
 {
 };
 
-// Function Announcement_ZoneModifiers.Announcement_ZoneModifiers_C.OnConversationDelayFinished
-struct UAnnouncement_ZoneModifiers_C_OnConversationDelayFinished_Params
+// Function Announcement_ZoneModifiers.Announcement_ZoneModifiers_C.WidgetCachingHack
+struct UAnnouncement_ZoneModifiers_C_WidgetCachingHack_Params
 {
 };
 
-// Function Announcement_ZoneModifiers.Announcement_ZoneModifiers_C.WidgetCachingHack
-struct UAnnouncement_ZoneModifiers_C_WidgetCachingHack_Params
+// Function Announcement_ZoneModifiers.Announcement_ZoneModifiers_C.OnConversationStopped
+struct UAnnouncement_ZoneModifiers_C_OnConversationStopped_Params
 {
 };
 

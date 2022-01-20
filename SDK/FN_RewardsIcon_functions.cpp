@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,57 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function RewardsIcon.RewardsIcon_C.PopulateFromItemCacheData
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void URewardsIcon_C::PopulateFromItemCacheData()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function RewardsIcon.RewardsIcon_C.PopulateFromItemCacheData");
+
+	URewardsIcon_C_PopulateFromItemCacheData_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function RewardsIcon.RewardsIcon_C.PopulateFromGiftBoxData
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void URewardsIcon_C::PopulateFromGiftBoxData()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function RewardsIcon.RewardsIcon_C.PopulateFromGiftBoxData");
+
+	URewardsIcon_C_PopulateFromGiftBoxData_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function RewardsIcon.RewardsIcon_C.PopulateFromDifficultyIncreaseRewards
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void URewardsIcon_C::PopulateFromDifficultyIncreaseRewards()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function RewardsIcon.RewardsIcon_C.PopulateFromDifficultyIncreaseRewards");
+
+	URewardsIcon_C_PopulateFromDifficultyIncreaseRewards_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
 
 // Function RewardsIcon.RewardsIcon_C.PopulateFromMissionAlertRewards
 // (Public, BlueprintCallable, BlueprintEvent)
@@ -496,6 +547,23 @@ void URewardsIcon_C::whiteFadeOut(float Percent)
 }
 
 
+// Function RewardsIcon.RewardsIcon_C.Destruct
+// (BlueprintCosmetic, Event, Public, BlueprintEvent)
+
+void URewardsIcon_C::Destruct()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function RewardsIcon.RewardsIcon_C.Destruct");
+
+	URewardsIcon_C_Destruct_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function RewardsIcon.RewardsIcon_C.ExecuteUbergraph_RewardsIcon
 // ()
 // Parameters:
@@ -536,7 +604,7 @@ void URewardsIcon_C::OnImageClicked__DelegateSignature()
 // Function RewardsIcon.RewardsIcon_C.OnMaterializeAnimationFinished__DelegateSignature
 // (Public, Delegate, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// class URewardsIcon_C*          Icon                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class URewardsIcon_C*          Icon                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 
 void URewardsIcon_C::OnMaterializeAnimationFinished__DelegateSignature(class URewardsIcon_C* Icon)
 {
@@ -556,7 +624,7 @@ void URewardsIcon_C::OnMaterializeAnimationFinished__DelegateSignature(class URe
 // Function RewardsIcon.RewardsIcon_C.OnDisperseAnimationFinished__DelegateSignature
 // (Public, Delegate, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// class URewardsIcon_C*          Icon                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class URewardsIcon_C*          Icon                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 
 void URewardsIcon_C::OnDisperseAnimationFinished__DelegateSignature(class URewardsIcon_C* Icon)
 {
@@ -576,7 +644,7 @@ void URewardsIcon_C::OnDisperseAnimationFinished__DelegateSignature(class URewar
 // Function RewardsIcon.RewardsIcon_C.OnSlideAnimationFinished__DelegateSignature
 // (Public, Delegate, BlueprintCallable, BlueprintEvent)
 // Parameters:
-// class URewardsIcon_C*          Icon                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class URewardsIcon_C*          Icon                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 
 void URewardsIcon_C::OnSlideAnimationFinished__DelegateSignature(class URewardsIcon_C* Icon)
 {

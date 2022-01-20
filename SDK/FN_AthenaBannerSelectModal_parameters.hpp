@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,6 +13,14 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function AthenaBannerSelectModal.AthenaBannerSelectModal_C.On_BorderTouch_MouseButtonDown_0_1
+struct UAthenaBannerSelectModal_C_On_BorderTouch_MouseButtonDown_0_1_Params
+{
+	struct FGeometry                                   MyGeometry;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, IsPlainOldData)
+	struct FPointerEvent                               MouseEvent;                                               // (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+	struct FEventReply                                 ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
 
 // Function AthenaBannerSelectModal.AthenaBannerSelectModal_C.HandleNextAction
 struct UAthenaBannerSelectModal_C_HandleNextAction_Params
@@ -61,6 +69,11 @@ struct UAthenaBannerSelectModal_C_OnDeactivated_Params
 
 // Function AthenaBannerSelectModal.AthenaBannerSelectModal_C.OnActivated
 struct UAthenaBannerSelectModal_C_OnActivated_Params
+{
+};
+
+// Function AthenaBannerSelectModal.AthenaBannerSelectModal_C.Close
+struct UAthenaBannerSelectModal_C_Close_Params
 {
 };
 

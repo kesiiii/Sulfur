@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -54,7 +52,7 @@ struct FCameraFilmbackSettings
 };
 
 // ScriptStruct CinematicCamera.CameraLensSettings
-// 0x0014
+// 0x0018
 struct FCameraLensSettings
 {
 	float                                              MinFocalLength;                                           // 0x0000(0x0004) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
@@ -62,6 +60,7 @@ struct FCameraLensSettings
 	float                                              MinFStop;                                                 // 0x0008(0x0004) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
 	float                                              MaxFStop;                                                 // 0x000C(0x0004) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
 	float                                              MinimumFocusDistance;                                     // 0x0010(0x0004) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	int                                                DiaphragmBladeCount;                                      // 0x0014(0x0004) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
 };
 
 // ScriptStruct CinematicCamera.CameraTrackingFocusSettings
@@ -97,7 +96,7 @@ struct FCameraFocusSettings
 struct FNamedFilmbackPreset
 {
 	struct FString                                     Name;                                                     // 0x0000(0x0010) (ZeroConstructor)
-	struct FCameraFilmbackSettings                     FilmbackSettings;                                         // 0x0010(0x000C) (IsPlainOldData)
+	struct FCameraFilmbackSettings                     FilmbackSettings;                                         // 0x0010(0x000C)
 	unsigned char                                      UnknownData00[0x4];                                       // 0x001C(0x0004) MISSED OFFSET
 };
 
@@ -106,8 +105,7 @@ struct FNamedFilmbackPreset
 struct FNamedLensPreset
 {
 	struct FString                                     Name;                                                     // 0x0000(0x0010) (ZeroConstructor)
-	struct FCameraLensSettings                         LensSettings;                                             // 0x0010(0x0014) (IsPlainOldData)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x0024(0x0004) MISSED OFFSET
+	struct FCameraLensSettings                         LensSettings;                                             // 0x0010(0x0018) (IsPlainOldData)
 };
 
 }

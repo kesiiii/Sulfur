@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -34,7 +32,7 @@ public:
 
 
 // Class Party.Party
-// 0x0478 (0x04A0 - 0x0028)
+// 0x0208 (0x0230 - 0x0028)
 class UParty : public UObject
 {
 public:
@@ -42,7 +40,7 @@ public:
 	int                                                DefaultMaxPartySize;                                      // 0x0098(0x0004) (ZeroConstructor, Config, IsPlainOldData)
 	unsigned char                                      UnknownData01[0x14];                                      // 0x009C(0x0014) MISSED OFFSET
 	bool                                               bLeavingPersistentParty;                                  // 0x00B0(0x0001) (ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData02[0x3EF];                                     // 0x00B1(0x03EF) MISSED OFFSET
+	unsigned char                                      UnknownData02[0x17F];                                     // 0x00B1(0x017F) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -54,23 +52,23 @@ public:
 
 
 // Class Party.PartyGameState
-// 0x05C8 (0x05F0 - 0x0028)
+// 0x0298 (0x02C0 - 0x0028)
 class UPartyGameState : public UObject
 {
 public:
 	class UScriptStruct*                               PartyStateRefDef;                                         // 0x0028(0x0008) (ZeroConstructor, IsPlainOldData)
 	unsigned char                                      UnknownData00[0x8];                                       // 0x0030(0x0008) MISSED OFFSET
 	struct FUniqueNetIdRepl                            OwningUserId;                                             // 0x0038(0x0028)
-	unsigned char                                      UnknownData01[0x118];                                     // 0x0060(0x0118) MISSED OFFSET
-	bool                                               bDebugAcceptingMembers;                                   // 0x0178(0x0001) (ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData02[0x18];                                      // 0x0179(0x0018) MISSED OFFSET
-	bool                                               bStayWithPartyOnDisconnect;                               // 0x0191(0x0001) (ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData03[0x6];                                       // 0x0192(0x0006) MISSED OFFSET
-	class UClass*                                      PartyMemberStateClass;                                    // 0x0198(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
-	unsigned char                                      UnknownData04[0x108];                                     // 0x01A0(0x0108) MISSED OFFSET
-	class UClass*                                      ReservationBeaconClientClass;                             // 0x02A8(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
-	class APartyBeaconClient*                          ReservationBeaconClient;                                  // 0x02B0(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
-	unsigned char                                      UnknownData05[0x338];                                     // 0x02B8(0x0338) MISSED OFFSET
+	unsigned char                                      UnknownData01[0x58];                                      // 0x0060(0x0058) MISSED OFFSET
+	bool                                               bDebugAcceptingMembers;                                   // 0x00B8(0x0001) (ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData02[0x18];                                      // 0x00B9(0x0018) MISSED OFFSET
+	bool                                               bStayWithPartyOnDisconnect;                               // 0x00D1(0x0001) (ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData03[0x6];                                       // 0x00D2(0x0006) MISSED OFFSET
+	class UClass*                                      PartyMemberStateClass;                                    // 0x00D8(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
+	unsigned char                                      UnknownData04[0x108];                                     // 0x00E0(0x0108) MISSED OFFSET
+	class UClass*                                      ReservationBeaconClientClass;                             // 0x01E8(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
+	class APartyBeaconClient*                          ReservationBeaconClient;                                  // 0x01F0(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
+	unsigned char                                      UnknownData05[0xC8];                                      // 0x01F8(0x00C8) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

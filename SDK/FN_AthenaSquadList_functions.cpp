@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,26 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function AthenaSquadList.AthenaSquadList_C.HandleSquadMemberDisconnected
+// (Public, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// class AFortPlayerStateAthena*  Player                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+
+void UAthenaSquadList_C::HandleSquadMemberDisconnected(class AFortPlayerStateAthena* Player)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaSquadList.AthenaSquadList_C.HandleSquadMemberDisconnected");
+
+	UAthenaSquadList_C_HandleSquadMemberDisconnected_Params params;
+	params.Player = Player;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
 
 // Function AthenaSquadList.AthenaSquadList_C.ClearSquadMembers
 // (Public, BlueprintCallable, BlueprintEvent)
@@ -29,31 +49,14 @@ void UAthenaSquadList_C::ClearSquadMembers()
 }
 
 
-// Function AthenaSquadList.AthenaSquadList_C.HandleSquadMembersChanged
+// Function AthenaSquadList.AthenaSquadList_C.RebuildSquadMembersList
 // (Public, BlueprintCallable, BlueprintEvent)
 
-void UAthenaSquadList_C::HandleSquadMembersChanged()
+void UAthenaSquadList_C::RebuildSquadMembersList()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaSquadList.AthenaSquadList_C.HandleSquadMembersChanged");
+	static auto fn = UObject::FindObject<UFunction>("Function AthenaSquadList.AthenaSquadList_C.RebuildSquadMembersList");
 
-	UAthenaSquadList_C_HandleSquadMembersChanged_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function AthenaSquadList.AthenaSquadList_C.ClearContents
-// (Public, BlueprintCallable, BlueprintEvent)
-
-void UAthenaSquadList_C::ClearContents()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaSquadList.AthenaSquadList_C.ClearContents");
-
-	UAthenaSquadList_C_ClearContents_Params params;
+	UAthenaSquadList_C_RebuildSquadMembersList_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -102,23 +105,6 @@ void UAthenaSquadList_C::Construct()
 }
 
 
-// Function AthenaSquadList.AthenaSquadList_C.HandlePartyLeft
-// (BlueprintCallable, BlueprintEvent)
-
-void UAthenaSquadList_C::HandlePartyLeft()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaSquadList.AthenaSquadList_C.HandlePartyLeft");
-
-	UAthenaSquadList_C_HandlePartyLeft_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function AthenaSquadList.AthenaSquadList_C.PreConstruct
 // (BlueprintCosmetic, Event, Public, BlueprintEvent)
 // Parameters:
@@ -130,23 +116,6 @@ void UAthenaSquadList_C::PreConstruct(bool* IsDesignTime)
 
 	UAthenaSquadList_C_PreConstruct_Params params;
 	params.IsDesignTime = IsDesignTime;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function AthenaSquadList.AthenaSquadList_C.RolloutAddFriend
-// (BlueprintCallable, BlueprintEvent)
-
-void UAthenaSquadList_C::RolloutAddFriend()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function AthenaSquadList.AthenaSquadList_C.RolloutAddFriend");
-
-	UAthenaSquadList_C_RolloutAddFriend_Params params;
 
 	auto flags = fn->FunctionFlags;
 

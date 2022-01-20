@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -108,11 +108,43 @@ struct UAssetRegistryHelpers_CreateAssetData_Params
 	struct FAssetData                                  ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function AssetRegistry.AssetRegistry.SearchAllAssets
+struct UAssetRegistry_SearchAllAssets_Params
+{
+	bool                                               bSynchronousSearch;                                       // (Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function AssetRegistry.AssetRegistry.ScanPathsSynchronous
+struct UAssetRegistry_ScanPathsSynchronous_Params
+{
+	TArray<struct FString>                             InPaths;                                                  // (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm)
+	bool                                               bForceRescan;                                             // (Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function AssetRegistry.AssetRegistry.ScanModifiedAssetFiles
+struct UAssetRegistry_ScanModifiedAssetFiles_Params
+{
+	TArray<struct FString>                             InFilePaths;                                              // (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm)
+};
+
+// Function AssetRegistry.AssetRegistry.ScanFilesSynchronous
+struct UAssetRegistry_ScanFilesSynchronous_Params
+{
+	TArray<struct FString>                             InFilePaths;                                              // (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm)
+	bool                                               bForceRescan;                                             // (Parm, ZeroConstructor, IsPlainOldData)
+};
+
 // Function AssetRegistry.AssetRegistry.RunAssetsThroughFilter
 struct UAssetRegistry_RunAssetsThroughFilter_Params
 {
 	TArray<struct FAssetData>                          AssetDataList;                                            // (Parm, OutParm, ZeroConstructor)
 	struct FARFilter                                   Filter;                                                   // (ConstParm, Parm, OutParm, ReferenceParm)
+};
+
+// Function AssetRegistry.AssetRegistry.PrioritizeSearchPath
+struct UAssetRegistry_PrioritizeSearchPath_Params
+{
+	struct FString                                     PathToPrioritize;                                         // (Parm, ZeroConstructor)
 };
 
 // Function AssetRegistry.AssetRegistry.IsLoadingAssets

@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,26 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function GAT_TriggeredAbility.GAT_TriggeredAbility_C.TriggeredAbilitySetup
+// (Public, BlueprintCallable, BlueprintEvent, Const)
+// Parameters:
+// class UAbilitySystemComponent* Ability_System_Component       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
+
+void UGAT_TriggeredAbility_C::TriggeredAbilitySetup(class UAbilitySystemComponent* Ability_System_Component)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function GAT_TriggeredAbility.GAT_TriggeredAbility_C.TriggeredAbilitySetup");
+
+	UGAT_TriggeredAbility_C_TriggeredAbilitySetup_Params params;
+	params.Ability_System_Component = Ability_System_Component;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
 
 // Function GAT_TriggeredAbility.GAT_TriggeredAbility_C.K2_ActivateAbilityFromEvent
 // (Event, Protected, HasOutParms, BlueprintEvent)

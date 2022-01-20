@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,57 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function ItemManagementInventoryPanel.ItemManagementInventoryPanel_C.Population Anim
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void UItemManagementInventoryPanel_C::Population_Anim()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ItemManagementInventoryPanel.ItemManagementInventoryPanel_C.Population Anim");
+
+	UItemManagementInventoryPanel_C_Population_Anim_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ItemManagementInventoryPanel.ItemManagementInventoryPanel_C.Trigger Initial Population Reset
+// (Public, BlueprintCallable, BlueprintEvent)
+
+void UItemManagementInventoryPanel_C::Trigger_Initial_Population_Reset()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ItemManagementInventoryPanel.ItemManagementInventoryPanel_C.Trigger Initial Population Reset");
+
+	UItemManagementInventoryPanel_C_Trigger_Initial_Population_Reset_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ItemManagementInventoryPanel.ItemManagementInventoryPanel_C.Trigger Population Anim
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void UItemManagementInventoryPanel_C::Trigger_Population_Anim()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ItemManagementInventoryPanel.ItemManagementInventoryPanel_C.Trigger Population Anim");
+
+	UItemManagementInventoryPanel_C_Trigger_Population_Anim_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
 
 // Function ItemManagementInventoryPanel.ItemManagementInventoryPanel_C.UpdateStorageTextVisbility
 // (Public, BlueprintCallable, BlueprintEvent)
@@ -292,7 +343,7 @@ void UItemManagementInventoryPanel_C::HandleDifferentSortTypeSetBP()
 // Function ItemManagementInventoryPanel.ItemManagementInventoryPanel_C.BndEvt__SortTypeButton_K2Node_ComponentBoundEvent_36_CommonButtonClicked__DelegateSignature
 // (BlueprintEvent)
 // Parameters:
-// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 
 void UItemManagementInventoryPanel_C::BndEvt__SortTypeButton_K2Node_ComponentBoundEvent_36_CommonButtonClicked__DelegateSignature(class UCommonButton* Button)
 {
@@ -439,7 +490,7 @@ void UItemManagementInventoryPanel_C::HandleQuickBarChangedBP(EFortQuickBars* Qu
 // Function ItemManagementInventoryPanel.ItemManagementInventoryPanel_C.BndEvt__SortTypeButtonWorldItems_K2Node_ComponentBoundEvent_282_CommonButtonClicked__DelegateSignature
 // (BlueprintEvent)
 // Parameters:
-// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 
 void UItemManagementInventoryPanel_C::BndEvt__SortTypeButtonWorldItems_K2Node_ComponentBoundEvent_282_CommonButtonClicked__DelegateSignature(class UCommonButton* Button)
 {
@@ -461,7 +512,7 @@ void UItemManagementInventoryPanel_C::BndEvt__SortTypeButtonWorldItems_K2Node_Co
 // Parameters:
 // bool*                          bCursorModeEnabled             (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 // struct FName*                  ActionName                     (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-// class UUserWidget**            CursorModeContentWidget        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UUserWidget**            CursorModeContentWidget        (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 
 void UItemManagementInventoryPanel_C::HandleCursorModeChangedBP(bool* bCursorModeEnabled, struct FName* ActionName, class UUserWidget** CursorModeContentWidget)
 {

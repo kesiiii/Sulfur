@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -51,7 +51,7 @@ void UChatWidget_C::BindDelegates()
 // Parameters:
 // bool                           bEnabled                       (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 // struct FName                   ActionName                     (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-// class UUserWidget*             Widget                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UUserWidget*             Widget                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 
 void UChatWidget_C::HandleCursorModeChanged(bool bEnabled, const struct FName& ActionName, class UUserWidget* Widget)
 {
@@ -177,7 +177,7 @@ void UChatWidget_C::Set_Chat_Visibility(ESlateVisibility New_Visibility)
 // Function ChatWidget.ChatWidget_C.BndEvt__ConsoleChatShortcut_K2Node_ComponentBoundEvent_14_CommonButtonClicked__DelegateSignature
 // (BlueprintEvent)
 // Parameters:
-// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UCommonButton*           Button                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 
 void UChatWidget_C::BndEvt__ConsoleChatShortcut_K2Node_ComponentBoundEvent_14_CommonButtonClicked__DelegateSignature(class UCommonButton* Button)
 {
@@ -308,14 +308,17 @@ void UChatWidget_C::ExecuteUbergraph_ChatWidget(int EntryPoint)
 }
 
 
-// Function ChatWidget.ChatWidget_C.AboutToEnterChat__DelegateSignature
+// Function ChatWidget.ChatWidget_C.OnEnteredChat__DelegateSignature
 // (Public, Delegate, BlueprintCallable, BlueprintEvent)
+// Parameters:
+// bool                           EnteredChat                    (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 
-void UChatWidget_C::AboutToEnterChat__DelegateSignature()
+void UChatWidget_C::OnEnteredChat__DelegateSignature(bool EnteredChat)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function ChatWidget.ChatWidget_C.AboutToEnterChat__DelegateSignature");
+	static auto fn = UObject::FindObject<UFunction>("Function ChatWidget.ChatWidget_C.OnEnteredChat__DelegateSignature");
 
-	UChatWidget_C_AboutToEnterChat__DelegateSignature_Params params;
+	UChatWidget_C_OnEnteredChat__DelegateSignature_Params params;
+	params.EnteredChat = EnteredChat;
 
 	auto flags = fn->FunctionFlags;
 

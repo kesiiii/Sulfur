@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -21,6 +21,16 @@ struct AMusicManager_C_ResetMusicBools_Params
 
 // Function MusicManager.MusicManager_C.UserConstructionScript
 struct AMusicManager_C_UserConstructionScript_Params
+{
+};
+
+// Function MusicManager.MusicManager_C.Gameplay Music Fader__FinishedFunc
+struct AMusicManager_C_Gameplay_Music_Fader__FinishedFunc_Params
+{
+};
+
+// Function MusicManager.MusicManager_C.Gameplay Music Fader__UpdateFunc
+struct AMusicManager_C_Gameplay_Music_Fader__UpdateFunc_Params
 {
 };
 
@@ -47,14 +57,44 @@ struct AMusicManager_C_ReceiveBeginPlay_Params
 {
 };
 
-// Function MusicManager.MusicManager_C.StartMusic
-struct AMusicManager_C_StartMusic_Params
+// Function MusicManager.MusicManager_C.On Music Tick
+struct AMusicManager_C_On_Music_Tick_Params
 {
 };
 
-// Function MusicManager.MusicManager_C.StopMusic
-struct AMusicManager_C_StopMusic_Params
+// Function MusicManager.MusicManager_C.PlayStinger
+struct AMusicManager_C_PlayStinger_Params
 {
+	class UFortMusicAsset**                            NewMusicAsset;                                            // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function MusicManager.MusicManager_C.Music Fade In
+struct AMusicManager_C_Music_Fade_In_Params
+{
+	float                                              Time;                                                     // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function MusicManager.MusicManager_C.Music Fade Out
+struct AMusicManager_C_Music_Fade_Out_Params
+{
+	float                                              Time;                                                     // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function MusicManager.MusicManager_C.On Stinger Completed
+struct AMusicManager_C_On_Stinger_Completed_Params
+{
+	class UFortMusicVoice*                             Voice;                                                    // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function MusicManager.MusicManager_C.Gather Combat Graph Tresholds
+struct AMusicManager_C_Gather_Combat_Graph_Tresholds_Params
+{
+};
+
+// Function MusicManager.MusicManager_C.OnMusicBankChanged
+struct AMusicManager_C_OnMusicBankChanged_Params
+{
+	class UFortMusicManagerBank**                      NewBank;                                                  // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function MusicManager.MusicManager_C.ExecuteUbergraph_MusicManager

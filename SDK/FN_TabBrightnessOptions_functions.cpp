@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -37,23 +37,6 @@ void UTabBrightnessOptions_C::Initialize_Data()
 	static auto fn = UObject::FindObject<UFunction>("Function TabBrightnessOptions.TabBrightnessOptions_C.Initialize Data");
 
 	UTabBrightnessOptions_C_Initialize_Data_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TabBrightnessOptions.TabBrightnessOptions_C.Update Data
-// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
-
-void UTabBrightnessOptions_C::Update_Data()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TabBrightnessOptions.TabBrightnessOptions_C.Update Data");
-
-	UTabBrightnessOptions_C_Update_Data_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -114,17 +97,56 @@ void UTabBrightnessOptions_C::CenterOnTab()
 }
 
 
-// Function TabBrightnessOptions.TabBrightnessOptions_C.BndEvt__OptionsMenuSlider_K2Node_ComponentBoundEvent_10_SliderChanged__DelegateSignature
+// Function TabBrightnessOptions.TabBrightnessOptions_C.BndEvt__OptionsListView_K2Node_ComponentBoundEvent_4_OnListViewItemWidgetCreated__DelegateSignature
 // (BlueprintEvent)
 // Parameters:
-// float                          Slider_Value                   (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UUserWidget*             Widget                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
 
-void UTabBrightnessOptions_C::BndEvt__OptionsMenuSlider_K2Node_ComponentBoundEvent_10_SliderChanged__DelegateSignature(float Slider_Value)
+void UTabBrightnessOptions_C::BndEvt__OptionsListView_K2Node_ComponentBoundEvent_4_OnListViewItemWidgetCreated__DelegateSignature(class UUserWidget* Widget)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TabBrightnessOptions.TabBrightnessOptions_C.BndEvt__OptionsMenuSlider_K2Node_ComponentBoundEvent_10_SliderChanged__DelegateSignature");
+	static auto fn = UObject::FindObject<UFunction>("Function TabBrightnessOptions.TabBrightnessOptions_C.BndEvt__OptionsListView_K2Node_ComponentBoundEvent_4_OnListViewItemWidgetCreated__DelegateSignature");
 
-	UTabBrightnessOptions_C_BndEvt__OptionsMenuSlider_K2Node_ComponentBoundEvent_10_SliderChanged__DelegateSignature_Params params;
-	params.Slider_Value = Slider_Value;
+	UTabBrightnessOptions_C_BndEvt__OptionsListView_K2Node_ComponentBoundEvent_4_OnListViewItemWidgetCreated__DelegateSignature_Params params;
+	params.Widget = Widget;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TabBrightnessOptions.TabBrightnessOptions_C.Setting Value Changed
+// (BlueprintCallable, BlueprintEvent)
+
+void UTabBrightnessOptions_C::Setting_Value_Changed()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TabBrightnessOptions.TabBrightnessOptions_C.Setting Value Changed");
+
+	UTabBrightnessOptions_C_Setting_Value_Changed_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TabBrightnessOptions.TabBrightnessOptions_C.BndEvt__OptionsListView_K2Node_ComponentBoundEvent_5_OnListViewItemScrolledIntoView__DelegateSignature
+// (BlueprintEvent)
+// Parameters:
+// class UObject*                 Item                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+// class UUserWidget*             Widget                         (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
+
+void UTabBrightnessOptions_C::BndEvt__OptionsListView_K2Node_ComponentBoundEvent_5_OnListViewItemScrolledIntoView__DelegateSignature(class UObject* Item, class UUserWidget* Widget)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TabBrightnessOptions.TabBrightnessOptions_C.BndEvt__OptionsListView_K2Node_ComponentBoundEvent_5_OnListViewItemScrolledIntoView__DelegateSignature");
+
+	UTabBrightnessOptions_C_BndEvt__OptionsListView_K2Node_ComponentBoundEvent_5_OnListViewItemScrolledIntoView__DelegateSignature_Params params;
+	params.Item = Item;
+	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
 

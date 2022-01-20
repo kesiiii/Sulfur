@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -54,6 +54,12 @@ struct UAthenaIndicatorLayer_C_Destruct_Params
 struct UAthenaIndicatorLayer_C_SquadIndicatorsChanged_Params
 {
 	TArray<class AFortPlayerStateAthena*>*             PlayerStates;                                             // (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ZeroConstructor, ReferenceParm)
+};
+
+// Function AthenaIndicatorLayer.AthenaIndicatorLayer_C.SetDataSource
+struct UAthenaIndicatorLayer_C_SetDataSource_Params
+{
+	class UAthenaPlayerViewModel**                     PlayerViewModel;                                          // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function AthenaIndicatorLayer.AthenaIndicatorLayer_C.ExecuteUbergraph_AthenaIndicatorLayer

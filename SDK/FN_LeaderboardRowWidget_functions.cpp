@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -52,14 +52,17 @@ void ULeaderboardRowWidget_C::SetDataDirect(class UFortLeaderboardRowProxyInstan
 }
 
 
-// Function LeaderboardRowWidget.LeaderboardRowWidget_C.OnLeaderboardEntryDataSet
-// (Event, Public, BlueprintEvent)
+// Function LeaderboardRowWidget.LeaderboardRowWidget_C.OnListItemObjectSet
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// class UObject**                ListItemObject                 (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 
-void ULeaderboardRowWidget_C::OnLeaderboardEntryDataSet()
+void ULeaderboardRowWidget_C::OnListItemObjectSet(class UObject** ListItemObject)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function LeaderboardRowWidget.LeaderboardRowWidget_C.OnLeaderboardEntryDataSet");
+	static auto fn = UObject::FindObject<UFunction>("Function LeaderboardRowWidget.LeaderboardRowWidget_C.OnListItemObjectSet");
 
-	ULeaderboardRowWidget_C_OnLeaderboardEntryDataSet_Params params;
+	ULeaderboardRowWidget_C_OnListItemObjectSet_Params params;
+	params.ListItemObject = ListItemObject;
 
 	auto flags = fn->FunctionFlags;
 

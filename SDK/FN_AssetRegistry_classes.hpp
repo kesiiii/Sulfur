@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -15,11 +13,11 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // Class AssetRegistry.AssetRegistryImpl
-// 0x09F8 (0x0A20 - 0x0028)
+// 0x06D8 (0x0700 - 0x0028)
 class UAssetRegistryImpl : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0x9F8];                                     // 0x0028(0x09F8) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x6D8];                                     // 0x0028(0x06D8) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -72,7 +70,12 @@ public:
 	}
 
 
+	void SearchAllAssets(bool bSynchronousSearch);
+	void ScanPathsSynchronous(TArray<struct FString> InPaths, bool bForceRescan);
+	void ScanModifiedAssetFiles(TArray<struct FString> InFilePaths);
+	void ScanFilesSynchronous(TArray<struct FString> InFilePaths, bool bForceRescan);
 	void RunAssetsThroughFilter(const struct FARFilter& Filter, TArray<struct FAssetData>* AssetDataList);
+	void PrioritizeSearchPath(const struct FString& PathToPrioritize);
 	bool IsLoadingAssets();
 	bool HasAssets(const struct FName& PackagePath, bool bRecursive);
 	void GetSubPaths(const struct FString& InBasePath, bool bInRecurse, TArray<struct FString>* OutPathList);

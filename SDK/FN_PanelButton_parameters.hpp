@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,6 +13,11 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function PanelButton.PanelButton_C.UpdateInputActionLayout
+struct UPanelButton_C_UpdateInputActionLayout_Params
+{
+};
 
 // Function PanelButton.PanelButton_C.UpdateStyle
 struct UPanelButton_C_UpdateStyle_Params
@@ -64,13 +69,13 @@ struct UPanelButton_C_Construct_Params
 {
 };
 
-// Function PanelButton.PanelButton_C.OnHovered
-struct UPanelButton_C_OnHovered_Params
+// Function PanelButton.PanelButton_C.BP_OnHovered
+struct UPanelButton_C_BP_OnHovered_Params
 {
 };
 
-// Function PanelButton.PanelButton_C.OnUnhovered
-struct UPanelButton_C_OnUnhovered_Params
+// Function PanelButton.PanelButton_C.BP_OnUnhovered
+struct UPanelButton_C_BP_OnUnhovered_Params
 {
 };
 

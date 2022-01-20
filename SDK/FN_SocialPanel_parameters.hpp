@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -30,10 +30,25 @@ struct USocialPanel_C_Construct_Params
 {
 };
 
+// Function SocialPanel.SocialPanel_C.OnActivated
+struct USocialPanel_C_OnActivated_Params
+{
+};
+
+// Function SocialPanel.SocialPanel_C.OnDeactivated
+struct USocialPanel_C_OnDeactivated_Params
+{
+};
+
 // Function SocialPanel.SocialPanel_C.ExecuteUbergraph_SocialPanel
 struct USocialPanel_C_ExecuteUbergraph_SocialPanel_Params
 {
 	int                                                EntryPoint;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function SocialPanel.SocialPanel_C.SocialPanelCloseRequested__DelegateSignature
+struct USocialPanel_C_SocialPanelCloseRequested__DelegateSignature_Params
+{
 };
 
 }

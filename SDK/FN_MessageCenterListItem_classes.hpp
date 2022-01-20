@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -33,23 +31,14 @@ public:
 	}
 
 
-	int DoesItemHaveChildren();
-	int GetIndentLevel();
-	bool IsItemExpanded();
-	class UObject* GetData();
+	class UObject* GetListItemObject();
 	void ShowText(const struct FText& Text, class UCommonTextBlock* TextBlock);
 	void SetMessage(class UFortUINotification* MESSAGE);
-	void OnAcquireFromPool();
-	void OnReleaseToPool();
-	void Private_OnExpanderArrowShiftClicked();
-	void RegisterOnClicked(const struct FScriptDelegate& Callback);
-	void SetExpanded(bool bExpanded);
-	void SetIndexInList(int InIndexInList);
-	void ToggleExpansion();
-	void Reset();
-	void SetData(class UObject* InData, class UCommonListView* OwningList);
+	void BP_OnEntryReleased();
+	void BP_OnItemExpansionChanged(bool bIsExpanded);
+	void OnListItemObjectSet(class UObject* ListItemObject);
 	void Construct();
-	void SetSelected(bool bSelected);
+	void BP_OnItemSelectionChanged(bool bIsSelected);
 	void ExecuteUbergraph_MessageCenterListItem(int EntryPoint);
 };
 

@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -23,7 +23,7 @@ struct UBuildingBar_C_UpdateBuildingTrap_Params
 // Function BuildingBar.BuildingBar_C.Set Display Mode
 struct UBuildingBar_C_Set_Display_Mode_Params
 {
-	EFortBuildingInteraction                           Display_Mode;                                             // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	EFortBuildingInteraction                           InDisplayMode;                                            // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function BuildingBar.BuildingBar_C.Update Durability Text
@@ -43,32 +43,6 @@ struct UBuildingBar_C_Update_Max_Durability_Value_Params
 	float                                              Max;                                                      // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
-// Function BuildingBar.BuildingBar_C.Initialize Bar
-struct UBuildingBar_C_Initialize_Bar_Params
-{
-};
-
-// Function BuildingBar.BuildingBar_C.Set Timer
-struct UBuildingBar_C_Set_Timer_Params
-{
-	bool                                               Enabled;                                                  // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-};
-
-// Function BuildingBar.BuildingBar_C.Update
-struct UBuildingBar_C_Update_Params
-{
-};
-
-// Function BuildingBar.BuildingBar_C.Update HP Delta Bar
-struct UBuildingBar_C_Update_HP_Delta_Bar_Params
-{
-};
-
-// Function BuildingBar.BuildingBar_C.Update HP Fill Bar
-struct UBuildingBar_C_Update_HP_Fill_Bar_Params
-{
-};
-
 // Function BuildingBar.BuildingBar_C.Update Current HP Value
 struct UBuildingBar_C_Update_Current_HP_Value_Params
 {
@@ -79,23 +53,6 @@ struct UBuildingBar_C_Update_Current_HP_Value_Params
 struct UBuildingBar_C_Update_Max_HP_Value_Params
 {
 	float                                              Max;                                                      // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-};
-
-// Function BuildingBar.BuildingBar_C.PreConstruct
-struct UBuildingBar_C_PreConstruct_Params
-{
-	bool*                                              IsDesignTime;                                             // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-};
-
-// Function BuildingBar.BuildingBar_C.Destruct
-struct UBuildingBar_C_Destruct_Params
-{
-};
-
-// Function BuildingBar.BuildingBar_C.ExecuteUbergraph_BuildingBar
-struct UBuildingBar_C_ExecuteUbergraph_BuildingBar_Params
-{
-	int                                                EntryPoint;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 }

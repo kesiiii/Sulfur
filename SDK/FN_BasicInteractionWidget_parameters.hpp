@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -28,6 +28,12 @@ struct UBasicInteractionWidget_C_InitBasicInteraction_Params
 // Function BasicInteractionWidget.BasicInteractionWidget_C.Construct
 struct UBasicInteractionWidget_C_Construct_Params
 {
+};
+
+// Function BasicInteractionWidget.BasicInteractionWidget_C.PreConstruct
+struct UBasicInteractionWidget_C_PreConstruct_Params
+{
+	bool*                                              IsDesignTime;                                             // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function BasicInteractionWidget.BasicInteractionWidget_C.ExecuteUbergraph_BasicInteractionWidget

@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -16,7 +14,7 @@ namespace SDK
 
 // WidgetBlueprintGeneratedClass BuildingInfoIndicator.BuildingInfoIndicator_C
 // 0x01D0 (0x0440 - 0x0270)
-class UBuildingInfoIndicator_C : public UFortActorIndicatorWidget
+class UBuildingInfoIndicator_C : public UFortBuildingInfoIndicatorWidget
 {
 public:
 	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x0270(0x0008) (Transient, DuplicateTransient)

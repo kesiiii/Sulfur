@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,6 +13,21 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function HeroSquadSlotsView.HeroSquadSlotsView_C.Bonus
+struct UHeroSquadSlotsView_C_Bonus_Params
+{
+};
+
+// Function HeroSquadSlotsView.HeroSquadSlotsView_C.Defenders
+struct UHeroSquadSlotsView_C_Defenders_Params
+{
+};
+
+// Function HeroSquadSlotsView.HeroSquadSlotsView_C.Primary
+struct UHeroSquadSlotsView_C_Primary_Params
+{
+};
 
 // Function HeroSquadSlotsView.HeroSquadSlotsView_C.UndarkenAllSlots
 struct UHeroSquadSlotsView_C_UndarkenAllSlots_Params
@@ -35,10 +50,10 @@ struct UHeroSquadSlotsView_C_HandleSquadNavigation_Params
 // Function HeroSquadSlotsView.HeroSquadSlotsView_C.CreateAndAddSquadSlotButton
 struct UHeroSquadSlotsView_C_CreateAndAddSquadSlotButton_Params
 {
-	int*                                               SquadSlotIndex;                                           // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-	struct FHomebaseSquadSlot                          SquadSlotDefinition;                                      // (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
-	class UWidget*                                     OutSquadSlotButtonHost;                                   // (Parm, OutParm, ZeroConstructor, IsPlainOldData)
-	class UFortSquadSlotSelectorButton*                ReturnValue;                                              // (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+	int*                                               SquadSlotIndex;                                           // (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+	struct FHomebaseSquadSlot*                         SquadSlotDefinition;                                      // (ConstParm, BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ReferenceParm)
+	class UWidget*                                     OutSquadSlotButtonHost;                                   // (Parm, OutParm, ZeroConstructor, InstancedReference, IsPlainOldData)
+	class UFortSquadSlotSelectorButton*                ReturnValue;                                              // (Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, IsPlainOldData)
 };
 
 // Function HeroSquadSlotsView.HeroSquadSlotsView_C.Construct

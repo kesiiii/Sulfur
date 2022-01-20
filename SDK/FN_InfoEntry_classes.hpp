@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -31,21 +29,12 @@ public:
 	}
 
 
-	int DoesItemHaveChildren();
-	int GetIndentLevel();
-	bool IsItemExpanded();
-	class UObject* GetData();
-	void OnAcquireFromPool();
-	void OnReleaseToPool();
-	void Private_OnExpanderArrowShiftClicked();
-	void RegisterOnClicked(const struct FScriptDelegate& Callback);
-	void SetExpanded(bool bExpanded);
-	void SetIndexInList(int InIndexInList);
-	void SetSelected(bool bSelected);
-	void ToggleExpansion();
-	void Reset();
+	class UObject* GetListItemObject();
+	void BP_OnEntryReleased();
+	void BP_OnItemExpansionChanged(bool bIsExpanded);
+	void BP_OnItemSelectionChanged(bool bIsSelected);
 	void Construct();
-	void SetData(class UObject* InData, class UCommonListView* OwningList);
+	void OnListItemObjectSet(class UObject* ListItemObject);
 	void BndEvt__IconTextButton_K2Node_ComponentBoundEvent_34_CommonButtonClicked__DelegateSignature(class UCommonButton* Button);
 	void BndEvt__IconTextButton_K2Node_ComponentBoundEvent_61_CommonButtonClicked__DelegateSignature(class UCommonButton* Button);
 	void ExecuteUbergraph_InfoEntry(int EntryPoint);

@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,23 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function PanelButton.PanelButton_C.UpdateInputActionLayout
+// (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
+
+void UPanelButton_C::UpdateInputActionLayout()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function PanelButton.PanelButton_C.UpdateInputActionLayout");
+
+	UPanelButton_C_UpdateInputActionLayout_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
 
 // Function PanelButton.PanelButton_C.UpdateStyle
 // (Public, HasDefaults, BlueprintCallable, BlueprintEvent)
@@ -180,14 +197,14 @@ void UPanelButton_C::Construct()
 }
 
 
-// Function PanelButton.PanelButton_C.OnHovered
+// Function PanelButton.PanelButton_C.BP_OnHovered
 // (Event, Protected, BlueprintEvent)
 
-void UPanelButton_C::OnHovered()
+void UPanelButton_C::BP_OnHovered()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function PanelButton.PanelButton_C.OnHovered");
+	static auto fn = UObject::FindObject<UFunction>("Function PanelButton.PanelButton_C.BP_OnHovered");
 
-	UPanelButton_C_OnHovered_Params params;
+	UPanelButton_C_BP_OnHovered_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -197,14 +214,14 @@ void UPanelButton_C::OnHovered()
 }
 
 
-// Function PanelButton.PanelButton_C.OnUnhovered
+// Function PanelButton.PanelButton_C.BP_OnUnhovered
 // (Event, Protected, BlueprintEvent)
 
-void UPanelButton_C::OnUnhovered()
+void UPanelButton_C::BP_OnUnhovered()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function PanelButton.PanelButton_C.OnUnhovered");
+	static auto fn = UObject::FindObject<UFunction>("Function PanelButton.PanelButton_C.BP_OnUnhovered");
 
-	UPanelButton_C_OnUnhovered_Params params;
+	UPanelButton_C_BP_OnUnhovered_Params params;
 
 	auto flags = fn->FunctionFlags;
 

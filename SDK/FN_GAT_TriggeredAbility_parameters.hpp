@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,6 +13,12 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function GAT_TriggeredAbility.GAT_TriggeredAbility_C.TriggeredAbilitySetup
+struct UGAT_TriggeredAbility_C_TriggeredAbilitySetup_Params
+{
+	class UAbilitySystemComponent*                     Ability_System_Component;                                 // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
+};
 
 // Function GAT_TriggeredAbility.GAT_TriggeredAbility_C.K2_ActivateAbilityFromEvent
 struct UGAT_TriggeredAbility_C_K2_ActivateAbilityFromEvent_Params

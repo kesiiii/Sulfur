@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -45,8 +43,8 @@ public:
 
 
 	void Navigate_to_Button(int Index);
-	void NavigateToFirstItem();
-	void Get_Transform_Data(TArray<class UFortItem*>* SacrificeItems, int* CurrentSacrificePoints, int* CurrentTier);
+	void NavigateToSelectedItem();
+	void Get_Transform_Data(class UFortItem** SelectedKey, TArray<class UFortItem*>* SacrificeItems, int* CurrentSacrificePoints, int* CurrentTier);
 	void ResetScreen();
 	void CloseItemPicker();
 	void SetupSlotScreen();
@@ -57,7 +55,6 @@ public:
 	void BndEvt__ItemTransformResultInfo_K2Node_ComponentBoundEvent_2_OnTransformConfirmed__DelegateSignature(int SacrificePoints, int CurrentTier);
 	void BndEvt__ItemTransformResultInfo_K2Node_ComponentBoundEvent_225_OnUpdateSacrificeInfo__DelegateSignature(bool TransformActive);
 	void HandleSlotButton_Clicked(class UCommonButton* AssociatedButton, int ButtonIndex);
-	void HandleSlotButton_DoubleClicked(class UCommonButton* AssociatedButton, int ButtonIndex);
 	void ExecuteUbergraph_ItemTransformSlotScreen(int EntryPoint);
 	void OnItemPickerOpened__DelegateSignature();
 	void OnItemPickerClosed__DelegateSignature();

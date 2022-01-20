@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -14,10 +14,26 @@ namespace SDK
 //Parameters
 //---------------------------------------------------------------------------
 
-// Function B_Ranged_Generic.B_Ranged_Generic_C.HandlePawnAndWeaponVisFor1PTargeting
-struct AB_Ranged_Generic_C_HandlePawnAndWeaponVisFor1PTargeting_Params
+// Function B_Ranged_Generic.B_Ranged_Generic_C.StopScopedAudio
+struct AB_Ranged_Generic_C_StopScopedAudio_Params
 {
-	bool                                               IsTargeting;                                              // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function B_Ranged_Generic.B_Ranged_Generic_C.StartScopedAudio
+struct AB_Ranged_Generic_C_StartScopedAudio_Params
+{
+};
+
+// Function B_Ranged_Generic.B_Ranged_Generic_C.SetPostProcessParams
+struct AB_Ranged_Generic_C_SetPostProcessParams_Params
+{
+	float                                              InputPin;                                                 // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function B_Ranged_Generic.B_Ranged_Generic_C.SetActiveAlterationIdleParticles
+struct AB_Ranged_Generic_C_SetActiveAlterationIdleParticles_Params
+{
+	bool                                               Active;                                                   // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 // Function B_Ranged_Generic.B_Ranged_Generic_C.ShowReticle
@@ -27,11 +43,6 @@ struct AB_Ranged_Generic_C_ShowReticle_Params
 
 // Function B_Ranged_Generic.B_Ranged_Generic_C.HideReticle
 struct AB_Ranged_Generic_C_HideReticle_Params
-{
-};
-
-// Function B_Ranged_Generic.B_Ranged_Generic_C.HideIronSightsMesh
-struct AB_Ranged_Generic_C_HideIronSightsMesh_Params
 {
 };
 
@@ -242,16 +253,6 @@ struct AB_Ranged_Generic_C_ShowWeaponMesh_Params
 {
 };
 
-// Function B_Ranged_Generic.B_Ranged_Generic_C.HideGunMesh
-struct AB_Ranged_Generic_C_HideGunMesh_Params
-{
-};
-
-// Function B_Ranged_Generic.B_Ranged_Generic_C.ShowGunMesh
-struct AB_Ranged_Generic_C_ShowGunMesh_Params
-{
-};
-
 // Function B_Ranged_Generic.B_Ranged_Generic_C.HideWeapon
 struct AB_Ranged_Generic_C_HideWeapon_Params
 {
@@ -262,10 +263,98 @@ struct AB_Ranged_Generic_C_ShowWeapon_Params
 {
 };
 
+// Function B_Ranged_Generic.B_Ranged_Generic_C.ReverseScopePP
+struct AB_Ranged_Generic_C_ReverseScopePP_Params
+{
+};
+
+// Function B_Ranged_Generic.B_Ranged_Generic_C.ResetDoonceScopeSound
+struct AB_Ranged_Generic_C_ResetDoonceScopeSound_Params
+{
+};
+
+// Function B_Ranged_Generic.B_Ranged_Generic_C.UnhideThirdPersonStuff
+struct AB_Ranged_Generic_C_UnhideThirdPersonStuff_Params
+{
+};
+
+// Function B_Ranged_Generic.B_Ranged_Generic_C.PlayScopePP
+struct AB_Ranged_Generic_C_PlayScopePP_Params
+{
+};
+
+// Function B_Ranged_Generic.B_Ranged_Generic_C.HideFirstPersonStuff
+struct AB_Ranged_Generic_C_HideFirstPersonStuff_Params
+{
+};
+
+// Function B_Ranged_Generic.B_Ranged_Generic_C.AbortScopeFX
+struct AB_Ranged_Generic_C_AbortScopeFX_Params
+{
+};
+
+// Function B_Ranged_Generic.B_Ranged_Generic_C.HideThirdPersonStuff
+struct AB_Ranged_Generic_C_HideThirdPersonStuff_Params
+{
+};
+
+// Function B_Ranged_Generic.B_Ranged_Generic_C.UnhideFirstPersonStuffPart2
+struct AB_Ranged_Generic_C_UnhideFirstPersonStuffPart2_Params
+{
+	int                                                Which_Call;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function B_Ranged_Generic.B_Ranged_Generic_C.UnhideFirstPersonStuffPart1
+struct AB_Ranged_Generic_C_UnhideFirstPersonStuffPart1_Params
+{
+};
+
+// Function B_Ranged_Generic.B_Ranged_Generic_C.ForceScopeFX
+struct AB_Ranged_Generic_C_ForceScopeFX_Params
+{
+};
+
+// Function B_Ranged_Generic.B_Ranged_Generic_C.SetupScopePostProcess
+struct AB_Ranged_Generic_C_SetupScopePostProcess_Params
+{
+};
+
+// Function B_Ranged_Generic.B_Ranged_Generic_C.BindFireRateChange
+struct AB_Ranged_Generic_C_BindFireRateChange_Params
+{
+};
+
+// Function B_Ranged_Generic.B_Ranged_Generic_C.PitchUpOnRateOfFireChange
+struct AB_Ranged_Generic_C_PitchUpOnRateOfFireChange_Params
+{
+	float                                              NewRateOfFire;                                            // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function B_Ranged_Generic.B_Ranged_Generic_C.ShellEjectionFixOn
+struct AB_Ranged_Generic_C_ShellEjectionFixOn_Params
+{
+};
+
+// Function B_Ranged_Generic.B_Ranged_Generic_C.Bind on Effects Quality
+struct AB_Ranged_Generic_C_Bind_on_Effects_Quality_Params
+{
+};
+
+// Function B_Ranged_Generic.B_Ranged_Generic_C.ShellEjectionOff
+struct AB_Ranged_Generic_C_ShellEjectionOff_Params
+{
+};
+
 // Function B_Ranged_Generic.B_Ranged_Generic_C.ExecuteUbergraph_B_Ranged_Generic
 struct AB_Ranged_Generic_C_ExecuteUbergraph_B_Ranged_Generic_Params
 {
 	int                                                EntryPoint;                                               // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
+};
+
+// Function B_Ranged_Generic.B_Ranged_Generic_C.onAimDownSightsChanged__DelegateSignature
+struct AB_Ranged_Generic_C_onAimDownSightsChanged__DelegateSignature_Params
+{
+	bool                                               AimDownsights;                                            // (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
 };
 
 }

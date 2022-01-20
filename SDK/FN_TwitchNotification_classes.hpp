@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -15,7 +13,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass TwitchNotification.TwitchNotification_C
-// 0x0000 (0x00A8 - 0x00A8)
+// 0x0000 (0x00D0 - 0x00D0)
 class UTwitchNotification_C : public UFortUIFriendNotification
 {
 public:

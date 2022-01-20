@@ -1,12 +1,10 @@
 #pragma once
 
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -15,7 +13,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // WidgetBlueprintGeneratedClass Replay.Replay_C
-// 0x0000 (0x03E0 - 0x03E0)
+// 0x0000 (0x0310 - 0x0310)
 class UReplay_C : public UFortUIStateWidget_NUI
 {
 public:

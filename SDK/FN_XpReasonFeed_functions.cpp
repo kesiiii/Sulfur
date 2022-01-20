@@ -1,4 +1,4 @@
-// Fortnite (2.4.2) SDK
+// Fortnite (5.21) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -12,36 +12,16 @@ namespace SDK
 //Functions
 //---------------------------------------------------------------------------
 
-// Function XpReasonFeed.XpReasonFeed_C.ShowAllXpRewards
-// (Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// bool                           Show                           (BlueprintVisible, BlueprintReadOnly, Parm, ZeroConstructor, IsPlainOldData)
-
-void UXpReasonFeed_C::ShowAllXpRewards(bool Show)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function XpReasonFeed.XpReasonFeed_C.ShowAllXpRewards");
-
-	UXpReasonFeed_C_ShowAllXpRewards_Params params;
-	params.Show = Show;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function XpReasonFeed.XpReasonFeed_C.SetXpRewards
+// Function XpReasonFeed.XpReasonFeed_C.ImmediatelyShowXpRewards
 // (Public, HasOutParms, HasDefaults, BlueprintCallable, BlueprintEvent)
 // Parameters:
 // TArray<struct FAthenaMatchXpReward> XpRewards                      (BlueprintVisible, BlueprintReadOnly, Parm, OutParm, ZeroConstructor, ReferenceParm)
 
-void UXpReasonFeed_C::SetXpRewards(TArray<struct FAthenaMatchXpReward>* XpRewards)
+void UXpReasonFeed_C::ImmediatelyShowXpRewards(TArray<struct FAthenaMatchXpReward>* XpRewards)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function XpReasonFeed.XpReasonFeed_C.SetXpRewards");
+	static auto fn = UObject::FindObject<UFunction>("Function XpReasonFeed.XpReasonFeed_C.ImmediatelyShowXpRewards");
 
-	UXpReasonFeed_C_SetXpRewards_Params params;
+	UXpReasonFeed_C_ImmediatelyShowXpRewards_Params params;
 
 	auto flags = fn->FunctionFlags;
 
