@@ -38,6 +38,7 @@ namespace NetHooks
         NetReplicator->InitalizeConnection(Connection);
 
         auto PlayerController = SpawnPlayActor(Globals::World, Connection, NetRole, a4, a5, Src, a7);
+		Connection->PlayerController = PlayerController;
         auto CurrentGameModeClass = Globals::World->AuthorityGameMode->Class;
 
         NetReplicator->ReplicateToClient(PlayerController, Connection);

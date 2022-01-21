@@ -24,7 +24,7 @@ namespace Hooks
 			bIsReady = true;
 		}
 
-		if (pFunction->GetName().find("Tick") != std::string::npos && pObject == Globals::PC && NetHooks::BeaconHost != NULL)
+		if (pFunction->GetName().find("ReceiveTick") != std::string::npos && pObject == Globals::PC && NetHooks::BeaconHost != NULL)
 		{
 			if (NetHooks::BeaconHost->IsBeaconValid())
 			{
@@ -32,7 +32,8 @@ namespace Hooks
 				{
 					if (NetHooks::BeaconHost->GetNetDriver()->ClientConnections.Num() != 0)
 					{
-						NetHooks::NetReplicator->Tick();
+						auto DeltaSeconds = ((AActor_ReceiveTick_Params*)pParams)->DeltaSeconds;
+						NetHooks::NetReplicator->Tick(DeltaSeconds);
 					}
 				}
 			}
@@ -48,18 +49,6 @@ namespace Hooks
 
 					NetHooks::Init();
 					bHasInitedTheBeacon = true;
-				}
-			}
-
-			if (GetAsyncKeyState(VK_F3) & 0x1 && NetHooks::BeaconHost->GetNetDriver())
-			{
-				for (int i = 0; i < NetHooks::BeaconHost->GetNetDriver()->ClientConnections.Num(); i++)
-				{
-					auto Connection = NetHooks::BeaconHost->GetNetDriver()->ClientConnections[i];
-					if (Connection)
-					{
-						NetHooks::NetReplicator->InitalizeConnection(Connection); 
-					}
 				}
 			}
 
