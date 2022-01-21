@@ -20,7 +20,7 @@ namespace Hooks
 	{
 		if (pFunction->GetName().find("BP_PlayButton") != std::string::npos)
 		{
-			Globals::PC->SwitchLevel(TEXT("Athena_Terrain?Game=Engine.GameMode"));
+			Globals::PC->SwitchLevel(TEXT("Athena_Terrain"));
 			bIsReady = true;
 		}
 
@@ -76,7 +76,7 @@ namespace Hooks
 			Globals::World = Globals::FortEngine->GameViewport->World;
 			Globals::PC = reinterpret_cast<AFortPlayerController*>(Globals::FortEngine->GameInstance->LocalPlayers[0]->PlayerController);
 
-			/*if (!bHasSpawned) {
+			if (!bHasSpawned) {
 				Globals::Pawn = reinterpret_cast<PLAYER_CLASS*>(Util::SpawnActor(PLAYER_CLASS::StaticClass(), FVector(0, 0, 0), FRotator()));
 
 				auto PlayerState = reinterpret_cast<PLAYER_STATE_CLASS*>(Globals::PC->PlayerState);
@@ -92,7 +92,7 @@ namespace Hooks
 
 				Globals::PC->ServerReadyToStartMatch();
 				static_cast<AGameMode*>(Globals::World->AuthorityGameMode)->StartMatch();
-			}*/
+			}
 		}
 
 		if (pFunction->GetName().find("LoadingScreenDropped") != std::string::npos)
