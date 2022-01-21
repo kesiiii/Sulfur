@@ -25,6 +25,8 @@ public:
 		SpawnTransform.Scale3D = FVector(0, 0, 0);
 		SpawnTransform.Translation = FVector(0, 0, 5000);
 
+		Globals::GPS = decltype(Globals::GPS)(UGameplayStatics::StaticClass());
+
 		auto SpawningBeaconActor = Globals::GPS->STATIC_BeginSpawningActorFromClass(Globals::World, AOnlineBeaconHost::StaticClass(), SpawnTransform, true, nullptr);
 		BeaconHost = reinterpret_cast<AOnlineBeaconHost*>(Globals::GPS->STATIC_FinishSpawningActor(SpawningBeaconActor, SpawnTransform));
 

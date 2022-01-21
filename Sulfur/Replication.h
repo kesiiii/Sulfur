@@ -37,7 +37,6 @@ class Replicator
 {
 private:
 	UNetDriver* NetDriver;
-	TArray<AActor*> CurrentlyReplicatedActors;
 
 public:
 	Replicator(UNetDriver* InNetDriver)
@@ -72,7 +71,6 @@ public:
 						Replication::Functions::SetChannelActor(Channel, InActor);
 						Channel->Connection = Connection;
 
-						CurrentlyReplicatedActors.Add(InActor);
 						Replication::Functions::ReplicateActor(Channel);
 
 						SULFUR_LOG("ReplicatingActor: " << InActor->GetName() << " To: " << Connection->GetName());
@@ -95,11 +93,8 @@ public:
 		return false;
 	}
 
-	bool ReplicateToClient(AActor* InActor, UNetConnection* InConnection)
+	UActorChannel* ReplicateToClient(AActor* InActor, UNetConnection* InConnection)
 	{
-		if (InActor == NULL)
-			return false;
-
 		auto Channel = (UActorChannel*)(Replication::Functions::CreateChannel(InConnection, Replication::Enums::EChannelType::CHTYPE_Actor, true, -1));
 
 		if (Channel) {
@@ -108,11 +103,11 @@ public:
 
 			if (Replication::Functions::ReplicateActor(Channel)) {
 				SULFUR_LOG("ReplicatingActor: " << InActor->GetName() << " To: " << InConnection->GetName());
-				return true;
+				return Channel;
 			}
 		}
 
-		return false;
+		return NULL;
 	}
 
 	void InitalizeConnection(UNetConnection* InConnection)
@@ -132,25 +127,69 @@ public:
 		}
 	}
 
-	void Tick()
+	UActorChannel* FindChannel(AActor* Actor, UNetConnection* Connection)
 	{
-		for (int j = 0; j < NetDriver->ClientConnections.Num(); j++)
+		for (int i = 0; i < Connection->OpenChannels.Num(); i++)
 		{
-			auto Connection = NetDriver->ClientConnections[j];
-
-			if (Connection)
+			auto Channel = Connection->OpenChannels[i];
+			
+			if (Channel && Channel->Class)
 			{
-				if (Connection->PlayerController)
+				if (Channel->Class->GetFullName() == ACTOR_CHANNEL_CLASS)
 				{
-					Replication::Movement::Functions::ClientSendAdjustment(Connection->PlayerController);
+					if (((UActorChannel*)Channel)->Actor == Actor)
+						return ((UActorChannel*)Channel);
 				}
+			}
+		}
 
-				for (int i = 0; i < Connection->ChannelsToTick.Num(); i++)
+		return NULL;
+	}
+
+	void Tick(float DeltaSeconds)
+	{
+		for (int i = 0; i < NetDriver->ClientConnections.Num(); i++)
+		{
+			UNetConnection* const NetConnection = NetDriver->ClientConnections[i];
+			APlayerController* const PC = NetConnection->PlayerController;
+
+			if (PC)
+			{
+				if (PC->PlayerState)
+					std::cout << PC->PlayerState->PlayerName.ToString() << "'s Ping: " << std::to_string(PC->PlayerState->Ping) << std::endl;
+
+				Replication::Movement::Functions::ClientSendAdjustment(PC);
+			}
+			else
+				continue;
+
+			for (int ChildIdx = 0; ChildIdx < NetConnection->Children.Num(); ++ChildIdx)
+			{
+				UNetConnection* ChildConnection = NetConnection->Children[ChildIdx];
+				if (ChildConnection && ChildConnection->PlayerController && ChildConnection->ViewTarget)
 				{
-					auto Channel = (UActorChannel*)Connection->ChannelsToTick[i];
+					Replication::Movement::Functions::ClientSendAdjustment(ChildConnection->PlayerController);
+				}
+			}
 
-					if (Channel && Channel->Class->GetFullName() == ACTOR_CHANNEL_CLASS)
+			TArray<AActor*> Actors;
+			Globals::GPS->STATIC_GetAllActorsOfClass(Globals::World, AActor::StaticClass(), &Actors);
+
+			for (int j = 0; j < Actors.Num(); j++)
+			{
+				auto Actor = Actors[j];
+				
+				if (Actor->bReplicates && Actor->NetDormancy != ENetDormancy::DORM_Initial && !Actor->bNetStartup && Actor->Class->GetFullName().find("Pawn") == std::string::npos)
+				{
+					auto Channel = this->FindChannel(Actor, NetConnection);
+
+					if (Channel == NULL)
+						Channel = this->ReplicateToClient(Actor, NetConnection);
+
+					if (Channel)
+					{
 						Replication::Functions::ReplicateActor(Channel);
+					}
 				}
 			}
 		}

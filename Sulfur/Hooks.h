@@ -20,11 +20,11 @@ namespace Hooks
 	{
 		if (pFunction->GetName().find("BP_PlayButton") != std::string::npos)
 		{
-			Globals::PC->SwitchLevel(TEXT("Athena_Terrain?Game=Engine.GameMode"));
+			Globals::PC->SwitchLevel(TEXT("Athena_Terrain"));
 			bIsReady = true;
 		}
 
-		if (pFunction->GetName().find("Tick") != std::string::npos && pObject == Globals::PC && NetHooks::BeaconHost != NULL)
+		if (pFunction->GetName().find("ReceiveTick") != std::string::npos && pObject == Globals::PC && NetHooks::BeaconHost != NULL)
 		{
 			if (NetHooks::BeaconHost->IsBeaconValid())
 			{
@@ -32,7 +32,8 @@ namespace Hooks
 				{
 					if (NetHooks::BeaconHost->GetNetDriver()->ClientConnections.Num() != 0)
 					{
-						NetHooks::NetReplicator->Tick();
+						auto DeltaSeconds = ((AActor_ReceiveTick_Params*)pParams)->DeltaSeconds;
+						NetHooks::NetReplicator->Tick(DeltaSeconds);
 					}
 				}
 			}
@@ -48,18 +49,6 @@ namespace Hooks
 
 					NetHooks::Init();
 					bHasInitedTheBeacon = true;
-				}
-			}
-
-			if (GetAsyncKeyState(VK_F3) & 0x1 && NetHooks::BeaconHost->GetNetDriver())
-			{
-				for (int i = 0; i < NetHooks::BeaconHost->GetNetDriver()->ClientConnections.Num(); i++)
-				{
-					auto Connection = NetHooks::BeaconHost->GetNetDriver()->ClientConnections[i];
-					if (Connection)
-					{
-						NetHooks::NetReplicator->InitalizeConnection(Connection); 
-					}
 				}
 			}
 
@@ -87,7 +76,7 @@ namespace Hooks
 			Globals::World = Globals::FortEngine->GameViewport->World;
 			Globals::PC = reinterpret_cast<AFortPlayerController*>(Globals::FortEngine->GameInstance->LocalPlayers[0]->PlayerController);
 
-			/*if (!bHasSpawned) {
+			if (!bHasSpawned) {
 				Globals::Pawn = reinterpret_cast<PLAYER_CLASS*>(Util::SpawnActor(PLAYER_CLASS::StaticClass(), FVector(0, 0, 0), FRotator()));
 
 				auto PlayerState = reinterpret_cast<PLAYER_STATE_CLASS*>(Globals::PC->PlayerState);
@@ -103,7 +92,7 @@ namespace Hooks
 
 				Globals::PC->ServerReadyToStartMatch();
 				static_cast<AGameMode*>(Globals::World->AuthorityGameMode)->StartMatch();
-			}*/
+			}
 		}
 
 		if (pFunction->GetName().find("LoadingScreenDropped") != std::string::npos)
