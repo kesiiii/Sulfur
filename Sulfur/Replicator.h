@@ -63,7 +63,7 @@ public:
 	int ServerReplicateActors()
 	{
 		if (BeaconHost->GetNetDriver()->ClientConnections.Num() == 0)
-			return;
+			return 0;
 
 		int NumActorsReplicated = 0;
 
@@ -81,5 +81,7 @@ public:
 					ReplicateActor(Actor, Connection);
 			}
 		}
+
+		return NumActorsReplicated;
 	}
 };
