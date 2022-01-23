@@ -11,6 +11,10 @@ private:
 
 		if (ClassName == "Class FortniteGame.BuildingSMActor")
 			return true;
+		if (ClassName == "Class Engine.GameState")
+			return true;
+		if (ClassName == "Class Engine.DefaultPawn")
+			return true;
 
 		return false;
 	}
@@ -77,7 +81,7 @@ public:
 
 				NumActorsReplicated += 1;
 
-				if (Actor->bReplicates && (Actor->NetDormancy != ENetDormancy::DORM_Initial || DormancyCheck(Actor)) && !Actor->bNetStartup)
+				if (Actor->bReplicates && (Actor->NetDormancy != ENetDormancy::DORM_Initial) && !Actor->bNetStartup)
 					ReplicateActor(Actor, Connection);
 			}
 		}

@@ -35,9 +35,13 @@ namespace NetHooks
 
 	APlayerController* SpawnPlayActorHook(UWorld*, UNetConnection* Connection, ENetRole NetRole, FURL a4, void* a5, FString& Src, uint8_t a7)
 	{
+		NetReplicator->ReplicateActor(Globals::World->GameState, Connection);
+
         auto PlayerController = SpawnPlayActor(Globals::World, Connection, NetRole, a4, a5, Src, a7);
 		Connection->PlayerController = PlayerController;
-        auto CurrentGameModeClass = Globals::World->AuthorityGameMode->Class;
+
+		NetReplicator->ReplicateActor(PlayerController, Connection);
+		NetReplicator->ReplicateActor(PlayerController->Pawn, Connection);
 
         return PlayerController;
 	}
@@ -62,8 +66,6 @@ namespace NetHooks
 		MH_EnableHook((void*)(SpawnPlayActorAddr));
 
 		BeaconHost = new Beacon(7777);
-		BeaconHost->InitHost();
-
 		NetReplicator = new Replicator(BeaconHost);
 	}
 }

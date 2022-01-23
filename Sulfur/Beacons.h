@@ -32,18 +32,11 @@ public:
 		BeaconHost = reinterpret_cast<AOnlineBeaconHost*>(Globals::GPS->STATIC_FinishSpawningActor(SpawningBeaconActor, SpawnTransform));
 		
 		BeaconHost->ListenPort = 7777;
-	}
 
-	bool InitHost()
-	{
 		if (Beacons::Functions::InitHost(BeaconHost)) {
 			BeaconHost->BeaconState = 0;
 			SULFUR_LOG("BeaconHost is now listening and accepting requests!");
-
-			return true;
 		}
-
-		return false;
 	}
 
 	~Beacon()

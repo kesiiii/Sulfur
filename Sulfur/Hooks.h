@@ -23,14 +23,16 @@ namespace Hooks
 			Globals::PC->SwitchLevel(TEXT("Athena_Terrain?game=Engine.GameMode"));
 			bIsReady = true;
 		}
-
+		
 		if (pFunction->GetName().find("Tick") != std::string::npos)
 		{
-			if (pObject == Globals::PC && Globals::PC && NetHooks::BeaconHost->IsBeaconValid())
-			{
-				if (NetHooks::BeaconHost->GetNetDriver()->ClientConnections.Num() != 0)
+			if (bHasInitedTheBeacon) {
+				if (NetHooks::BeaconHost->IsBeaconValid())
 				{
-					NetHooks::NetReplicator->ServerReplicateActors();
+					if (NetHooks::BeaconHost->GetNetDriver()->ClientConnections.Num() != 0)
+					{
+						NetHooks::NetReplicator->ServerReplicateActors();
+					}
 				}
 			}
 
