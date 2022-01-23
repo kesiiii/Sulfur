@@ -17,9 +17,9 @@ private:
 
 public:
 
-	static UChannel* (*CreateChannel)(UNetConnection*, int, bool, int32_t);
-	static __int64 (*ReplicateActorInternal)(UActorChannel*);
-	static __int64 (*SetChannelActor)(UActorChannel*, AActor*);
+	inline static UChannel* (*CreateChannel)(UNetConnection*, int, bool, int32_t);
+	inline static __int64 (*ReplicateActorInternal)(UActorChannel*);
+	inline static __int64 (*SetChannelActor)(UActorChannel*, AActor*);
 
 	Replicator(Beacon* InBeaconHost)
 	{
