@@ -11,7 +11,7 @@
 #include "Util.h"
 #include "Player.h"
 #include "Beacons.h"
-#include "Replication.h"
+#include "Replicator.h"
 #include "NetHooks.h"
 #include "Hooks.h"
 
@@ -20,17 +20,19 @@ using namespace SDK;
 DWORD WINAPI MainThread(LPVOID)
 {
     Util::InitConsole();
-
+    
     SULFUR_LOG("Setting Up!");
 
     auto BaseAddr = Util::BaseAddress();
-    auto GObjectsAddress = BaseAddr + GOBJECTS_OFFSET;
-    auto FNameToStringAddress = BaseAddr + FNAMETOSTRING_OFFSET;
-    auto FreeMemoryAddress = BaseAddr + FREEMEMORY_OFFSET;
+    auto GObjectsAddress = Util::FindPattern("48 8B 05 ? ? ? ? 48 8D 1C C8 81 4B ? ? ? ? ? 49 63 76 30", true, 3);
+    auto FNameToStringAddress = Util::FindPattern("48 89 5C 24 ? 57 48 83 EC 40 83 79 04 00 48 8B DA 48 8B F9");
+    auto FreeMemoryAddress = Util::FindPattern("48 85 C9 74 1D 4C 8B 05 ? ? ? ? 4D 85 C0");
 
     SDK::UObject::GObjects = decltype(SDK::UObject::GObjects)(GObjectsAddress);
     SDK::FNameToString = decltype(SDK::FNameToString)(FNameToStringAddress);
-    SDK::FreeInternal = decltype(SDK::FreeInternal)(FreeMemoryAddress);
+    SDK::FreeMemory = decltype(SDK::FreeMemory)(FreeMemoryAddress);
+
+    std::cout << SDK::UObject::GObjects->GetByIndex(0)->GetFullName() << std::endl;
 
     auto FortEngine = SDK::UObject::FindObject<UFortEngine>("FortEngine_");
     Globals::FortEngine = FortEngine;

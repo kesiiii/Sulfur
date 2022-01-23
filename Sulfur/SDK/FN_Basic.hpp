@@ -1,12 +1,11 @@
 #pragma once
+#include <locale>
 
-// Fortnite (2.4.2) SDK
+// Fortnite (4.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
-
-#include "../SDK.hpp"
 
 namespace SDK
 {
@@ -30,9 +29,9 @@ struct TUObjectArray
 		return NumElements;
 	}
 
-	inline UObject* GetByIndex(int32_t id)
+	inline UObject* GetByIndex(int32_t Index)
 	{
-		auto Offset = 24 * id;
+		auto Offset = 24 * Index;
 		return *(UObject**)(Objects + Offset);
 	}
 };
@@ -69,70 +68,10 @@ public:
 		return i < Num();
 	}
 
-	inline void Add(T InputData)
-	{
-		Data = (T*)realloc(Data, sizeof(T) * (Count + 1));
-		Data[Count++] = InputData;
-		Max = Count;
-	};
-
-	inline void Remove(int32_t Index)
-	{
-		TArray<T> NewArray;
-		for (int i = 0; i < this->Count; i++)
-		{
-			if (i == Index)
-				continue;
-
-			NewArray.Add(this->operator[](i));
-		}
-		this->Data = (T*)realloc(NewArray.Data, sizeof(T) * (NewArray.Count));
-		this->Count = NewArray.Count;
-		this->Max = NewArray.Count;
-	}
-
 private:
 	T* Data;
 	int32_t Count;
 	int32_t Max;
-};
-
-template<typename ElementType, int32_t MaxTotalElements, int32_t ElementsPerChunk>
-class TStaticIndirectArrayThreadSafeRead
-{
-public:
-	inline size_t Num() const
-	{
-		return NumElements;
-	}
-
-	inline bool IsValidIndex(int32_t index) const
-	{
-		return index < Num() && index >= 0;
-	}
-
-	inline ElementType const* const& operator[](int32_t index) const
-	{
-		return *GetItemPtr(index);
-	}
-
-private:
-	inline ElementType const* const* GetItemPtr(int32_t Index) const
-	{
-		int32_t ChunkIndex = Index / ElementsPerChunk;
-		int32_t WithinChunkIndex = Index % ElementsPerChunk;
-		ElementType** Chunk = Chunks[ChunkIndex];
-		return Chunk + WithinChunkIndex;
-	}
-
-	enum
-	{
-		ChunkTableSize = (MaxTotalElements + ElementsPerChunk - 1) / ElementsPerChunk
-	};
-
-	ElementType** Chunks[ChunkTableSize];
-	int32_t NumElements;
-	int32_t NumChunks;
 };
 
 struct FString : private TArray<wchar_t>
@@ -175,8 +114,8 @@ struct FString : private TArray<wchar_t>
 
 struct FName;
 
-inline void (*FNameToString)(FName* This, FString& OutStr);
-inline void (*FreeInternal)(__int64);
+inline void(*FNameToString)(FName*, FString&);
+inline void(*FreeMemory)(void*);
 
 struct FName
 {
@@ -185,25 +124,15 @@ struct FName
 
 	std::string ToString()
 	{
-		if (!this)
-			return "";
+		FString Temp;
 
-		FString temp;
+		FNameToString(this, Temp);
 
-		FNameToString(this, temp);
+		auto str = std::string(Temp.ToString());
 
-		auto wName = std::wstring(temp.c_str());
-		auto name = std::string(wName.begin(), wName.end());
+		FreeMemory((void*)(Temp.c_str()));
 
-		FreeInternal((__int64)temp.c_str());
-
-		auto pos = name.rfind('/');
-		if (pos == std::string::npos)
-		{
-			return name;
-		}
-
-		return name.substr(pos + 1);
+		return str;
 	}
 };
 
@@ -310,13 +239,6 @@ class TMap
 
 struct FWeakObjectPtr
 {
-public:
-	bool IsValid() const;
-
-	UObject* Get() const;
-
-	int32_t ObjectIndex;
-	int32_t ObjectSerialNumber;
 };
 
 template<class T, class TWeakObjectPtrBase = FWeakObjectPtr>
@@ -342,10 +264,6 @@ public:
 	{
 		return TWeakObjectPtrBase::IsValid();
 	}
-
-	/*TWeakObjectPtr(void* Object)
-	{
-	}*/
 };
 
 template<class T, class TBASE>

@@ -20,31 +20,23 @@ namespace Hooks
 	{
 		if (pFunction->GetName().find("BP_PlayButton") != std::string::npos)
 		{
-			Globals::PC->SwitchLevel(TEXT("Athena_Terrain"));
+			Globals::PC->SwitchLevel(TEXT("Athena_Terrain?game=Engine.GameMode"));
 			bIsReady = true;
-		}
-
-		if (pFunction->GetName().find("ReceiveTick") != std::string::npos && pObject == Globals::PC && NetHooks::BeaconHost != NULL)
-		{
-			if (NetHooks::BeaconHost->IsBeaconValid())
-			{
-				if (NetHooks::BeaconHost->GetNetDriver())
-				{
-					if (NetHooks::BeaconHost->GetNetDriver()->ClientConnections.Num() != 0)
-					{
-						auto DeltaSeconds = ((AActor_ReceiveTick_Params*)pParams)->DeltaSeconds;
-						NetHooks::NetReplicator->Tick(DeltaSeconds);
-					}
-				}
-			}
 		}
 
 		if (pFunction->GetName().find("Tick") != std::string::npos)
 		{
+			if (pObject == Globals::PC && Globals::PC && NetHooks::BeaconHost->IsBeaconValid())
+			{
+				if (NetHooks::BeaconHost->GetNetDriver()->ClientConnections.Num() != 0)
+				{
+					NetHooks::NetReplicator->ServerReplicateActors();
+				}
+			}
+
 			if (GetAsyncKeyState(VK_F1) & 0x1)
 			{
 				if (!bHasInitedTheBeacon) {
-					Replicator::InitOffsets();
 					Beacon::InitOffsets();
 
 					NetHooks::Init();
@@ -64,8 +56,6 @@ namespace Hooks
 					NewFortPickup->OnRep_PrimaryPickupItemEntry();
 
 					NewFortPickup->TossPickup(Location, nullptr, 1, true);
-
-					NetHooks::NetReplicator->Replicate(NewFortPickup); //Replicates the pickup
 				}
 			}
 		}
@@ -75,24 +65,6 @@ namespace Hooks
 			Globals::FortEngine = UObject::FindObject<UFortEngine>("FortEngine_");
 			Globals::World = Globals::FortEngine->GameViewport->World;
 			Globals::PC = reinterpret_cast<AFortPlayerController*>(Globals::FortEngine->GameInstance->LocalPlayers[0]->PlayerController);
-
-			if (!bHasSpawned) {
-				Globals::Pawn = reinterpret_cast<PLAYER_CLASS*>(Util::SpawnActor(PLAYER_CLASS::StaticClass(), FVector(0, 0, 0), FRotator()));
-
-				auto PlayerState = reinterpret_cast<PLAYER_STATE_CLASS*>(Globals::PC->PlayerState);
-				PlayerState->CharacterParts[0] = UObject::FindObject<UCustomCharacterPart>("CustomCharacterPart F_Med_Head1.F_Med_Head1");
-				PlayerState->CharacterParts[1] = UObject::FindObject<UCustomCharacterPart>("CustomCharacterPart F_Med_Soldier_01.F_Med_Soldier_01");
-				PlayerState->OnRep_CharacterParts();
-
-				Globals::PC->Possess(Globals::Pawn);
-
-				bIsReady = false;
-				bIsInGame = true;
-				bHasSpawned = true;
-
-				Globals::PC->ServerReadyToStartMatch();
-				static_cast<AGameMode*>(Globals::World->AuthorityGameMode)->StartMatch();
-			}
 		}
 
 		if (pFunction->GetName().find("LoadingScreenDropped") != std::string::npos)

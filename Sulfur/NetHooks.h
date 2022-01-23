@@ -4,8 +4,8 @@ using namespace SDK;
 
 namespace NetHooks
 {
-	Replicator* NetReplicator;
 	Beacon* BeaconHost;
+	Replicator* NetReplicator;
 
 	void(*UWorld_NotifyControlMessage)(UWorld* World, UNetConnection* NetConnection, uint8_t a3, void* a4);
 	__int64(*WelcomePlayer)(UWorld* This, UNetConnection* NetConnection);
@@ -35,24 +35,9 @@ namespace NetHooks
 
 	APlayerController* SpawnPlayActorHook(UWorld*, UNetConnection* Connection, ENetRole NetRole, FURL a4, void* a5, FString& Src, uint8_t a7)
 	{
-        NetReplicator->InitalizeConnection(Connection);
-
         auto PlayerController = SpawnPlayActor(Globals::World, Connection, NetRole, a4, a5, Src, a7);
 		Connection->PlayerController = PlayerController;
         auto CurrentGameModeClass = Globals::World->AuthorityGameMode->Class;
-
-        NetReplicator->ReplicateToClient(PlayerController, Connection);
-        NetReplicator->ReplicateToClient(Globals::World->GameState, Connection);
-
-        if (PlayerController->Pawn)
-        {
-            //NetReplicator->Replicate(PlayerController->Pawn);
-        }
-
-		if (CurrentGameModeClass == AFortGameModeAthena::StaticClass())
-		{
-			PlayerController->ClientReturnToMainMenu(L"ATHENA GAMEMODE NOT IMPLEMENTED!\n");
-        }
 
         return PlayerController;
 	}
@@ -61,11 +46,11 @@ namespace NetHooks
 	{
 		auto BaseAddr = Util::BaseAddress();
 
-		UWorld_NotifyControlMessage = decltype(UWorld_NotifyControlMessage)(BaseAddr + 0x1DA15C0);
-
-		auto AOnlineBeaconHost_NotifyControlMessageAddr = BaseAddr + 0x27B7620;
-		auto WelcomePlayerAddr = BaseAddr + 0x1DACC50;
-		auto SpawnPlayActorAddr = BaseAddr + 0x1A9E7B0;
+		UWorld_NotifyControlMessage = decltype(UWorld_NotifyControlMessage)(BaseAddr + UWORLD_NCM_OFFSET);
+	
+		auto AOnlineBeaconHost_NotifyControlMessageAddr = BaseAddr + AONLINEBEACONHOST_NCM_OFFSET;
+		auto WelcomePlayerAddr = BaseAddr + WELCOME_PLAYER_OFFSET;
+		auto SpawnPlayActorAddr = BaseAddr + SPAWN_PLAY_ACTOR_OFFSET;
 
 		SpawnPlayActor = decltype(SpawnPlayActor)(SpawnPlayActorAddr);
 
@@ -77,6 +62,8 @@ namespace NetHooks
 		MH_EnableHook((void*)(SpawnPlayActorAddr));
 
 		BeaconHost = new Beacon(7777);
-		NetReplicator = new Replicator(BeaconHost->GetNetDriver());
+		BeaconHost->InitHost();
+
+		NetReplicator = new Replicator(BeaconHost);
 	}
 }

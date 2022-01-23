@@ -27,13 +27,13 @@
     <ClInclude Include="Beacons.h">
       <Filter>Beacons</Filter>
     </ClInclude>
-    <ClInclude Include="Replication.h">
-      <Filter>Beacons</Filter>
-    </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Player</Filter>
     </ClInclude>
     <ClInclude Include="Constants.h" />
+    <ClInclude Include="Replicator.h">
+      <Filter>Beacons</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="SDK">

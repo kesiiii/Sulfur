@@ -14,6 +14,7 @@ class Beacon
 {
 private:
 	AOnlineBeaconHost* BeaconHost;
+
 public:
 	
 	Beacon(int Port)
@@ -25,17 +26,24 @@ public:
 		SpawnTransform.Scale3D = FVector(0, 0, 0);
 		SpawnTransform.Translation = FVector(0, 0, 5000);
 
-		Globals::GPS = decltype(Globals::GPS)(UGameplayStatics::StaticClass());
+		Globals::GPS = reinterpret_cast<UGameplayStatics*>(UGameplayStatics::StaticClass());
 
 		auto SpawningBeaconActor = Globals::GPS->STATIC_BeginSpawningActorFromClass(Globals::World, AOnlineBeaconHost::StaticClass(), SpawnTransform, true, nullptr);
 		BeaconHost = reinterpret_cast<AOnlineBeaconHost*>(Globals::GPS->STATIC_FinishSpawningActor(SpawningBeaconActor, SpawnTransform));
-
+		
 		BeaconHost->ListenPort = 7777;
+	}
 
+	bool InitHost()
+	{
 		if (Beacons::Functions::InitHost(BeaconHost)) {
 			BeaconHost->BeaconState = 0;
 			SULFUR_LOG("BeaconHost is now listening and accepting requests!");
+
+			return true;
 		}
+
+		return false;
 	}
 
 	~Beacon()
@@ -82,7 +90,7 @@ public:
 		SULFUR_LOG("Setting up beacon offsets!");
 
 		auto BaseAddr = Util::BaseAddress();
-
-		Beacons::Functions::InitHost = decltype(Beacons::Functions::InitHost)(BaseAddr + INITHOST_OFFSET);
+		
+		Beacons::Functions::InitHost = decltype(Beacons::Functions::InitHost)(Util::FindPattern("48 8B C4 48 81 EC ? ? ? ? 48 89 58 18 4C 8D 05 ? ? ? ? 48 8B D9 48 89 78 F8 48 8D 48 88 45 33 C9"));
 	}
 };
