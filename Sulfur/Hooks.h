@@ -44,19 +44,16 @@ namespace Hooks
 				}
 			}
 
-			if (GetAsyncKeyState(VK_F2) & 0x1 && Globals::PC)
+			if (GetAsyncKeyState(VK_F2) & 0x1)
 			{
-				if (Globals::PC->Pawn)
-				{
-					auto Location = Globals::PC->Pawn->K2_GetActorLocation();
-					auto NewFortPickup = reinterpret_cast<AFortPickup*>(Util::SpawnActor(AFortPickup::StaticClass(), Location, FRotator()));
+				auto Location = Globals::PC->Pawn->K2_GetActorLocation();
+				auto NewFortPickup = reinterpret_cast<AFortPickup*>(Util::SpawnActor(AFortPickup::StaticClass(), Location, FRotator()));
 
-					NewFortPickup->PrimaryPickupItemEntry.Count = 1;
-					NewFortPickup->PrimaryPickupItemEntry.ItemDefinition = UObject::FindObject<UFortWeaponItemDefinition>("WID_Assault_AutoHigh_Athena_SR_Ore_T03.WID_Assault_AutoHigh_Athena_SR_Ore_T03");
-					NewFortPickup->OnRep_PrimaryPickupItemEntry();
+				NewFortPickup->PrimaryPickupItemEntry.Count = 1;
+				NewFortPickup->PrimaryPickupItemEntry.ItemDefinition = UObject::FindObject<UFortWeaponItemDefinition>("WID_Assault_AutoHigh_Athena_SR_Ore_T03.WID_Assault_AutoHigh_Athena_SR_Ore_T03");
+				NewFortPickup->OnRep_PrimaryPickupItemEntry();
 
-					NewFortPickup->TossPickup(Location, nullptr, 1, true);
-				}
+				NewFortPickup->TossPickup(Location, nullptr, 1, true);
 			}
 		}
 
