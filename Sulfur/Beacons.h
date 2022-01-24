@@ -37,6 +37,7 @@ public:
 			BeaconHost->BeaconState = 0;
 			SULFUR_LOG("BeaconHost is now listening and accepting requests!");
 		}
+		Globals::World->AuthorityGameMode->GameSession->MaxPlayers = MAX_PLAYERS;
 	}
 
 	~Beacon()
