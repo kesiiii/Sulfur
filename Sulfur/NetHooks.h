@@ -39,6 +39,7 @@ namespace NetHooks
 
         auto PlayerController = SpawnPlayActor(Globals::World, Connection, NetRole, a4, a5, Src, a7);
 		Connection->PlayerController = PlayerController;
+		Connection->OwningActor = PlayerController;
 
 		NetReplicator->ReplicateActor(PlayerController, Connection);
 		NetReplicator->ReplicateActor(PlayerController->Pawn, Connection);
