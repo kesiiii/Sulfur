@@ -11,10 +11,6 @@ private:
 
 		if (ClassName == "Class FortniteGame.BuildingSMActor")
 			return true;
-		if (ClassName == "Class Engine.GameState")
-			return true;
-		if (ClassName == "Class Engine.DefaultPawn")
-			return true;
 
 		return false;
 	}

@@ -35,26 +35,6 @@ DWORD WINAPI MainThread(LPVOID)
 
     std::cout << SDK::UObject::GObjects->GetByIndex(0)->GetFullName() << std::endl;
 
-    std::ofstream file("Functions.txt");
-
-    auto ImageBase = GetModuleHandle(NULL);
-
-    for (int i = 0; i < SDK::UObject::GObjects->Num(); i++)
-    {
-        auto Obj = SDK::UObject::GObjects->GetByIndex(i);
-
-        if (!Obj)
-            continue;
-
-        if (Obj->IsA(UFunction::StaticClass())) {
-            file << Obj->GetFullName() << " - Address: " << static_cast<UFunction*>(Obj)->Func << std::endl;
-        }
-    }
-
-    file.close();
-
-    return 0;
-
     auto FortEngine = SDK::UObject::FindObject<UFortEngine>("FortEngine_");
     Globals::FortEngine = FortEngine;
     Globals::World = FortEngine->GameViewport->World;
