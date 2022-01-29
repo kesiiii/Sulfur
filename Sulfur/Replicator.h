@@ -85,3 +85,117 @@ public:
 		return NumActorsReplicated;
 	}
 };
+
+namespace NetDriver
+{
+	UNetDriver* NetDriver;
+	float(*GetMaxTickRate)(UEngine*, float, bool);
+
+	static int32_t ServerReplicateActors_PrepConnections(int32_t DeltaSeconds)
+	{
+		int32_t NumClientsToTick = NetDriver->ClientConnections.Num();
+
+		bool bFoundReadyConnection = false;
+
+		for (int i = 0; i < NumClientsToTick; i++)
+		{
+			UNetConnection* Connection = NetDriver->ClientConnections[i];
+
+			if (Connection == NULL)
+				continue;
+
+			AActor* OwningActor = Connection->OwningActor;
+
+			if (OwningActor != NULL && (Connection->Driver->Time - Connection->LastReceiveTime < 1.5f))
+			{
+				bFoundReadyConnection = true;
+
+				AActor* DesiredViewTarget = OwningActor;
+				if (Connection->PlayerController)
+				{
+					if (AActor* ViewTarget = Connection->PlayerController->GetViewTarget())
+					{
+						if (ViewTarget != NULL)
+						{
+							// It is safe to use the player controller's view target.
+							DesiredViewTarget = ViewTarget;
+						}
+						else
+						{
+						}
+					}
+				}
+				Connection->ViewTarget = DesiredViewTarget;
+
+				for (int ChildIdx = 0; ChildIdx < Connection->Children.Num(); ChildIdx++)
+				{
+					UNetConnection* Child = Connection->Children[ChildIdx];
+					APlayerController* ChildPlayerController = Child->PlayerController;
+					if (ChildPlayerController != NULL)
+					{
+						Child->ViewTarget = ChildPlayerController->GetViewTarget();
+					}
+					else
+					{
+						Child->ViewTarget = NULL;
+					}
+				}
+			}
+			else
+			{
+				Connection->ViewTarget = NULL;
+				for (int ChildIdx = 0; ChildIdx < Connection->Children.Num(); ChildIdx++)
+				{
+					Connection->Children[ChildIdx]->ViewTarget = NULL;
+				}
+			}
+		}
+
+		return bFoundReadyConnection ? NumClientsToTick : 0;
+	}
+
+	static int32_t ServerReplicateActors(float DeltaSeconds)
+	{
+		if (NetDriver->ClientConnections.Num() == 0)
+		{
+			return 0;
+		}
+
+		int32_t Updated = 0;
+
+		const int32_t NumClientsToTick = ServerReplicateActors_PrepConnections(DeltaSeconds);
+
+		if (NumClientsToTick == 0)
+		{
+			// No connections are ready this frame
+			return 0;
+		}
+
+		AWorldSettings* WorldSettings = Globals::World->PersistentLevel->WorldSettings;
+
+		bool bCPUSaturated = false;
+		float ServerTickTime = GetMaxTickRate(Globals::FortEngine, DeltaSeconds, true);
+		if (ServerTickTime == 0.f)
+		{
+			ServerTickTime = DeltaSeconds;
+		}
+		else
+		{
+			ServerTickTime = 1.f / ServerTickTime;
+			bCPUSaturated = DeltaSeconds > 1.2f * ServerTickTime;
+		}
+
+		for (int32_t i = 0; i < NetDriver->ClientConnections.Num(); i++)
+		{
+			UNetConnection* Connection = NetDriver->ClientConnections[i];
+
+			if (Connection == NULL)
+				continue;
+
+
+		}
+
+		TArray<FNetworkObjectInfo*> ConsiderList;
+		ConsiderList.Reserve(NetDriver->NetworkObjects.Object->ActiveNetworkObjects)
+	}
+}

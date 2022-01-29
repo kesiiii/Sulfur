@@ -361,6 +361,58 @@ public:
 
 };
 
+struct FNetworkObjectInfo
+{
+	AActor* Actor;
+	void* WeakActor;
+	double NextUpdateTime;
+	double LastNetReplicateTime;
+	float OptimalNetUpdateDelta;
+	float LastNetUpdateTime;
+	uint32_t bPendingNetUpdate : 1;
+	uint32_t bForceRelevantNextUpdate : 1;
+	TSet<TWeakObjectPtr<UNetConnection>> DormantConnections;
+	TSet<TWeakObjectPtr<UNetConnection>> RecentlyDormantConnections;
+
+	FNetworkObjectInfo()
+		: Actor(nullptr)
+		, NextUpdateTime(0.0)
+		, LastNetReplicateTime(0.0)
+		, OptimalNetUpdateDelta(0.0f)
+		, LastNetUpdateTime(0.0f)
+		, bPendingNetUpdate(false)
+		, bForceRelevantNextUpdate(false) {}
+
+	FNetworkObjectInfo(AActor* InActor)
+		: Actor(InActor)
+		, WeakActor(InActor)
+		, NextUpdateTime(0.0)
+		, LastNetReplicateTime(0.0)
+		, OptimalNetUpdateDelta(0.0f)
+		, LastNetUpdateTime(0.0f)
+		, bPendingNetUpdate(false)
+		, bForceRelevantNextUpdate(false) {}
+};
+
+template<typename ElementType, typename InKeyType, bool bInAllowDuplicateKeys = false>
+struct BaseKeyFuncs
+{
+};
+
+struct FNetworkObjectKeyFuncs : BaseKeyFuncs<TSharedPtr<FNetworkObjectInfo>, AActor*, false>
+{
+};
+
+class FNetworkObjectList
+{
+public:
+	typedef TSet<TSharedPtr<FNetworkObjectInfo>, FNetworkObjectKeyFuncs, void*> FNetworkObjectSet;
+
+	FNetworkObjectSet AllNetworkObjects;
+	FNetworkObjectSet ActiveNetworkObjects;
+	FNetworkObjectSet ObjectsDormantOnAllConnections;
+	TMap<TWeakObjectPtr<UNetConnection>, int32_t > NumDormantObjectsPerConnection;
+};
 
 // Class Engine.NetDriver
 // 0x04F8 (0x0520 - 0x0028)
@@ -398,7 +450,8 @@ public:
 	float                                              Time;                                                     // 0x0150(0x0004) (ZeroConstructor, IsPlainOldData)
 	unsigned char                                      UnknownData06[0x3AC];                                     // 0x0154(0x03AC) MISSED OFFSET
 	class UReplicationDriver*                          ReplicationDriver;                                        // 0x0500(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
-	unsigned char                                      UnknownData07[0x18];                                      // 0x0508(0x0018) MISSED OFFSET
+	TSharedPtr<FNetworkObjectList> NetworkObjects;
+	unsigned char                                      UnknownData07[0x8];                                      // 0x0508(0x0018) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

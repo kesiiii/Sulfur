@@ -1,5 +1,7 @@
 #pragma once
+
 #include <locale>
+#include <Windows.h>
 
 // Fortnite (4.1) SDK
 
@@ -9,6 +11,8 @@
 
 namespace SDK
 {
+static auto Realloc = reinterpret_cast<void* (*)(void* Memory, int64_t NewSize, uint32_t Alignment)>(uintptr_t(GetModuleHandle(0)) + 0x13095F0);
+
 template<typename Fn>
 inline Fn GetVFunction(const void *instance, std::size_t index)
 {
@@ -68,7 +72,16 @@ public:
 		return i < Num();
 	}
 
-private:
+	inline int Slack() const
+	{
+		return Max - Count;
+	}
+
+	inline void Reserve(const int NumElements)
+	{
+		Data = Slack() >= NumElements ? Data : (T*)Realloc(Data, (Max = Count + NumElements) * sizeof(T), 0);
+	}
+
 	T* Data;
 	int32_t Count;
 	int32_t Max;
@@ -110,6 +123,74 @@ struct FString : private TArray<wchar_t>
 
 		return str;
 	}
+};
+
+typedef __int8 int8;
+typedef __int16 int16;
+typedef __int32 int32;
+typedef __int64 int64;
+
+typedef unsigned __int8 uint8;
+typedef unsigned __int16 uint16;
+typedef unsigned __int32 uint32;
+typedef unsigned __int64 uint64;
+
+template<typename ArrayType>
+class TSparseArray
+{
+	void* Data;
+	void* AllocationFlags;
+	int32 FirstFreeIndex;
+	int32 NumFreeIndices;
+};
+
+template<typename ElementType>
+class TSetElement
+{
+public:
+	ElementType Value;
+	mutable int32_t HashNextId;
+	mutable int32_t HashIndex;
+};
+
+template<
+	typename InElementType,
+	typename KeyFuncs /*= DefaultKeyFuncs<ElementType>*/,
+	typename Allocator /*= FDefaultSetAllocator*/
+>
+struct TSet
+{
+	typedef TSetElement<SetType> ElementType;
+
+	TSparseArray<ElementType> Elements;
+	void* Hash;
+	int32 HashSize;
+};
+
+template<class ObjectType>
+class TSharedPtr
+{
+public:
+	ObjectType* Object;
+
+	int32 SharedReferenceCount;
+	int32 WeakReferenceCount;
+};
+
+template<class ObjectType>
+class TSharedRef
+{
+private:
+	struct Counts
+	{
+		int32 SharedReferenceCount;
+		int32 WeakReferenceCount;
+	};
+
+public:
+
+	ObjectType* Object;
+	Counts* ReferenceController;
 };
 
 struct FName;
